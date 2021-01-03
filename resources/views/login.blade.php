@@ -48,13 +48,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group form-group-custom mb-4">
-                                            <label for="useremail">Email</label>
-                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="useremail" required>
+                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" required>
                                         </div>
 
                                         <div class="form-group form-group-custom mb-4">
-                                            <label for="userpassword">Пароль</label>
-                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="userpassword" required>
+                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Пароль" required>
                                         </div>
 
                                         <div class="row">
@@ -89,12 +87,14 @@
 
 <!-- JAVASCRIPT -->
 <script src="{{asset('js/login.js')}}"></script>
-@toastr_js
-@toastr_render
+
+
 <!-- Laravel Javascript Validation -->
 @if(isset($jsValidator))
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! $jsValidator->selector('#js-form') !!}
 @endif
 </body>
+@toastr_js
+@toastr_render
 </html>
