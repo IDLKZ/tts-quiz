@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view("admin.company.create");
+        return view("admin.company.edit");
     }
 
     /**
@@ -99,10 +99,12 @@ class CompanyController extends Controller
         if($company){
             $this->validate($request,["title"=>"required|max:255","logo"=>"sometimes|image|max:4096"]);
             if(Company::updateData($request,$company)){
-
+                toastSuccess('Успешно обновлена!');
+                return redirect(route('company.index'));
             }
             else{
-
+                toastError('Упс...! Что то пошло не так!');
+                return redirect()->back();
             }
             return  redirect(route("company.index"));
         }

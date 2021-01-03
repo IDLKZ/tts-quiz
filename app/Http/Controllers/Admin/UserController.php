@@ -9,6 +9,8 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class UserController extends Controller
 {
@@ -19,8 +21,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with("department")->paginate(15);
-        return view("admin.user.index",compact("users"));
+        $users = User::where('role_id', 2)->with("department")->paginate(15);
+        $departments = Department::all();
+        $jsValidator = JsValidator::make(
+            [
+                "department_id"=>"required|exists:departments,id",
+                "name"=>"required",
+                "img"=>"sometimes|image|max:4096",
+                'position' => 'required',
+                'phone' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:4'
+            ]
+        );
+        return view("admin.users.index",compact("users", 'departments', 'jsValidator'));
     }
 
     /**
@@ -44,15 +58,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,["role_id"=>"required|exists:roles,id","department_id"=>"required|exists:departments,id", "name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096","position"=>"required|max:255","email"=>"required|email|unique:users,email", "password"=>"required|min:4|max:255"]);
+        $this->validate($request,[
+            "role_id"=>"required|exists:roles,id",
+            "department_id"=>"required|exists:departments,id",
+            "name"=>"required|max:255",
+            "phone"=>"required|max:255",
+            "img"=>"sometimes|image|max:4096",
+            "position"=>"required|max:255",
+            "email"=>"required|email|unique:users,email",
+            "password"=>"required|min:4|max:255"
+        ]);
             if (User::saveData($request)){
-
+                toastSuccess('Успешно создан!');
+                return redirect()->back();
             }
             else{
-
+                toastError('Что то пошло не так!');
+                return redirect()->back();
             }
-            return  redirect(route("user.index"));
-
     }
 
     /**
@@ -82,10 +105,19 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::with("department")->find($id);
-        $companies = Company::all();
-        $departments = Department::with("company")->get();
+        $jsValidator = JsValidator::make(
+            [
+                "department_id"=>"required|exists:departments,id",
+                "name"=>"required",
+                "img"=>"sometimes|image|max:4096",
+                'position' => 'required',
+                'phone' => 'required',
+                'password' => 'sometimes|min:4'
+            ]
+        );
+        $departments = Department::all();
         if ($user){
-            return  view("admin.index.edit",compact("user","companies","departments"));
+            return  view("admin.users.edit",compact("user","departments", 'jsValidator'));
         }
         else{
             return  redirect(route("user.index"));
@@ -103,18 +135,20 @@ class UserController extends Controller
     {
         $user = User::with("department")->find($id);
         if($user){
-            $this->validate($request,["role_id"=>"required|exists:roles,id","department_id"=>"required|exists:departments,id", "name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096","position"=>"required|max:255","email"=>"required|email|unique:users,email".$id, "password"=>"sometimes|min:4|max:255"]);
+            $this->validate($request,["role_id"=>"required|exists:roles,id","department_id"=>"required|exists:departments,id", "name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096","position"=>"required|max:255","email"=>"required|email|unique:users,email,".$id, "password"=>"sometimes|nullable|min:4|max:255"]);
             if(User::updateData($request,$user)){
-
+                toastSuccess('Успешно обновлен!');
+                return redirect()->back();
             }
             else{
-
+                toastError('Что то пошло не так!');
+                return redirect()->back();
             }
         }
         else{
-
+            toastError('Что то пошло не так!');
+            return redirect()->back();
         }
-        return  redirect(route("user.index"));
 
     }
 
@@ -129,7 +163,6 @@ class UserController extends Controller
         $user = User::find($id);
         if ($user){
             Auth::id() != $id ? $user->delete() : null;
-
         }
         return  redirect(route("user.index"));
     }

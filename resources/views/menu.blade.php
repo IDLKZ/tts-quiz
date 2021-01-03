@@ -18,9 +18,21 @@
                 </li>
 
                 <li>
+                    <a href="{{route('user.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
+                        <span>Сотрудники</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('company.index')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
                         <span>Компании</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('department.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
+                        <span>Департамент</span>
                     </a>
                 </li>
 

@@ -64,9 +64,11 @@
                                             @foreach($companies as $company)
                                                 <tr>
                                                     <th scope="row">{{$loop->iteration}}</th>
-                                                    <td>{{$company->title}}</td>
+                                                    <td>
+                                                        {{$company->title}}
+                                                    </td>
                                                     <td class="row w-50">
-                                                        <a href="" class="btn btn-info mr-2"><i class="mdi mdi-pen mr-1"></i></a>
+                                                        <a href="{{route('company.edit', $company->id)}}" class="btn btn-info mr-2"><i class="mdi mdi-pen mr-1"></i></a>
                                                         <form action="{{route('company.destroy', $company->id)}}" method="post">
                                                             @method('delete')
                                                             @csrf
