@@ -20,7 +20,7 @@ class AuthController extends Controller
                 return redirect("/admin");
             }
             else{
-                return redirect("/client");
+                return redirect("/employee");
             }
         }
         else{

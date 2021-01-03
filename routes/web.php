@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Employee\MainController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\MainController as adminMainController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InviteController;
 use App\Http\Controllers\Admin\ResultController;
@@ -19,19 +21,23 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return Route::redirect("/login");
+    return redirect("/login");
 });
-
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+});
 Route::group(["middleware"=>"guest"],function (){
    Route::get("/login",[AuthController::class,"login"])->name("login");
    Route::get("/forget",[AuthController::class,"forget"])->name("forget");
    Route::post("/restore",[AuthController::class,"restore"])->name("restore");
-
+   Route::post('/auth', [AuthController::class, 'auth'])->name('auth');
 });
 
 
 //Start Admin
-Route::group(["prefix"=>"admin"],function (){
+Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
+    Route::get('/', [adminMainController::class, 'index'])->name('adminHome');
     Route::resource("company",CompanyController::class);
     Route::resource("department",CompanyController::class);
     Route::resource("user",UserController::class);
@@ -40,5 +46,8 @@ Route::group(["prefix"=>"admin"],function (){
         'create', 'store', 'update', 'edit'
     ]);
 });
-
+//Start Employee
+Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
+    Route::get('/', [MainController::class, 'index'])->name('employeeHome');
+});
 
