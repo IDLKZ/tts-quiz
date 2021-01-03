@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 class DepartmentController extends Controller
@@ -66,8 +67,8 @@ class DepartmentController extends Controller
     {
         $department = Department::with("company")->find($id);
         if($department){
-
-            return  view("admin.department.show",compact("department"));
+            $users = User::where("department_id",$department->id)->with("department")->paginate(15);
+            return  view("admin.department.show",compact("department","users"));
         }
         else{
             return redirect(route("department.index"));

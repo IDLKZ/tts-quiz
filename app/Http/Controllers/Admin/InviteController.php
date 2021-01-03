@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Department;
 use App\Models\Invite;
 use App\Models\Type;
@@ -18,7 +19,7 @@ class InviteController extends Controller
      */
     public function index()
     {
-        $invites = Invite::with(["type","department","user","results"])->paginate(15);
+        $invites = Invite::with(["type","department","user","results","company"])->paginate(15);
         return  view("admin.invite.index",compact("invites"));
     }
 
@@ -29,10 +30,10 @@ class InviteController extends Controller
      */
     public function create()
     {
-        $types = Type::pluck("title","id")->get();
-        $departments = Department::pluck("title","id")->get();
-        $users = User::pluck("title","id")->get();
-        return view("admin.invite.create",compact("types","departments","users"));
+
+        $companies = Company::all();
+        $types = Type::all();
+        return view("admin.invite.create",compact("types","companies"));
 
     }
 

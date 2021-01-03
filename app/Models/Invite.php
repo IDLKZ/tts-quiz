@@ -67,6 +67,9 @@ class Invite extends Model
         return $this->hasMany('App\Models\Result', 'invites_id');
     }
 
+    public function company(){
+        return $this->hasManyThrough(Company::class,Department::class);
+    }
     public static function saveData($request){
         $model = new self();
         $input = $request->all();

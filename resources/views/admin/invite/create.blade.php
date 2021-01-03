@@ -3,10 +3,10 @@
 
 @push("styles")
     <link href="/css/selectize.css" rel="stylesheet" type="text/css" />
+    @livewireStyles
 @endpush
 
 @section("content")
-
 
     <!-- Start right Content here -->
     <!-- ============================================================== -->
@@ -19,10 +19,10 @@
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-md-12">
-                            <h4 class="page-title mb-1">Создать отдел</h4>
+                            <h4 class="page-title mb-1">Создать приглашение</h4>
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="{{route("department.index")}}">Отделы</a></li>
-                                <li class="breadcrumb-item active">Создать Отдел</li>
+                                <li class="breadcrumb-item"><a href="{{route("invite.index")}}">Приглашение</a></li>
+                                <li class="breadcrumb-item active">Создать Приглашение</li>
                             </ol>
                         </div>
                     </div>
@@ -38,8 +38,8 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h4 class="header-title">Здесь вы можете создать отдел</h4>
-                                    <p class="card-title-desc">У каждой компании имеются свои отделы</p>
+                                    <h4 class="header-title">Здесь вы можете создать приглашения</h4>
+                                    <p class="card-title-desc">У каждой компании имеются свои приглашения</p>
                                     @if ($errors->any())
                                         <div class="alert alert-danger">
                                             <ul>
@@ -49,7 +49,7 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    <form id="js-form" action="{{route("department.store")}}" method="post" enctype="multipart/form-data">
+                                    <form id="js-form" action="{{route("invite.store")}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-md-2 col-form-label">Компания</label>
@@ -63,23 +63,22 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="example-text-input" class="col-md-2 col-form-label">Наименование отдела</label>
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Отдел</label>
                                             <div class="col-md-10">
-                                                <input class="form-control  @error('title') is-invalid @enderror" name="title" type="text" value="{{old("title")}}" id="example-text-input">
+                                                <select name="department_id" id="select-company" class="selectize">
+                                                    <option>Не выбрано</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="example-text-input" class="col-md-2 col-form-label">Описание отдела</label>
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Сотрудник</label>
                                             <div class="col-md-10">
-                                                <textarea id="editor" name="description"></textarea>
+                                                <select name="user_id" id="select-company" class="selectize">
+                                                    <option>Все сотрудники</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-md-2 col-form-label">Логотип отдела</label>
-                                            <div class="col-md-10">
-                                                <input type="file" name="logo">
-                                            </div>
-                                        </div>
+
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-info">Отправить</button>
 
@@ -108,9 +107,8 @@
 
 @endsection
 @push("scripts")
-   <script src="/js/selectize.min.js"></script>
-   <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
-
+    <script src="/js/selectize.min.js"></script>
+    @livewireScripts
     <script>
         $(document).ready(function (){
             $('#select-company').selectize({
@@ -119,12 +117,10 @@
 
 
             });
-            ClassicEditor
-                .create( document.querySelector( '#editor' ) )
-                .catch( error => {
-                    console.error( error );
-                } );
-        })
 
+        })
     </script>
+
+
 @endpush
+
