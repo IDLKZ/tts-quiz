@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InviteController;
 use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +21,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return redirect("/login");
-});
+Route::redirect("/","/login");
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');

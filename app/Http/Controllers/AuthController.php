@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Proengsoft\JsValidation\Remote\Validator;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 class AuthController extends Controller
 {
     public function login(){
-        return view("login");
+        $jsValidator = JsValidator::make(["email"=>"required|email|max:255","password"=>"required|min:4|max:255"]);
+        return view("login",compact("jsValidator"));
     }
 
     public function auth(Request $request){
@@ -24,6 +26,7 @@ class AuthController extends Controller
             }
         }
         else{
+            toastError("Неправильные данные для входа","Упс");
             return redirect()->back();
         }
     }

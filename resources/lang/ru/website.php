@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'main' => 'Главная',
+    'subscribers' => 'Мои слушатели',
+    'access_subscribers' => 'Подписчики',
+    'request_subscribers' => 'Заявки',
+    'courses' => 'Видеокурсы',
+    'add_course' => 'Создать видеокурс',
+    'list_course' => 'Список видеокурсов',
+    'tasks' => 'Задания',
+    'check_task' => 'Проверенные',
+    'uncheck_task' => 'Непроверенные',
+    'video' => 'Видео',
+    'add_video' => 'Создать видео',
+    'list_video' => 'Список видео',
+    'materials' => 'Материалы',
+    'add_material' => 'Добавить материал',
+    'list_material' => 'Список материалов',
+    'quizzes' => 'База тестов',
+    'add_quiz' => 'Создать тест',
+    'list_quiz' => 'Список тестов',
+    'add_review' => 'Создать опрос',
+    'list_review' => 'Список опросов',
+    'exam' => 'Экзамен',
+    'add_exam' => 'Создать экзамен',
+    'list_exam' => 'Список экзаменов',
+];
