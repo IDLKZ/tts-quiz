@@ -19,7 +19,7 @@ class InviteController extends Controller
      */
     public function index()
     {
-        $invites = Invite::with(["type","department","user","results","company"])->paginate(15);
+        $invites = Invite::with(["type","department","user","results"])->paginate(15);
         return  view("admin.invite.index",compact("invites"));
     }
 
@@ -30,8 +30,7 @@ class InviteController extends Controller
      */
     public function create()
     {
-
-        $companies = Company::all();
+        $companies = Company::has("departments",">",1)->get();
         $types = Type::all();
         return view("admin.invite.create",compact("types","companies"));
 
@@ -46,15 +45,15 @@ class InviteController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,
-        ["title"=>"required|max:255", "department_id"=>"required_if:invite_type,==,1",
-            "user_id"=>"required_if:invite_type,==,2","simple_quiz"=>"required_if:invite_type,==,3",
+        ["title"=>"required|max:255", "department_id"=>"required|exists:departments,id",
+            "simple_quiz"=>"required_if:invite_type,==,3",
             "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required"
         ]);
         if(Invite::saveData($request)){
-
+            toastSuccess("Успешно создано приглашение","Выполнено");
         }
         else{
-
+            toastWarning("Что-то пошло не так","Упс");
         }
         return  redirect(route("invite.index"));
     }
@@ -86,8 +85,9 @@ class InviteController extends Controller
     public function edit($id)
     {
         $invite = Invite::with(["department","user","type","results"])->find($id);
+        $types = Type::all();
         if($invite){
-            return view("admin.invite.edit",compact("invite"));
+            return view("admin.invite.edit",compact("invite","types"));
         }
         else{
             return redirect(route("invite.index"));
@@ -134,9 +134,10 @@ class InviteController extends Controller
         $invite = Invite::find($id);
         if($invite){
             $invite->delete();
+            toastSuccess("Успешно удалено!","Выполнено");
         }
         else{
-
+            toastWarning("Приглашение не найдено","Упс");
         }
         return redirect(route("invite.index"));
 

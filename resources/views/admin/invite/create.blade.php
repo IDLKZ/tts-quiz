@@ -37,7 +37,6 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-
                                     <h4 class="header-title">Здесь вы можете создать приглашения</h4>
                                     <p class="card-title-desc">У каждой компании имеются свои приглашения</p>
                                     @if ($errors->any())
@@ -52,20 +51,27 @@
                                     <form id="js-form" action="{{route("invite.store")}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
-                                            <label for="example-text-input" class="col-md-2 col-form-label">Компания</label>
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Наименование</label>
                                             <div class="col-md-10">
-                                                <select name="company_id" id="select-company" class="selectize">
-                                                    @foreach($companies as $company)
-                                                        <option value="{{$company->id}}">{{$company->title}}</option>
-                                                    @endforeach
-
-                                                </select>
+                                                <input class="form-control " name="title" type="text" value="{{old("title")}}" id="example-text-input">
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Компания</label>
+                                            <div class="col-md-10">
+                                                <select name="company_id" id="select-company" class="selectize">
+                                                    <option selected>Не выбрано</option>
+                                                    @foreach($companies as $company)
+                                                        <option value="{{$company->id}}">{{$company->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="example-text-input" class="col-md-2 col-form-label">Отдел</label>
                                             <div class="col-md-10">
-                                                <select name="department_id" id="select-company" class="selectize">
+                                                <select name="department_id" id="select-department" class="selectize">
                                                     <option>Не выбрано</option>
                                                 </select>
                                             </div>
@@ -73,9 +79,31 @@
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-md-2 col-form-label">Сотрудник</label>
                                             <div class="col-md-10">
-                                                <select name="user_id" id="select-company" class="selectize">
-                                                    <option>Все сотрудники</option>
+                                                <select name="user_id" id="select-users" class="selectize">
+                                                    <option>Не выбрано</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Тип теста</label>
+                                            <div class="col-md-10">
+                                                <select name="type_id" id="select-users" class="selectize">
+                                                    @foreach($types as $type)
+                                                    <option value="{{$type->id}}">{{$type->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-date-input" class="col-md-2 col-form-label">Начало</label>
+                                            <div class="col-md-10">
+                                                <input name="start" class="form-control" value="{{\Illuminate\Support\Carbon::now()->format('Y.m.d')}}" type="date" id="example-date-input">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-date-input" class="col-md-2 col-form-label">Конец</label>
+                                            <div class="col-md-10">
+                                                <input name="end" class="form-control" type="date" id="example-date-input">
                                             </div>
                                         </div>
 
@@ -111,12 +139,37 @@
     @livewireScripts
     <script>
         $(document).ready(function (){
-            $('#select-company').selectize({
+        let selectize = $('.selectize').selectize({
                 create: false,
                 sortField: 'text',
-
-
             });
+            $("#select-company").on("change", async function (){
+                await getDepartments();
+            });
+            $("#select-department").on("change", async function (){
+                await getUsers();
+            });
+
+            async function getDepartments(){clear(1);clear(2);let response = await getData("department");if(response.length>0){for(i = 0; i<response.length; i++) selectize[1].selectize.addOption({value:response[i].id,text:response[i].title});}}
+            async function getUsers(){clear(2);let response = await getData("user");if(response.length>0) {for(i = 0; i<response.length; i++) selectize[2].selectize.addOption({value:response[i].id,text:response[i].name});}}
+            function clear(i){selectize[i].selectize.clearOptions();selectize[i].selectize.addOption({value:0,text:"Не выбрано",selected:true});}
+             function getCurrentCompany(){
+             return $("#select-company").val();
+            }
+            function getCurrentDepartment(){
+                return $("#select-department").val();
+            }
+          async  function  getData(type){
+              return await $.ajax({
+                    url: "/admin/ajax",
+                    method:"post",
+                    data:{"company_id":getCurrentCompany(),"department_id":getCurrentDepartment(),"type":type,"_token": $('meta[name="csrf-token"]').attr('content')},
+                    success: function(response){
+                        return response
+                    }
+                });
+            }
+
 
         })
     </script>

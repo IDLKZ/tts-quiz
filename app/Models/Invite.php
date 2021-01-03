@@ -68,11 +68,12 @@ class Invite extends Model
     }
 
     public function company(){
-        return $this->hasManyThrough(Company::class,Department::class);
+        return $this->hasManyThrough(Company::class,Department::class,"id","company_id","department_id","");
     }
     public static function saveData($request){
         $model = new self();
         $input = $request->all();
+        if($input["user_id"] ==0){$input["user_id"] = null;}
         $model->fill($input);
         return $model->save();
     }

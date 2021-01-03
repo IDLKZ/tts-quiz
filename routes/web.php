@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\InviteController;
 use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AjaxController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("result",ResultController::class)->except([
         'create', 'store', 'update', 'edit'
     ]);
+    Route::post("ajax",[AjaxController::class,"getData"]);
 });
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){

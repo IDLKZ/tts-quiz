@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Корпоративнй портал" name="description" />
     <meta content="Корпоративный портал" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- App favicon -->
     <link rel="shortcut icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">

@@ -50,7 +50,6 @@
                                                 <table id="tech-companies-1" class="table table-striped">
                                                     <thead>
                                                     <tr>
-                                                        <th data-priority="1">Компания</th>
                                                         <th data-priority="2">Отдел</th>
                                                         <th data-priority="3">Сотрудник</th>
                                                         <th data-priority="4">Тип теста</th>
@@ -64,7 +63,6 @@
                                                     <tbody>
                                                     @foreach($invites as $invite)
                                                         <tr>
-                                                            <td>{{$invite->company->title}}</td>
                                                             <td>{{$invite->department->title}}</td>
                                                             <td>{{$invite->user_id ? $invite->user->name : "Все сотрудники отдела"}}</td>
                                                             <td>{{$invite->type->title}}</td>
@@ -76,7 +74,7 @@
                                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                                     <a href="{{route("invite.edit",$invite->id)}}" class="btn btn-primary"><i class="mdi mdi-pen"></i> </a>
                                                                     <a href="{{route("invite.show",$invite->id)}}" class="btn btn-success"><i class="mdi mdi-eye"></i></a>
-                                                                    <form action="{{route('invite.destroy',$inviteinvite->id)}}" method="post">
+                                                                    <form action="{{route('invite.destroy',$invite->id)}}" method="post">
                                                                         @csrf
                                                                         @method("delete")
                                                                         <button onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false)" type="submit" class="btn btn-danger"><i class="mdi mdi-delete"></i> </button>
@@ -88,7 +86,7 @@
 
                                                     </tbody>
                                                 </table>
-                                                {{$departments->links()}}
+                                                {{$invites->links()}}
                                             </div>
 
                                         </div>
