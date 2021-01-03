@@ -77,7 +77,7 @@
                                             <label for="example-text-input" class="col-md-2 col-form-label">Описание отдела</label>
                                             <div class="col-md-10">
                                                 <textarea id="editor" name="description">
-                                                    {!! $department->title !!}
+                                                    {!! $department->description !!}
                                                 </textarea>
                                             </div>
                                         </div>
