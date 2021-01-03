@@ -25,16 +25,17 @@ class File extends Model
                return  $directory . $filename;
            }
            else{
-               return "no-image.png";
+               return "/no-image.png";
            }
         }
         else{
-            return "no-image.png";
+            return "/no-image.png";
         }
     }
 
     public static function updateFile($request,$directory,$file,$oldname,$name = null){
         if($request->hasFile($file)){
+            self::deleteFile($oldname);
             return  self::saveFile($request,$directory,$file,$name);
         }
         else{
@@ -43,7 +44,7 @@ class File extends Model
     }
 
     public static function deleteFile($filename){
-        if(Storage::disk("local")->exists($filename) && $filename != "no-image.png"){
+        if(Storage::disk("local")->exists($filename) && $filename != "/no-image.png"){
             Storage::disk("local")->delete($filename);
         }
     }

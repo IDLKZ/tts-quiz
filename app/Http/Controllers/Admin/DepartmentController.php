@@ -7,7 +7,7 @@ use App\Models\Company;
 use App\Models\Department;
 use App\Models\File;
 use Illuminate\Http\Request;
-
+use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 class DepartmentController extends Controller
 {
     /**
@@ -28,8 +28,11 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        $companies = Company::pluck("title","id")->toArray();
-        return view("admin.department.create",compact("companies"));
+        $jsValidator = JsValidator::make(
+            ["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096"]
+        );
+        $companies = Company::all();
+        return view("admin.department.create",compact("companies","jsValidator"));
 
     }
 
@@ -41,12 +44,13 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096"]);
         if(Department::saveData($request)){
-
+            toastSuccess("Успешно создан отдел","Выполнено!");
         }
         else{
-
+            toastWarning("Что-то пошло не так","Упс");
         }
         return redirect(route("department.index"));
 
@@ -62,6 +66,7 @@ class DepartmentController extends Controller
     {
         $department = Department::with("company")->find($id);
         if($department){
+
             return  view("admin.department.show",compact("department"));
         }
         else{
@@ -78,10 +83,13 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        $companies = Company::pluck("title","id")->toArray();
+        $companies = Company::all();
         $department = Department::with("company")->find($id);
         if($department){
-            return  view("admin.department.edit",compact("department","companies"));
+            $jsValidator = JsValidator::make(
+                ["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096"]
+            );
+            return  view("admin.department.edit",compact("department","companies","jsValidator"));
         }
         else{
             return redirect(route("department.index"));
@@ -101,10 +109,10 @@ class DepartmentController extends Controller
         if($department){
             $this->validate($request,["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096"]);
             if(Department::updateData($request,$department)){
-
+                toastSuccess("Успешно обновлен отдел ".$request->title,"Выполнено!");
             }
             else{
-
+                toastWarning("Что-то пошло не так","Упс");
             }
         }
 
@@ -124,6 +132,10 @@ class DepartmentController extends Controller
         if($department){
             File::deleteFile($department->logo);
             $department->delete();
+            toastSuccess("Успешно удален отдел!","Выполнено!");
+        }
+        else{
+            toastWarning("Отдел не найден","Упс");
         }
         return redirect(route("department.index"));
 

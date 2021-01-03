@@ -24,9 +24,14 @@
     @yield('content')
 </div>
 <!-- END layout-wrapper -->
+<!-- Laravel Javascript Validation -->
 
 <script src="{{asset('js/script.js')}}"></script>
 @stack('scripts')
+@if(isset($jsValidator))
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! $jsValidator->selector('#js-form') !!}
+@endif
 </body>
 @toastr_js
 @toastr_render

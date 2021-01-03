@@ -42,7 +42,7 @@ Route::group(["middleware"=>"guest"],function (){
 Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::get('/', [adminMainController::class, 'index'])->name('adminHome');
     Route::resource("company",CompanyController::class);
-    Route::resource("department",CompanyController::class);
+    Route::resource("department",DepartmentController::class);
     Route::resource("user",UserController::class);
     Route::resource("invite",InviteController::class);
     Route::resource("result",ResultController::class)->except([
