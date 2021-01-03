@@ -30,6 +30,7 @@ class AuthController extends Controller
 
     public function restore(Request $request){
         $this->validate($request,["email"=>"required|email"]);
+        $user = User::firstWhere("email",$request->email);
 
     }
 }
