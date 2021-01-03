@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 {}
+=======
+{
+    "/css/style.css": "/css/style.css",
+    "/js/script.js": "/js/script.js"
+}
+>>>>>>> origin/main
