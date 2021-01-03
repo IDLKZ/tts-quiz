@@ -15,10 +15,11 @@ class Restore extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'restore';
+    public $timestamps = false;
 
     /**
      * @var array

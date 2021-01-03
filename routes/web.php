@@ -33,7 +33,7 @@ Route::group(["middleware"=>"guest"],function (){
    Route::get("/forget",[AuthController::class,"forget"])->name("forget");
    Route::post("/restore",[AuthController::class,"restore"])->name("restore");
 
-   Route::get("/recover/{token}",[AuthController::class,"recover"])->name("recover")->where("recover");
+   Route::get("/recover/{token}",[AuthController::class,"recover"])->name("recover");
    Route::post("/new-password",[AuthController::class,'newPassword'])->name("newPassword");
 });
 

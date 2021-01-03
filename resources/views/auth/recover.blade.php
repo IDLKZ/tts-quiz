@@ -27,17 +27,21 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form id="js-form" class="form-horizontal" action="{{route('restore')}}" method="post">
+                                <form id="js-form" class="form-horizontal" action="{{route('newPassword')}}" method="post">
 
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-group-custom mb-4">
-                                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" required>
+                                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Пароль" required>
                                             </div>
+                                            <div class="form-group form-group-custom mb-4">
+                                                <input type="password" name="same_password" class="form-control @error('same_password') is-invalid @enderror" placeholder="Изменить пароль" required>
+                                            </div>
+                                            <input type="hidden" name="token" value="{{$restore->token}}">
 
                                             <div class="mt-4">
-                                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Восстановить</button>
+                                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Изменить пароль</button>
                                             </div>
 
                                         </div>

@@ -27,5 +27,6 @@
     {!! $jsValidator->selector('#js-form') !!}
 @endif
 </body>
-
+@toastr_js
+@toastr_render
 </html>
