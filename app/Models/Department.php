@@ -58,14 +58,14 @@ class Department extends Model
     public static function saveData($request){
         $model = new self();
         $input = $request->all();
-        $input["logo"] = File::saveFile($request,"/upload/departments/","logo",$input["title"]);
+        $input["logo"] = File::saveFile($request,"/uploads/departments/","logo",$input["title"]);
         $model->fill($input);
         return $model->save();
     }
 
     public static function updateData($request,$model){
         $input = $request->all();
-        $input["logo"] = File::updateFile($request,"/upload/departments/","logo",$model->logo,$input["title"]);
+        $input["logo"] = File::updateFile($request,"/uploads/departments/","logo",$model->logo,$input["title"]);
         $model->update($input);
         return $model->save();
     }
