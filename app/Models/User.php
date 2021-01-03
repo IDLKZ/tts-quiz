@@ -2,42 +2,137 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property integer $id
+ * @property integer $role_id
+ * @property integer $department_id
+ * @property string $name
+ * @property string $phone
+ * @property string $img
+ * @property string $position
+ * @property string $email
+ * @property string $email_verified_at
+ * @property string $password
+ * @property string $remember_token
+ * @property string $created_at
+ * @property string $updated_at
+ * @property Department $department
+ * @property Role $role
+ * @property BelbinUser[] $belbinUsers
+ * @property Invite[] $invites
+ * @property Result[] $results
+ * @property UserMeaning[] $userMeanings
+ * @property UserMotivation[] $userMotivations
+ * @property UserMotive[] $userMotives
+ * @property UserScale[] $userScales
+ */
 class User extends Authenticatable
 {
+
     use HasFactory, Notifiable;
+    /**
+     * The "type" of the auto-incrementing ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'integer';
 
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['role_id', 'department_id', 'name', 'phone', 'img', 'position', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function department()
+    {
+        return $this->belongsTo('App\Models\Department');
+    }
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function belbinUsers()
+    {
+        return $this->hasMany('App\Models\BelbinUser');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function invites()
+    {
+        return $this->hasMany('App\Models\Invite');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function results()
+    {
+        return $this->hasMany('App\Models\Result');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userMeanings()
+    {
+        return $this->hasMany('App\Models\UserMeaning');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userMotivations()
+    {
+        return $this->hasMany('App\Models\UserMotivation');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userMotives()
+    {
+        return $this->hasMany('App\Models\UserMotive');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userScales()
+    {
+        return $this->hasMany('App\Models\UserScale');
+    }
+
+    public static function saveData($request){
+        $model = new self();
+        $input = $request->all();
+        $input["password"] = bcrypt($input["password"]);
+        $input["img"] = File::saveFile($request,(new self())->directory,"img",$input["title"]);
+        $model->fill($input);
+        return $model->save();
+    }
+
+    public static function updateData($request,$model){
+        $input = $request->all();
+
+        $input["img"] = File::updateFile($request,(new self())->directory,"img",$model->logo,$input["title"]);
+        $model->update($input);
+        return $model->save();
+    }
 }
