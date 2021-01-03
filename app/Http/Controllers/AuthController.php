@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function login(){
         $jsValidator = JsValidator::make(["email"=>"required|email|max:255","password"=>"required|min:4|max:255"]);
-        return view("login",compact("jsValidator"));
+        return view("auth.login",compact("jsValidator"));
     }
 
     public function auth(Request $request){
@@ -30,6 +30,14 @@ class AuthController extends Controller
             return redirect()->back();
         }
     }
+
+    public function forget(){
+        $jsValidator = JsValidator::make([
+           "email"=>"required|email|max:255"
+        ]);
+        return view("auth.forget");
+    }
+
 
     public function restore(Request $request){
         $this->validate($request,["email"=>"required|email"]);
