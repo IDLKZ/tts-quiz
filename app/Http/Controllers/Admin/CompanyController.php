@@ -16,7 +16,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::paginate(15);
+        $companies = Company::paginate(10);
         return  view("admin.company.index",compact("companies"));
 
 
@@ -42,10 +42,12 @@ class CompanyController extends Controller
     {
         $this->validate($request,["title"=>"required|max:255","logo"=>"sometimes|image|max:4096"]);
         if(Company::saveData($request)){
-
+            toastSuccess('Успешно создана!');
+            return redirect()->back();
         }
         else{
-
+            toastError('Упс...! Что то пошло не так!');
+            return redirect()->back();
         }
         return  redirect(route("company.index"));
     }
@@ -121,10 +123,12 @@ class CompanyController extends Controller
         if($company){
            File::deleteFile($company->logo);
            $company->delete();
-
+            toastInfo('Успешно удалена!');
+            return redirect()->back();
         }
         else{
-
+            toastError('Упс...! Что то пошло не так!');
+            return redirect()->back();
         }
         return  redirect(route("company.index"));
 

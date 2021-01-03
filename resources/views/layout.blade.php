@@ -10,7 +10,8 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
+    @toastr_css
+    @stack('styles')
 </head>
 
 <body data-topbar="colored">
@@ -25,6 +26,9 @@
 <!-- END layout-wrapper -->
 
 <script src="{{asset('js/script.js')}}"></script>
+@stack('scripts')
 </body>
+@toastr_js
+@toastr_render
 </html>
 

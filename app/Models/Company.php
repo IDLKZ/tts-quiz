@@ -19,13 +19,13 @@ class Company extends Model
      * @var string
      */
     protected $keyType = 'integer';
-
+    public $timestamps = false;
     protected $directory = "/assets/uploads/companies/";
 
     /**
      * @var array
      */
-    protected $fillable = ['title', 'description', 'logo'];
+    protected $fillable = ['title', 'logo'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
