@@ -18,10 +18,10 @@
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-md-12">
-                            <h4 class="page-title mb-1">Создать приглашение</h4>
+                            <h4 class="page-title mb-1">Редактировать приглашения</h4>
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{route("invite.index")}}">Приглашение</a></li>
-                                <li class="breadcrumb-item active">Создать Приглашение</li>
+                                <li class="breadcrumb-item active">Редактировать Приглашения</li>
                             </ol>
                         </div>
                     </div>
@@ -36,9 +36,9 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="header-title">Здесь вы можете создать приглашения</h4>
+                                    <h4 class="header-title">Здесь вы можете изменить приглашения</h4>
                                     <p class="card-title-desc">У каждой компании имеются свои приглашения</p>
-                                    @livewire('admin.invite.create')
+                                    @livewire('admin.invite.edit',['invite' => $invite])
                                 </div>
                             </div>
                         </div>
@@ -62,5 +62,14 @@
 @endsection
 @push("scripts")
     @livewireScripts
+    <script>
+        $('.getDepart').click(function () {
+            $('#deleteDepart').remove();
+            $('#deleteUser').remove();
+        })
+        $('.getUser').click(function () {
+            $('#deleteUser').remove();
+        })
+    </script>
 @endpush
 

@@ -35,6 +35,12 @@
                         <span>Департамент</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('invite.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
+                        <span>Приглашения</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

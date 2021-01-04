@@ -30,9 +30,7 @@ class InviteController extends Controller
      */
     public function create()
     {
-        $companies = Company::has("departments",">",1)->get();
-        $types = Type::all();
-        return view("admin.invite.create",compact("types","companies"));
+        return view("admin.invite.create");
 
     }
 
@@ -85,9 +83,8 @@ class InviteController extends Controller
     public function edit($id)
     {
         $invite = Invite::with(["department","user","type","results"])->find($id);
-        $types = Type::all();
         if($invite){
-            return view("admin.invite.edit",compact("invite","types"));
+            return view("admin.invite.edit",compact("invite"));
         }
         else{
             return redirect(route("invite.index"));
