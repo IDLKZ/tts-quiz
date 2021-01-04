@@ -137,44 +137,7 @@
 @push("scripts")
     <script src="/js/selectize.min.js"></script>
     @livewireScripts
-    <script>
-        $(document).ready(function (){
-        let selectize = $('.selectize').selectize({
-                create: false,
-                sortField: 'text',
-            });
-            $("#select-company").on("change", async function (){
-                clear(1);clear(2);
-                await getDepartments();
-            });
-            $("#select-department").on("change", async function (){
-                clear(2);
-                await getUsers();
-            });
 
-            async function getDepartments(){let response = await getData("department");if(response.length>0){for(i = 0; i<response.length; i++) selectize[1].selectize.addOption({value:response[i].id,text:response[i].title});}}
-            async function getUsers(){let response = await getData("user");if(response.length>0) {for(i = 0; i<response.length; i++) selectize[2].selectize.addOption({value:response[i].id,text:response[i].name});}}
-            function clear(i){selectize[i].selectize.clearOptions();selectize[i].selectize.addOption({value:0,text:"Не выбрано",selected:true});}
-             function getCurrentCompany(){
-             return $("#select-company").val();
-            }
-            function getCurrentDepartment(){
-                return $("#select-department").val();
-            }
-          async  function  getData(type){
-              return await $.ajax({
-                    url: "/admin/ajax",
-                    method:"post",
-                    data:{"company_id":getCurrentCompany(),"department_id":getCurrentDepartment(),"type":type,"_token": $('meta[name="csrf-token"]').attr('content')},
-                    success: function(response){
-                        return response
-                    }
-                });
-            }
-
-
-        })
-    </script>
 
 
 @endpush

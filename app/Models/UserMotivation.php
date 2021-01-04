@@ -17,14 +17,14 @@ class UserMotivation extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'user_motivation';
 
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -33,6 +33,7 @@ class UserMotivation extends Model
      * @var array
      */
     protected $fillable = ['user_id', 'result_id', 'rating', 'meaning'];
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

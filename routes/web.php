@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\InviteController;
 use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Employee\SolovievQuizController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,10 +49,17 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("result",ResultController::class)->except([
         'create', 'store', 'update', 'edit'
     ]);
-    Route::post("ajax",[AjaxController::class,"getData"]);
 });
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
     Route::get('/', [MainController::class, 'index'])->name('employeeHome');
+    Route::get("/my-invites",[MainController::class,"invite"])->name("invite");
+
+    //Soloviev Quiz
+    Route::get("/soloviev-quiz/{id}",[SolovievQuizController::class,"show"])->name("solovievQuiz")->whereNumber("id");
+    Route::get("/soloviev-pass/{id}",[SolovievQuizController::class,"pass"])->name("solovievPass")->whereNumber("id");
+    Route::post("/soloviev-check",[SolovievQuizController::class,"check"])->name("solovievCheck");
+
+
 });
 

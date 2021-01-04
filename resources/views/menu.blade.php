@@ -75,12 +75,18 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+                <li class="menu-title">Меню</li>
 
                 <li>
                     <a href="index.html" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
-                        <span>Dashboard</span>
+                        <span>Мой профиль</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route("invite")}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
+                        <span>Приглашения</span>
                     </a>
                 </li>
 
@@ -96,7 +102,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-title">Components</li>
+                <li class="menu-title">Тесты</li>
 
                 <li>
                     <a href="index.html" class="waves-effect">

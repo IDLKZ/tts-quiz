@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Invite;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
     public function index()
     {
         return view('employee.index');
+    }
+
+    public function invite(){
+        $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->where("status",0)->with(["department","user","type"])->paginate(15);
+        return view("employee.invite.index",compact("invites"));
     }
 }
