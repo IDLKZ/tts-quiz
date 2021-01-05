@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Employee\SolovievQuizController;
+use App\Http\Controllers\Employee\BelbinQuizController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +60,9 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/soloviev-quiz/{id}",[SolovievQuizController::class,"show"])->name("solovievQuiz")->whereNumber("id");
     Route::get("/soloviev-pass/{id}",[SolovievQuizController::class,"pass"])->name("solovievPass")->whereNumber("id");
     Route::post("/soloviev-check",[SolovievQuizController::class,"check"])->name("solovievCheck");
+
+    Route::get("/belbin-quiz/{id}",[BelbinQuizController::class,"show"])->name("belbinQuiz");
+    Route::get("/belbin-pass/{id}",[BelbinQuizController::class,"pass"])->name("belbinPass")->whereNumber("id");
 
 
 });

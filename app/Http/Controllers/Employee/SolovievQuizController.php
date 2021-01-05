@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Validator;
 class SolovievQuizController extends Controller
 {
     public function show($id){
-        $invite = Invite::where('start', '<=', \Illuminate\Support\Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->where(["status"=>0,"type_id"=>1])->with(["department","user","type"])->find($id);
+        $results = Auth::user()->results()->pluck("invites_id")->toArray();
+        $invite = Invite::where('start', '<=', \Illuminate\Support\Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->where(["status"=>0,"type_id"=>1])->with(["department","user","type"])->whereNotIn("id",$results)->find($id);
         $soloviev_quiz = SolovievTest::find(1);
         if($invite){
             if($invite->user_id == Auth::id() || $invite->department_id == Auth::user()->department_id){
                 if($invite->start <= Carbon::now() && $invite->end >= Carbon::now()){
-                    return view("employee.invite.show",compact("invite","soloviev_quiz"));
+                    return view("employee.soloviev.show",compact("invite","soloviev_quiz"));
                 }
             }
             abort(404);
@@ -32,7 +33,8 @@ class SolovievQuizController extends Controller
 
 
     public function pass($id){
-        $invite = Invite::where('start', '<=', \Illuminate\Support\Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->where(["status"=>0,"type_id"=>1])->with(["department","user","type"])->find($id);
+        $results = Auth::user()->results()->pluck("invites_id")->toArray();
+        $invite = Invite::where('start', '<=', \Illuminate\Support\Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->where(["status"=>0,"type_id"=>1])->with(["department","user","type"])->whereNotIn("id",$results)->find($id);
         $soloviev_quiz = SolovievTest::find(1);
         $soloviev_questions = SolovievQuestion::with(["solovievTest","testType"])->get();
         $jobs = Job::all();

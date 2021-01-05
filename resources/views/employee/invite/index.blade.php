@@ -44,7 +44,7 @@
                                     <p class="card-text">Сотрудник(и): {{$invite->user ? $invite->user->name : "Все сотрудники отдела"}}</p>
                                     <p class="card-text">Начало: {{\Carbon\Carbon::parse($invite->start)->diffForHumans()}}</p>
                                     <p class="card-text">Окончание: {{\Carbon\Carbon::parse($invite->end)->diffForHumans()}}</p>
-                                    <a href="{{$invite->type_id == 1 ? route('solovievQuiz',$invite->id) : ""}}" class="btn btn-primary waves-effect waves-light">Сдать тест!</a>
+                                    <a href="{{$invite->type_id == 1 ? route('solovievQuiz',$invite->id) : route("belbinQuiz",$invite->id)}}" class="btn btn-primary waves-effect waves-light">Сдать тест!</a>
                                 </div>
                             </div>
 
