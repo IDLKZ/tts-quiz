@@ -38,7 +38,70 @@
                                 <div class="card-body">
                                     <h4 class="header-title">Здесь вы можете изменить приглашения</h4>
                                     <p class="card-title-desc">У каждой компании имеются свои приглашения</p>
-                                    @livewire('admin.invite.edit',['invite' => $invite])
+
+                                    <form action="{{route('invite.update', $invite->id)}}" method="post" id="js-form">
+                                        @method('put')
+                                        @csrf
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Наименование</label>
+                                            <div class="col-md-10">
+                                                <input class="form-control" name="title" type="text" value="{{$invite->title}}" id="example-text-input">
+                                                @error('title') <span class="error">{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Компания</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" disabled value="{{$invite->department->company->title}}">
+                                                <input type="hidden" name="company_id" value="{{$invite->department->company->id}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Отдел</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" disabled value="{{$invite->department->title}}">
+                                                <input type="hidden" name="department_id" value="{{$invite->department_id}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Сотрудник</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" disabled value="{{$invite->user->name}}">
+                                                <input type="hidden" name="user_id" value="{{$invite->user_id}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Тип теста</label>
+                                            <div class="col-md-10">
+                                                <select name="type_id" class="form-control">
+                                                    <option selected value="{{$invite->type_id}}">{{$invite->type->title}}</option>
+                                                    @foreach($types as $type)
+                                                        <option value="{{$type->id}}" class="{{$invite->type_id == $type->id ? 'd-none' : ''}}">{{$type->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('type_id') <span class="error">{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-date-input" class="col-md-2 col-form-label">Начало</label>
+                                            <div class="col-md-10">
+                                                <input name="start" class="form-control" value="{{date('Y-m-d', strtotime($invite->start))}}" type="date" id="example-date-input">
+                                                @error('start') <span class="error">{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-date-input" class="col-md-2 col-form-label">Конец</label>
+                                            <div class="col-md-10">
+                                                <input name="end" class="form-control" value="{{date('Y-m-d', strtotime($invite->end))}}" type="date" id="example-date-input">
+                                                @error('end') <span class="error">{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <button type="submit" class="btn btn-info">Обновить</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -62,14 +125,5 @@
 @endsection
 @push("scripts")
     @livewireScripts
-    <script>
-        $('.getDepart').click(function () {
-            $('#deleteDepart').remove();
-            $('#deleteUser').remove();
-        })
-        $('.getUser').click(function () {
-            $('#deleteUser').remove();
-        })
-    </script>
 @endpush
 

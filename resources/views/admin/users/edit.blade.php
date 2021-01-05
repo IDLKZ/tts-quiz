@@ -32,9 +32,6 @@
                                         @csrf
                                         <div class="modal-header">
                                             <h5 class="modal-title mt-0" id="myModalLabel">Редактировать сотрудника</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                         <div class="modal-body">
                                             <label for="role">Роль:</label>
@@ -44,9 +41,9 @@
                                             </select>
                                             <input type="text" class="form-control mt-3" name="name" placeholder="ФИО" value="{{$user->name}}">
                                             <select name="department_id" class="form-control mt-3">
-                                                <option value="{{$user->department_id}}" selected>{{$user->department->title}}</option>
+                                                <option value="{{$user->department_id}}" selected>{{$user->department->title}} ({{$user->department->company->title}})</option>
                                                 @foreach($departments as $department)
-                                                    <option value="{{$department->id}}" class="{{$user->department_id == $department->id ? 'd-none' : ''}}">{{$department->title}}</option>
+                                                    <option value="{{$department->id}}" class="{{$user->department_id == $department->id ? 'd-none' : ''}}">{{$department->title}} ({{$department->company->title}})</option>
                                                 @endforeach
                                             </select>
                                             <input type="text" class="form-control mt-3" name="position" placeholder="Должность" value="{{$user->position}}">

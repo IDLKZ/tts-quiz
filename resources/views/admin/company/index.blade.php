@@ -67,13 +67,19 @@
                                                     <td>
                                                         {{$company->title}}
                                                     </td>
-                                                    <td class="row w-50">
-                                                        <a href="{{route('company.edit', $company->id)}}" class="btn btn-info mr-2"><i class="mdi mdi-pen mr-1"></i></a>
-                                                        <form action="{{route('company.destroy', $company->id)}}" method="post">
-                                                            @method('delete')
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-danger mr-2" onclick="return confirm('Вы уверены?')"><i class="mdi mdi-trash-can mr-1"></i></button>
-                                                        </form>
+                                                    <td>
+                                                        <div class="btn-group" role="group">
+                                                            <a href="{{route('company.edit', $company->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                                <i class="mdi mdi-pencil"></i>
+                                                            </a>
+                                                            <form action="{{route('company.destroy', $company->id)}}" method="post">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                                    <i class="mdi mdi-trash-can"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach

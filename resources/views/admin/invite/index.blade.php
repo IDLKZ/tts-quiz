@@ -53,11 +53,10 @@
                                                         <th data-priority="2">Отдел</th>
                                                         <th data-priority="3">Сотрудник</th>
                                                         <th data-priority="4">Тип теста</th>
-                                                        <th data-priority="4">Простой тест</th>
+                                                        <th data-priority="4">Наименование</th>
                                                         <th data-priority="4">Начало теста</th>
                                                         <th data-priority="4">Конец теста</th>
                                                         <th data-priority="4">Статус</th>
-
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -66,18 +65,24 @@
                                                             <td>{{$invite->department->title}}</td>
                                                             <td>{{$invite->user_id ? $invite->user->name : "Все сотрудники отдела"}}</td>
                                                             <td>{{$invite->type->title}}</td>
-                                                            <td>{{$invite->simple_quiz ? :"Не задан"}}</td>
+                                                            <td>{{$invite->title}}</td>
                                                             <td>{{$invite->start}}</td>
                                                             <td>{{$invite->end}}</td>
                                                             <td>{{$invite->status == 1 ? "Заверешен" : "Не завершен"}}</td>
                                                             <td>
-                                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                                    <a href="{{route("invite.edit",$invite->id)}}" class="btn btn-primary"><i class="mdi mdi-pen"></i> </a>
-                                                                    <a href="{{route("invite.show",$invite->id)}}" class="btn btn-success"><i class="mdi mdi-eye"></i></a>
+                                                                <div class="btn-group" role="group">
+                                                                    <a href="{{route("invite.show",$invite->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="View">
+                                                                        <i class="mdi mdi-eye"></i>
+                                                                    </a>
+                                                                    <a href="{{route("invite.edit",$invite->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                                        <i class="mdi mdi-pencil"></i>
+                                                                    </a>
                                                                     <form action="{{route('invite.destroy',$invite->id)}}" method="post">
+                                                                        @method('delete')
                                                                         @csrf
-                                                                        @method("delete")
-                                                                        <button onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false)" type="submit" class="btn btn-danger"><i class="mdi mdi-delete"></i> </button>
+                                                                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить', '0000') == '0000' ? true : false)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                                            <i class="mdi mdi-trash-can"></i>
+                                                                        </button>
                                                                     </form>
                                                                 </div>
                                                             </td>

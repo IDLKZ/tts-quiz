@@ -65,13 +65,19 @@
                                                    <td>{{$department->title}}</td>
                                                    <td>{!! $department->description !!}</td>
                                                    <td>
-                                                       <div class="btn-group" role="group" aria-label="Basic example">
-                                                           <a href="{{route("department.edit",$department->id)}}" class="btn btn-primary"><i class="mdi mdi-pen"></i> </a>
-                                                           <a href="{{route("department.show",$department->id)}}" class="btn btn-success"><i class="mdi mdi-eye"></i></a>
+                                                       <div class="btn-group" role="group">
+                                                           <a href="{{route("department.show",$department->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="View">
+                                                               <i class="mdi mdi-eye"></i>
+                                                           </a>
+                                                           <a href="{{route("department.edit",$department->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                               <i class="mdi mdi-pencil"></i>
+                                                           </a>
                                                            <form action="{{route('department.destroy',$department->id)}}" method="post">
+                                                               @method('delete')
                                                                @csrf
-                                                               @method("delete")
-                                                               <button onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false)" type="submit" class="btn btn-danger"><i class="mdi mdi-delete"></i> </button>
+                                                               <button type="button" class="btn btn-outline-secondary btn-sm" onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                                   <i class="mdi mdi-trash-can"></i>
+                                                               </button>
                                                            </form>
                                                        </div>
                                                    </td>

@@ -15,6 +15,9 @@ class Create extends Component
     public $departments = [];
     public $employees = [];
 
+    public $companyTitle = 'Не выбрано';
+    public $departmentTitle = 'Не выбрано';
+    public $userTitle = 'Не выбрано';
     public $title;
     public $company_id;
     public $department_id;
@@ -43,20 +46,26 @@ class Create extends Component
         $this->companies = Company::has("departments",">=",1)->get();
         $this->types = Type::all();
     }
-    public function render()
-    {
-        return view('livewire.admin.invite.create');
-    }
 
-    public function getDepartment($id)
+    public function getDepartment($company)
     {
-        $this->departments = Department::where('company_id', $id)->get();
+        $this->departments = Department::where('company_id', $company['id'])->get();
+        $this->companyTitle = $company['title'];
+        $this->departmentTitle = 'Не выбрано';
+        $this->userTitle = 'Не выбрано';
         $this->employees = [];
     }
 
-    public function getEmployee($id)
+    public function getEmployee($department)
     {
-        $this->employees = User::where('department_id', $id)->get();
+        $this->employees = User::where('department_id', $department['id'])->get();
+        $this->departmentTitle = $department['title'];
+        $this->userTitle = 'Не выбрано';
+    }
+
+    public function setName($employee)
+    {
+        $this->userTitle = $employee['name'];
     }
 
     public function submit()
@@ -72,4 +81,8 @@ class Create extends Component
         }
     }
 
+    public function render()
+    {
+        return view('livewire.admin.invite.create');
+    }
 }

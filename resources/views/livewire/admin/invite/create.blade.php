@@ -11,12 +11,10 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label">Компания</label>
             <div class="col-md-10">
-                <select wire:model="company_id" class="form-control">
-                    <option>Не выбрано</option>
-                    @foreach($companies as $company)
-                        <option wire:click="getDepartment({{$company->id}})" value="{{$company->id}}">{{$company->title}}</option>
-                    @endforeach
-                </select>
+                <livewire:admin.invite.select.company-select
+                    name="company_id"
+                placeholder="Выберите компанию"
+                />
                 @error('company_id') <span class="error">{{ $message }}</span> @enderror
             </div>
         </div>
@@ -24,24 +22,20 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label">Отдел</label>
             <div class="col-md-10">
-                <select wire:model="department_id" class="form-control">
-                    <option>Не выбрано</option>
-                    @foreach($departments as $department)
-                        <option wire:click="getEmployee({{$department->id}})" value="{{$department->id}}">{{$department->title}}</option>
-                    @endforeach
-                </select>
+                <livewire:admin.invite.select.department-select
+                    name="department_id"
+                    placeholder="Выберите отдел"
+                    :depends-on="['company_id']"/>
                 @error('department_id') <span class="error">{{ $message }}</span> @enderror
             </div>
         </div>
         <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label">Сотрудник</label>
             <div class="col-md-10">
-                <select wire:model="user_id" class="form-control">
-                    <option>Не выбрано</option>
-                    @foreach($employees as $employee)
-                        <option value="{{$employee->id}}">{{$employee->name}}</option>
-                    @endforeach
-                </select>
+                <livewire:admin.invite.select.employee-select
+                    name="user_id"
+                    placeholder="Выберите сотрудника"
+                    :depends-on="['department_id']"/>
                 @error('user_id') <span class="error">{{ $message }}</span> @enderror
             </div>
         </div>

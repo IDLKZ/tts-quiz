@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
@@ -88,10 +89,10 @@ class UserController extends Controller
     {
         $user = User::with("department")->find($id);
         if ($user){
-            return  view("admin.index.show",compact("user"));
+            return view("admin.users.show",compact("user"));
         }
         else{
-            return  redirect(route("user.index"));
+            return redirect(route("user.index"));
         }
 
     }
@@ -138,7 +139,7 @@ class UserController extends Controller
             $this->validate($request,["role_id"=>"required|exists:roles,id","department_id"=>"required|exists:departments,id", "name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096","position"=>"required|max:255","email"=>"required|email|unique:users,email,".$id, "password"=>"sometimes|nullable|min:4|max:255"]);
             if(User::updateData($request,$user)){
                 toastSuccess('Успешно обновлен!');
-                return redirect()->back();
+                return redirect(route('user.index'));
             }
             else{
                 toastError('Что то пошло не так!');

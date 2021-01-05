@@ -27,7 +27,7 @@ Route::redirect("/","/login");
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
-});
+})->name('logout');
 Route::group(["middleware"=>"guest"],function (){
    Route::get("/login",[AuthController::class,"login"])->name("login");
    Route::post('/auth', [AuthController::class, 'auth'])->name('auth');
@@ -43,6 +43,8 @@ Route::group(["middleware"=>"guest"],function (){
 //Start Admin
 Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::get('/', [adminMainController::class, 'index'])->name('adminHome');
+    Route::get('/settings', [adminMainController::class, 'settings'])->name('adminSettings');
+    Route::post('/update-profile/{id}', [adminMainController::class, 'updateProfile'])->name('adminUpdateProfile');
     Route::resource("company",CompanyController::class);
     Route::resource("department",DepartmentController::class);
     Route::resource("user",UserController::class);

@@ -9,6 +9,7 @@ use App\Models\Invite;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class InviteController extends Controller
 {
@@ -30,8 +31,17 @@ class InviteController extends Controller
      */
     public function create()
     {
-        return view("admin.invite.create");
-
+        $jsValidator = JsValidator::make(
+            ["title"=>"required|max:255",
+                "department_id"=>"required|exists:departments,id",
+                "simple_quiz"=>"required_if:invite_type,==,3",
+                "type_id"=>"required|exists:types,id",
+                "start"=>"required","end"=>"required",
+                'user_id' => 'required'
+            ]
+        );
+        $types = Type::all();
+        return view("admin.invite.create", compact('types'));
     }
 
     /**
@@ -45,15 +55,16 @@ class InviteController extends Controller
         $this->validate($request,
         ["title"=>"required|max:255", "department_id"=>"required|exists:departments,id",
             "simple_quiz"=>"required_if:invite_type,==,3",
-            "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required"
+            "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required",'user_id' => 'required'
         ]);
         if(Invite::saveData($request)){
             toastSuccess("Успешно создано приглашение","Выполнено");
+            return redirect(route('invite.index'));
         }
         else{
             toastWarning("Что-то пошло не так","Упс");
+            return redirect()->back();
         }
-        return  redirect(route("invite.index"));
     }
 
     /**
@@ -83,8 +94,18 @@ class InviteController extends Controller
     public function edit($id)
     {
         $invite = Invite::with(["department","user","type","results"])->find($id);
+        $jsValidator = JsValidator::make(
+            ["title"=>"required|max:255",
+                "department_id"=>"required|exists:departments,id",
+                "simple_quiz"=>"required_if:invite_type,==,3",
+                "type_id"=>"required|exists:types,id",
+                "start"=>"required","end"=>"required",
+                'user_id' => 'required'
+            ]
+        );
+        $types = Type::all();
         if($invite){
-            return view("admin.invite.edit",compact("invite"));
+            return view("admin.invite.edit",compact("invite", 'jsValidator', 'types'));
         }
         else{
             return redirect(route("invite.index"));
@@ -108,16 +129,15 @@ class InviteController extends Controller
                     "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required"
                 ]);
             if(Invite::updateData($request,$invite)){
-
+                toastSuccess("Успешно обновлено","Выполнено");
+                return redirect(route('invite.index'));
             }
             else{
-
+                toastWarning("Что-то пошло не так","Упс");
+                return redirect()->back();
             }
         }
-        else{
-
-        }
-        return  redirect(route("invite.index"));
+        return ;
     }
 
     /**

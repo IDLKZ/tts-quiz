@@ -34,7 +34,7 @@
                                                         <input type="text" class="form-control mt-3" name="name" placeholder="ФИО">
                                                         <select name="department_id" class="form-control mt-3">
                                                             @foreach($departments as $department)
-                                                                <option value="{{$department->id}}">{{$department->title}}</option>
+                                                                <option value="{{$department->id}}">{{$department->title}} ({{$department->company->title}})</option>
                                                             @endforeach
                                                         </select>
                                                         <input type="text" class="form-control mt-3" name="position" placeholder="Должность">
@@ -98,18 +98,29 @@
                                                     <td>{{$user->department->title}}</td>
                                                     <td>{{$user->position}}</td>
                                                     <td><img class="rounded-circle header-profile-user" src="{{$user->img}}"></td>
-                                                    <td class="row w-100">
-                                                        <a href="{{route('user.edit', $user->id)}}" class="btn btn-info mr-2 btn-sm"><i class="mdi mdi-pen mr-1"></i></a>
-                                                        <form action="{{route('user.destroy', $user->id)}}" method="post">
-                                                            @method('delete')
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-danger mr-2 btn-sm" onclick="return confirm('Вы уверены?')"><i class="mdi mdi-trash-can mr-1"></i></button>
-                                                        </form>
+                                                    <td>
+                                                        <div class="btn-group" role="group">
+                                                            <a href="{{route('user.show', $user->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="View">
+                                                                <i class="mdi mdi-eye"></i>
+                                                            </a>
+                                                            <a href="{{route('user.edit', $user->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                                <i class="mdi mdi-pencil"></i>
+                                                            </a>
+                                                            <form action="{{route('user.destroy', $user->id)}}" method="post">
+                                                                @method('delete')
+                                                                @csrf
+                                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="return (console.log(prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false))" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                                <i class="mdi mdi-trash-can"></i>
+                                                            </button>
+                                                            </form>
+                                                        </div>
+
                                                     </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
                                         </table>
+                                        {!! $users->links() !!}
                                     </div>
 
                                 </div>
