@@ -109,7 +109,7 @@
                                                             <form action="{{route('user.destroy', $user->id)}}" method="post">
                                                                 @method('delete')
                                                                 @csrf
-                                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="return (console.log(prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false))" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                            <button type="submit" class="btn btn-outline-secondary btn-sm" onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
                                                                 <i class="mdi mdi-trash-can"></i>
                                                             </button>
                                                             </form>
