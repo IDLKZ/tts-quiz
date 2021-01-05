@@ -459,6 +459,7 @@
                                             <table id="tech-companies-1" class="table table-striped">
                                                 <thead>
                                                 <tr>
+
                                                     <th class="text-center">ФИО Сотрудника</th>
                                                     <th class="text-center">Набранные баллы</th>
                                                     <th class="text-center">Уровень мотивации</th>
