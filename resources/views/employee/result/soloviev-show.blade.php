@@ -303,19 +303,185 @@
                             </div>
                         </div> <!-- end col -->
                     </div>
+{{--                    Charts--}}
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-body" id="motive-chart">
+                                <div class="card-body" id="motive-chart"></div>
+                            </div>
+                        </div> <!-- end col -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body" id="motive-chart-rating"></div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+{{--                    Another Table--}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h4 class="header-title">Уровень соответствия</h4>
+                                    <p class="card-title-desc">
+                                        Результаты по мотивам и уровень соответствия
+                                    </p>
+
+                                    <div class="table-rep-plugin">
+                                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                            <table id="tech-companies-1" class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center">ФИО Сотрудника</th>
+                                                    <th class="text-center">Должность на момент сдачи</th>
+                                                    <th class="text-center">Мотив</th>
+                                                    <th class="text-center">Набранный процент %</th>
+                                                    <th class="text-center">Минимум для должности %</th>
+                                                    <th class="text-center">Максимум для должности %</th>
+                                                    <th class="text-center">Значение</th>
+                                                    <th class="text-center">Результат</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($motives as $motive)
+                                                    <tr>
+                                                        <th class="text-center">{{$result->user->name}}</th>
+                                                        <th class="text-center">{{$result->position}}</th>
+                                                        <td class="text-center">{{$motive->motive->title}}</td>
+                                                        <td class="text-center">{{$motive->percentage}}</td>
+                                                        <td class="text-center">{{$job_motive[$motive->motive_id][0]["min"]}}</td>
+                                                        <td class="text-center">{{$job_motive[$motive->motive_id][0]["max"]}}</td>
+                                                        <td class="text-center">{{$job_motive[$motive->motive_id][0]["status"] == 1 ? 'Желательный мотив' : ($job_motive[$motive->motive_id][0]["status"] == -1  ? "Нежелательный мотив" :"Нейтральный мотив")}}</td>
+                                                        <td class="text-center">
+                                                            @switch($motive->percentage)
+                                                                @case($motive->percentage >= $job_motive[$motive->motive_id][0]["min"] &&  $motive->percentage <= $job_motive[$motive->motive_id][0]["max"])
+                                                                    Соответствует
+                                                                @break
+                                                                @case(8 > $job_motive[$motive->motive_id][0]["min"] - $motive->percentage)
+                                                                Небольшая разница
+                                                                @break
+                                                                @default
+                                                                Высокая разница
+                                                                @endswitch
+                                                        </td>
 
 
 
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
 
                                 </div>
                             </div>
                         </div> <!-- end col -->
                     </div>
+{{--Chart--}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body" id="chart-diff"></div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+{{--                    Table--}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
 
+                                    <h4 class="header-title">Результаты по шкалам</h4>
+                                    <p class="card-title-desc">
+                                        Результаты по шкалам
+                                    </p>
+                                    <div class="table-rep-plugin">
+                                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                            <table id="tech-companies-1" class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center">ФИО Сотрудника</th>
+                                                    <th class="text-center">Шкала</th>
+                                                    <th class="text-center">Описание</th>
+                                                    <th class="text-center">Балл</th>
+                                                    <th class="text-center">В процентах %</th>
+                                                    <th class="text-center">Значение</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($scales as $scale)
+                                                    <tr>
+                                                        <th class="text-center">{{$result->user->name}}</th>
+                                                        <td class="text-center">{{$scale->scale->title}}</td>
+                                                        <td class="text-center">{{$scale->scale->description}}</td>
+                                                        <td class="text-center">{{$scale->rating}}</td>
+                                                        <td class="text-center">{{$scale->percentage}}</td>
+                                                        <td class="text-center">{{$scale->meaning}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <h4 class="header-title">Результаты по зависимости испытуемого от работы</h4>
+                                    <p class="card-title-desc">
+                                        Результаты по зависимости испытуемого от работы
+                                    </p>
+                                    <div class="table-rep-plugin">
+                                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                            <table id="tech-companies-1" class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center">ФИО Сотрудника</th>
+                                                    <th class="text-center">Уровень зависимости</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($meaning as $item)
+                                                    <tr>
+                                                        <th class="text-center">{{$result->user->name}}</th>
+                                                        <td class="text-center">{{$item->meaning}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <h4 class="header-title">Общий уровень мотивации</h4>
+                                    <p class="card-title-desc">
+                                        Результаты к мотивации испытуемого к работе
+                                    </p>
+                                    <div class="table-rep-plugin">
+                                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                            <table id="tech-companies-1" class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center">ФИО Сотрудника</th>
+                                                    <th class="text-center">Набранные баллы</th>
+                                                    <th class="text-center">Уровень мотивации</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($motivation as $item)
+                                                    <tr>
+                                                        <th class="text-center">{{$result->user->name}}</th>
+                                                        <th class="text-center">{{$item->rating}}</th>
+                                                        <td class="text-center">{{$item->meaning}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
                 </div>
                 <!-- end container-fluid -->
             </div>
@@ -375,10 +541,12 @@
                         chart: {
                             type: 'donut',
                         },
+                        dataLabels:{
+                            enabled:false
+                        },
                         plotOptions: {
                             pie: {
                                 donut: {
-
                                     labels: {
                                         show: true,
                                         name: {
@@ -390,12 +558,12 @@
                                         },
                                         value: {
                                             show: true,
-                                            fontSize: '16px',
+                                            fontSize: '22px',
                                             fontFamily: 'Helvetica, Arial, sans-serif',
                                             color: undefined,
                                             offsetY: 22,
                                             formatter: function (val) {
-                                                return val
+                                                return val + "баллов"
                                             }
                                         },
                                         total: {
@@ -434,78 +602,239 @@
             });
 
             let motives = @json($motives);
-            console.log(motives)
-            var options = {
+            let job_motives = @json($job_motive);
+            let rating = [];
+            let percentage = [];
+            let titles = [];
+            let min_percentage = [];
+            let max_percentage = [];
+            for (key in motives){
+                rating.push(motives[key].rating);
+                percentage.push(motives[key].percentage);
+                titles.push(motives[key].motive.title);
+                min_percentage.push(job_motives[motives[key].motive_id][0].min);
+                max_percentage.push(job_motives[motives[key].motive_id][0].max);
+            }
+
+
+
+            var motiveOptions = {
                 series: [{
-                    name: 'Мотивы',
-                    data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35]
+                    name: 'В процентах',
+                    data: percentage
                 }],
-                annotations: {
-                    points: [{
-                        x: 'Bananas',
-                        seriesIndex: 0,
-                        label: {
-                            borderColor: '#775DD0',
-                            offsetY: 0,
-                            style: {
-                                color: '#fff',
-                                background: '#775DD0',
-                            },
-                            text: 'Bananas are good',
-                        }
-                    }]
-                },
                 chart: {
                     height: 350,
                     type: 'bar',
                 },
                 plotOptions: {
                     bar: {
-                        columnWidth: '50%',
-                        endingShape: 'rounded'
+                        dataLabels: {
+                            position: 'top', // top, center, bottom
+                        },
                     }
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function (val) {
+                        return val + "%";
+                    },
+                    offsetY: -20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ["#304758"]
+                    }
+                },
+
+                xaxis: {
+                    categories: titles,
+                    position: 'top',
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false
+                    },
+                    crosshairs: {
+                        fill: {
+                            type: 'gradient',
+                            gradient: {
+                                colorFrom: '#D8E3F0',
+                                colorTo: '#BED1E6',
+                                stops: [0, 100],
+                                opacityFrom: 0.4,
+                                opacityTo: 0.5,
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                },
+                yaxis: {
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: false,
+                        formatter: function (val) {
+                            return val + "%";
+                        }
+                    }
+
+                },
+                title: {
+                    text: 'Мотивы в процентах',
+                    floating: true,
+                    offsetY: 330,
+                    align: 'center',
+                    style: {
+                        color: '#444'
+                    }
+                }
+            };
+            var motive = new ApexCharts(document.querySelector("#motive-chart"), motiveOptions);
+            motive.render();
+            var motiveOptions2 = {
+                series: [{
+                    name: 'В баллах',
+                    data: rating
+                }],
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            position: 'top', // top, center, bottom
+                        },
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function (val) {
+                        return val;
+                    },
+                    offsetY: -20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ["#304758"]
+                    }
+                },
+
+                xaxis: {
+                    categories: titles,
+                    position: 'top',
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false
+                    },
+                    crosshairs: {
+                        fill: {
+                            type: 'gradient',
+                            gradient: {
+                                colorFrom: '#D8E3F0',
+                                colorTo: '#BED1E6',
+                                stops: [0, 100],
+                                opacityFrom: 0.4,
+                                opacityTo: 0.5,
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                },
+                yaxis: {
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: false,
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+
+                },
+                title: {
+                    text: 'Мотивы в баллах',
+                    floating: true,
+                    offsetY: 330,
+                    align: 'center',
+                    style: {
+                        color: '#444'
+                    }
+                }
+            };
+            var motive2 = new ApexCharts(document.querySelector("#motive-chart-rating"), motiveOptions2);
+            motive2.render();
+
+            var optionsDiff = {
+                series: [{
+                    name: 'Результаты в процентах',
+                    data: percentage
+                }, {
+                    name: 'Необходимый минимум',
+                    data: min_percentage
+                }, {
+                    name: 'Необходимый максимум',
+                    data: max_percentage
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        endingShape: 'rounded'
+                    },
                 },
                 dataLabels: {
                     enabled: false
                 },
                 stroke: {
-                    width: 2
-                },
-
-                grid: {
-                    row: {
-                        colors: ['#fff', '#f2f2f2']
-                    }
+                    show: true,
+                    width: 2,
+                    colors: ['transparent']
                 },
                 xaxis: {
-                    labels: {
-                        rotate: -45
-                    },
-                    categories: [],
-                    tickPlacement: 'on'
+                    categories: titles,
                 },
                 yaxis: {
                     title: {
-                        text: 'Набранные баллы',
-                    },
+                        text: 'Баллы в %'
+                    }
                 },
                 fill: {
-                    type: 'gradient',
-                    gradient: {
-                        shade: 'light',
-                        type: "horizontal",
-                        shadeIntensity: 0.25,
-                        gradientToColors: undefined,
-                        inverseColors: true,
-                        opacityFrom: 0.85,
-                        opacityTo: 0.85,
-                        stops: [50, 0, 100]
-                    },
+                    opacity: 1
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return val + " %"
+                        }
+                    }
                 }
             };
 
-            var motive = new ApexCharts(document.querySelector("#motive-chart"), options);
-            motive.render();
+            var chartDiff = new ApexCharts(document.querySelector("#chart-diff"), optionsDiff);
+            chartDiff.render();
+
+
+
+
 
         })
 

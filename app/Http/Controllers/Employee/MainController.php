@@ -41,7 +41,7 @@ class MainController extends Controller
                 $motivation = UserMotivation::where("result_id",$result->id)->get();
                 $motives = UserMotive::where("result_id",$result->id)->with("motive")->get();
                 $scales = UserScale::where("result_id",$result->id)->with("scale")->get();
-                $job_motive = JobMotive::where("job_id",$result->job_id)->get();
+                $job_motive = JobMotive::where("job_id",$result->job_id)->get()->groupBy("motive_id")->toArray();
                 $all_motives = collect(Motive::get()->groupBy("id")->toArray());
                 return view("employee.result.soloviev-show",compact("result","meaning","motivation","motives","scales","job_motive","invite","all_motives"));
 
