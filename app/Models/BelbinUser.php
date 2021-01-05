@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property integer $id
@@ -21,14 +22,14 @@ class BelbinUser extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'belbin_user';
 
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -60,5 +61,18 @@ class BelbinUser extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public static function saveData($data,$result){
+        foreach ($data as $role_id => $rating){
+            $model = new self();
+            $model->user_id = Auth::id();
+            $model->result_id = $result;
+            $model->role_id = $role_id;
+            $model->rating = $rating;
+            $model->percentage = round($rating/0.7,2);
+            $model->result_id = $result;
+            $model->save();
+        }
     }
 }
