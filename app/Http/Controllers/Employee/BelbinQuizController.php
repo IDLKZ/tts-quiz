@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class BelbinQuizController extends Controller
 {
     public function show($id){
-        $results = Auth::user()->results()->pluck("invites_id")->toArray();->whereNotIn("id",$results)
+        $results = Auth::user()->results()->pluck("invites_id")->toArray();
         $invite = Invite::where('start', '<=', \Illuminate\Support\Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->where(["status"=>0,"type_id"=>2])->with(["department","user","type"])->whereNotIn("id",$results)->find($id);
         if($invite){
             $belbin_quiz = BelbinQuiz::find(1);
