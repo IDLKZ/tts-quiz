@@ -89,25 +89,21 @@
                         <span>Приглашения</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-comment-message"></i></div>
-                        <span>Email</span>
+                    <a href="{{route("my-results")}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
+                        <span>Результаты</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Email Read</a></li>
-                        <li><a href="email-compose.html">Email Compose</a></li>
-                    </ul>
                 </li>
+
+
 
                 <li class="menu-title">Тесты</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="/logout" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
-                        <span>Logout</span>
+                        <span>Выход</span>
                     </a>
                 </li>
             </ul>
