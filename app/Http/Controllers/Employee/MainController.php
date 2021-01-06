@@ -77,7 +77,6 @@ class MainController extends Controller
                 $scales = UserScale::where("result_id",$result->id)->with("scale")->get();
                 $job_motive = JobMotive::where("job_id",$result->job_id)->get()->groupBy("motive_id")->toArray();
                 $all_motives = collect(Motive::get()->groupBy("id")->toArray());
-
                 if($invite->type_id == 1 && $meaning->isNotEmpty() && $motivation->isNotEmpty() && $motives->isNotEmpty() && $scales->isNotEmpty() && count($job_motive) && count($all_motives)){
                     return view("employee.result.soloviev-show",compact("result","meaning","motivation","motives","scales","job_motive","invite","all_motives"));
                 }
