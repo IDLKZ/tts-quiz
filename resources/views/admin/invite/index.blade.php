@@ -71,9 +71,6 @@
                                                             <td>{{$invite->status == 1 ? "Заверешен" : "Не завершен"}}</td>
                                                             <td>
                                                                 <div class="btn-group" role="group">
-                                                                    <a href="{{route("invite.show",$invite->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="View">
-                                                                        <i class="mdi mdi-eye"></i>
-                                                                    </a>
                                                                     <a href="{{route("invite.edit",$invite->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
                                                                         <i class="mdi mdi-pencil"></i>
                                                                     </a>
