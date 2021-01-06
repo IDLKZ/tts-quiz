@@ -78,31 +78,29 @@
                 <li class="menu-title">Меню</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
+                    <a href="{{route('employeeHome')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-home"></i></div>
                         <span>Мой профиль</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{route("invite")}}" class="waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
+                        <div class="d-inline-block icons-sm mr-1"><i class="far fa-handshake"></i></div>
                         <span>Приглашения</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{route("my-results")}}" class="waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-percent"></i></div>
                         <span>Результаты</span>
                     </a>
                 </li>
 
-
-
-                <li class="menu-title">Тесты</li>
+                <hr>
 
                 <li>
-                    <a href="/logout" class="waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
+                    <a href="{{route('logout')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-sign-out-alt"></i></div>
                         <span>Выход</span>
                     </a>
                 </li>

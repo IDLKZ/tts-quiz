@@ -27,7 +27,7 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    <form action="{{route('adminUpdateProfile')}}" method="post" id="js-form" enctype="multipart/form-data">
+                                    <form action="{{route('employeeUpdateProfile')}}" method="post" id="js-form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-header">
                                             <h5 class="modal-title mt-0" id="myModalLabel">Обновить профиль</h5>
@@ -35,9 +35,9 @@
                                         <div class="modal-body">
                                             <label>ФИО</label>
                                             <input type="text" class="form-control" name="name" placeholder="ФИО" value="{{Auth::user()->name}}">
-                                            <input type="hidden" name="role_id" value="1">
                                             <input type="hidden" name="position" value="{{Auth::user()->position}}">
-                                            <input type="hidden" name="phone" value="{{Auth::user()->phone}}">
+                                            <label class="mt-3">Номер телефона</label>
+                                            <input type="text" class="form-control" name="phone" value="{{Auth::user()->phone}}">
                                             <label class="mt-3">Email</label>
                                             <input type="email" readonly name="email" class="form-control" value="{{Auth::user()->email}}">
                                             <label class="mt-3">Пароль</label>
@@ -47,7 +47,7 @@
                                             <img class="rounded-circle header-profile-user" src="{{Auth::user()->img}}">
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="{{route('adminHome')}}" class="btn btn-secondary waves-effect">Назад</a>
+                                            <a href="{{route('employeeHome')}}" class="btn btn-secondary waves-effect">Назад</a>
                                             <button type="submit" class="btn btn-primary waves-effect waves-light">Обновить</button>
                                         </div>
                                     </form>

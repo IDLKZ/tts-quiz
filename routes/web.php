@@ -44,7 +44,7 @@ Route::group(["middleware"=>"guest"],function (){
 Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::get('/', [adminMainController::class, 'index'])->name('adminHome');
     Route::get('/settings', [adminMainController::class, 'settings'])->name('adminSettings');
-    Route::post('/update-profile/{id}', [adminMainController::class, 'updateProfile'])->name('adminUpdateProfile');
+    Route::post('/update-profile', [adminMainController::class, 'updateProfile'])->name('adminUpdateProfile');
     Route::resource("company",CompanyController::class);
     Route::resource("department",DepartmentController::class);
     Route::resource("user",UserController::class);
@@ -52,12 +52,15 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("result",ResultController::class)->except([
         'create', 'store', 'update', 'edit'
     ]);
+    Route::get('/employee/{userId}/soloview-show/{id}', [adminMainController::class, 'solovievShow'])->name('admin-soloview-show');
+    Route::get('/employee/{userId}/belbin-show/{id}', [adminMainController::class, 'belbinShow'])->name('admin-belbin-show');
 });
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
     Route::get('/', [MainController::class, 'index'])->name('employeeHome');
     Route::get("/my-invites",[MainController::class,"invite"])->name("invite");
-
+    Route::get('/settings', [MainController::class, 'settings'])->name('employeeSettings');
+    Route::post('/update-profile', [MainController::class, 'updateProfile'])->name('employeeUpdateProfile');
     //Soloviev Quiz
     Route::get("/soloviev-quiz/{id}",[SolovievQuizController::class,"show"])->name("solovievQuiz")->whereNumber("id");
     Route::get("/soloviev-pass/{id}",[SolovievQuizController::class,"pass"])->name("solovievPass")->whereNumber("id");

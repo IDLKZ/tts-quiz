@@ -89,7 +89,7 @@
                                                                 <th>Тест</th>
                                                                 <th>Тип теста</th>
                                                                 <th>Результат</th>
-                                                                <th>Дата</th>
+                                                                <th>Дата сдачи</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -100,7 +100,7 @@
                                                                             <tr>
                                                                                 <td>{{$item->invite->title}}</td>
                                                                                 <td>{{$item->invite->type->title}}</td>
-                                                                                <td><a href="#" class="btn btn-primary btn-sm waves-effect waves-light">Посмотреть</a></td>
+                                                                                <td><a href="{{route('admin-soloview-show', ['userId' => $user->id, 'id' => $item->id])}}" class="btn btn-primary btn-sm waves-effect waves-light">Посмотреть</a></td>
                                                                                 <td>{{$item->pass_time}}</td>
                                                                             </tr>
                                                                         @endif
@@ -161,7 +161,6 @@
                                                         @endif
                                                         </tbody>
                                                     </table>
-                                                    </p>
                                                 </div>
                                             </div>
 

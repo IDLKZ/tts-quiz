@@ -7,18 +7,50 @@ use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Motive;
 use App\Models\Result;
+use App\Models\User;
 use App\Models\UserMeaning;
 use App\Models\UserMotivation;
 use App\Models\UserMotive;
 use App\Models\UserScale;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view('employee.index');
+        $user = Auth::user();
+        return view('employee.index', compact('user'));
+    }
+
+    public function settings()
+    {
+        $jsValidator = JsValidator::make(
+            [
+                "name"=>"required",
+                "img"=>"sometimes|image|max:4096",
+                "phone"=>"required|max:255",
+                'password' => 'sometimes|min:4'
+            ]
+        );
+        return view('employee.settings', compact('jsValidator'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $this->validate($request,["name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096", "password"=>"sometimes|nullable|min:4|max:255"]);
+        $user = User::find(Auth::id());
+        $request['role_id'] = 2;
+        if(User::updateData($request,$user)){
+            toastSuccess('Успешно обновлен!');
+            return redirect(route('employeeHome'));
+        }
+        else{
+            toastError('Что то пошло не так!');
+            return redirect()->back();
+        }
     }
 
     public function invite(){

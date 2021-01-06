@@ -14,7 +14,7 @@
                         <div class="col-md-12">
                             <h4 class="page-title mb-1">Результаты</h4>
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="/employee">Главная</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('employeeHome')}}">Главная</a></li>
                                 <li class="breadcrumb-item active">Результаты</li>
                             </ol>
                         </div>
@@ -33,7 +33,7 @@
                                 <div class="timeline-item timeline-left">
                                     <div class="timeline-block">
                                         <div class="time-show-btn mt-0">
-                                            <a href="pages-timeline.html#" class="btn btn-info w-lg">Результаты</a>
+                                            <a href="javascript:void (0)" class="btn btn-info w-lg">Результаты</a>
                                         </div>
                                     </div>
                                 </div>

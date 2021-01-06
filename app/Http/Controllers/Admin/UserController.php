@@ -87,7 +87,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::with("department")->find($id);
+        $user = User::with(["department", 'results', 'invites'])->find($id);
         if ($user){
             return view("admin.users.show",compact("user"));
         }
