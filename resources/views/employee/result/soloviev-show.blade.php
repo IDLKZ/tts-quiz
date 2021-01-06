@@ -43,7 +43,7 @@
                         <div class="col-12 mt-2 py-3">
                             <div class="row bg-white">
                                 <div class="col-xl-6 d-flex justify-content-center align-items-center">
-                                    <div>
+                                    <div class="w-100">
                                         <div class="chart" id="chart{{$motive->motive_id}}"
                                              data-percentage = "{{$motive->percentage}}"
                                              data-id="{{$motive->motive_id}}"
@@ -505,10 +505,10 @@
                 let id = $(this).attr('data-id');
                 let title = $(this).attr('data-title');
                 let colors = {1:"#3399ff",2:"#028e8f",3:"#529cc6",4:"#75c147",5:"#008a4e",6:"#53bfb4"}
-                var options = {[item]:{
+                var optionsChart = {[item]:{
                     series: [+percentage, 100-percentage],
                     chart: {
-                        width: "100%",
+                        width: '100%',
                         type: 'pie',
                     },
                     colors:[colors[id], '#efefef'],
@@ -528,7 +528,7 @@
                         }
                     }]
                 }};
-                (new ApexCharts(document.querySelector("#"+item), options[item])).render();
+                (new ApexCharts(document.querySelector("#"+item), optionsChart[item])).render();
                 // chart.render();
             })
             $(".donut").each(function () {
@@ -537,7 +537,7 @@
                 let id = $(this).attr('data-id');
                 let title = $(this).attr('data-title');
                 let colors = {1:"#3399ff",2:"#028e8f",3:"#529cc6",4:"#75c147",5:"#008a4e",6:"#53bfb4"}
-                var options = {[item]: {
+                var optionsDonut = {[item]: {
                         labels: [title],
                         chart: {
                             type: 'donut',
@@ -598,7 +598,7 @@
                             }
                         }]
                     }};
-                (new ApexCharts(document.querySelector("#"+item), options[item])).render();
+                (new ApexCharts(document.querySelector("#"+item), optionsDonut[item])).render();
                 // chart.render();
             });
 
