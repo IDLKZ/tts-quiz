@@ -121,6 +121,15 @@ class MainController extends Controller
 
     public function directory()
     {
-        return view('directory');
+        return view('directory.directory');
+    }
+
+    public function directoryGetUsers(Request $request)
+    {
+        $this->validate($request, [
+            'department_id' => 'required|exists:departments,id'
+        ]);
+        $users = User::where('department_id', $request->get('department_id'))->with('department')->paginate(20);
+        return view('directory.show', compact('users'));
     }
 }

@@ -68,15 +68,6 @@
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <h4 class="header-title">Сотрудники</h4>
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
                                         <table class="table mb-0">
                                             <thead>
                                             <tr>

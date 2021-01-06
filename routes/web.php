@@ -56,6 +56,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::get('/employee/{userId}/belbin-show/{id}', [adminMainController::class, 'belbinShow'])->name('admin-belbin-show');
 
     Route::get('/directory', [adminMainController::class, 'directory'])->name('adminDirectory');
+    Route::post('/directory/get-users', [adminMainController::class, 'directoryGetUsers'])->name('adminDirectoryGetUsers');
 });
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
@@ -76,5 +77,6 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/belbin-show/{id}",[MainController::class,"belbinShow"])->name("belbin-show")->whereNumber("id");
 
     Route::get('/directory', [MainController::class, 'directory'])->name('employeeDirectory');
+    Route::post('/directory/get-users', [MainController::class, 'directoryGetUsers'])->name('employeeDirectoryGetUsers');
 });
 

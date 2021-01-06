@@ -96,6 +96,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{route('employeeDirectory')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-address-book"></i></div>
+                        <span>Справочник</span>
+                    </a>
+                </li>
+
                 <hr>
 
                 <li>

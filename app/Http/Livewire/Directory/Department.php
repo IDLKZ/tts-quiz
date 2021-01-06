@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Invite\Select;
+namespace App\Http\Livewire\Directory;
 
-use App\Models\Department;
 use Asantibanez\LivewireSelect\LivewireSelect;
 use Illuminate\Support\Collection;
 
-class DepartmentSelect extends LivewireSelect
+class Department extends LivewireSelect
 {
     public function options($searchTerm = null): Collection
     {
         $companyList = [];
         $collect = [];
-        $departments = Department::with('company')->get();
+        $departments = \App\Models\Department::with('company')->get();
         foreach ($departments as $department) {
             $companyList[$department->company->id][$department->id]['value'] = $department->id;
             $companyList[$department->company->id][$department->id]['description'] = $department->title;
