@@ -70,6 +70,7 @@
                                     </div>
                                 </div>
                                 @endforeach
+                                {{$results->links()}}
 
                             </div>
                             @else
