@@ -103,4 +103,9 @@ class MainController extends Controller
             abort(404);
         }
     }
+
+    public function directory()
+    {
+        return view('directory');
+    }
 }

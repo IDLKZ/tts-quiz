@@ -11,7 +11,7 @@
                 <li class="menu-title">Admin Menu</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="{{route('adminHome')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-home"></i></div>
                         <span>Главная</span>
                     </a>
@@ -42,9 +42,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('invite.index')}}" class="waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-percent"></i></div>
-                        <span>Результаты</span>
+                    <a href="{{route('adminDirectory')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-address-book"></i></div>
+                        <span>Справочник</span>
                     </a>
                 </li>
 

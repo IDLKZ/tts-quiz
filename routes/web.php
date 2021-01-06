@@ -54,6 +54,8 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     ]);
     Route::get('/employee/{userId}/soloview-show/{id}', [adminMainController::class, 'solovievShow'])->name('admin-soloview-show');
     Route::get('/employee/{userId}/belbin-show/{id}', [adminMainController::class, 'belbinShow'])->name('admin-belbin-show');
+
+    Route::get('/directory', [adminMainController::class, 'directory'])->name('adminDirectory');
 });
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
@@ -73,6 +75,6 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/soloviev-show/{id}",[MainController::class,"solovievShow"])->name("soloviev-show")->whereNumber("id");
     Route::get("/belbin-show/{id}",[MainController::class,"belbinShow"])->name("belbin-show")->whereNumber("id");
 
-
+    Route::get('/directory', [MainController::class, 'directory'])->name('employeeDirectory');
 });
 

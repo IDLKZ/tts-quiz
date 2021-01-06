@@ -13,7 +13,7 @@ class DepartmentSelect extends LivewireSelect
     {
         $companyList = [];
         $collect = [];
-        $departments = Department::all();
+        $departments = Department::with('company')->get();
         foreach ($departments as $department) {
             $companyList[$department->company->id][$department->id]['value'] = $department->id;
             $companyList[$department->company->id][$department->id]['description'] = $department->title;

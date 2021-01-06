@@ -118,4 +118,9 @@ class MainController extends Controller
         }
 
     }
+
+    public function directory()
+    {
+        return view('directory');
+    }
 }
