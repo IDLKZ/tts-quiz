@@ -6,7 +6,7 @@
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-md-8">
-                            <h4 class="page-title mb-1">Редактировать компанию</h4>
+                            <h4 class="page-title mb-1">Добавить компанию</h4>
                         </div>
                     </div>
 
@@ -18,23 +18,23 @@
                         <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{route('company.update', $company->id)}}" method="post" enctype="multipart/form-data">
-                                        @method('put')
+                                    <form action="{{route('company.store')}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-header">
-                                            <h5 class="modal-title mt-0" id="myModalLabel">Редактировать</h5>
+                                            <h5 class="modal-title mt-0" id="myModalLabel">Создать новую компанию</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="text" class="form-control" name="title" value="{{$company->title}}" placeholder="наименование">
+                                            <label>Наименование</label>
+                                            <input type="text" class="form-control" name="title" placeholder="наименование">
                                             <label class="mt-3">Описание (необязательно)</label>
-                                            <textarea name="description" id="editor">{{$company->description}}</textarea>
+                                            <textarea name="description" id="editor"></textarea>
                                             <label class="mt-3">Лого (необязательно)</label>
                                             <input type="file" class="form-control" name="logo">
-                                            <img src="{{$company->logo}}" class="rounded-circle header-profile-user">
                                         </div>
                                         <div class="modal-footer">
                                             <a href="{{route('company.index')}}" class="btn btn-secondary waves-effect">Назад</a>
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Обновить</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Сохранить</button>
                                         </div>
                                     </form>
                                 </div>

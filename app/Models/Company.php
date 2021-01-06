@@ -25,7 +25,7 @@ class Company extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'logo'];
+    protected $fillable = ['title', 'logo', 'description'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -39,14 +39,14 @@ class Company extends Model
     public static function saveData($request){
         $model = new self();
         $input = $request->all();
-        $input["logo"] = File::saveFile($request,(new self())->directory,"logo",$input["title"]);
+        $input["logo"] = File::saveFile($request,'/uploads/companies/',"logo",$input["title"]);
         $model->fill($input);
         return $model->save();
     }
 
     public static function updateData($request,$model){
         $input = $request->all();
-        $input["logo"] = File::updateFile($request,(new self())->directory,"logo",$model->logo,$input["title"]);
+        $input["logo"] = File::updateFile($request,'/uploads/companies/',"logo",$model->logo,$input["title"]);
         $model->update($input);
         return $model->save();
     }

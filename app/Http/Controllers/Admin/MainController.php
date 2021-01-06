@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BelbinQuiz;
+use App\Models\BelbinUser;
 use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Motive;
@@ -76,8 +78,29 @@ class MainController extends Controller
         }
     }
 
-    public function belbinShow($id)
+    public function belbinShow($userId, $id)
     {
+        $result = Result::where(["user_id" => $userId])->with(["job","user"])->find($id);
+        $user = User::find($userId);
+        if($result){
+            $invite = Invite::where(function ($q) use ($user){
+                $q->where("user_id", $user->id);$q->orWhere("department_id",$user->department_id);
+            })->with(["department","type"])->find($result->invites_id);
+            if($invite){
+                $quiz = BelbinQuiz::first();
+                $belbin_user = BelbinUser::where("result_id",$result->id)->with("belbinRole")->get();
+                if($belbin_user->isNotEmpty() && $invite->type_id == 2){
+                    return view("employee.result.belbin-show",compact("result","invite","belbin_user"));
+                }
+                else{
+                    abort(404);
+                }
 
+            }
+            abort(404);
+        }
+        else{
+            abort(404);
+        }
     }
 }

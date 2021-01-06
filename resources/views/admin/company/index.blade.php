@@ -11,32 +11,9 @@
                         <div class="col-md-4">
                             <div class="float-right d-none d-md-block">
                                 <div class="dropdown">
-                                    <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="modal" data-target="#myModal">
+                                    <a href="{{route('company.create')}}" class="btn btn-light btn-rounded dropdown-toggle">
                                         <i class="mdi mdi-plus mr-1"></i> Добавить
-                                    </button>
-                                    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form action="{{route('company.store')}}" method="post">
-                                                    @csrf
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title mt-0" id="myModalLabel">Создать новую компанию</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <input type="text" class="form-control" name="title" placeholder="наименование">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Закрыть</button>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Сохранить</button>
-                                                    </div>
-                                                </form>
-
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +33,9 @@
                                             <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>Logo</th>
                                                 <th>Наименование</th>
+                                                <th>Описание</th>
                                                 <th>Действие</th>
                                             </tr>
                                             </thead>
@@ -64,9 +43,9 @@
                                             @foreach($companies as $company)
                                                 <tr>
                                                     <th scope="row">{{$loop->iteration}}</th>
-                                                    <td>
-                                                        {{$company->title}}
-                                                    </td>
+                                                    <th><img src="{{$company->logo}}" class="rounded-circle header-profile-user"></th>
+                                                    <td>{{$company->title}}</td>
+                                                    <td>{!! $company->description !!}</td>
                                                     <td>
                                                         <div class="btn-group" role="group">
                                                             <a href="{{route('company.edit', $company->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
@@ -100,3 +79,4 @@
     </div>
 
 @endsection
+

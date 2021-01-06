@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view("admin.company.edit");
+        return view("admin.company.create");
     }
 
     /**
@@ -43,7 +43,7 @@ class CompanyController extends Controller
         $this->validate($request,["title"=>"required|max:255","logo"=>"sometimes|image|max:4096"]);
         if(Company::saveData($request)){
             toastSuccess('Успешно создана!');
-            return redirect()->back();
+            return redirect(route('company.index'));
         }
         else{
             toastError('Упс...! Что то пошло не так!');

@@ -100,7 +100,14 @@
                                                                             <tr>
                                                                                 <td>{{$item->invite->title}}</td>
                                                                                 <td>{{$item->invite->type->title}}</td>
-                                                                                <td><a href="{{route('admin-soloview-show', ['userId' => $user->id, 'id' => $item->id])}}" class="btn btn-primary btn-sm waves-effect waves-light">Посмотреть</a></td>
+                                                                                <td><a href="@switch($item->invite->type_id)
+                                                                                    @case(1)
+                                                                                    {{route('admin-soloview-show', ['userId' => $user->id, 'id' => $item->id])}}
+                                                                                    @break
+                                                                                    @case(2)
+                                                                                    {{route('admin-belbin-show', ['userId' => $user->id, 'id' => $item->id])}}
+                                                                                    @break
+                                                                                @endswitch" class="btn btn-primary btn-sm waves-effect waves-light">Посмотреть</a></td>
                                                                                 <td>{{$item->pass_time}}</td>
                                                                             </tr>
                                                                         @endif
