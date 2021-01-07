@@ -8,12 +8,18 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Admin Menu</li>
+                <li class="menu-title">Меню </li>
 
                 <li>
                     <a href="{{route('adminHome')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-home"></i></div>
                         <span>Главная</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('news.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-newspaper"></i></div>
+                        <span>Новости</span>
                     </a>
                 </li>
 
@@ -100,6 +106,13 @@
                     <a href="{{route('employeeDirectory')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-address-book"></i></div>
                         <span>Справочник</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('employee-news')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-newspaper"></i></div>
+                        <span>Новости</span>
                     </a>
                 </li>
 

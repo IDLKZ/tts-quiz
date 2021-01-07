@@ -8,6 +8,7 @@ use App\Models\BelbinUser;
 use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Motive;
+use App\Models\News;
 use App\Models\Result;
 use App\Models\User;
 use App\Models\UserMeaning;
@@ -24,7 +25,8 @@ class MainController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('employee.index', compact('user'));
+        $news = News::orderBy("created_at","DESC")->first();
+        return view('employee.index', compact('user','news'));
     }
 
     public function settings()
@@ -130,5 +132,18 @@ class MainController extends Controller
         ]);
         $users = User::where('department_id', $request->get('department_id'))->with('department')->paginate(20);
         return view('directory.show', compact('users'));
+    }
+
+    public function news(){
+        $news = News::orderBy("created_at","DESC")->paginate(15);
+        return view("employee.news.index",compact("news"));
+    }
+    public function newsOne($id){
+        if($news = News::find($id)){
+            return view("employee.news.show",compact("news"));
+        }
+        else{
+            abort(404);
+        }
     }
 }

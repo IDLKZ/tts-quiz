@@ -6,10 +6,10 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="/images/logo-sm-dark.png" alt="" height="22">
+                                    <img src="/images/logo.png" alt="" height="45">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/images/logo-dark.png" alt="" height="20">
+                                    <img src="/images/logo.png" alt="" height="45">
                                 </span>
                 </a>
             </div>
@@ -56,11 +56,11 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="/images/logo-sm-dark.png" alt="" height="22">
+                                 <span class="logo-sm">
+                                    <img src="/images/logo.png" alt="" height="45">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/images/logo-dark.png" alt="" height="20">
+                                    <img src="/images/logo.png" alt="" height="45">
                                 </span>
                 </a>
 
@@ -70,13 +70,6 @@
                 <i class="mdi mdi-backburger"></i>
             </button>
 
-            <!-- App Search-->
-            {{--            <form class="app-search d-none d-lg-block">--}}
-            {{--                <div class="position-relative">--}}
-            {{--                    <input type="text" class="form-control" placeholder="Search...">--}}
-            {{--                    <span class="mdi mdi-magnify"></span>--}}
-            {{--                </div>--}}
-            {{--            </form>--}}
         </div>
 
         <div class="d-flex">

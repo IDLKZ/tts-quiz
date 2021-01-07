@@ -8,6 +8,7 @@ use App\Models\BelbinUser;
 use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Motive;
+use App\Models\News;
 use App\Models\Result;
 use App\Models\User;
 use App\Models\UserMeaning;
@@ -22,7 +23,8 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $news = News::orderBy("created_at","DESC")->first();
+        return view('admin.index',compact("news"));
     }
 
     public function settings()

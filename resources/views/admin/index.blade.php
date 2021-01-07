@@ -89,6 +89,34 @@
                         </div>
                     </div>
                     <!-- end row -->
+                    @if($news)
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2>Актуальные новости</h2>
+                        </div>
+
+                        <div class="col-md-8 col-xl-8 offset-md-2">
+
+                            <!-- Simple card -->
+                            <div class="card">
+                                <img class="card-img-top img-fluid" src="{{$news->img}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title font-size-16 mt-0">{{$news->title}}</h4>
+                                    <h5 class="card-subtitle font-size-16 mt-0">{{$news->subtitle}}</h5>
+                                    <div class="card-text text-truncate">
+                                        {!! $news->description !!}
+                                    </div>
+                                    <a href="{{route("news.show",$news->id)}}" class="btn btn-primary">Читать</a>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="{{route("news.index")}}" class="btn btn-primary">Все новости</a>
+
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    @endif
 
 
 

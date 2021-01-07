@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Employee\SolovievQuizController;
 use App\Http\Controllers\Employee\BelbinQuizController;
+use App\Http\Controllers\Admin\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,11 +53,14 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("result",ResultController::class)->except([
         'create', 'store', 'update', 'edit'
     ]);
+    Route::resource("/news",NewsController::class);
     Route::get('/employee/{userId}/soloview-show/{id}', [adminMainController::class, 'solovievShow'])->name('admin-soloview-show');
     Route::get('/employee/{userId}/belbin-show/{id}', [adminMainController::class, 'belbinShow'])->name('admin-belbin-show');
 
     Route::get('/directory', [adminMainController::class, 'directory'])->name('adminDirectory');
     Route::post('/directory/get-users', [adminMainController::class, 'directoryGetUsers'])->name('adminDirectoryGetUsers');
+
+
 });
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
@@ -78,5 +82,8 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
 
     Route::get('/directory', [MainController::class, 'directory'])->name('employeeDirectory');
     Route::post('/directory/get-users', [MainController::class, 'directoryGetUsers'])->name('employeeDirectoryGetUsers');
+    Route::get("/employee-news",[MainController::class,"news"])->name("employee-news");
+    Route::get("/news-show/{id}",[MainController::class,"newsOne"])->name("news-show");
+
 });
 
