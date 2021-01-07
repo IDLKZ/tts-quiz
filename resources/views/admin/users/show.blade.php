@@ -137,7 +137,7 @@
                                                         <tbody>
                                                         @if (($user->invites->count() > 0))
                                                                 @foreach($user->invites as $item)
-                                                                        @if (date('Y.m.d', strtotime($item->start)) <= \Illuminate\Support\Carbon::now()->format('Y.m.d') && \Illuminate\Support\Carbon::now()->format('Y.m.d') <= date('Y.m.d', strtotime($item->end)))
+                                                                        @if (\Illuminate\Support\Carbon::now()->format('Y.m.d') <= date('Y.m.d', strtotime($item->end)))
 
                                                                             <tr>
                                                                                 <td>{{$item->title}}</td>
