@@ -6,10 +6,10 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="/images/logo.png" alt="" height="45">
+                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/images/logo.png" alt="" height="45">
+                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
                                 </span>
                 </a>
             </div>
@@ -57,10 +57,10 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                                  <span class="logo-sm">
-                                    <img src="/images/logo.png" alt="" height="45">
+                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/images/logo.png" alt="" height="45">
+                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
                                 </span>
                 </a>
 

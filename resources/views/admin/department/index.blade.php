@@ -61,7 +61,7 @@
                                                 @foreach($departments as $department)
                                                 <tr>
                                                    <td><img class="rounded-circle header-profile-user" src="{{$department->logo}}" alt="{{$department->title}}"></td>
-                                                   <td><a href="{{route("company.show",$department->company->id)}}"> {{$department->company->title}}</a></td>
+                                                   <td>{{$department->company->title}}</td>
                                                    <td>{{$department->title}}</td>
                                                    <td>{!! $department->description !!}</td>
                                                    <td>

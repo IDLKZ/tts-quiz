@@ -13,10 +13,10 @@
     @toastr_css
 </head>
 
-<body class="bg-primary bg-pattern">
+<body class="bg-warning bg-pattern">
 <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
     <div class="order-0">
-        <img src="/images/logo.png" height="55px" width="75px" src="">
+        <img src="/images/logo.png" height="75px" width="85px" src="">
 
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -24,13 +24,13 @@
     </button>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item bg-success border border-light mx-1">
+            <li class="nav-item mx-1">
                 <a class="nav-link text-white" href="#">Temirtransservice@mail.ru</a>
             </li>
-            <li class="nav-item bg-success border border-light mx-1">
+            <li class="nav-item mx-1">
                 <a class="nav-link text-white" href="#">г. Нур-Султан ул. Кунаева 10, 26этаж</a>
             </li>
-            <li class="nav-item bg-success border border-light mx-1">
+            <li class="nav-item mx-1">
                 <a class="nav-link text-white" href="tel:+77172610626">+7-7172-610-626</a>
             </li>
         </ul>
