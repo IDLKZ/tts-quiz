@@ -8,15 +8,21 @@
     <meta content="Вход в личный кабинет корпортаивного портала" name="description" />
     <meta content="Корпоративный портал" name="author" />
     <!-- App favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
+    <style>
+        body{
+            font-family: Roboto;
+        }
+    </style>
     @toastr_css
 </head>
 
-<body class="bg-warning bg-pattern">
+<body class="bg-warning" style="  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/1.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover ">
 <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
     <div class="order-0">
-        <img src="/images/logo.png" height="75px" width="85px" src="">
+        <img src="/images/logo.png" height="95px" width="125px" src="">
 
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
