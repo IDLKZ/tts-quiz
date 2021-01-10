@@ -27,7 +27,7 @@
 
             <div class="page-content-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row mt-5">
                         @if($invites->isNotEmpty())
                             @foreach($invites as $invite)
                                  <div class="col-md-6 col-xl-4">
