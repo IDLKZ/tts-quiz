@@ -28,8 +28,8 @@
                     <!-- end row -->
                     @if($news)
                         <div class="row mt-5">
-                            <div class="col-md-12 text-center">
-                                <h2 class="text-warning">Актуальные новости</h2>
+                            <div class="col-md-12 text-center py-5">
+                                <h2>Актуальные новости</h2>
                             </div>
 
                             <div class="col-md-8 col-xl-8 offset-md-2">

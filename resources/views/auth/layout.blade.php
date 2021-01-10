@@ -22,7 +22,7 @@
 <body class="bg-warning" style="  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/1.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover ">
 <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
     <div class="order-0">
-        <img src="/images/logo.png" height="95px" width="125px" src="">
+        <img src="/images/logo.png" height="82" width="116" src="">
 
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
