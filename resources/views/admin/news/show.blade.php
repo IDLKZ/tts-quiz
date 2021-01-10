@@ -29,7 +29,7 @@
 
             <div class="page-content-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-md-8 col-xl-8 offset-md-2">
 
                             <!-- Simple card -->

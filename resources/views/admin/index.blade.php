@@ -27,9 +27,9 @@
                 <div class="container-fluid">
                     <!-- end row -->
                     @if($news)
-                        <div class="row">
+                        <div class="row mt-5">
                             <div class="col-md-12 text-center">
-                                <h2 class="text-white">Актуальные новости</h2>
+                                <h2 class="text-warning">Актуальные новости</h2>
                             </div>
 
                             <div class="col-md-8 col-xl-8 offset-md-2">

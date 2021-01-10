@@ -41,7 +41,7 @@ class MainController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $this->validate($request,["role_id"=>"required|exists:roles,id", "name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096","position"=>"required|max:255","email"=>"required|email|unique:users,email,".$id, "password"=>"sometimes|nullable|min:4|max:255"]);
+        $this->validate($request,["role_id"=>"required|exists:roles,id", "name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096","position"=>"required|max:255","email"=>"required|email|unique:users,email,".Auth::id(), "password"=>"sometimes|nullable|min:4|max:255"]);
         $user = User::find(Auth::id());
         if(User::updateData($request,$user)){
             toastSuccess('Успешно обновлен!');
