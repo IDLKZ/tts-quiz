@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BelbinQuiz;
 use App\Models\BelbinUser;
+use App\Models\Company;
 use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Motive;
@@ -108,7 +109,8 @@ class MainController extends Controller
 
     public function directory()
     {
-        return view('directory.directory');
+        $companies = Company::all();
+        return view('directory.directory', compact('companies'));
     }
 
     public function directoryGetUsers(Request $request)
