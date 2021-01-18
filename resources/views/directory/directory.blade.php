@@ -1,6 +1,10 @@
 @extends('layout')
 @push("styles")
-    @livewireStyles
+    <style>
+        #department {
+            display: none;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="main-content">
@@ -31,35 +35,43 @@
                                                 <h4>Справочник</h4>
                                                 <p class="text-muted">Здесь вы можете посмотреть информацию сотрудников</p>
                                             </div>
-                                            @admin
-                                            <form action="{{route('adminDirectoryGetUsers')}}" method="post">
-                                                @endadmin
-                                                @employee
-                                            <form action="{{route('employeeDirectoryGetUsers')}}" method="post">
-                                                @endemployee
-                                                @csrf
+{{--                                            @admin--}}
+{{--                                            <form action="{{route('adminDirectoryGetUsers')}}" method="post">--}}
+{{--                                                @endadmin--}}
+{{--                                                @employee--}}
+{{--                                            <form action="{{route('employeeDirectoryGetUsers')}}" method="post">--}}
+{{--                                                @endemployee--}}
+{{--                                                @csrf--}}
                                             <div class="row mt-5">
-                                                <div class="col-lg-4">
-                                                    <div class="card border shadow-none">
-                                                        <livewire:directory.company
-                                                            name="company_id"
-                                                            placeholder="Выберите компанию"
-                                                        />
-                                                    </div>
+                                                <div class="col-md-6">
+                                                    <select name="company" id="company" class="form-control">
+                                                        <option value="">Выберите компанию</option>
+                                                        @foreach($companies as $company)
+                                                            <option value="{{$company->id}}">{{$company->title}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
-                                                <div class="col-lg-4">
-                                                    <div class="card border shadow-none">
-                                                        <livewire:directory.department
-                                                            name="department_id"
-                                                            placeholder="Выберите отдел"
-                                                            :depends-on="['company_id']"/>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <button type="submit" class="btn btn-info mt-1 waves-effect waves-light"><i class="fas fa-search mr-1"></i>Поиск</button>
-                                                </div>
+{{--                                                <div class="col-lg-4">--}}
+{{--                                                    <div class="card border shadow-none">--}}
+{{--                                                        <livewire:directory.company--}}
+{{--                                                            name="company_id"--}}
+{{--                                                            placeholder="Выберите компанию"--}}
+{{--                                                        />--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-lg-4">--}}
+{{--                                                    <div class="card border shadow-none">--}}
+{{--                                                        <livewire:directory.department--}}
+{{--                                                            name="department_id"--}}
+{{--                                                            placeholder="Выберите отдел"--}}
+{{--                                                            :depends-on="['company_id']"/>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-lg-4">--}}
+{{--                                                    <button type="submit" class="btn btn-info mt-1 waves-effect waves-light"><i class="fas fa-search mr-1"></i>Поиск</button>--}}
+{{--                                                </div>--}}
                                             </div>
-                                            </form>
+{{--                                            </form>--}}
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
                                                     <ul>
@@ -72,72 +84,21 @@
                                         </div>
                                     </div>
 
-                                    @if (isset($users))
+{{--                                    @if (isset($users))--}}
                                         <div class="row mt-5">
                                             <div class="col-12">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <div class="table-responsive">
-                                                            <h4 class="header-title">Сотрудники</h4>
-                                                            <table class="table mb-0">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th>Имя</th>
-                                                                    <th>Компания</th>
-                                                                    <th>Департамент</th>
-                                                                    <th>Должность</th>
-                                                                    <th>Фото</th>
-                                                                    @employee
-                                                                    <th>Номер телефона</th>
-                                                                    @endemployee
-                                                                    @admin
-                                                                    <th>Действие</th>
-                                                                    @endadmin
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                @foreach($users as $user)
-                                                                    <tr>
-                                                                        <th scope="row">{{$loop->iteration}}</th>
-                                                                        <td>{{$user->name}}<br><span class="text-muted">{{$user->email}}</span></td>
-                                                                        <td>{{$user->department->company->title}}</td>
-                                                                        <td>{{$user->department->title}}</td>
-                                                                        <td>{{$user->position}}</td>
-                                                                        <td><img class="rounded-circle header-profile-user" src="{{$user->img}}"></td>
-                                                                        @admin
-                                                                        <td>
-                                                                            <div class="btn-group" role="group">
-                                                                                <a href="{{route('user.show', $user->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="View">
-                                                                                    <i class="mdi mdi-eye"></i>
-                                                                                </a>
-                                                                                <a href="{{route('user.edit', $user->id)}}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                                                                    <i class="mdi mdi-pencil"></i>
-                                                                                </a>
-                                                                                <form action="{{route('user.destroy', $user->id)}}" method="post">
-                                                                                    @method('delete')
-                                                                                    @csrf
-                                                                                    <button type="submit" class="btn btn-outline-secondary btn-sm" onclick="return (prompt('Вы уверены? Напишите 0000 чтобы удалить') == '0000' ? true : false)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
-                                                                                        <i class="mdi mdi-trash-can"></i>
-                                                                                    </button>
-                                                                                </form>
-                                                                            </div>
-                                                                        </td>
-                                                                        @endadmin
-                                                                        @employee
-                                                                        <td>{{$user->phone}}</td>
-                                                                        @endemployee
-                                                                    </tr>
-                                                                @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                            {!! $users->links() !!}
+                                                        <div class="table-responsive" id="department">
+                                                            <h4 class="header-title">Департаменты</h4>
+
+{{--                                                            {!! $users->links() !!}--}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endif
+{{--                                    @endif--}}
 
                                 </div>
                             </div>
@@ -153,5 +114,36 @@
 
 @endsection
 @push("scripts")
-    @livewireScripts
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $("#company").on('change', function(){
+                var faculties = parseInt( $("#company").val() );
+                selectCompany(faculties);
+            });
+
+            function selectCompany(id) {
+                var department = $('#department');
+                clear(department)
+                if (id > 0) {
+                    department.fadeIn('slow')
+                    // department.css('display', 'block')
+                    department.load(
+                        '/get-department',
+                        {id: id}
+                    )
+                }
+            }
+
+            function clear(val) {
+                val.css('display', 'none');
+            }
+        })
+
+    </script>
 @endpush

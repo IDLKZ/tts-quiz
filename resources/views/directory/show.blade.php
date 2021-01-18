@@ -31,12 +31,6 @@
                                                 <h4>Справочник</h4>
                                                 <p class="text-muted">Здесь вы можете посмотреть информацию сотрудников</p>
                                             </div>
-                                            @employee
-                                            <a class="btn btn-success" href="{{route('employeeDirectory')}}" role="button">Назад</a>
-                                            @endemployee
-                                            @admin
-                                            <a class="btn btn-success" href="{{route('adminDirectory')}}" role="button">Назад</a>
-                                            @endadmin
                                         </div>
                                     </div>
                                     <div class="row mt-5">

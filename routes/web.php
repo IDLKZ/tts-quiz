@@ -84,6 +84,8 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::post('/directory/get-users', [MainController::class, 'directoryGetUsers'])->name('employeeDirectoryGetUsers');
     Route::get("/employee-news",[MainController::class,"news"])->name("employee-news");
     Route::get("/news-show/{id}",[MainController::class,"newsOne"])->name("news-show");
-
 });
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/get-department', [MainController::class, 'getDepartment']);
+    Route::get('/get-employees/{id}', [MainController::class, 'getEmployee'])->name('employee-getUser');
+});

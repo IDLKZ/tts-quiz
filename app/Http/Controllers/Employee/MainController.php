@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Employee;
 use App\Models\BelbinQuiz;
 use App\Models\BelbinUser;
+use App\Models\Company;
+use App\Models\Department;
 use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Motive;
@@ -25,17 +28,16 @@ class MainController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $news = News::orderBy("created_at","DESC")->first();
-        return view('employee.index', compact('user','news'));
+        return view('employee.index', compact('user'));
     }
 
     public function settings()
     {
         $jsValidator = JsValidator::make(
             [
-                "name"=>"required",
-                "img"=>"sometimes|image|max:4096",
-                "phone"=>"required|max:255",
+                "name" => "required",
+                "img" => "sometimes|image|max:4096",
+                "phone" => "required|max:255",
                 'password' => 'sometimes|min:4'
             ]
         );
@@ -44,77 +46,85 @@ class MainController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $this->validate($request,["name"=>"required|max:255","phone"=>"required|max:255","img"=>"sometimes|image|max:4096", "password"=>"sometimes|nullable|min:4|max:255"]);
+        $this->validate($request, ["name" => "required|max:255", "phone" => "required|max:255", "img" => "sometimes|image|max:4096", "password" => "sometimes|nullable|min:4|max:255"]);
         $user = User::find(Auth::id());
         $request['role_id'] = 2;
-        if(User::updateData($request,$user)){
+        if (User::updateData($request, $user)) {
             toastSuccess('Успешно обновлен!');
             return redirect(route('employeeHome'));
-        }
-        else{
+        } else {
             toastError('Что то пошло не так!');
             return redirect()->back();
         }
     }
 
-    public function invite(){
-       $results = Auth::user()->results()->pluck("invites_id")->toArray();
-        $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->where("status",0)->with(["department","user","type"])->whereNotIn("id",$results)->paginate(15);
-        return view("employee.invite.index",compact("invites"));
+    public function invite()
+    {
+        $results = Auth::user()->results()->pluck("invites_id")->toArray();
+        $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q) {
+            $q->where("user_id", Auth::id());
+            $q->orWhere("department_id", Auth::user()->department_id);
+        })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", $results)->paginate(15);
+        return view("employee.invite.index", compact("invites"));
     }
 
-    public function results(){
-        $results = Result::where("user_id",Auth::id())->with(["invite","job","user"])->orderBy("pass_time","DESC")->paginate(15);
-        return view("employee.result.index",compact("results"));
+    public function results()
+    {
+        $results = Result::where("user_id", Auth::id())->with(["invite", "job", "user"])->orderBy("pass_time", "DESC")->paginate(15);
+        return view("employee.result.index", compact("results"));
     }
 
-    public function solovievShow($id){
-        $result = Result::where(["user_id"=>Auth::id()])->with(["job","user"])->find($id);
-        if($result){
-            $invite = Invite::where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->with(["department","type"])->find($result->invites_id);
-            if($invite){
-                $meaning = UserMeaning::where("result_id",$result->id)->with(["result"])->get();
-                $motivation = UserMotivation::where("result_id",$result->id)->get();
-                $motives = UserMotive::where("result_id",$result->id)->with("motive")->get();
-                $scales = UserScale::where("result_id",$result->id)->with("scale")->get();
-                $job_motive = JobMotive::where("job_id",$result->job_id)->get()->groupBy("motive_id")->toArray();
+    public function solovievShow($id)
+    {
+        $result = Result::where(["user_id" => Auth::id()])->with(["job", "user"])->find($id);
+        if ($result) {
+            $invite = Invite::where(function ($q) {
+                $q->where("user_id", Auth::id());
+                $q->orWhere("department_id", Auth::user()->department_id);
+            })->with(["department", "type"])->find($result->invites_id);
+            if ($invite) {
+                $meaning = UserMeaning::where("result_id", $result->id)->with(["result"])->get();
+                $motivation = UserMotivation::where("result_id", $result->id)->get();
+                $motives = UserMotive::where("result_id", $result->id)->with("motive")->get();
+                $scales = UserScale::where("result_id", $result->id)->with("scale")->get();
+                $job_motive = JobMotive::where("job_id", $result->job_id)->get()->groupBy("motive_id")->toArray();
                 $all_motives = collect(Motive::get()->groupBy("id")->toArray());
-                if($invite->type_id == 1 && $meaning->isNotEmpty() && $motivation->isNotEmpty() && $motives->isNotEmpty() && $scales->isNotEmpty() && count($job_motive) && count($all_motives)){
-                    return view("employee.result.soloviev-show",compact("result","meaning","motivation","motives","scales","job_motive","invite","all_motives"));
+                if ($invite->type_id == 1 && $meaning->isNotEmpty() && $motivation->isNotEmpty() && $motives->isNotEmpty() && $scales->isNotEmpty() && count($job_motive) && count($all_motives)) {
+                    return view("employee.result.soloviev-show", compact("result", "meaning", "motivation", "motives", "scales", "job_motive", "invite", "all_motives"));
                 }
                 abort(404);
 
-            }
-            else{
+            } else {
                 abort(404);
             }
 
-        }
-        else{
+        } else {
             abort(404);
         }
 
 
     }
 
-    public function belbinShow($id){
-        $result = Result::where(["user_id"=>Auth::id()])->with(["job","user"])->find($id);
-        if($result){
-            $invite = Invite::where(function ($q){$q->where("user_id",Auth::id());$q->orWhere("department_id",Auth::user()->department_id);})->with(["department","type"])->find($result->invites_id);
-             if($invite){
+    public function belbinShow($id)
+    {
+        $result = Result::where(["user_id" => Auth::id()])->with(["job", "user"])->find($id);
+        if ($result) {
+            $invite = Invite::where(function ($q) {
+                $q->where("user_id", Auth::id());
+                $q->orWhere("department_id", Auth::user()->department_id);
+            })->with(["department", "type"])->find($result->invites_id);
+            if ($invite) {
                 $quiz = BelbinQuiz::first();
-                $belbin_user = BelbinUser::where("result_id",$result->id)->with("belbinRole")->get();
-                if($belbin_user->isNotEmpty() && $invite->type_id == 2){
-                    return view("employee.result.belbin-show",compact("result","invite","belbin_user"));
-                }
-                else{
+                $belbin_user = BelbinUser::where("result_id", $result->id)->with("belbinRole")->get();
+                if ($belbin_user->isNotEmpty() && $invite->type_id == 2) {
+                    return view("employee.result.belbin-show", compact("result", "invite", "belbin_user"));
+                } else {
                     abort(404);
                 }
 
-             }
-             abort(404);
-        }
-        else{
+            }
+            abort(404);
+        } else {
             abort(404);
         }
 
@@ -122,7 +132,49 @@ class MainController extends Controller
 
     public function directory()
     {
-        return view('directory.directory');
+        $companies = Company::all();
+        return view('directory.directory', compact('companies'));
+    }
+
+    public function getDepartment(Request $request)
+    {
+        $company = Company::with('departments')->find($request['id']);
+        if ($company) {
+            if ($company->departments) {
+                $index = 1;
+                $return = "<table class='table mb-0'>
+                         <thead>
+                         <tr>
+                             <th>#</th>
+                             <th>Департамент</th>
+                             <th>Действие</th>
+                         </tr>
+                         </thead>
+                         <tbody>";
+                foreach ($company->departments as $department){
+                    $link = route('employee-getUser', $department->id);
+                    $return .= "<tr>
+                             <th scope='row'>".$index++."</th>
+                             <td>$department->title</td>
+                             <td>
+                             <a target='_blank' class='btn btn-info' href=".$link.">Посмотреть</a>
+</td>
+                         </tr>";
+                }
+                $return .= "</tbody>
+                              </table>";
+                return $return;
+            } else {
+                return "<p>Нет отделов</p>";
+            }
+        } else {
+            return "Что то пошло не так!";
+        }
+    }
+
+    public function getEmployee($id) {
+        $users = User::where('department_id', $id)->paginate(20);
+        return view('directory.show', compact('users'));
     }
 
     public function directoryGetUsers(Request $request)
@@ -134,15 +186,18 @@ class MainController extends Controller
         return view('directory.show', compact('users'));
     }
 
-    public function news(){
-        $news = News::orderBy("created_at","DESC")->paginate(15);
-        return view("employee.news.index",compact("news"));
+    public function news()
+    {
+        $actual = News::orderBy("created_at", "DESC")->first();
+        $news = News::orderBy("created_at", "DESC")->paginate(15);
+        return view("employee.news.index", compact("news", 'actual'));
     }
-    public function newsOne($id){
-        if($news = News::find($id)){
-            return view("employee.news.show",compact("news"));
-        }
-        else{
+
+    public function newsOne($id)
+    {
+        if ($news = News::find($id)) {
+            return view("employee.news.show", compact("news"));
+        } else {
             abort(404);
         }
     }
