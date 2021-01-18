@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Employee\MainController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DepartmentController;
@@ -86,6 +87,6 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/news-show/{id}",[MainController::class,"newsOne"])->name("news-show");
 });
 Route::group(['middleware' => 'auth'], function () {
-    Route::post('/get-department', [MainController::class, 'getDepartment']);
-    Route::get('/get-employees/{id}', [MainController::class, 'getEmployee'])->name('employee-getUser');
+    Route::post('/get-department', [HomeController::class, 'getDepartment']);
+    Route::get('/get-employees/{id}', [HomeController::class, 'getEmployee'])->name('employee-getUser');
 });
