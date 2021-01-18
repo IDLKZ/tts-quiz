@@ -3,6 +3,8 @@
 
 @push("styles")
     <link href="/css/selectize.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropme@latest/dist/cropme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
 @endpush
 
 @section("content")
@@ -74,16 +76,19 @@
                                                 <textarea id="editor" name="description"></textarea>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-md-2 col-form-label">Логотип отдела</label>
-                                            <div class="col-md-10">
-                                                <input type="file" name="logo">
-                                            </div>
+                                        <div class="col-md-4 text-center">
+                                            <div id="upload-demo"></div>
                                         </div>
+                                        <div class="col-md-4" style="padding:5%;">
+                                            <strong>Выберите логотип:</strong>
+                                            <input type="file" id="image" name="logo" accept="image/jpeg,image/png,image/gif">
+                                            <button class="btn btn-primary btn-block upload-image" style="margin-top:2%" >Обрезать фото</button>
+                                        </div>
+                                        <input hidden type="text" id="image1" name="image" value="">
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-info">Отправить</button>
-
+                                            <button id="submit" disabled type="submit" class="btn btn-info" >Отправить</button>
                                         </div>
+
                                     </form>
 
                                 </div>
@@ -91,6 +96,7 @@
                         </div>
                         <!-- end col -->
                     </div>
+
                     <!-- end row -->
 
 
@@ -104,14 +110,23 @@
 
 
     </div>
+
+{{--    Container--}}
+
+
+
+
+
+
+
     <!-- end main content-->
 
 @endsection
 @push("scripts")
    <script src="/js/selectize.min.js"></script>
    <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
-
-    <script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
+   <script>
         $(document).ready(function (){
             $('#select-company').selectize({
                 create: false,
@@ -124,7 +139,55 @@
                 .catch( error => {
                     console.error( error );
                 } );
+
+            //Crop Start
+
+
+            $("#image1").val("");
+
+            var resize = $('#upload-demo').croppie({
+                enableExif: true,
+                enableOrientation: true,
+                viewport: { // Default { width: 100, height: 100, type: 'square' }
+                    width: 200,
+                    height: 200,
+                    type: 'circle' //square
+                },
+                boundary: {
+                    width: 300,
+                    height: 300
+                }
+            });
+
+
+            $('#image').on('change', function (e) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    resize.croppie('bind',{
+                        url: e.target.result
+                    }).then(function(){
+                    });
+                }
+                 reader.readAsDataURL(this.files[0]);
+            });
+            $('.upload-image').on('click', function (ev) {
+                ev.preventDefault();
+                $("#image1").val("");
+                resize.croppie('result', {
+                    type: 'canvas',
+                    size: 'viewport'
+                }).then(function (img) {
+                    $("#image1").val(img);
+                    $("#submit").attr("disabled",false)
+
+
+                });
+            });
+
         })
 
+
+
     </script>
+
 @endpush

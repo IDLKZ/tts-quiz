@@ -49,6 +49,32 @@ class File extends Model
         }
     }
 
+    public static function base64Decoder($request,$name,$direction,$title = false){
+        $base64_image = $request->input($name); // your base64 encoded
+        @list($type, $file_data) = explode(';', $base64_image);
+        @list(, $file_data) = explode(',', $file_data);
+        $imageName = $title != false ? Str::slug($title) . Str::random(5).'.'.'png'    : Str::random(10).'.'.'png';
+        $imageName = $direction . $imageName;
+        Storage::disk('local')->put($imageName, base64_decode($file_data));
+        return $imageName;
+    }
+    public static function updateBase64($request,$model,$img,$name,$direction,$title = false){
+        $imageName = $model[$img];
+        if($request->hasFile($img)){
+            $base64_image = $request->input($name); // your base64 encoded
+            @list($type, $file_data) = explode(';', $base64_image);
+            @list(, $file_data) = explode(',', $file_data);
+            $imageName = $title != false ? Str::slug($title) . Str::random(5).'.'.'png'    : Str::random(10).'.'.'png';
+            $imageName = $direction . $imageName;
+            if(Storage::exists($model[$img])){Storage::delete($model[$img]);}
+            Storage::disk('local')->put($imageName, base64_decode($file_data));
+            return $imageName;
+        }
+        else{
+            return $imageName;
+        }
+
+    }
 
 
 

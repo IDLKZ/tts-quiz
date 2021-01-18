@@ -4,12 +4,12 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="/admin" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
+                                    <img src="/images/logo-dark.png" alt="logo" width="100" height="75">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
+                                    <img src="/images/logo-dark.png" alt="logo" width="100" height="75">
                                 </span>
                 </a>
             </div>
@@ -55,12 +55,12 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="/employee" class="logo logo-dark">
                                  <span class="logo-sm">
-                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
+                                    <img src="/images/logo-dark.png" alt="logo" width="100" height="75">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/images/logo-dark.png" alt="logo" width="80" height="55">
+                                    <img src="/images/logo-dark.png" alt="logo" width="100" height="75">
                                 </span>
                 </a>
 

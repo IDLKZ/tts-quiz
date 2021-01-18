@@ -39,14 +39,21 @@ class Company extends Model
     public static function saveData($request){
         $model = new self();
         $input = $request->all();
-        $input["logo"] = File::saveFile($request,'/uploads/companies/',"logo",$input["title"]);
+        if($request->hasFile("logo")){
+            $input["logo"] = File::base64Decoder($request,"image","/uploads/companies/",$request->title);
+        }
+        else{
+            $input["logo"] = "/no-image.png";
+        }
+
+
         $model->fill($input);
         return $model->save();
     }
 
     public static function updateData($request,$model){
         $input = $request->all();
-        $input["logo"] = File::updateFile($request,'/uploads/companies/',"logo",$model->logo,$input["title"]);
+        $input["logo"] = File::updateBase64($request,$model,"logo","image","/uploads/companies/",$request->title);
         $model->update($input);
         return $model->save();
     }

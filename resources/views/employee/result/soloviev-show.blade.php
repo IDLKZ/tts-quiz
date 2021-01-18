@@ -50,11 +50,17 @@
                                              data-title="{{$motive->motive->title}}"
                                         >
                                         </div>
-                                        <div class="donut" id="donut{{$motive->motive_id}}"
+                                        <div class="donut text-center my-5" id="donut{{$motive->motive_id}}"
                                              data-rating = "{{$motive->rating}}"
                                              data-id="{{$motive->motive_id}}"
                                              data-title="{{$motive->motive->title}}"
-                                        ></div>
+                                        >
+                                            <h1>Мотив {{$motive->motive->title}}:</h1>
+                                            <h1>{{$motive->rating}}</h1>
+
+
+
+                                        </div>
                                     </div>
 
                                 </div>
@@ -531,76 +537,76 @@
                 (new ApexCharts(document.querySelector("#"+item), optionsChart[item])).render();
                 // chart.render();
             })
-            $(".donut").each(function () {
-                let item  = this.id;
-                let rating = $(this).attr('data-rating');
-                let id = $(this).attr('data-id');
-                let title = $(this).attr('data-title');
-                let colors = {1:"#3399ff",2:"#028e8f",3:"#529cc6",4:"#75c147",5:"#008a4e",6:"#53bfb4"}
-                var optionsDonut = {[item]: {
-                        labels: [title],
-                        chart: {
-                            type: 'donut',
-                        },
-                        dataLabels:{
-                            enabled:false
-                        },
-                        plotOptions: {
-                            pie: {
-                                donut: {
-                                    labels: {
-                                        show: true,
-                                        name: {
-                                            show: true,
-                                            fontSize: '22px',
-                                            fontFamily: 'Rubik',
-                                            color: '#dfsda',
-                                            offsetY: -10
-                                        },
-                                        value: {
-                                            show: true,
-                                            fontSize: '22px',
-                                            fontFamily: 'Helvetica, Arial, sans-serif',
-                                            color: undefined,
-                                            offsetY: 22,
-                                            formatter: function (val) {
-                                                return val + "баллов"
-                                            }
-                                        },
-                                        total: {
-                                            show: true,
-                                            label: title,
-                                            color: '#373d3f',
-                                            fontSize:22,
-                                            formatter: function (w) {
-                                                return w.globals.seriesTotals.reduce((a, b) => {
-                                                    return a + b
-                                                }, 0)
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        series: [+rating],
-                        fill: {
-                            colors: [colors[id],]
-                        },
-                        responsive: [{
-                            breakpoint: 480,
-                            options: {
-                                chart: {
-                                    width: 350
-                                },
-                                legend: {
-                                    position: 'bottom'
-                                }
-                            }
-                        }]
-                    }};
-                (new ApexCharts(document.querySelector("#"+item), optionsDonut[item])).render();
-                // chart.render();
-            });
+            // $(".donut").each(function () {
+            //     let item  = this.id;
+            //     let rating = $(this).attr('data-rating');
+            //     let id = $(this).attr('data-id');
+            //     let title = $(this).attr('data-title');
+            //     let colors = {1:"#3399ff",2:"#028e8f",3:"#529cc6",4:"#75c147",5:"#008a4e",6:"#53bfb4"}
+            //     var optionsDonut = {[item]: {
+            //             labels: [title],
+            //             chart: {
+            //                 type: 'donut',
+            //             },
+            //             dataLabels:{
+            //                 enabled:false
+            //             },
+            //             plotOptions: {
+            //                 pie: {
+            //                     donut: {
+            //                         labels: {
+            //                             show: true,
+            //                             name: {
+            //                                 show: true,
+            //                                 fontSize: '22px',
+            //                                 fontFamily: 'Rubik',
+            //                                 color: '#dfsda',
+            //                                 offsetY: -10
+            //                             },
+            //                             value: {
+            //                                 show: true,
+            //                                 fontSize: '22px',
+            //                                 fontFamily: 'Helvetica, Arial, sans-serif',
+            //                                 color: undefined,
+            //                                 offsetY: 22,
+            //                                 formatter: function (val) {
+            //                                     return val + "баллов"
+            //                                 }
+            //                             },
+            //                             total: {
+            //                                 show: true,
+            //                                 label: title,
+            //                                 color: '#373d3f',
+            //                                 fontSize:22,
+            //                                 formatter: function (w) {
+            //                                     return w.globals.seriesTotals.reduce((a, b) => {
+            //                                         return a + b
+            //                                     }, 0)
+            //                                 }
+            //                             }
+            //                         }
+            //                     }
+            //                 }
+            //             },
+            //             series: [+rating],
+            //             fill: {
+            //                 colors: [colors[id],]
+            //             },
+            //             responsive: [{
+            //                 breakpoint: 480,
+            //                 options: {
+            //                     chart: {
+            //                         width: 350
+            //                     },
+            //                     legend: {
+            //                         position: 'bottom'
+            //                     }
+            //                 }
+            //             }]
+            //         }};
+            //     (new ApexCharts(document.querySelector("#"+item), optionsDonut[item])).render();
+            //     // chart.render();
+            // });
 
             let motives = @json($motives);
             let job_motives = @json($job_motive);

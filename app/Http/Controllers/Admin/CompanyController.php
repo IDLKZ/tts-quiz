@@ -40,7 +40,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,["title"=>"required|max:255","logo"=>"sometimes|image|max:4096"]);
+        $this->validate($request,["title"=>"required|max:255","logo"=>"sometimes|image|max:4096",]);
         if(Company::saveData($request)){
             toastSuccess('Успешно создана!');
             return redirect(route('company.index'));

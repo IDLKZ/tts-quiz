@@ -8,6 +8,8 @@ use App\Models\Department;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 class DepartmentController extends Controller
 {
@@ -46,7 +48,7 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096"]);
+        $this->validate($request,["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096","image"=>"required"]);
         if(Department::saveData($request)){
             toastSuccess("Успешно создан отдел","Выполнено!");
         }
@@ -88,7 +90,7 @@ class DepartmentController extends Controller
         $department = Department::with("company")->find($id);
         if($department){
             $jsValidator = JsValidator::make(
-                ["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096"]
+                ["company_id"=>"required|exists:companies,id","title"=>"required","logo"=>"sometimes|image|max:4096","image"=>"required_id:logo"]
             );
             return  view("admin.department.edit",compact("department","companies","jsValidator"));
         }

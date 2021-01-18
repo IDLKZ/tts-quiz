@@ -123,14 +123,19 @@ class User extends Authenticatable
         $model = new self();
         $input = $request->all();
         $input["password"] = bcrypt($input["password"]);
-        $input["img"] = File::saveFile($request,"/uploads/users/","img",$input["name"]);
+        if($request->hasFile("img")){
+            $input["img"] = File::base64Decoder($request,"image","/uploads/users/",$request->name);
+        }
+        else{
+            $input["img"] = "/no-image.png";
+        }
         $model->fill($input);
         return $model->save();
     }
 
     public static function updateData($request,$model){
         $input = $request->except('password');
-        $input["img"] = File::updateFile($request,"/uploads/users/","img",$model->img,$input["name"]);
+        $input["img"] = File::updateBase64($request,$model,"img","image","/uploads/users/",$request->name);
         if(strlen(trim($request['password']))){$input["password"] = bcrypt($request['password']);}
         $model->update($input);
         return $model->save();
