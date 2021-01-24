@@ -43,7 +43,7 @@
 {{--                                                @endemployee--}}
 {{--                                                @csrf--}}
                                             <div class="row mt-5">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <select name="company" id="company" class="form-control">
                                                         <option value="">Выберите компанию</option>
                                                         @foreach($companies as $company)
