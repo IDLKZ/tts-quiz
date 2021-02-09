@@ -59,15 +59,17 @@ class InviteController extends Controller
             "simple_quiz"=>"required_if:invite_type,==,3",
             "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required",'user_id' => 'required'
         ]);
+
         if($id = Invite::saveData($request)){
+            $user = User::find($request->user_id);
             $detail = [
                 "id"=>$id,
               "info"=>$request->all(),
-              "user"=>User::find($request->user_id)
+              "user"=>$user
             ];
 
 
-            Mail::to("mistier.famous@mail.ru")->send(new InviteMail($detail));
+            Mail::to($user->email)->send(new InviteMail($detail));
             toastSuccess("Успешно создано приглашение","Выполнено");
             return redirect(route('invite.index'));
         }

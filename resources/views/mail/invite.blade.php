@@ -20,19 +20,19 @@
 <b>Ссылки для сдачи экзамена:
 
     @if($detail["info"]["type_id"] == 1)
-    <a target="_blank" href="{{'http://tts-quiz/employee/soloviev-quiz/' . $detail["id"] . ""}}">Ссылка для сдачи экзамена</a>
+    <a target="_blank" href="{{'https://idl.kz/employee/soloviev-quiz/' . $detail["id"] . ""}}">Ссылка для сдачи экзамена</a>
         @elseif($detail["info"]["type_id"] == 2)
-        <a target="_blank" href="{{'http://tts-quiz/employee/belbin-quiz/' . $detail["id"] . ""}}">Ссылка для сдачи экзамена</a>
+        <a target="_blank" href="{{'https://idl.kz/employee/belbin-quiz/' . $detail["id"] . ""}}">Ссылка для сдачи экзамена</a>
         @else
-        <a target="_blank" href="http://tts-quiz/employee/my-invites">Страница профиля</a>
+        <a target="_blank" href="https://idl.kz/employee/my-invites">Страница профиля</a>
         @endif
 </b>
 <br>
 <b>Сдача экзамена возможна в период:
 {{\Carbon\Carbon::parse($detail["info"]["start"])->format("d.m.Y")}} - {{\Carbon\Carbon::parse($detail["info"]["end"])->format("d.m.Y")}}
 </b>
-<p> Список предстоящих тестов вы можете также увидеть во вкладке 'Предстоящие тесты' на странице Профиля <a target="_blank" href="http://tts-quiz/employee">Страница профиля</a> </p>
-<p>Список доступных тестов для сдачи вы можете просмотреть во вкладке "Приглашения" <a target="_blank" href="http://tts-quiz/employee/my-invites">Страница профиля</a></p>
+<p> Список предстоящих тестов вы можете также увидеть во вкладке 'Предстоящие тесты' на странице Профиля <a target="_blank" href="https://idl.kz/employee">Страница профиля</a> </p>
+<p>Список доступных тестов для сдачи вы можете просмотреть во вкладке "Приглашения" <a target="_blank" href="https://idl.kz/employee/my-invites">Страница профиля</a></p>
 
 <p>С уважение отдел HR компании TTS</p>
 
