@@ -73,7 +73,8 @@ class Invite extends Model
     public static function saveData($request){
         $model = new self();
         $model->fill($request->all());
-        return $model->save();
+        $model->save();
+        return $model->id;
     }
 
     public static function updateData($request,$model){

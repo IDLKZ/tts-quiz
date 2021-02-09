@@ -32,6 +32,13 @@ return [
     |            "postmark", "log", "array"
     |
     */
+    'stream' => [
+        'ssl' => [
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true,
+        ],
+    ],
 
     'mailers' => [
         'smtp' => [
@@ -106,5 +113,6 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+
 
 ];

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\InviteMail;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Invite;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class InviteController extends Controller
@@ -57,7 +59,15 @@ class InviteController extends Controller
             "simple_quiz"=>"required_if:invite_type,==,3",
             "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required",'user_id' => 'required'
         ]);
-        if(Invite::saveData($request)){
+        if($id = Invite::saveData($request)){
+            $detail = [
+                "id"=>$id,
+              "info"=>$request->all(),
+              "user"=>User::find($request->user_id)
+            ];
+
+
+            Mail::to("mistier.famous@mail.ru")->send(new InviteMail($detail));
             toastSuccess("Успешно создано приглашение","Выполнено");
             return redirect(route('invite.index'));
         }
