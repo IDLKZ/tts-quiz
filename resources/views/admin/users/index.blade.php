@@ -18,6 +18,9 @@
                                     <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="modal" data-target="#myModal">
                                         <i class="mdi mdi-plus mr-1"></i> Добавить
                                     </button>
+                                    <a href="{{route("user-excel")}}" class="btn btn-light btn-rounded dropdown-toggle">
+                                        <i class="mdi mdi-excel mr-1"></i> Добавить Excel
+                                    </a>
                                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">

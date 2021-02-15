@@ -26,7 +26,7 @@
                                         @foreach($belbin_questions as $id => $belbin)
                                         <li class="nav-item mr-1 nav-data {{$id == $activeTab ? "show active" : "hide"}} @if(isset($test[$id]) && isset($limitation[$id])) @if(count($test[$id]) == 8 && $limitation[$id] == 10) btn-success @else btn-warning @endif @else btn-warning @endif $id" wire:click="changeActive({{$id}})">
                                             <a class="nav-link" id="home-tab" data-toggle="tab" href="#blog{{$id}}" role="tab" aria-controls="home" aria-selected="true">
-                                                Блог - {{$id}}
+                                                Блок - {{$id}}
                                             </a>
                                         </li>
                                         @endforeach

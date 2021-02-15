@@ -25,30 +25,7 @@
             </div>
 
             <!-- end row -->
-            @if($actual)
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h2>Актуальные новости</h2>
-                    </div>
 
-                    <div class="col-md-8 col-xl-8 offset-md-2">
-
-                        <!-- Simple card -->
-                        <div class="card">
-                            <img class="card-img-top img-fluid" src="{{$actual->img}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title font-size-16 mt-0">{{$actual->title}}</h4>
-                                <h5 class="card-subtitle font-size-16 mt-0">{{$actual->subtitle}}</h5>
-                                <div class="card-text text-truncate">
-                                    {!! $actual->description !!}
-                                </div>
-                                <a href="{{route("news-show",$actual->id)}}" class="btn btn-primary">Читать</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col -->
-                </div>
-            @endif
             <!-- end page title end breadcrumb -->
             <div class="page-content-wrapper">
                 <div class="container-fluid">
@@ -59,13 +36,15 @@
                                 <div class="col-md-4 col-xl-4">
                                     <!-- Simple card -->
                                     <div class="card">
-                                        <img class="card-img-top img-fluid" src="{{$item->img}}" alt="Card image cap">
+                                        <img class="card-img-top img-fluid" src="{{$item->img}}" style="height: 250px!important;" alt="Card image cap">
                                         <div class="card-body">
                                             <h4 class="card-title font-size-16 mt-0">{{$item->title}}</h4>
+                                            <br>
                                             <h5 class="card-subtitle font-size-16 mt-0">{{$item->subtitle}}</h5>
-                                            <div class="card-text text-truncate">
-                                                {!! $item->description !!}
-                                            </div>
+{{--                                            <div class="card-text text-truncate">--}}
+{{--                                                {!! $item->description !!}--}}
+{{--                                            </div>--}}
+                                            <br>
                                             <a href="{{route("news-show",$item->id)}}" class="btn btn-primary">Читать</a>
                                         </div>
                                     </div>

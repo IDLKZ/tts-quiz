@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\UsersImport;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Role;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class UserController extends Controller
@@ -166,5 +168,18 @@ class UserController extends Controller
             Auth::id() != $id ? $user->delete() : null;
         }
         return  redirect(route("user.index"));
+    }
+
+    public function excel(){
+        $departments = Department::with("company")->get();
+        return view("admin.users.excel",compact("departments"));
+    }
+
+    public function uploadExcel(Request $request){
+        $this->validate($request,["department_id"=>"required","excel"=>"required|file"]);
+         $mails = User::get()->pluck("email")->toArray();
+        Excel::import(new UsersImport($mails,$request->department_id), $request->file("excel"));
+        toastr()->success("Проведен экспорт пользователей");
+        return redirect()->back();
     }
 }

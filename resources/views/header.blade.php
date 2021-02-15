@@ -14,9 +14,9 @@
                 </a>
             </div>
 
-            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
-                <i class="mdi mdi-backburger"></i>
-            </button>
+{{--            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">--}}
+{{--                <i class="mdi mdi-backburger"></i>--}}
+{{--            </button>--}}
 
             <!-- App Search-->
 {{--            <form class="app-search d-none d-lg-block">--}}
@@ -66,9 +66,9 @@
 
             </div>
 
-            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
-                <i class="mdi mdi-backburger"></i>
-            </button>
+{{--            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">--}}
+{{--                <i class="mdi mdi-backburger"></i>--}}
+{{--            </button>--}}
 
         </div>
 

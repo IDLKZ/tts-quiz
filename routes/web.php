@@ -50,6 +50,8 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("company",CompanyController::class);
     Route::resource("department",DepartmentController::class);
     Route::resource("user",UserController::class);
+    Route::get("/user-excel",[UserController::class,"excel"])->name("user-excel");
+    Route::post("/upload-user",[UserController::class,"uploadExcel"])->name("upload-user");
     Route::resource("invite",InviteController::class);
     Route::resource("result",ResultController::class)->except([
         'create', 'store', 'update', 'edit'

@@ -39,10 +39,8 @@
                                     <img class="card-img-top img-fluid" src="{{$news->img}}" alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title font-size-16 mt-0">{{$news->title}}</h4>
+                                        <br>
                                         <h5 class="card-subtitle font-size-16 mt-0">{{$news->subtitle}}</h5>
-                                        <div class="card-text text-truncate">
-                                            {!! $news->description !!}
-                                        </div>
                                         <a href="{{route("news.show",$news->id)}}" class="btn btn-primary">Читать</a>
                                     </div>
                                 </div>

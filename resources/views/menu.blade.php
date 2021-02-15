@@ -92,7 +92,7 @@
                 <li>
                     <a href="{{route("invite")}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="far fa-handshake"></i></div>
-                        <span>Приглашения</span>
+                        <span>Приглашения <span class="badge bg-success">{{$invitesCount}}</span> </span>
                     </a>
                 </li>
                 <li>
