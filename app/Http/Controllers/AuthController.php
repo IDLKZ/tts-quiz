@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgetMail;
+use App\Mail\InviteMail;
 use App\Models\User;
 use App\Restore;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Proengsoft\JsValidation\Remote\Validator;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
@@ -48,12 +51,14 @@ class AuthController extends Controller
         if($user){
             $restore = Restore::firstWhere("user_id",$user->id);
             $restore ? $restore->delete() : null;
+            $token = Str::random(12);
             Restore::create([
                "user_id"=>$user->id,
                "email"=>$user->email,
-               "token"=>Str::random(12),
+               "token"=>$token,
                 "time"=>Carbon::now()->addDay()
             ]);
+            Mail::to($user->email)->send(new ForgetMail($user,$token));
             toastSuccess("Ссылка для сброса пароля успешно отправлена на вашу почту","Успешно выполнено");
             return redirect(route("login"));
         }
