@@ -53,6 +53,12 @@
                         <span>Справочник</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('email.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-address-book"></i></div>
+                        <span>Почта</span>
+                    </a>
+                </li>
 
                 <hr>
 
@@ -95,12 +101,15 @@
                         <span>Приглашения <span class="badge bg-success">{{$invitesCount}}</span> </span>
                     </a>
                 </li>
+               @notCandidate
                 <li>
                     <a href="{{route("my-results")}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-percent"></i></div>
                         <span>Результаты</span>
                     </a>
                 </li>
+                @endnotCandidate
+
 
                 <li>
                     <a href="{{route('employeeDirectory')}}" class="waves-effect">
@@ -108,13 +117,14 @@
                         <span>Справочник</span>
                     </a>
                 </li>
-
+                @notCandidate
                 <li>
                     <a href="{{route('employee-news')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-newspaper"></i></div>
                         <span>Новости</span>
                     </a>
                 </li>
+                @endnotCandidate
 
                 <hr>
 

@@ -50,7 +50,9 @@
                                         <p class="card-text">Сотрудник(и): {{$invite->user ? $invite->user->name : "Все сотрудники отдела"}}</p>
                                         <p class="card-text">Начало: {{\Carbon\Carbon::parse($invite->start)->diffForHumans()}}</p>
                                         <p class="card-text">Окончание: {{\Carbon\Carbon::parse($invite->end)->diffForHumans()}}</p>
-                                        <a href="{{$invite->type_id == 2 ? route('belbinPass',$invite->id) : ""}}" class="btn btn-primary waves-effect waves-light">Сдать тест!</a>
+                                        <a href="/docs/belbin-example.pdf" target="_blank" download>Руководство для сдачи теста</a>
+                                        <br>
+                                        <a href="{{$invite->type_id == 2 ? route('belbinPass',$invite->id) : ""}}" class="btn btn-primary waves-effect waves-light mt-3">Сдать тест!</a>
                                     </div>
                                 </div>
 

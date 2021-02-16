@@ -251,7 +251,7 @@ class Result extends Model
             $model = new UserMotivation();
             $model->fill($user_motivation);
             $model->save();
-            return true;
+            return $model->id;
 
         }
             else{

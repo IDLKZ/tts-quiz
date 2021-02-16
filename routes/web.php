@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Employee\SolovievQuizController;
 use App\Http\Controllers\Employee\BelbinQuizController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +51,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("company",CompanyController::class);
     Route::resource("department",DepartmentController::class);
     Route::resource("user",UserController::class);
+    Route::resource("email",MailController::class);
     Route::get("/user-excel",[UserController::class,"excel"])->name("user-excel");
     Route::post("/upload-user",[UserController::class,"uploadExcel"])->name("upload-user");
     Route::resource("invite",InviteController::class);
@@ -79,14 +81,14 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/belbin-quiz/{id}",[BelbinQuizController::class,"show"])->name("belbinQuiz");
     Route::get("/belbin-pass/{id}",[BelbinQuizController::class,"pass"])->name("belbinPass")->whereNumber("id");
 
-    Route::get("/my-results",[MainController::class,"results"])->name("my-results");
-    Route::get("/soloviev-show/{id}",[MainController::class,"solovievShow"])->name("soloviev-show")->whereNumber("id");
-    Route::get("/belbin-show/{id}",[MainController::class,"belbinShow"])->name("belbin-show")->whereNumber("id");
+    Route::get("/my-results",[MainController::class,"results"])->name("my-results")->middleware("candidate");
+    Route::get("/soloviev-show/{id}",[MainController::class,"solovievShow"])->name("soloviev-show")->whereNumber("id")->middleware("candidate");
+    Route::get("/belbin-show/{id}",[MainController::class,"belbinShow"])->name("belbin-show")->whereNumber("id")->middleware("candidate");
 
     Route::get('/directory', [MainController::class, 'directory'])->name('employeeDirectory');
     Route::post('/directory/get-users', [MainController::class, 'directoryGetUsers'])->name('employeeDirectoryGetUsers');
-    Route::get("/employee-news",[MainController::class,"news"])->name("employee-news");
-    Route::get("/news-show/{id}",[MainController::class,"newsOne"])->name("news-show");
+    Route::get("/employee-news",[MainController::class,"news"])->name("employee-news")->middleware("candidate");
+    Route::get("/news-show/{id}",[MainController::class,"newsOne"])->name("news-show")->middleware("candidate");
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);

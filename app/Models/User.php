@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property integer $id
@@ -45,7 +46,7 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $fillable = ['role_id', 'department_id', 'name', 'phone', 'img', 'position', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['role_id', 'department_id','candidate', 'name', 'phone', 'img', 'position', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -122,6 +123,12 @@ class User extends Authenticatable
     public static function saveData($request){
         $model = new self();
         $input = $request->all();
+        if($request->role_id == 2){
+            $input["candidate"] = $request->has("candidate") == true ? 1 : 0;
+        }
+        else{
+            $input["candidate"] = 0;
+        }
         $input["password"] = bcrypt($input["password"]);
         if($request->hasFile("img")){
             $input["img"] = File::base64Decoder($request,"image","/uploads/users/",$request->name);
@@ -135,6 +142,10 @@ class User extends Authenticatable
 
     public static function updateData($request,$model){
         $input = $request->except('password');
+        if(Auth::user()->role_id == 1){
+            if($request->role_id == 2){$input["candidate"] = $request->has("candidate") == true ? 1 : 0;}
+            else{$input["candidate"] = 0;}
+        }
         $input["img"] = File::updateBase64($request,$model,"img","image","/uploads/users/",$request->name);
         if(strlen(trim($request['password']))){$input["password"] = bcrypt($request['password']);}
         $model->update($input);

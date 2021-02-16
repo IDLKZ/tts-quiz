@@ -41,10 +41,11 @@
                                         <h4 class="card-title font-size-16 mt-0">{{$news->title}}</h4>
                                         <br>
                                         <h5 class="card-subtitle font-size-16 mt-0">{{$news->subtitle}}</h5>
+                                        <br>
                                         <a href="{{route("news.show",$news->id)}}" class="btn btn-primary">Читать</a>
                                     </div>
                                 </div>
-                                <div class="text-center">
+                                <div class="text-center my-5">
                                     <a href="{{route("news.index")}}" class="btn btn-primary">Все новости</a>
 
                                 </div>

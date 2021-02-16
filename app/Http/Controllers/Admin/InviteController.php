@@ -39,7 +39,6 @@ class InviteController extends Controller
                 "simple_quiz"=>"required_if:invite_type,==,3",
                 "type_id"=>"required|exists:types,id",
                 "start"=>"required","end"=>"required",
-                'user_id' => 'required'
             ]
         );
         $types = Type::all();
@@ -57,9 +56,8 @@ class InviteController extends Controller
         $this->validate($request,
         ["title"=>"required|max:255", "department_id"=>"required|exists:departments,id",
             "simple_quiz"=>"required_if:invite_type,==,3",
-            "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required",'user_id' => 'required'
+            "type_id"=>"required|exists:types,id","start"=>"required","end"=>"required",
         ]);
-
         if($id = Invite::saveData($request)){
             $user = User::find($request->user_id);
             $detail = [
@@ -68,8 +66,9 @@ class InviteController extends Controller
               "user"=>$user
             ];
 
-
-            Mail::to($user->email)->send(new InviteMail($detail));
+            if($user){
+                Mail::to($user->email)->send(new InviteMail($detail));
+            }
             toastSuccess("Успешно создано приглашение","Выполнено");
             return redirect(route('invite.index'));
         }
@@ -112,7 +111,6 @@ class InviteController extends Controller
                 "simple_quiz"=>"required_if:invite_type,==,3",
                 "type_id"=>"required|exists:types,id",
                 "start"=>"required","end"=>"required",
-                'user_id' => 'required'
             ]
         );
         $types = Type::all();

@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Type;
 use App\Models\User;
 use Livewire\Component;
+use function Symfony\Component\Translation\t;
 
 class Create extends Component
 {
@@ -30,7 +31,7 @@ class Create extends Component
         "title"=>"required|max:255",
         'company_id' => 'required|exists:companies,id',
         "department_id"=>"required|exists:departments,id",
-        "user_id"=>"required|exists:users,id",
+        "user_id"=>"sometimes|nullable|exists:users,id",
         "type_id"=>"required|exists:types,id",
         "start"=>"required",
         "end"=>"required"

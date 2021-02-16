@@ -67,8 +67,12 @@
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-md-2 col-form-label">Сотрудник</label>
                                             <div class="col-md-10">
+                                                @if($invite->user)
                                                 <input type="text" class="form-control" disabled value="{{$invite->user->name}}">
                                                 <input type="hidden" name="user_id" value="{{$invite->user_id}}">
+                                                @else
+                                                    <input type="text" class="form-control" disabled value="Все сотрудники отдела">
+                                                @endif
                                             </div>
                                         </div>
 

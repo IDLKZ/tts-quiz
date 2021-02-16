@@ -54,6 +54,10 @@
                                             <input type="text" class="form-control mt-3" name="phone" placeholder="Номер телефона" value="{{$user->phone}}">
                                             <input type="email" class="form-control mt-3" name="email" placeholder="Email" value="{{$user->email}}">
                                             <input type="password" class="form-control mt-3" name="password" placeholder="Пароль">
+                                            <div class="form-check mt-3">
+                                                <input type="checkbox" name="candidate" class="form-check-input" id="exampleCheck1" {{$user->candidate == 1 ? "checked" : ""}}>
+                                                <label class="form-check-label" for="exampleCheck1">Сотрудник является кандидатом (кандидаты не могут видеть свои результаты и новости)</label>
+                                            </div>
                                             <img class="rounded-circle header-profile-user" width="180" height="180" src="{{$user->img}}">
                                             <div class="col-md-4 text-center mt-5">
                                                 <div id="upload-demo"></div>

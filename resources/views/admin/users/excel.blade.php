@@ -28,6 +28,8 @@
                                             </ul>
                                         </div>
                                     @endif
+                                    <a href="/docs/employers.xlsx" download>Скачать тестовый файл для теста</a>
+                                        <br>
                                     <form action="{{route("upload-user")}}" method="post" id="js-form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
@@ -46,6 +48,10 @@
                                             <div class="col-md-10">
                                                 <input type="file" name="excel" class="form-control">
                                             </div>
+                                        </div>
+                                        <div class="form-check mt-3">
+                                            <input type="checkbox" name="candidate" class="form-check-input" id="exampleCheck1" >
+                                            <label class="form-check-label" for="exampleCheck1">Сотрудники является кандидатами (кандидаты не могут видеть свои результаты и новости)</label>
                                         </div>
                                         <div class="text-right">
                                         <button type="submit" class="btn btn-primary">Отправить</button>

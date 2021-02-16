@@ -47,6 +47,7 @@
                                                                 <th>Компания</th>
                                                                 <th>Департамент</th>
                                                                 <th>Должность</th>
+                                                                <th>Кандидат</th>
                                                                 <th>Фото</th>
                                                                 @employee
                                                                 <th>Номер телефона</th>
@@ -64,6 +65,7 @@
                                                                     <td>{{$user->department->company->title}}</td>
                                                                     <td>{{$user->department->title}}</td>
                                                                     <td>{{$user->position}}</td>
+                                                                    <td>{{$user->candidate == 1 ? "Кандидат" : "Не кандидат"}}</td>
                                                                     <td><img class="rounded-circle header-profile-user" src="{{$user->img}}"></td>
                                                                     @admin
                                                                     <td>

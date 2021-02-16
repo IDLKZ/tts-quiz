@@ -78,7 +78,9 @@
                                                             <tr>
                                                                 <th>Тест</th>
                                                                 <th>Тип теста</th>
+                                                                @notCandidate
                                                                 <th>Результат</th>
+                                                                @endnotCandidate
                                                                 <th>Дата сдачи</th>
                                                             </tr>
                                                             </thead>
@@ -90,6 +92,7 @@
                                                                             <tr>
                                                                                 <td>{{$item->invite->title}}</td>
                                                                                 <td>{{$item->invite->type->title}}</td>
+                                                                                @notCandidate
                                                                                 <td><a href="@switch($item->invite->type_id)
                                                                                     @case(1)
                                                                                     {{route('soloviev-show',$item->id)}}
@@ -98,6 +101,7 @@
                                                                                     {{route('belbin-show',$item->id)}}
                                                                                     @break
                                                                                     @endswitch" class="btn btn-primary btn-sm waves-effect waves-light">Посмотреть</a></td>
+                                                                                 @endnotCandidate
                                                                                 <td>{{$item->pass_time}}</td>
                                                                             </tr>
                                                                         @endif

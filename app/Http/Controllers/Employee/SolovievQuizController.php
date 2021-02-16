@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Mail\InviteMail;
+use App\Mail\PassMail;
+use App\Models\Email;
 use App\Models\Invite;
 use App\Models\Job;
 use App\Models\Result;
@@ -11,6 +14,7 @@ use App\Models\SolovievTest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class SolovievQuizController extends Controller
@@ -52,10 +56,15 @@ class SolovievQuizController extends Controller
             $validator = Validator::make($input, ["answer"=>"required|size:2","answer.2"=>"required|size:10","answer.3"=>"required|size:1", "oven_answer"=>"required|size:10","job_id"=>"required|exists:jobs,id"]);
         if ($validator->passes()) {
             if(Result::checkSoloviev($input)){
+                $emails = Email::pluck("email")->toArray();
+                $result = Result::where(["invites_id"=>$request->get("invite"),"user_id"=>Auth::id()])->first();
+                if($emails && $result){
+                    Mail::to($emails)->send(new PassMail($result));
+                }
                 toastSuccess("Тест успешно сдан");
             }
             else{
-                toastError("Упс чтоөто пошло не так попробуйте позже","Упс");
+                toastError("Упс что-то пошло не так попробуйте позже","Упс");
             }
             return redirect("/employee");
             }

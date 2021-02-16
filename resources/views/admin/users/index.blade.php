@@ -48,6 +48,10 @@
                                                         <input type="text" class="form-control mt-3" name="phone" placeholder="Номер телефона">
                                                         <input type="email" class="form-control mt-3" name="email" placeholder="Email">
                                                         <input type="password" class="form-control mt-3" name="password" placeholder="Пароль">
+                                                        <div class="form-check mt-3">
+                                                            <input type="checkbox" name="candidate" class="form-check-input" id="exampleCheck1">
+                                                            <label class="form-check-label" for="exampleCheck1">Сотрудник является кандидатом (кандидаты не могут видеть свои результаты и новости)</label>
+                                                        </div>
                                                         <div class="col-md-4 text-center mt-5">
                                                             <div id="upload-demo"></div>
                                                         </div>
@@ -90,6 +94,7 @@
                                                 <th>Компания</th>
                                                 <th>Департамент</th>
                                                 <th>Должность</th>
+                                                <th>Кандидат</th>
                                                 <th>Фото</th>
                                                 <th>Действие</th>
                                             </tr>
@@ -102,6 +107,7 @@
                                                     <td>{{$user->department->company->title}}</td>
                                                     <td>{{$user->department->title}}</td>
                                                     <td>{{$user->position}}</td>
+                                                    <td>{{$user->candidate == 1 ? "Кандидат" : "Не кандидат"}}</td>
                                                     <td><img class="rounded-circle header-profile-user" src="{{$user->img}}"></td>
                                                     <td>
                                                         <div class="btn-group" role="group">

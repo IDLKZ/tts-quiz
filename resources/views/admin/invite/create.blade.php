@@ -72,7 +72,7 @@
                                             <div class="col-md-10">
                                                 <livewire:admin.invite.select.employee-select
                                                     name="user_id"
-                                                    placeholder="Выберите сотрудника"
+                                                    placeholder="Все сотрудники"
                                                     :depends-on="['department_id']"/>
                                                 @error('user_id') <span class="error">{{ $message }}</span> @enderror
                                             </div>

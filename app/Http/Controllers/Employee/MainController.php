@@ -61,10 +61,11 @@ class MainController extends Controller
     public function invite()
     {
         $results = Auth::user()->results()->pluck("invites_id")->toArray();
-        $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q) {
+
+        $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where("department_id",Auth::user()->department_id)->where(function ($q) {
             $q->where("user_id", Auth::id());
-            $q->orWhere("department_id", Auth::user()->department_id);
-        })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", $results)->paginate(15);
+            $q->orWhere("user_id",null);
+        })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", $results)->orderBy("created_at","DESC")->paginate(15);
         return view("employee.invite.index", compact("invites"));
     }
 

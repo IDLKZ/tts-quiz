@@ -37,12 +37,15 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('employee', function (){
             return Auth::user()->role_id == 2 ? true : false;
         });
+        Blade::if("notCandidate",function (){
+            return Auth::user()->candidate != 1 ? true : false;
+        });
         \view()->composer("menu",function ($view){
             if(Auth::check()){
-                $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where(function ($q) {
-                    $q->where("user_id", Auth::id());
-                    $q->orWhere("department_id", Auth::user()->department_id);
-                })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", Auth::user()->results()->pluck("invites_id")->toArray())->get();
+                $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where("department_id",Auth::user()->department_id)->where(function ($q) {
+                        $q->where("user_id", Auth::id());
+                        $q->orWhere("user_id",null);
+                    })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", Auth::user()->results()->pluck("invites_id")->toArray())->get();
            $view->with("invitesCount",$invites->count());
             }
 

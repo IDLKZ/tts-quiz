@@ -178,8 +178,15 @@ class UserController extends Controller
     public function uploadExcel(Request $request){
         $this->validate($request,["department_id"=>"required","excel"=>"required|file"]);
          $mails = User::get()->pluck("email")->toArray();
-        Excel::import(new UsersImport($mails,$request->department_id), $request->file("excel"));
-        toastr()->success("Проведен экспорт пользователей");
-        return redirect()->back();
+
+             if((in_array($request->file("excel")->getClientOriginalExtension(),["xls","xlsx"]))){
+                 Excel::import(new UsersImport($mails,$request->department_id,$request->boolean("candidate")), $request->file("excel"));
+                 toastr()->success("Проведен экспорт пользователей");
+             }
+             else{
+                 toastr()->error("Загрузите EXCEL файл");
+             }
+
+            return redirect()->back();
     }
 }

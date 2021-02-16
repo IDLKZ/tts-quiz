@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\PassMail;
 use App\Models\BelbinQuestion;
 use App\Models\BelbinUser;
+use App\Models\Email;
 use App\Models\Result;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use App\Models\BelbinQuiz as Quiz;
 use function Symfony\Component\Translation\t;
@@ -106,6 +109,11 @@ class BelbinQuiz extends Component
                     $this->invite->save();
                 }
                 BelbinUser::saveData($belbin_users,$result);
+                $emails = Email::pluck("email")->toArray();
+                $result = Result::where(["invites_id"=>$this->invite_id,"user_id"=>Auth::id()])->first();
+                if($emails && $result){
+                    Mail::to($emails)->send(new PassMail($result));
+                }
                 toastSuccess("Успешно сдано","Выполнено");
             }
             else{
