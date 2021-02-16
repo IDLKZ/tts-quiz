@@ -82,7 +82,7 @@ class MainController extends Controller
             $invite = Invite::where(function ($q) {
                 $q->where("user_id", Auth::id());
                 $q->orWhere("department_id", Auth::user()->department_id);
-            })->with(["department", "type"])->find($result->invites_id);
+            })->where("visible",1)->with(["department", "type"])->find($result->invites_id);
             if ($invite) {
                 $meaning = UserMeaning::where("result_id", $result->id)->with(["result"])->get();
                 $motivation = UserMotivation::where("result_id", $result->id)->get();
@@ -113,7 +113,7 @@ class MainController extends Controller
             $invite = Invite::where(function ($q) {
                 $q->where("user_id", Auth::id());
                 $q->orWhere("department_id", Auth::user()->department_id);
-            })->with(["department", "type"])->find($result->invites_id);
+            })->where("visible",1)->with(["department", "type"])->find($result->invites_id);
             if ($invite) {
                 $quiz = BelbinQuiz::first();
                 $belbin_user = BelbinUser::where("result_id", $result->id)->with("belbinRole")->get();

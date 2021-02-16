@@ -104,6 +104,10 @@
                                                 @error('end') <span class="error">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
+                                        <div class="form-check mt-3">
+                                            <input type="checkbox" checked name="visible" class="form-check-input" id="exampleCheck1" >
+                                            <label class="form-check-label" for="exampleCheck1">Сотрудники могут видеть свои результаты</label>
+                                        </div>
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-info">Отправить</button>
 

@@ -92,6 +92,7 @@
                                                                             <tr>
                                                                                 <td>{{$item->invite->title}}</td>
                                                                                 <td>{{$item->invite->type->title}}</td>
+                                                                                @if($item->invite->visible == 1)
                                                                                 @notCandidate
                                                                                 <td><a href="@switch($item->invite->type_id)
                                                                                     @case(1)
@@ -102,6 +103,9 @@
                                                                                     @break
                                                                                     @endswitch" class="btn btn-primary btn-sm waves-effect waves-light">Посмотреть</a></td>
                                                                                  @endnotCandidate
+                                                                                @else
+                                                                                    <td>Завершен</td>
+                                                                                @endif
                                                                                 <td>{{$item->pass_time}}</td>
                                                                             </tr>
                                                                         @endif

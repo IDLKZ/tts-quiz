@@ -54,6 +54,7 @@
                                                 @if($result->job)
                                                 <p class="mt-3 mb-2">Должность для теста: {{$result->job->title}}</p>
                                                 @endif
+                                                @if($result->invite->visible == 1)
                                                 <a href="
                                                 @switch($result->invite->type_id)
                                                 @case(1)
@@ -64,6 +65,7 @@
                                                     @break
                                                 @endswitch
                                                 " class="btn btn-success rounded-rounded text-white">Детали</a>
+                                                 @endif
 
                                             </div>
                                         </div>

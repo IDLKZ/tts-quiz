@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property integer $id
@@ -33,7 +34,7 @@ class Invite extends Model
     /**
      * @var array
      */
-    protected $fillable = ['department_id', 'user_id', 'type_id', 'title', 'simple_quiz', 'status', 'start', 'end', 'created_at', 'updated_at'];
+    protected $fillable = ['department_id', 'user_id', 'type_id', 'title', 'simple_quiz', 'status', 'visible' , 'start', 'end', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -72,13 +73,19 @@ class Invite extends Model
     }
     public static function saveData($request){
         $model = new self();
-        $model->fill($request->all());
+        $input = $request->all();
+        $input["visible"] = $request->has("visible") == 1 ? true : false;
+        $model->fill($input);
         $model->save();
         return $model->id;
     }
 
     public static function updateData($request,$model){
-        $model->update($request->all());
+        $input = $request->all();
+        if (Auth::user()->role_id == 1){
+            $input["visible"] = $request->has("visible") == 1 ? true : false;
+        }
+        $model->update($input);
         return $model->save();
     }
 }

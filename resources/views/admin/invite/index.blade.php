@@ -56,6 +56,7 @@
                                                         <th data-priority="4">Наименование</th>
                                                         <th data-priority="4">Начало теста</th>
                                                         <th data-priority="4">Конец теста</th>
+                                                        <th data-priority="4">Результат</th>
                                                         <th data-priority="4">Статус</th>
                                                     </tr>
                                                     </thead>
@@ -68,6 +69,7 @@
                                                             <td>{{$invite->title}}</td>
                                                             <td>{{$invite->start}}</td>
                                                             <td>{{$invite->end}}</td>
+                                                            <td>{{$invite->visible == 1 ? "Виден сотруднику" : "Не виден сотруднику"}}</td>
                                                             <td>{{$invite->status == 1 ? "Заверешен" : "Не завершен"}}</td>
                                                             <td>
                                                                 <div class="btn-group" role="group">
