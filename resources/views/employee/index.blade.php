@@ -59,7 +59,7 @@
                                             <ul class="nav nav-pills row justify-content-around w-75 m-auto" role="tablist">
                                                 <li class="nav-item waves-effect waves-light">
                                                     <a class="nav-link active" data-toggle="tab" href="#home-1" role="tab" aria-selected="true">
-                                                        <i class="fas fa-home mr-1"></i> <span class="d-none d-md-inline-block">Результаты рестов</span>
+                                                        <i class="fas fa-home mr-1"></i> <span class="d-none d-md-inline-block">Результаты тестов</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item waves-effect waves-light">

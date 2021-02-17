@@ -85,8 +85,8 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/soloviev-show/{id}",[MainController::class,"solovievShow"])->name("soloviev-show")->whereNumber("id")->middleware("candidate");
     Route::get("/belbin-show/{id}",[MainController::class,"belbinShow"])->name("belbin-show")->whereNumber("id")->middleware("candidate");
 
-    Route::get('/directory', [MainController::class, 'directory'])->name('employeeDirectory');
-    Route::post('/directory/get-users', [MainController::class, 'directoryGetUsers'])->name('employeeDirectoryGetUsers');
+    Route::get('/directory', [MainController::class, 'directory'])->name('employeeDirectory')->middleware("candidate");
+    Route::post('/directory/get-users', [MainController::class, 'directoryGetUsers'])->name('employeeDirectoryGetUsers')->middleware("candidate");
     Route::get("/employee-news",[MainController::class,"news"])->name("employee-news")->middleware("candidate");
     Route::get("/news-show/{id}",[MainController::class,"newsOne"])->name("news-show")->middleware("candidate");
 });
