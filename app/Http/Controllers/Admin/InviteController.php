@@ -65,7 +65,7 @@ class InviteController extends Controller
               "info"=>$request->all(),
               "user"=>$user
             ];
-
+             session()->put("name","man");
             if($user){
                 Mail::to($user->email)->send(new InviteMail($detail));
             }
