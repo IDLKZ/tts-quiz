@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Ссылка для сдачи</title>
+    <title>Напоминаем о сдаче экзамена TTS!</title>
 </head>
 <body>
 <img src="https://wallpaperaccess.com/full/2384073.jpg" height="115" width="204">
@@ -17,6 +17,16 @@
 <p>Которая состоится в период
     {{\Carbon\Carbon::parse($detail["info"]["start"])->format("d.m.Y")}} - {{\Carbon\Carbon::parse($detail["info"]["end"])->format("d.m.Y")}}
 </p>
+<b>Ссылки для сдачи экзамена:
+
+    @if($detail["info"]["type_id"] == 1)
+        <a target="_blank" href="{{route("solovievQuiz",$detail["id"])}}">Ссылка для сдачи экзамена Соловьева</a>
+    @elseif($detail["info"]["type_id"] == 2)
+        <a target="_blank" href="{{route("belbinQuiz",$detail["id"])}}">Ссылка для сдачи экзамена Белбина</a>
+    @else
+        <a target="_blank" href="https://idl.kz/employee/my-invites">Страница профиля</a>
+    @endif
+</b>
 <br>
 <b>Сдача экзамена возможна в период:
     {{\Carbon\Carbon::parse($detail["info"]["start"])->format("d.m.Y")}} - {{\Carbon\Carbon::parse($detail["info"]["end"])->format("d.m.Y")}}
