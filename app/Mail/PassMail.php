@@ -31,7 +31,7 @@ class PassMail extends Mailable
     public function build()
     {
         return $this->from('info@weplay.kz')
-            ->subject('Сотрудник тест ' . Auth::user()->name . " сдал тест")
+            ->subject('Сотрудник тест ' . Auth::user()->name . " завершил экзамен")
             ->markdown("mail.pass");
     }
 }

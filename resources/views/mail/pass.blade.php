@@ -8,12 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Сообщение от TTS-QUIZ!</title>
+    <title>Завершена сдача экзамена!</title>
 </head>
 <body>
 <img src="https://wallpaperaccess.com/full/2384073.jpg" height="115" width="204">
 <h1>Уважаемый администратор</h1>
-<p>Напоминаем, что {{\Illuminate\Support\Facades\Auth::user()->name}} сдал тест, для просмотра результата экзамена пройдите по следующей ссылке:</p>
+<p>Напоминаем, что {{\Illuminate\Support\Facades\Auth::user()->name}} сдал экзамен, для просмотра результата экзамена пройдите по следующей ссылке:</p>
 @if($result->invite->type_id == 1)
     <a href="{{route("admin-soloview-show",["userId"=>\Illuminate\Support\Facades\Auth::id(),"id"=>$result->id])}}">{{route("admin-soloview-show",["userId"=>\Illuminate\Support\Facades\Auth::id(),"id"=>$result->id])}}</a>
     @elseif($result->invite->type_id == 2)
