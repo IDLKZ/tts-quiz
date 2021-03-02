@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Employee\MainController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DepartmentController;
@@ -40,6 +41,10 @@ Route::group(["middleware"=>"guest"],function (){
 
    Route::get("/recover/{token}",[AuthController::class,"recover"])->name("recover");
    Route::post("/new-password",[AuthController::class,'newPassword'])->name("newPassword");
+});
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Application cache flushed";
 });
 
 
