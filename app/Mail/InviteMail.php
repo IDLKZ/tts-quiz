@@ -30,7 +30,7 @@ class InviteMail extends Mailable
     public function build()
     {
         return $this->from('info@weplay.kz')
-            ->subject('Ссылка для прохождения теста')
+            ->subject('Сдача экзамена')
             ->markdown("mail.invite");
     }
 }

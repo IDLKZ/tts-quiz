@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Сообщение от TTS-QUIZ!</title>
+    <title>Ссылка для сдачи</title>
 </head>
 <body>
 <img src="https://wallpaperaccess.com/full/2384073.jpg" height="115" width="204">
