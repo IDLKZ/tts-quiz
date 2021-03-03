@@ -145,6 +145,9 @@
 
 
 </section>
+<a href="{{route("admin-belbin-show",["userId"=>$result->user->id,"id"=>$result->id])}}" type="button"  class="btn btn-success btn-circle btn-xl d-flex justify-content-center align-items-center text-white" style="position: fixed; bottom: 40px; left: 40px;">
+    <i class="fa fa-arrow-left" style="font-size: 24px"></i>
+</a>
 <button type="button" id="print" onclick="printDoc()" class="btn btn-success btn-circle btn-xl" style="position: fixed; bottom: 40px; right: 40px;">
     <i class="fa fa-print" style="font-size: 24px"></i>
 </button>
