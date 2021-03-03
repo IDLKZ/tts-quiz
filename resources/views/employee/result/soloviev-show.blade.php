@@ -1,22 +1,31 @@
 @extends('layout')
 @section('content')
 
-    <!-- Start right Content here -->
+<!-- Start right Content here -->
     <!-- ============================================================== -->
     <div class="main-content">
-
         <div class="page-content">
 
             <!-- Page-Title -->
             <div class="page-title-box">
                 <div class="container-fluid">
                     <div class="row align-items-center">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <h4 class="page-title mb-1">Результаты Теста - {{$invite->title}}</h4>
+                            <a class="btn btn-primary bg-primary" >Распечатать</a>
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="/employee">Главная</a></li>
                                 <li class="breadcrumb-item active">Результаты {{$result->user->name}}</li>
                             </ol>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="float-right d-none d-md-block">
+                                    <div class="dropdown">
+                                        <a href="{{route("admin-soloview-show-pdf",["userId"=>$result->user->id,"id"=>$result->id])}}" class="btn btn-light btn-rounded dropdown-toggle">
+                                            <i class="fas fa-print"></i> Распечатать
+                                        </a>
+                                    </div>
+                                </div>
                         </div>
 
                     </div>
@@ -500,6 +509,8 @@
     </div>
     <!-- end main content-->
 
+
+
 @endsection
 @push("scripts")
     <script src="/js/apexcharts.min.js"></script>
@@ -850,4 +861,5 @@
 
 
     </script>
+
 @endpush

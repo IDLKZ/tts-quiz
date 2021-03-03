@@ -48,6 +48,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('all-result')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="far fa-flag"></i></div>
+                        <span>Результаты</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('adminDirectory')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-address-book"></i></div>
                         <span>Справочник</span>
@@ -57,6 +63,12 @@
                     <a href="{{route('email.index')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-address-book"></i></div>
                         <span>Почта</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('search')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-search"></i></div>
+                        <span>Поиск</span>
                     </a>
                 </li>
 

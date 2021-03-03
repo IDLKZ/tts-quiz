@@ -251,5 +251,4 @@
 
         })
     </script>
-
 @endpush

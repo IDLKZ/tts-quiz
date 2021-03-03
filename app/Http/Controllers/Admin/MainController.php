@@ -121,4 +121,9 @@ class MainController extends Controller
         $users = User::where('department_id', $request->get('department_id'))->with('department')->paginate(20);
         return view('directory.show', compact('users'));
     }
+
+    public function allResult(){
+        $results = Result::with(["user","invite","job"])->orderByDesc("pass_time")->paginate(12);
+        return view("admin.result.index",compact("results"));
+    }
 }

@@ -11,12 +11,21 @@
             <div class="page-title-box">
                 <div class="container-fluid">
                     <div class="row align-items-center">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <h4 class="page-title mb-1">Результаты Теста - {{$invite->title}}</h4>
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="/employee">Главная</a></li>
                                 <li class="breadcrumb-item active">Результаты {{$result->user->name}}</li>
                             </ol>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="float-right d-none d-md-block">
+                                <div class="dropdown">
+                                    <a href="{{route("admin-belbin-show-pdf",["userId"=>$result->user->id,"id"=>$result->id])}}" class="btn btn-light btn-rounded dropdown-toggle">
+                                        <i class="fas fa-print"></i> Распечатать
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

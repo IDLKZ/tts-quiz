@@ -16,6 +16,8 @@ use App\Http\Controllers\Employee\SolovievQuizController;
 use App\Http\Controllers\Employee\BelbinQuizController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\SearchController;
+use App\Http\Controllers\Admin\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,13 +66,21 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
         'create', 'store', 'update', 'edit'
     ]);
     Route::resource("/news",NewsController::class);
+//    Result
     Route::get('/employee/{userId}/soloview-show/{id}', [adminMainController::class, 'solovievShow'])->name('admin-soloview-show');
     Route::get('/employee/{userId}/belbin-show/{id}', [adminMainController::class, 'belbinShow'])->name('admin-belbin-show');
+    //PDF
+    Route::get('/employee-pdf/{userId}/soloview-show/{id}', [PdfController::class, 'solovievShowPdf'])->name('admin-soloview-show-pdf');
+    Route::get('/employee-pdf/{userId}/belbin-show/{id}', [PdfController::class, 'belbinShowPdf'])->name('admin-belbin-show-pdf');
+
 
     Route::get('/directory', [adminMainController::class, 'directory'])->name('adminDirectory');
     Route::post('/directory/get-users', [adminMainController::class, 'directoryGetUsers'])->name('adminDirectoryGetUsers');
 
+    Route::get("/search",[SearchController::class,"search"])->name("search");
+    Route::get("/result",[SearchController::class,"result"])->name("result-search");
 
+    Route::get("/all-result",[\App\Http\Controllers\Admin\MainController::class,"allResult"])->name("all-result");
 });
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
