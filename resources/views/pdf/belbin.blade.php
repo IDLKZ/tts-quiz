@@ -120,22 +120,7 @@
                     </div> <!-- end col -->
                 </div>
 
-                {{--                    Chart--}}
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body" id="chart-diff"></div>
-                        </div>
-                    </div> <!-- end col -->
-                </div>
-                {{--                    Chart--}}
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body" id="chart-roles"></div>
-                        </div>
-                    </div> <!-- end col -->
-                </div>
+
             </div>
             <!-- end container-fluid -->
         </div>
