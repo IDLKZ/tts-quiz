@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4fc1c649-d9a0-4651-93ed-a4231d5e3a15" name="Default Changelist" comment="Third Global Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tts-quiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tts-quiz.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/directory/directory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/directory/directory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/directory/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/directory/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/belbin/pass.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/belbin/pass.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/belbin/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/belbin/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/invite/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/invite/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/news/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/news/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/news/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/news/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/result/belbin-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/result/belbin-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/result/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/result/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/result/soloviev-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/result/soloviev-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/settings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/settings.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/soloviev/pass.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/soloviev/pass.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/soloviev/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/soloviev/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/asantibanez/livewire-select/src/LivewireSelect.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/asantibanez/livewire-select/src/LivewireSelect.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/vendor/krlove/eloquent-model-generator" />
+      <path value="$PROJECT_DIR$/vendor/krlove/code-generator" />
+      <path value="$PROJECT_DIR$/vendor/league/config" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/yoeunes/toastr" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/livewire/livewire" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/carbonphp/carbon-doctrine-types" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/asantibanez/livewire-select" />
+      <path value="$PROJECT_DIR$/vendor/proengsoft/laravel-jsvalidation" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/vendor/kitloong/laravel-migrations-generator" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+    </include_path>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="1mS5U5yn1OEATerQ2SPFhTJvcg5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.update-module-directories": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/OSPanel/domains/tts-quiz/public/js",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\tts-quiz\public\js" />
+      <recent name="D:\OSPanel\domains\tts-quiz\public\css" />
+      <recent name="D:\OSPanel\domains\tts-quiz\public\images" />
+      <recent name="C:\OSPanel\domains\tts-quiz\public\images" />
+      <recent name="C:\OSPanel\domains\tts-quiz\public\docs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\tts-quiz\resources\views" />
+      <recent name="C:\OSPanel\domains\tts-quiz\resources\views\employee\soloviev" />
+      <recent name="C:\OSPanel\domains\tts-quiz\resources\views\employee\invite" />
+      <recent name="C:\OSPanel\domains\tts-quiz\public\js" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4fc1c649-d9a0-4651-93ed-a4231d5e3a15" name="Default Changelist" comment="" />
+      <created>1609474163736</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609474163736</updated>
+      <workItem from="1609474166165" duration="17833000" />
+      <workItem from="1609498989335" duration="367000" />
+      <workItem from="1609566083226" duration="1881000" />
+      <workItem from="1609647586350" duration="49484000" />
+      <workItem from="1609736110686" duration="20112000" />
+      <workItem from="1609757312201" duration="11395000" />
+      <workItem from="1609779698639" duration="9284000" />
+      <workItem from="1609790947781" duration="5000" />
+      <workItem from="1609815890547" duration="15773000" />
+      <workItem from="1609836258028" duration="10708000" />
+      <workItem from="1609853454060" duration="28178000" />
+      <workItem from="1609913873668" duration="19964000" />
+      <workItem from="1610004605436" duration="141000" />
+      <workItem from="1610020053762" duration="10491000" />
+      <workItem from="1610242397254" duration="614000" />
+      <workItem from="1610243665418" duration="1320000" />
+      <workItem from="1610354516829" duration="354000" />
+      <workItem from="1610869893538" duration="4256000" />
+      <workItem from="1610947300413" duration="17036000" />
+      <workItem from="1610969748461" duration="22000" />
+      <workItem from="1610969843875" duration="56000" />
+      <workItem from="1610969958252" duration="31000" />
+      <workItem from="1611302850692" duration="1909000" />
+      <workItem from="1611304881229" duration="64000" />
+      <workItem from="1611305078192" duration="1205000" />
+      <workItem from="1611314607302" duration="176000" />
+      <workItem from="1611314930008" duration="593000" />
+      <workItem from="1611316377205" duration="593000" />
+      <workItem from="1611387392983" duration="1917000" />
+      <workItem from="1611468467273" duration="13000" />
+      <workItem from="1611469862223" duration="328000" />
+      <workItem from="1611470354021" duration="599000" />
+      <workItem from="1611475777419" duration="1728000" />
+      <workItem from="1611555612357" duration="51000" />
+      <workItem from="1612877065980" duration="10900000" />
+      <workItem from="1612927088685" duration="1404000" />
+      <workItem from="1612959144447" duration="13000" />
+      <workItem from="1613314217983" duration="3214000" />
+      <workItem from="1613317865920" duration="2079000" />
+      <workItem from="1613367876208" duration="2689000" />
+      <workItem from="1613376960025" duration="6066000" />
+      <workItem from="1613396607823" duration="9609000" />
+      <workItem from="1613445531512" duration="11537000" />
+      <workItem from="1613474322752" duration="2911000" />
+      <workItem from="1613487664317" duration="5783000" />
+      <workItem from="1613554032153" duration="4294000" />
+      <workItem from="1614660462667" duration="7169000" />
+      <workItem from="1614678278440" duration="8206000" />
+      <workItem from="1614692183233" duration="14557000" />
+      <workItem from="1614763089591" duration="10958000" />
+      <workItem from="1614779746247" duration="1709000" />
+      <workItem from="1702877285569" duration="7487000" />
+      <workItem from="1702889517553" duration="3531000" />
+    </task>
+    <task id="LOCAL-00005" summary="Third Global Commit">
+      <created>1609667262812</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609667262812</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Third Global Commit">
+      <created>1609667292027</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1609667292027</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Third Global Commit">
+      <created>1609669089736</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609669089736</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Third Global Commit">
+      <created>1609680854264</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1609680854264</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Third Global Commit">
+      <created>1609680897430</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1609680897430</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Third Global Commit">
+      <created>1609680937324</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1609680937324</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Third Global Commit">
+      <created>1609681037356</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1609681037356</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Third Global Commit">
+      <created>1609681598712</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1609681598712</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Third Global Commit">
+      <created>1609690931990</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1609690931990</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Third Global Commit">
+      <created>1609699580161</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1609699580162</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Third Global Commit">
+      <created>1609700405587</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1609700405587</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Third Global Commit">
+      <created>1609768085402</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1609768085402</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Third Global Commit">
+      <created>1609768535849</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1609768535849</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Third Global Commit">
+      <created>1609847142895</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1609847142896</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Third Global Commit">
+      <created>1609847202853</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1609847202853</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Third Global Commit">
+      <created>1609877986771</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1609877986771</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Third Global Commit">
+      <created>1609882251555</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1609882251555</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Third Global Commit">
+      <created>1609882689591</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1609882689591</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Third Global Commit">
+      <created>1609882972697</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1609882972697</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Third Global Commit">
+      <created>1609914736515</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1609914736515</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Third Global Commit">
+      <created>1609927015615</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1609927015615</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Third Global Commit">
+      <created>1609938093680</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1609938093680</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Third Global Commit">
+      <created>1609944964240</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1609944964240</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Third Global Commit">
+      <created>1610030069163</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1610030069163</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Third Global Commit">
+      <created>1610030192457</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1610030192457</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Third Global Commit">
+      <created>1610244255622</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1610244255622</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Third Global Commit">
+      <created>1610244788795</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1610244788795</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Third Global Commit">
+      <created>1610244974727</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1610244974727</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Third Global Commit">
+      <created>1610964706436</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1610964706436</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Third Global Commit">
+      <created>1611477679194</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1611477679194</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Third Global Commit">
+      <created>1612886796826</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1612886796826</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Third Global Commit">
+      <created>1612886954154</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1612886954154</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Third Global Commit">
+      <created>1613377093920</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1613377093920</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Third Global Commit">
+      <created>1613388874186</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1613388874186</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Third Global Commit">
+      <created>1613477100041</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1613477100042</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Third Global Commit">
+      <created>1613492337116</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1613492337116</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Third Global Commit">
+      <created>1613558727334</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1613558727334</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Third Global Commit">
+      <created>1614685685797</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1614685685797</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Third Global Commit">
+      <created>1614686194249</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1614686194249</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Third Global Commit">
+      <created>1614686394785</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1614686394785</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Third Global Commit">
+      <created>1614686570851</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1614686570851</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Third Global Commit">
+      <created>1614686631174</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1614686631174</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Third Global Commit">
+      <created>1614686665331</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1614686665331</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Third Global Commit">
+      <created>1614686763913</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1614686763913</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Third Global Commit">
+      <created>1614686831788</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1614686831788</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Third Global Commit">
+      <created>1614779859266</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1614779859266</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Third Global Commit">
+      <created>1614780517317</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1614780517317</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Third Global Commit">
+      <created>1614780740912</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1614780740912</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Third Global Commit">
+      <created>1614780876782</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1614780876782</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Second Global Commit" />
+    <MESSAGE value="Third Global Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Third Global Commit" />
+  </component>
+</project>

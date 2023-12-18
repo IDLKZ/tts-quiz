@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout-employee')
 @push("styles")
     @livewireStyles
     <style>
@@ -30,13 +30,13 @@
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="main-content">
+    <div>
 
         <div class="page-content">
 
             <!-- Page-Title -->
             <div class="page-title-box">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <h4 class="page-title mb-1">Пройти тест</h4>

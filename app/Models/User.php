@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,10 +44,14 @@ class User extends Authenticatable
      */
     protected $keyType = 'integer';
 
+    protected $casts=[
+        "birth_date"=>"datetime"
+    ];
+
     /**
      * @var array
      */
-    protected $fillable = ['role_id', 'department_id','candidate', 'name', 'phone', 'img', 'position', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['role_id', 'department_id','candidate', 'name', 'phone', 'img', 'position', 'email','birth_date', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -136,6 +141,9 @@ class User extends Authenticatable
         else{
             $input["img"] = "/no-image.png";
         }
+        if($input["birth_date"]){
+            $input["birth_date"] = Carbon::parse($input["birth_date"]);
+        }
         $model->fill($input);
         return $model->save();
     }
@@ -148,6 +156,9 @@ class User extends Authenticatable
         }
         $input["img"] = File::updateBase64($request,$model,"img","image","/uploads/users/",$request->name);
         if(strlen(trim($request['password']))){$input["password"] = bcrypt($request['password']);}
+        if($input["birth_date"]){
+            $input["birth_date"] = Carbon::createFromFormat("d/m/Y",$input["birth_date"]);
+        }
         $model->update($input);
         return $model->save();
     }

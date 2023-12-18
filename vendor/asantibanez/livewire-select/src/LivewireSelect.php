@@ -204,7 +204,7 @@ class LivewireSelect extends Component
     public function styles()
     {
         return [
-            'default' => 'p-2 rounded border w-full appearance-none form-control',
+            'default' => 'p-2 rounded border w-full appearance-none',
 
             'searchSelectedOption' => 'p-2 rounded border w-full bg-white flex items-center',
             'searchSelectedOptionTitle' => 'w-full text-gray-900 text-left',

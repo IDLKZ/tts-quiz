@@ -1,4 +1,4 @@
-@extends('layout')
+@extends($layout)
 @push("styles")
     <style>
         #department {
@@ -6,6 +6,7 @@
         }
     </style>
 @endpush
+
 @section('content')
     <div class="main-content">
         <div class="page-content">

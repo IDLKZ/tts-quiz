@@ -47,6 +47,7 @@
                                                         <input type="text" class="form-control mt-3" name="position" placeholder="Должность">
                                                         <input type="text" class="form-control mt-3" name="phone" placeholder="Номер телефона">
                                                         <input type="email" class="form-control mt-3" name="email" placeholder="Email">
+                                                        <input type="date" class="form-control mt-3" name="birth_date" placeholder="Дата рождения">
                                                         <input type="password" class="form-control mt-3" name="password" placeholder="Пароль">
                                                         <div class="form-check mt-3">
                                                             <input type="checkbox" name="candidate" class="form-check-input" id="exampleCheck1">
@@ -194,6 +195,7 @@
 
             });
         });
+
 
     </script>
 @endpush

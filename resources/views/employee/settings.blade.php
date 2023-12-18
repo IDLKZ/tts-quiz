@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
 @endpush
 @section('content')
-    <div class="main-content">
+    <div>
         <div class="page-content">
             <div class="page-title-box">
                 <div class="container-fluid">

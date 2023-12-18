@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('layout-employee')
 @section('content')
 
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="main-content">
+    <div>
 
         <div class="page-content">
 
@@ -26,7 +26,7 @@
             <!-- end page title end breadcrumb -->
 
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row justify-content-center">
                         @if($invite)
                             <div class="col-md-8 col-xl-8 text-center">

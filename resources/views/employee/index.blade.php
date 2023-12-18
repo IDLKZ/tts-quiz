@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout-employee')
 @push('styles')
     <style>
         .profile-banner {
@@ -27,10 +27,10 @@
     </style>
 @endpush
 @section('content')
-    <div class="main-content">
+    <div>
         <div class="page-content">
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card">
@@ -179,7 +179,7 @@
 
 
                     </div>
-                    <!-- end container-fluid -->
+                    <!-- end container -->
                 </div>
             </div>
         </div>

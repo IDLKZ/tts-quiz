@@ -1,0 +1,17 @@
+.employee-nav-link{
+    color: #0E1F31;
+}
+.employee-nav-link:hover{
+    color: #F09E32;
+}
+
+.employee-nav-link-active{
+    color: #F09E32;
+}
+
+.main-color{
+    color: #F09E32;
+}
+.main-bg{
+    background-color: #F09E32;
+}

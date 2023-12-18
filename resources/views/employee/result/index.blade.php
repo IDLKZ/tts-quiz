@@ -1,15 +1,15 @@
-@extends('layout')
+@extends('layout-employee')
 @section('content')
 
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="main-content">
+    <div>
 
         <div class="page-content">
 
             <!-- Page-Title -->
             <div class="page-title-box">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <h4 class="page-title mb-1">Результаты</h4>
@@ -25,7 +25,7 @@
             </div>
             <!-- end page title end breadcrumb -->
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             @if($results->isNotEmpty())

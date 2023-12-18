@@ -48,11 +48,29 @@ class AppServiceProvider extends ServiceProvider
                     })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", Auth::user()->results()->pluck("invites_id")->toArray())->get();
            $view->with("invitesCount",$invites->count());
             }
-
         });
 
-
-
+        \view()->composer("employee-navbar",function ($view){
+            if(Auth::check()){
+                $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where("department_id",Auth::user()->department_id)->where(function ($q) {
+                    $q->where("user_id", Auth::id());
+                    $q->orWhere("user_id",null);
+                })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", Auth::user()->results()->pluck("invites_id")->toArray())->get();
+                $view->with("invitesCount",$invites->count());
+            }
+        });
+        \view()->composer("directory.directory",function ($view){
+            if(Auth::check()){
+                $layout = Auth::user()->role_id == 1 ? 'layout' : 'layout-employee';
+                $view->with("layout",$layout);
+            }
+        });
+        \view()->composer("directory.show",function ($view){
+            if(Auth::check()){
+                $layout = Auth::user()->role_id == 1 ? 'layout' : 'layout-employee';
+                $view->with("layout",$layout);
+            }
+        });
 
 
     }

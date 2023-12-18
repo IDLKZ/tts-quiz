@@ -53,6 +53,7 @@
                                             <input type="text" class="form-control mt-3" name="position" placeholder="Должность" value="{{$user->position}}">
                                             <input type="text" class="form-control mt-3" name="phone" placeholder="Номер телефона" value="{{$user->phone}}">
                                             <input type="email" class="form-control mt-3" name="email" placeholder="Email" value="{{$user->email}}">
+                                            <input type="text" class="form-control mt-3" id="birth_date" name="birth_date" placeholder="Дата рождения" value="{{$user->birth_date != null ?$user->birth_date->format('d/m/Y') : null}}">
                                             <input type="password" class="form-control mt-3" name="password" placeholder="Пароль">
                                             <div class="form-check mt-3">
                                                 <input type="checkbox" name="candidate" class="form-check-input" id="exampleCheck1" {{$user->candidate == 1 ? "checked" : ""}}>
@@ -135,6 +136,10 @@
                 $("#submit").attr("disabled",false);
 
             });
+        });
+
+        $('#birth_date').datepicker({
+            format: 'dd/mm/yyyy',
         });
 
     </script>
