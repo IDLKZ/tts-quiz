@@ -22,7 +22,24 @@
                         <span>Новости</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="{{route('course.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-book"></i></div>
+                        <span>Курсы</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('lesson.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-video"></i></div>
+                        <span>Видеоуроки</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('question.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-question-circle"></i></div>
+                        <span>Тесты</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{{route('user.index')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-address-card"></i></div>
@@ -39,6 +56,12 @@
                     <a href="{{route('department.index')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="fas fa-hockey-puck"></i></div>
                         <span>Департамент</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('event.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-calendar"></i></div>
+                        <span>Мероприятия</span>
                     </a>
                 </li>
                 <li>

@@ -79,6 +79,10 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
 
     Route::get("/search",[SearchController::class,"search"])->name("search");
     Route::get("/result",[SearchController::class,"result"])->name("result-search");
+    Route::resource("/course",\App\Http\Controllers\Admin\CourseController::class);
+    Route::resource("/lesson",\App\Http\Controllers\Admin\LessonController::class);
+    Route::resource("/question",\App\Http\Controllers\Admin\QuestionController::class);
+    Route::resource("/event",\App\Http\Controllers\Admin\EventController::class);
 
     Route::get("/all-result",[\App\Http\Controllers\Admin\MainController::class,"allResult"])->name("all-result");
 });
@@ -108,4 +112,5 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);
     Route::get('/get-employees/{id}', [HomeController::class, 'getEmployee'])->name('employee-getUser');
+    Route::post('image-upload', [\App\Http\Controllers\ImageController::class, 'storeImage'])->name('image.upload');
 });

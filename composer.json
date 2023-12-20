@@ -18,7 +18,9 @@
         "livewire/livewire": "^2.3",
         "maatwebsite/excel": "^3.1",
         "matanyadaev/laravel-eloquent-spatial": "^2.10",
+        "pharaonic/livewire-select2": "^1.2",
         "proengsoft/laravel-jsvalidation": "^4.4",
+        "rappasoft/laravel-livewire-tables": "^2.15",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
@@ -30,7 +32,8 @@
         "laravel/sail": "^0.0.5",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "reliese/laravel": "^1.2"
     },
     "config": {
         "optimize-autoloader": true,
