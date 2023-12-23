@@ -60,7 +60,7 @@
                                                 <tbody>
                                                 @foreach($departments as $department)
                                                 <tr>
-                                                   <td><img class="rounded-circle header-profile-user" src="{{$department->logo}}" alt="{{$department->title}}"></td>
+                                                   <td><img class="rounded-circle header-profile-user" src="{{$department->logo}}"></td>
                                                    <td>{{$department->company->title}}</td>
                                                    <td>{{$department->title}}</td>
                                                    <td>{!! $department->description !!}</td>

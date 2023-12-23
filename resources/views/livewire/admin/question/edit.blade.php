@@ -10,7 +10,7 @@
             </div>
         @endif
     </div>
-    <div class="col-12">
+    <div class="col-12 bg-white shadow-lg rounded-lg p-3">
         <form id="js-form" action="{{route("question.update",$question->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("PUT")

@@ -33,7 +33,6 @@ class Event extends Model
 	protected $casts = [
 		'start_date' => 'datetime',
 		'end_date' => 'datetime',
-		'location' => 'point',
         'departments' => 'json'
 	];
 

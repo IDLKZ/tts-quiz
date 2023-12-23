@@ -1,7 +1,4 @@
 @extends("layout")
-
-
-
 @section("content")
 
     <div class="main-content">
@@ -29,7 +26,6 @@
                 <div class="container">
                         <livewire:admin.course-create/>
                         <!-- end col -->
-
                     <!-- end row -->
                 </div>
                 <!-- end container-fluid -->
@@ -37,8 +33,6 @@
             <!-- end page-content-wrapper -->
         </div>
         <!-- End Page-content -->
-
-
 
     </div>
 @endsection

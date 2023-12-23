@@ -44,6 +44,7 @@
                                             <input type="hidden" name="phone" value="{{Auth::user()->phone}}">
                                             <label class="mt-3">Email</label>
                                             <input type="email" readonly name="email" class="form-control" value="{{Auth::user()->email}}">
+                                            <input type="text" class="form-control mt-3" id="birth_date" name="birth_date" placeholder="Дата рождения" value="{{Auth::user()->birth_date != null ?Auth::user()->birth_date->format('d/m/Y') : null}}">
                                             <label class="mt-3">Пароль</label>
                                             <input type="password" class="form-control" name="password" placeholder="Пароль">
                                             <img class="rounded-circle header-profile-user" src="{{Auth::user()->img}}">
@@ -122,6 +123,8 @@
 
             });
         });
-
+        $('#birth_date').datepicker({
+            format: 'dd/mm/yyyy',
+        });
     </script>
 @endpush

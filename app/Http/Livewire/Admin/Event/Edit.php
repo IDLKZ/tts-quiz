@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Event;
 
 use App\Http\Requests\Event\EventCreateRequest;
+use App\Http\Requests\Event\EventEditRequest;
 use App\Models\Event;
 use Livewire\Component;
 
@@ -26,7 +27,7 @@ class Edit extends Component
         $this->end_date = $event->end_date ? $event->end_date->format("d/m/Y H:i") : null;
     }
     protected function rules(){
-        return (new EventCreateRequest())->rules();
+        return (new EventEditRequest())->rules();
     }
 
     public function updated($propertyName)

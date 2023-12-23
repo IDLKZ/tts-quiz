@@ -65,6 +65,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('forum.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-comment"></i></div>
+                        <span>Форум</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('invite.index')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="far fa-handshake"></i></div>
                         <span>Приглашения</span>
@@ -74,6 +80,30 @@
                     <a href="{{route('all-result')}}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="far fa-flag"></i></div>
                         <span>Результаты</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('literature-category.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-book"></i></div>
+                        <span>Категория литературы</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('literature.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-book"></i></div>
+                        <span>Литература</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('document-category.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-book"></i></div>
+                        <span>Категория документов</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('document.index')}}" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="fas fa-book"></i></div>
+                        <span>Рабочие документы</span>
                     </a>
                 </li>
                 <li>

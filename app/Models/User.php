@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Upload;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,7 +36,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class User extends Authenticatable
 {
-
+    use Upload;
     use HasFactory, Notifiable;
     /**
      * The "type" of the auto-incrementing ID.

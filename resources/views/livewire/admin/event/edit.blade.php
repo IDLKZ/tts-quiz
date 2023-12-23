@@ -10,8 +10,9 @@
             </div>
         @endif
     </div>
-    <div class="col-12">
-        <form id="js-form" action="{{route("event.store")}}" method="post" enctype="multipart/form-data">
+    <div class="col-12 bg-white shadow-lg rounded-lg p-3">
+        <form id="js-form" action="{{route("event.update",$event->id)}}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="form-group">
                 <label for="example-text-input" class=" col-form-label">Наименование События *</label>
@@ -28,6 +29,9 @@
             </div>
             <div class="form-group">
                 <label for="example-text-input" class=" col-form-label">Изображение курса *</label>
+                <div class="my-5">
+                    <img src="{{$event->getFile("image_url")}}" class="max-w-[300px]">
+                </div>
                 <div>
                     <input class="form-control  @error('image_url') is-invalid @enderror" name="image_url" type="file" >
                 </div>
@@ -42,13 +46,13 @@
             <div class="form-group"  wire:ignore>
                 <label for="example-text-input" class=" col-form-label">Дата начала *</label>
                 <div>
-                    <input id="start_date"  wire:model="start_date" class="form-control my-date @error('start_date') is-invalid @enderror" name="start_date" type="text" value="{{old("start_date")}}" >
+                    <input id="start_date"  wire:model="start_date" class="form-control my-date @error('start_date') is-invalid @enderror" name="start_date" type="text" value="{{$start_date}}" >
                 </div>
             </div>
             <div class="form-group" wire:ignore>
                 <label for="example-text-input" class=" col-form-label">Дата окончания *</label>
                 <div>
-                    <input id="end_date"  wire:model="end_date" class="form-control my-date  @error('end_date') is-invalid @enderror" name="end_date" type="text" value="{{old("end_date")}}" >
+                    <input id="end_date"  wire:model="end_date" class="form-control my-date  @error('end_date') is-invalid @enderror" name="end_date" type="text" value="{{$end_date}}" >
                 </div>
             </div>
             <div class="text-right">

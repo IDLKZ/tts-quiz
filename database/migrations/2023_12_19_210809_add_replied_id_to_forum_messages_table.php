@@ -14,7 +14,7 @@ class AddRepliedIdToForumMessagesTable extends Migration
     public function up()
     {
         Schema::table('forum_messages', function (Blueprint $table) {
-            $table->foreignId("message_id")->references("id")->on("forum_messages")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("message_id")->nullable()->references("id")->on("forum_messages")->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

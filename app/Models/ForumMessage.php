@@ -69,6 +69,6 @@ class ForumMessage extends Model
 
 	public function forum_messages()
 	{
-		return $this->hasMany(ForumMessage::class, 'message_id');
+		return $this->hasMany(ForumMessage::class, 'message_id',"id")->withSum("forum_message_ratings","rating");
 	}
 }
