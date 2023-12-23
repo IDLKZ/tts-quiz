@@ -9,7 +9,7 @@
 
             <!-- Page-Title -->
             <div class="page-title-box">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <h4 class="page-title mb-1">Главная</h4>
@@ -24,7 +24,7 @@
             <!-- end page title end breadcrumb -->
 
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <!-- end row -->
                     @if($news)
                         <div class="row mt-5">
@@ -32,11 +32,14 @@
                                 <h2>Актуальные новости</h2>
                             </div>
 
-                            <div class="col-md-8 col-xl-8 offset-md-2">
+                            <div class="col-md-6 col-xl-6 offset-md-3">
 
                                 <!-- Simple card -->
                                 <div class="card">
-                                    <img class="card-img-top img-fluid" src="{{$news->img}}" alt="Card image cap">
+                                    <div class="flex justify-content-center p-4">
+                                        <img class="card-img-top img-fluid max-w-[300px]" src="{{$news->img}}" alt="Card image cap">
+                                    </div>
+
                                     <div class="card-body">
                                         <h4 class="card-title font-size-16 mt-0">{{$news->title}}</h4>
                                         <br>
@@ -121,22 +124,6 @@
             <!-- end page-content-wrapper -->
         </div>
         <!-- End Page-content -->
-
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        Корпоративный портал
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-right d-none d-sm-block">
-                            <i class="mdi mdi-heart text-danger"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
     <!-- end main content-->
     <!-- end main content-->

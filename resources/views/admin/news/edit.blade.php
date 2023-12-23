@@ -71,6 +71,10 @@
                                                 </textarea>
                                             </div>
                                         </div>
+                                        <div class="form-check mt-3">
+                                            <input type="checkbox" name="is_main" class="form-check-input" id="is_main" checked="{{$news->is_main ? true : false}}">
+                                            <label class="form-check-label" for="is_main">На главной</label>
+                                        </div>
                                         <div class="form-group row">
                                             <img src="{{$news->img}}" width="75" height="75">
                                             <label for="example-text-input" class="col-md-2 col-form-label">Изображение новости</label>

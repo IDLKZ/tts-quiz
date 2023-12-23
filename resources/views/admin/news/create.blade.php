@@ -68,6 +68,10 @@
                                                 <textarea id="editor" name="description"></textarea>
                                             </div>
                                         </div>
+                                        <div class="form-check mt-3">
+                                            <input type="checkbox" name="is_main" class="form-check-input" id="is_main">
+                                            <label class="form-check-label" for="is_main">На главной</label>
+                                        </div>
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-md-2 col-form-label">Изображение новости</label>
                                             <div class="col-md-10">

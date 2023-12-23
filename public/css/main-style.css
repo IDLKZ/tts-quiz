@@ -6,8 +6,32 @@
     border:1px solid #ced4da!important;
     padding: 10px!important;
 }
+.main-content{
+    margin-left: 0!important;
+}
+.page-content{
+    padding: 0!important;
+}
 .gj-icon{
  top:10px!important;
  bottom:10px!important;
  right: 5px!important;
+}
+#sidebar ul li a {
+    padding:10px 0;
+    display:block;
+    color:rgba(255,255,255,.8);
+    border-bottom:none!important;
+}
+.avatar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.waves-effect-active{
+    color: #f8b739!important;
+}
+.profile-banner{
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
 }

@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card">

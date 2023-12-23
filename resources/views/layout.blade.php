@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/main-style.css')}}">
     <link rel="stylesheet" href="{{asset('css/grt-youtube-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" type="text/css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireStyles
@@ -30,20 +31,41 @@
     </style>
 </head>
 
-<body data-topbar="colored">
-
-<!-- Begin page -->
-<div id="layout-wrapper">
-    @include('header')
+<body>
+<div class="wrapper d-flex align-items-stretch">
     @include('menu')
-    <!-- ============================================================== -->
-    @yield('content')
-</div>
-<!-- END layout-wrapper -->
-<!-- Laravel Javascript Validation -->
 
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="flex w-full align-items-center">
+                    <div class="w-1/2">
+                        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle Menu</span>
+                        </button>
+                    </div>
+                    <div class="w-1/2">
+                        <div class="text-right">
+                            <button class="btn header-item waves-effect d-inline text-center">
+                                <div class="flex justify-content-center">
+                                    <img class="rounded-circle header-profile-user" src="{{Auth::user()->img}}" alt="Header Avatar">
+                                </div>
+                                <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            @yield('content')
+        </div>
+    </div>
+</div>
 <script src="{{asset('js/script.js')}}"></script>
 <script src="{{asset('js/grt-youtube-popup.js')}}"></script>
+<script src="{{asset('js/sidebar.js')}}"></script>
 <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @livewireScripts

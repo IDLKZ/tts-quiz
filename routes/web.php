@@ -88,6 +88,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("/literature",\App\Http\Controllers\Admin\LiteratureController::class);
     Route::resource("/document",\App\Http\Controllers\Admin\DocumentController::class);
     Route::resource("/document-category",\App\Http\Controllers\Admin\DocumentCategoryController::class);
+    Route::resource("/task",\App\Http\Controllers\Admin\TaskController::class);
 
     Route::get("/all-result",[\App\Http\Controllers\Admin\MainController::class,"allResult"])->name("all-result");
 });
