@@ -1,4 +1,4 @@
-@extends('layout-employee')
+@extends($layout)
 @section('content')
 
 <!-- Start right Content here -->

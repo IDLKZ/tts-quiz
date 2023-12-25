@@ -71,7 +71,24 @@ class AppServiceProvider extends ServiceProvider
                 $view->with("layout",$layout);
             }
         });
-
+        \view()->composer("employee.result.index",function ($view){
+            if(Auth::check()){
+                $layout = Auth::user()->role_id == 1 ? 'layout' : 'layout-employee';
+                $view->with("layout",$layout);
+            }
+        });
+        \view()->composer("employee.result.soloviev-show",function ($view){
+            if(Auth::check()){
+                $layout = Auth::user()->role_id == 1 ? 'layout' : 'layout-employee';
+                $view->with("layout",$layout);
+            }
+        });
+        \view()->composer("employee.result.belbin-show",function ($view){
+            if(Auth::check()){
+                $layout = Auth::user()->role_id == 1 ? 'layout' : 'layout-employee';
+                $view->with("layout",$layout);
+            }
+        });
 
     }
 }

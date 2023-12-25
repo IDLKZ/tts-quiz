@@ -17,22 +17,35 @@
                 </div>
                 <div class="grid grid-cols-12 my-3 gap-5">
                     @if($news)
-                        <div class="col-span-12 lg:col-span-9 relative  h-[300px] md:h-[400px] lg:h-[600px] lg:mx-5">
-                            <div class="absolute rounded-xl z-10 h-[300px] md:h-[400px] lg:h-[600px] brightness-50 w-full bg-cover bg-center bg-no-repeat" style="background-image:url({{$news->img}})"></div>
-                            <div class="absolute z-20 bottom-0 w-full p-4">
-                                <p class="text-white font-weight-bold text-md lg:text-lg xl:text-2xl">
-                                    {{$news->title}}
-                                </p>
-                                <div class="lg:flex justify-content-between align-items-center">
-                                    <p class="text-white text-xs lg:text-md my-3 lg:w-3/4">
-                                        {{strlen($news->subtitle) > 30 ? trim($news->subtitle,30) . "..." : $news->subtitle}}
+                        <div class="col-span-12 lg:col-span-9">
+                            <section class="relative  h-[300px] md:h-[400px] lg:h-[600px] lg:mx-5">
+                                <div class="absolute rounded-xl z-10 h-[300px] md:h-[400px] lg:h-[600px] brightness-50 w-full bg-cover bg-center bg-no-repeat" style="background-image:url({{$news->img}})"></div>
+                                <div class="absolute z-20 bottom-0 w-full p-4">
+                                    <p class="text-white font-weight-bold text-md lg:text-lg xl:text-2xl">
+                                        {{$news->title}}
                                     </p>
-                                    <a href="{{route("news-show",$news->id)}}" class="btn btn-warning text-white">
-                                        Читать
+                                    <div class="lg:flex justify-content-between align-items-center">
+                                        <p class="text-white text-xs lg:text-md my-3 lg:w-3/4">
+                                            {{strlen($news->subtitle) > 30 ? trim($news->subtitle,30) . "..." : $news->subtitle}}
+                                        </p>
+                                        <a href="{{route("news-show",$news->id)}}" class="btn btn-warning text-white">
+                                            Читать
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </section>
+                            <section class="my-4">
+                                <div class="w-full">
+                                    <a href="#" class="w-full flex flex-col w-full items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="">
+                                        <div class="flex flex-col justify-between p-4 leading-normal">
+                                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                        </div>
                                     </a>
                                 </div>
-
-                            </div>
+                            </section>
                         </div>
                         <div class="col-span-12 lg:col-span-3">
                             @if($tasks->isNotEmpty())
