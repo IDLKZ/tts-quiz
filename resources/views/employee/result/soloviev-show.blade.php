@@ -1,4 +1,9 @@
 @extends($layout)
+@push('styles')
+    <style>
+        .collapse {visibility: inherit!important;}
+    </style>
+@endpush
 @section('content')
 
 <!-- Start right Content here -->
