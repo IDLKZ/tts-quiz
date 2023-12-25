@@ -49,9 +49,10 @@ class CourseController extends Controller
             }
             $course = Course::add($input);
             $course->uploadFile($request->file("image_url"),"image_url");
+            toastSuccess("Успешно создан курс","Выполнено!");
         }
         catch (\Exception $exception){
-
+            toastError($exception->getMessage(),"Ошибка");
         }
         return redirect()->route("course.index");
     }
@@ -101,6 +102,7 @@ class CourseController extends Controller
             if($request->file("image_url")){
                 $course->uploadFile($request->file("image_url"),"image_url");
             }
+            toastSuccess("Успешно обновлен курс","Выполнено!");
         }
         return redirect()->route("course.index");
     }
@@ -115,6 +117,7 @@ class CourseController extends Controller
     {
         if($course = Course::find($id)){
             $course->delete();
+            toastSuccess("Успешно удален курс","Выполнено!");
         }
         return redirect()->route("course.index");
     }

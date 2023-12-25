@@ -50,6 +50,7 @@ class DocumentController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document.index");
     }
@@ -80,6 +81,7 @@ class DocumentController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document.index");
     }
@@ -108,6 +110,7 @@ class DocumentController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document.index");
     }
@@ -127,6 +130,7 @@ class DocumentController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document.index");
     }

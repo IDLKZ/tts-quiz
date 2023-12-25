@@ -50,7 +50,7 @@ class LessonController extends Controller
             }
         }
         catch (\Exception $exception){
-                dd($exception);
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("lesson.index");
     }

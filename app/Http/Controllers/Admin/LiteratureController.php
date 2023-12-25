@@ -52,6 +52,7 @@ class LiteratureController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature.index");
     }
@@ -82,6 +83,7 @@ class LiteratureController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature.index");
     }
@@ -110,6 +112,7 @@ class LiteratureController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature.index");
     }
@@ -129,6 +132,7 @@ class LiteratureController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature.index");
     }

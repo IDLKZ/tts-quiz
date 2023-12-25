@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout-employee')
 @push("styles")
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropme@latest/dist/cropme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
