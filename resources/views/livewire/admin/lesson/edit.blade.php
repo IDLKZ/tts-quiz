@@ -11,7 +11,8 @@
         @endif
     </div>
     <div class="col-12 bg-white shadow-lg rounded-lg p-3">
-        <form id="js-form" action="{{route("lesson.store")}}" method="post" enctype="multipart/form-data">
+        <form id="js-form" action="{{route("lesson.update",$lesson->id)}}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="form-group">
                 <label for="example-text-input" class=" col-form-label">Курс *</label>
@@ -83,7 +84,7 @@
                         </div>
                         <label for="example-text-input" class=" col-form-label">Ссылка видеоурока *</label>
                         <div>
-                            <input wire:model="video_url" class="form-control  @error('video_url') is-invalid @enderror" name="video_url" type="text" value="{{old("video_url")}}" >
+                            <input wire:model="video_url" class="form-control  @error('video_url') is-invalid @enderror" name="video_url" type="text" >
                         </div>
                     </div>
                 @else
@@ -94,7 +95,7 @@
                     <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Видео *</label>
                         <div>
-                            <input class="form-control  @error('video') is-invalid @enderror" name="video_url" type="file" >
+                            <input wire:model="video_url" class="form-control  @error('video') is-invalid @enderror" name="video_url" type="file" >
                         </div>
                     </div>
                 @endif

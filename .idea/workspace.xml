@@ -5,35 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fc1c649-d9a0-4651-93ed-a4231d5e3a15" name="Default Changelist" comment="Third Global Commit">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/tts-quiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tts-quiz.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Task/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Task/Edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Lesson/LessonEditRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Lesson/LessonEditRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Course.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Lesson.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Lesson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/directory/directory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/directory/directory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/directory/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/directory/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/belbin/pass.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/belbin/pass.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/employee-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/employee-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/users/admin1W3bbo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tasks/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/tasks/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/tasks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee-navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee-navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employee/belbin/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/belbin/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employee/invite/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/invite/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employee/news/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/news/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employee/news/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/news/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/result/belbin-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/result/belbin-show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/result/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/result/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/result/soloviev-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/result/soloviev-show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employee/settings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/settings.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/soloviev/pass.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/soloviev/pass.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/soloviev/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/soloviev/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/asantibanez/livewire-select/src/LivewireSelect.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/asantibanez/livewire-select/src/LivewireSelect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout-employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout-employee.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/lesson/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/lesson/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/task/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/task/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/belbin-quiz.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/belbin-quiz.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +50,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -196,6 +199,13 @@
       <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/vendor/kitloong/laravel-migrations-generator" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/phayes/geophp" />
+      <path value="$PROJECT_DIR$/vendor/matanyadaev/laravel-eloquent-spatial" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-package-tools" />
+      <path value="$PROJECT_DIR$/vendor/reliese/laravel" />
+      <path value="$PROJECT_DIR$/vendor/rappasoft/laravel-livewire-tables" />
+      <path value="$PROJECT_DIR$/vendor/pharaonic/livewire-select2" />
+      <path value="$PROJECT_DIR$/vendor/staudenmeir/eloquent-json-relations" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -213,7 +223,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.update-module-directories": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/OSPanel/domains/tts-quiz/public/js",
+    "last_opened_file_path": "D:/OSPanel/domains/tts-quiz/resources/views/employee/lesson",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -225,11 +235,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\tts-quiz\public\js" />
-      <recent name="D:\OSPanel\domains\tts-quiz\public\css" />
-      <recent name="D:\OSPanel\domains\tts-quiz\public\images" />
-      <recent name="C:\OSPanel\domains\tts-quiz\public\images" />
-      <recent name="C:\OSPanel\domains\tts-quiz\public\docs" />
+      <recent name="D:\OSPanel\domains\tts-quiz\resources\views\employee\lesson" />
+      <recent name="D:\OSPanel\domains\tts-quiz\resources\views\employee\course" />
+      <recent name="D:\OSPanel\domains\tts-quiz\resources\views\admin\tasks" />
+      <recent name="D:\OSPanel\domains\tts-quiz\resources\views\admin\document" />
+      <recent name="D:\OSPanel\domains\tts-quiz\app\Http\Requests\Document" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OSPanel\domains\tts-quiz\resources\views" />
@@ -304,7 +314,13 @@
       <workItem from="1614763089591" duration="10958000" />
       <workItem from="1614779746247" duration="1709000" />
       <workItem from="1702877285569" duration="7487000" />
-      <workItem from="1702889517553" duration="3531000" />
+      <workItem from="1702889517553" duration="3605000" />
+      <workItem from="1702995596735" duration="4674000" />
+      <workItem from="1703036020020" duration="58000" />
+      <workItem from="1703036087304" duration="10000" />
+      <workItem from="1703261399054" duration="30000" />
+      <workItem from="1703302157938" duration="32628000" />
+      <workItem from="1703385383846" duration="26422000" />
     </task>
     <task id="LOCAL-00005" summary="Third Global Commit">
       <created>1609667262812</created>
@@ -649,7 +665,7 @@
       <option name="project" value="LOCAL" />
       <updated>1614780876782</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

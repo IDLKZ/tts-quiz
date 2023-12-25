@@ -36,6 +36,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use Upload;
+    use \Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
 	protected $table = 'tasks';
 
 	protected $casts = [
@@ -69,6 +70,11 @@ class Task extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
+
+    public function getUsers()
+    {
+       return User::whereIn("id",$this->users)->get();
+    }
 
 	public function tasks_comments()
 	{

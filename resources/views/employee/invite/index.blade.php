@@ -26,7 +26,7 @@
             <!-- end page title end breadcrumb -->
 
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row mt-5">
                         @if($invites->isNotEmpty())
                             @foreach($invites as $invite)

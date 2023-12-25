@@ -6,57 +6,48 @@
     <div>
 
         <div class="page-content">
-
-            <!-- Page-Title -->
-            <div class="page-title-box">
-                <div class="container">
-                    <div class="row align-newss-center">
-                        <div class="col-md-12">
-                            <h4 class="page-title mb-1">Новости</h4>
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-news"><a href="{{route('employeeHome')}}">Главная</a></li>
-                                <li class="breadcrumb-news active">Новости</li>
-                            </ol>
-                        </div>
-
-                    </div>
-
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-12 col-md-6 my-2">
+                    <p class="text-lg font-bold lg:text-xl xl:text-2xl">
+                        Новость
+                    </p>
+                    <p class="text-md font-bold lg:text-lg">
+                        {{$news->title}}
+                    </p>
+                </div>
+                <div class="col-12 col-md-6 my-2 text-right">
+                    <a href="/employee/employee-news" class="btn btn-warning text-white px-4 py-2">
+                        Новости
+                    </a>
                 </div>
             </div>
-            <!-- end page title end breadcrumb -->
-            <div class="page-content-wrapper">
-                <div class="container">
-                    <div class="row mt-5">
-
-                        @if($news)
-
-                                <div class="col-md-8 col-xl-8 offset-md-2">
-                                    <!-- Simple card -->
-                                    <div class="card">
-                                        <img class="card-img-top img-fluid" src="{{$news->img}}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title font-size-16 mt-0">{{$news->title}}</h4>
-                                            <h5 class="card-subtitle font-size-16 mt-0">{{$news->subtitle}}</h5>
-                                            <div class="card-text">
-                                                {!! $news->description !!}
-                                            </div>
-                                        </div>
-                                    </div>
+        </div>
+        <div class="container">
+            <div class="row mt-5">
+                @if($news)
+                    <div class="col-12">
+                        <!-- Simple card -->
+                        <div class="card bg-transparent">
+                            <img class="card-img-top img-fluid" src="{{$news->img}}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="text-lg font-bold lg:text-xl xl:text-2xl">{{$news->title}}</p>
+                                <p class="text-lg card-subtitle font-size-16 mt-0 font-size-32">{{$news->subtitle}}</p>
+                                <div class="card-text text-md my-4">
+                                    {!! $news->description !!}
                                 </div>
-
-                        @endif
-
+                            </div>
+                        </div>
                     </div>
-                    <!-- end row -->
 
-                </div>
-                <!-- end container-fluid -->
+                @endif
+
             </div>
+            <!-- end row -->
 
-            <!-- end page-content-wrapper -->
         </div>
         <!-- End Page-content -->
-
+        </div>
     </div>
     <!-- end main content-->
 

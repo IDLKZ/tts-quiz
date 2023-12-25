@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Employee;
+use App\Http\Requests\Forum\ForumCreateRequest;
 use App\Models\BelbinQuiz;
 use App\Models\BelbinUser;
 use App\Models\Company;
+use App\Models\Course;
 use App\Models\Department;
+use App\Models\Forum;
 use App\Models\Invite;
 use App\Models\JobMotive;
+use App\Models\Lesson;
 use App\Models\Motive;
 use App\Models\News;
 use App\Models\Result;
+use App\Models\Task;
 use App\Models\User;
 use App\Models\UserMeaning;
 use App\Models\UserMotivation;
@@ -160,5 +165,68 @@ class MainController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function courses()
+    {
+        $courses = Course::where(["departments" => null])->orWhereJsonContains("departments",\auth()->user()->department_id)->paginate(24);
+        return view("employee.course.index", compact('courses'));
+    }
+
+    public function showCourse($alias)
+    {
+        if ($course = Course::where(["alias" => $alias])->with(["lessons"])->first()) {
+            return view("employee.course.show", compact("course"));
+        } else {
+            abort(404);
+        }
+    }
+
+    public function showLesson($alias)
+    {
+        if ($lesson = Lesson::where(["alias" => $alias])->with(["prev_lesson","next_lesson","course"])->first()) {
+            $other_lessons = Lesson::where("order",">",$lesson->order)->with(["prev_lesson","next_lesson","course"])->take(3)->get();
+            return view("employee.lesson.show", compact("lesson","other_lessons"));
+        } else {
+            abort(404);
+        }
+    }
+
+    public function tasks(){
+        $tasks = Task::with(["department","user"])->whereJsonContains("users",\auth()->id())->get()->groupBy("status");
+        return view("employee.task.index", compact("tasks"));
+    }
+
+    public function forumList(){
+        $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->paginate(20);
+        return view("employee.forum.index", compact("forums"));
+    }
+
+    public function forumDetail($id){
+        try{
+            $forum = Forum::withSum("forum_ratings","rating")->find($id);
+            if($forum){
+                return view("employee.forum.show",compact("forum"));
+            }
+        }
+        catch (\Exception $exception){
+
+        }
+        return abort(404);
+    }
+    public function forumCreate(){
+        return view("employee.forum.create");
+    }
+    public function forumStore(ForumCreateRequest  $request){
+        try{
+            $input = $request->all();
+            $input["user_id"] = auth()->id();
+            $forum = Forum::add($input);
+            return redirect()->route("forumDetail",$forum->id);
+        }
+        catch (\Exception $exception){
+
+        }
+        return redirect()->route("forum-list");
     }
 }

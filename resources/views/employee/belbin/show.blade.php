@@ -9,7 +9,7 @@
 
             <!-- Page-Title -->
             <div class="page-title-box">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <h4 class="page-title mb-1">Приглашения</h4>

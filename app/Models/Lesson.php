@@ -67,9 +67,9 @@ class Lesson extends Model
 		return $this->belongsTo(Course::class);
 	}
 
-	public function lesson()
+	public function next_lesson()
 	{
-		return $this->belongsTo(Lesson::class, 'prev_id');
+		return $this->belongsTo(Lesson::class, 'next_id',"id");
 	}
 
 	public function lesson_likes()
@@ -77,8 +77,8 @@ class Lesson extends Model
 		return $this->hasMany(LessonLike::class);
 	}
 
-	public function lessons()
+	public function prev_lesson()
 	{
-		return $this->hasMany(Lesson::class, 'prev_id');
+		return $this->hasMany(Lesson::class, 'prev_id',"id");
 	}
 }

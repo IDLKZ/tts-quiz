@@ -1,5 +1,5 @@
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <form wire:submit.prevent = "submit">
                         <div class="col-xl-12">

@@ -18,7 +18,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::with(["department","user"])->get()->groupBy("status");
         return view("admin.tasks.index",compact("tasks"));
     }
 

@@ -114,6 +114,14 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::post('/directory/get-users', [MainController::class, 'directoryGetUsers'])->name('employeeDirectoryGetUsers')->middleware("candidate");
     Route::get("/employee-news",[MainController::class,"news"])->name("employee-news")->middleware("candidate");
     Route::get("/news-show/{id}",[MainController::class,"newsOne"])->name("news-show")->middleware("candidate");
+    Route::get("/course-list",[MainController::class,"courses"])->name("courseListEmployee");
+    Route::get("/course-show-employee/{alias}",[MainController::class,"showCourse"])->name("course-show-employee");
+    Route::get("/employee-tasks",[MainController::class,"tasks"])->name("employee-tasks");
+    Route::get("/lesson-show/{alias}",[MainController::class,"showLesson"])->name("lesson-show-employee");
+    Route::get("/forum-list",[MainController::class,"forumList"])->name("forum-list");
+    Route::get("/forum-detail/{id}",[MainController::class,"forumDetail"])->name("forumDetail");
+    Route::get("/forum-create",[MainController::class,"forumCreate"])->name("forumCreate");
+    Route::post("/forum-employee-store",[MainController::class,"forumStore"])->name("forum-employee-store");
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);

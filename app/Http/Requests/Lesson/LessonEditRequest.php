@@ -26,7 +26,7 @@ class LessonEditRequest extends FormRequest
         return [
             "course_id"=>"required|exists:courses,id",
             "type"=>"required|max:255",
-            "video_url"=>"required|max:5000",
+            "video_url"=>"sometimes|nullable",
             "image_url"=>"sometimes|nullable|image|max:20480",
             "title"=>"required|max:255",
             "subtitle"=>"required|max:255",

@@ -7,7 +7,7 @@
     <div>
         <div class="page-content">
             <div class="page-title-box">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-8">
                             <h4 class="page-title mb-1">Настройки</h4>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card">

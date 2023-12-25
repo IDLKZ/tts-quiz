@@ -44,6 +44,9 @@ class CourseController extends Controller
         try{
             $input = $request->all();
             $input["alias"] = \Illuminate\Support\Str::random(32);
+            if($input["departments"]){
+                $input["departments"] = array_map('intval', $input["departments"]);
+            }
             $course = Course::add($input);
             $course->uploadFile($request->file("image_url"),"image_url");
         }
@@ -91,6 +94,9 @@ class CourseController extends Controller
     {
         if($course = Course::find($id)){
             $input = $request->all();
+            if($input["departments"]){
+                $input["departments"] = array_map('intval', $input["departments"]);
+            }
             $course->edit($input);
             if($request->file("image_url")){
                 $course->uploadFile($request->file("image_url"),"image_url");

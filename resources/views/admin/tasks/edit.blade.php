@@ -27,7 +27,7 @@
 
             <div class="page-content-wrapper">
                 <div class="container">
-
+                    <livewire:admin.task.edit :task-active="$task"/>
                         <!-- end col -->
 
                     <!-- end row -->
