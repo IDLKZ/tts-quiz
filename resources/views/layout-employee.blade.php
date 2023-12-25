@@ -45,6 +45,44 @@
     </div>
 
 </div>
+<section class="bg-[#1D1D1D] py-10">
+    <div class="container">
+        <div class="grid grid-cols-12">
+            <div class="col-span-12 md:col-span-6">
+                <div class="md:flex align-items-center mx-auto text-center md:text-left">
+                    <img src="{{asset("/images/footer-logo.png")}}" class="max-w-[100px] px-2 d-inline-block"/>
+                    <div>
+                        <p class="text-lg lg:text-lg xl:text-2xl 2xl:text-3xl text-white font-weight-bold">
+                            Темир Транс Сервис
+                        </p>
+                        <div class="md:flex my-3">
+                            <div class="text-white text-center md:text-left mr-2">
+                                <i class="fas fa-envelope ml-2 text-[#F09E32]"></i>
+                                tts@gmail.com
+                            </div>
+                            <div class="text-white mr-2 text-center md:text-left">
+                                <i class="fab fa-instagram ml-2 text-[#F09E32]"></i>
+                                tts.kazakhstan
+                            </div>
+                            <div class="text-white mr-2 text-center md:text-left">
+                                <i class="fab fa-linkedin ml-2 text-[#F09E32]"></i>
+                                TTS.KAZ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-span-12">
+                <p class="text-md text-white font-weight-bold text-center text-md-right">
+                    Cookie Preferences <br/>
+                    © 2023 tts kazakhstan. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- END layout-wrapper -->
 <!-- Laravel Javascript Validation -->
 
