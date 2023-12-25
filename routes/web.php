@@ -123,6 +123,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/forum-detail/{id}",[MainController::class,"forumDetail"])->name("forumDetail");
     Route::get("/forum-create",[MainController::class,"forumCreate"])->name("forumCreate");
     Route::post("/forum-employee-store",[MainController::class,"forumStore"])->name("forum-employee-store");
+    Route::get("/employee-profile",[MainController::class,"employeeProfile"])->name("employee-profile");
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);

@@ -42,7 +42,7 @@
                                 Личный кабинет
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item text-uppercase font-weight-bold {{ request()->is('employee/directory') ? 'employee-nav-link-active ' : 'employee-nav-link ' }}" href="#">Мой профиль</a>
+                                <a class="dropdown-item text-uppercase font-weight-bold {{ request()->routeIs('employee-profile') ? 'employee-nav-link-active ' : 'employee-nav-link ' }}" href="{{route("employee-profile")}}">Мой профиль</a>
                                 <a class="dropdown-item text-uppercase font-weight-bold {{ request()->is('forum-list') ? 'employee-nav-link-active ' : 'employee-nav-link ' }}" href="{{route("forum-list")}}">Форум</a>
                                 <a class="dropdown-item text-uppercase font-weight-bold {{ request()->routeIs('employee-tasks') ? 'employee-nav-link-active ' : 'employee-nav-link ' }}" href="{{route("employee-tasks")}}">Задачи</a>
                                 <a class="dropdown-item text-uppercase font-weight-bold employee-nav-link" href="{{route("logout")}}">Выход</a>

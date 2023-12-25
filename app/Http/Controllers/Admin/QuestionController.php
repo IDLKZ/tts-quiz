@@ -45,7 +45,7 @@ class QuestionController extends Controller
             Question::add($input);
         }
         catch (\Exception $exception){
-
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("question.index");
     }

@@ -36,8 +36,10 @@ class DocumentCategoryController extends Controller
     {
         try{
             DocumentCategory::add($request->all());
+            toastSuccess("Успешно создан","Выполнено!");
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document-category.index");
     }
@@ -68,6 +70,7 @@ class DocumentCategoryController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document-category.index");
     }
@@ -88,6 +91,7 @@ class DocumentCategoryController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document-category.index");
     }
@@ -107,6 +111,7 @@ class DocumentCategoryController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("document-category.index");
     }

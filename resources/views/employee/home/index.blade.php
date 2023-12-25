@@ -35,17 +35,42 @@
 
                                 </div>
                             </section>
-                            <section class="my-4">
-                                <div class="w-full">
-                                    <a href="#" class="w-full flex flex-col w-full items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="">
-                                        <div class="flex flex-col justify-between p-4 leading-normal">
-                                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </section>
+                            @endif
+                            @if($events)
+                                <section class="my-4 p-3">
+                                    <div class="w-full">
+                                        <p class="text-lg md:text-xl font-weight-bold text-black text-uppercase inline-block mb-4">
+                                            Ближайшие мероприятия
+                                        </p>
+                                        @foreach($events as $event)
+                                            <div class="max-w-sm w-full lg:max-w-full lg:flex my-3 rounded-2xl">
+                                                <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center bg-white rounded-t py-2 lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url({{$event->getFile("image_url")}})" title="Woman holding a mug">
+                                                </div>
+                                                <div class="border border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal w-full">
+                                                    <div class="mb-8">
+                                                        <p class="text-sm text-gray-600 flex items-center">
+                                                            {{$event->start_date->format("d/m/Y H:i")}}
+                                                            @if($event->end_date)
+                                                               - {{$event->end_date->format("d/m/Y H:i")}}
+                                                            @endif
+                                                        </p>
+                                                        <p class="text-sm text-gray-600 flex items-center mb-3">
+                                                            <i class="fas fa-location"></i>
+                                                            {{$event->address}}
+                                                        </p>
+                                                        <div class="text-gray-900 font-bold text-xl mb-2">{{$event->title}}</div>
+                                                        <p class="text-xs text-gray-700 text-base">
+                                                            {!! $event->description !!}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                </section>
+                            @endif
+
                         </div>
                         <div class="col-span-12 lg:col-span-3">
                             @if($tasks->isNotEmpty())
@@ -189,7 +214,6 @@
                                     </div>
                                 @endif
                             </div>
-                       @endif
                 </div>
             </div>
         </div>

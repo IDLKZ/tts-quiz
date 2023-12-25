@@ -44,6 +44,7 @@ class LiteratureCategoryController extends Controller
             LiteratureCategory::add($request->all());
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature-category.index");
     }
@@ -74,6 +75,7 @@ class LiteratureCategoryController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature-category.index");
     }
@@ -94,6 +96,7 @@ class LiteratureCategoryController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature-category.index");
     }
@@ -113,6 +116,7 @@ class LiteratureCategoryController extends Controller
             }
         }
         catch (\Exception $exception){
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("literature-category.index");
     }

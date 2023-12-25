@@ -49,8 +49,7 @@ class EventController extends Controller
             $event->uploadFile($request->file("image_url"),"image_url");
         }
         catch (\Exception $exception){
-            dump($request->all());
-                dd($exception);
+            toastError($exception->getMessage(),"Упс!");
         }
         return redirect()->route("event.index");
     }
