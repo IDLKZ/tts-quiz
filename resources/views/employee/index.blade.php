@@ -39,7 +39,7 @@
                                         <div class="content-page">
                                             <div class="profile-banner"
                                                  style="background:url('/images/bg1.2.png');">
-                                                <div class="col-sm-3 mt-4 avatar-container">
+                                                <div class="col-sm-3 mt-4 avatar-container flex justify-content-center align-items-center">
                                                     <img src="{{$user->img}}" class="mt-3 img-circle profile-avatar"
                                                          alt="User avatar">
                                                 </div>

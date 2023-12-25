@@ -95,6 +95,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
 //Start Employee
 Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function (){
     Route::get('/', [MainController::class, 'index'])->name('employeeHome');
+    Route::get('/home', [MainController::class, 'home'])->name('employeeMainPage');
     Route::get("/my-invites",[MainController::class,"invite"])->name("invite");
     Route::get('/settings', [MainController::class, 'settings'])->name('employeeSettings');
     Route::post('/update-profile', [MainController::class, 'updateProfile'])->name('employeeUpdateProfile');

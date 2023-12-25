@@ -72,7 +72,7 @@
                                             </div>
                                         </div>
                                         <div class="form-check mt-3">
-                                            <input type="checkbox" name="is_main" class="form-check-input" id="is_main" checked="{{$news->is_main ? true : false}}">
+                                            <input type="checkbox" name="is_main" class="form-check-input" id="is_main" checked="{{$news->is_main === true ? true : false}}">
                                             <label class="form-check-label" for="is_main">На главной</label>
                                         </div>
                                         <div class="form-group row">

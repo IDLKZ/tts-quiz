@@ -36,6 +36,14 @@ class MainController extends Controller
         return view('employee.index', compact('user'));
     }
 
+    public function home(){
+        $news = News::where(["is_main"=>true])->orderBy("created_at","desc")->first();
+        $tasks = Task::with(["department","user"])->whereJsonContains("users",\auth()->id())->orderBy("created_at","desc")->take(4)->get();
+        $users = User::whereMonth("birth_date","=",Carbon::now()->month)->orderBy("birth_date","asc")->take(4)->get();
+        $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->take(4)->get();
+        return view('employee.home.index',compact("news","tasks","users","forums"));
+    }
+
     public function settings()
     {
         $jsValidator = JsValidator::make(
@@ -198,7 +206,7 @@ class MainController extends Controller
     }
 
     public function forumList(){
-        $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->paginate(20);
+        $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->paginate(20);
         return view("employee.forum.index", compact("forums"));
     }
 

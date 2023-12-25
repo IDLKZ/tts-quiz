@@ -79,9 +79,6 @@
             <section>
                 @if($type == "youtube")
                     <div class="form-group">
-                        <div class="form-group py-3">
-                            <span class="youtube-link bg-warning text-white px-3 py-3 rounded-lg" youtubeid="{{explode("?v=", $lesson->video_url)[1]}}">Смотреть видео </span>
-                        </div>
                         <label for="example-text-input" class=" col-form-label">Ссылка видеоурока *</label>
                         <div>
                             <input wire:model="video_url" class="form-control  @error('video_url') is-invalid @enderror" name="video_url" type="text" >

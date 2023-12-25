@@ -10,10 +10,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 my-2">
                     <p class="text-lg font-bold lg:text-xl xl:text-2xl">
-                        Новость
-                    </p>
-                    <p class="text-md font-bold lg:text-lg">
-                        {{$news->title}}
+                        Новость: {{$news->title}}
                     </p>
                 </div>
                 <div class="col-12 col-md-6 my-2 text-right">
@@ -31,8 +28,10 @@
                         <div class="card bg-transparent">
                             <img class="card-img-top img-fluid" src="{{$news->img}}" alt="Card image cap">
                             <div class="card-body">
-                                <p class="text-lg font-bold lg:text-xl xl:text-2xl">{{$news->title}}</p>
-                                <p class="text-lg card-subtitle font-size-16 mt-0 font-size-32">{{$news->subtitle}}</p>
+                                <p class="text-lg font-bold lg:text-xl xl:text-2xl text-black d-inline-block mb-4">{{$news->title}}</p>
+                                <p class="text-lg card-subtitle font-size-16 mt-0 font-size-32 text-black d-inline-block mb-4">{{$news->subtitle}}</p>
+                                <p class="text-md text-gray-400 d-inline-block mb-4">{{$news->created_at->diffForHumans()}}</p>
+                                <hr/>
                                 <div class="card-text text-md my-4">
                                     {!! $news->description !!}
                                 </div>

@@ -13,10 +13,10 @@
             <div class="hidden w-full xl:block xl:w-auto" id="navbar-dropdown" style="width: 100%">
                 <ul class="xl:flex justify-content-center align-items-center flex-col font-medium p-4 xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0">
                     <li class="  d-lg-flex justify-content-center align-items-center">
-                        <a class="{{ request()->is('employee') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeHome")}}"> <img class="min-w-[40px]" src="/images/navbar-logo.png"> </a>
+                        <a class="{{ request()->is('employeeMainPage') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeMainPage")}}"> <img class="min-w-[40px]" src="/images/navbar-logo.png"> </a>
                     </li>
                     <li class=" d-lg-flex  justify-content-center align-items-center text-center">
-                        <a class="{{ request()->is('employee') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeHome")}}">Главная</a>
+                        <a class="{{ request()->is('employeeMainPage') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeMainPage")}}">Главная</a>
                     </li>
                     <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                         <a class="{{ request()->is('employee') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeHome")}}">Тестирование</a>

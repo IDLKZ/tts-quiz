@@ -9,11 +9,8 @@
             <div class="container mb-5">
                 <div class="row">
                     <div class="col-12 col-md-6 my-2">
-                        <p class="text-lg font-bold lg:text-xl xl:text-2xl">
-                            Список Задач
-                        </p>
-                        <p class="text-md font-bold lg:text-lg">
-                            Здесь вы можете увидеть список задач.
+                        <p class="text-lg font-bold lg:text-xl xl:text-2xl text-black">
+                            Канбан Доска-Задач
                         </p>
                     </div>
                 </div>
@@ -25,7 +22,7 @@
             <!-- end page title end breadcrumb -->
             @if($tasks)
                 <div class="container">
-                    <div class="row my-5">
+                    <div class="row my-5 border-[1px] border-gray-500 rounded-xl py-4 px-4">
                         @if(in_array(0,$tasks->keys()->toArray()))
                             <div class="col-12 col-lg-6 col-xl-4 p-3">
                                 <div class="text-lg lg:text-xl xl:text-2xl text-center">
