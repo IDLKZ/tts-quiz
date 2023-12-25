@@ -53,7 +53,7 @@
                                         </div>
 
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-info">Поиск</button>
+                                            <button type="submit" class="btn btn-info bg-indigo-400 text-white ">Поиск</button>
 
                                         </div>
                                     </form>

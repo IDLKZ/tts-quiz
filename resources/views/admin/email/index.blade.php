@@ -75,7 +75,7 @@
                                                                         </button>
                                                                     </form>
                                                                 </div>
-                                                            </td>email
+                                                            </td>
                                                         </tr>
                                                     @endforeach
 
