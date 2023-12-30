@@ -33,7 +33,7 @@
                                 <div class="timeline-item timeline-left">
                                     <div class="timeline-block">
                                         <div class="time-show-btn mt-0">
-                                            <a href="javascript:void (0)" class="btn btn-info w-lg">Результаты</a>
+                                            <a href="javascript:void (0)" class="btn btn-warning border-white border w-lg">Результаты</a>
                                         </div>
                                     </div>
                                 </div>

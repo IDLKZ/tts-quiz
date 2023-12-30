@@ -18,20 +18,36 @@
                     <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                         <a class="{{ request()->is('employeeMainPage') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeMainPage")}}">Главная</a>
                     </li>
-                    <li class=" d-lg-flex  justify-content-center align-items-center text-center">
-                        <a class="{{ request()->is('employee') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeHome")}}">Тестирование</a>
-                    </li>
+
                     <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                         <a href="{{route('employee-news')}}" class="{{ request()->is('employee/employee-news') ? 'employee-nav-link-active ' : 'employee-nav-link ' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center" >Новости  </a>
                     </li>
                     <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                         <a href="{{route('courseListEmployee')}}" class="{{ request()->routeIs('courseListEmployee') ? 'employee-nav-link-active ' : 'employee-nav-link ' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center">Курсы  </a>
                     </li>
-                    <li class=" d-lg-flex justify-content-center align-items-center">
-                        <a href="{{route("invite")}}" class="{{ request()->is('employee/my-invites') ? 'employee-nav-link-active ' : 'employee-nav-link ' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center text-center">Предстоящие тесты <span class="badge ">{{$invitesCount}}</span> </a>
-                    </li>
-                    <li class=" d-lg-flex  justify-content-center align-items-center text-center">
-                        <a href="{{route("my-results")}}" class="{{ request()->is('employee/my-results') ? 'employee-nav-link-active ' : 'employee-nav-link ' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center">Результаты </a>
+                    <li>
+                        <button
+                            id="dropdownPsychoExamLink"
+                            data-dropdown-toggle="dropdownPsychoExam"
+                            class="flex items-center  text-md font-weight-bold justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto uppercase">
+                            Психологическое тестирование
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg></button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownPsychoExam" class="z-[200] hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a class="{{ request()->is('employee') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employeeHome")}}">Тестирование Белбина и Соловьева</a>
+                                </li>
+                                <li class=" d-lg-flex justify-content-center align-items-center">
+                                    <a href="{{route("invite")}}" class="{{ request()->is('employee/my-invites') ? 'employee-nav-link-active ' : 'employee-nav-link ' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center text-center">Предстоящие тесты <span class="badge ">{{$invitesCount}}</span> </a>
+                                </li>
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a href="{{route("my-results")}}" class="{{ request()->is('employee/my-results') ? 'employee-nav-link-active ' : 'employee-nav-link ' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center">Результаты Тестирования</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                         <a href="{{route('employeeDirectory')}}" class="{{ request()->is('employee/directory') || request()->is('get-employees/*') ? 'employee-nav-link-active ' : 'employee-nav-link ' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center">Справочник </a>

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\document\DocumentCreateRequest;
-use App\Http\Requests\document\DocumentEditRequest;
+use App\Http\Requests\Document\DocumentCreateRequest;
+use App\Http\Requests\Document\DocumentEditRequest;
 use App\Models\Document;
 
 class DocumentController extends Controller

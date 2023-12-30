@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Вход в личный кабинет корпортаивного портала" name="description" />
     <meta content="Корпоративный портал" name="author" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- App favicon -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -19,29 +20,7 @@
     @toastr_css
 </head>
 
-<body class="bg-warning" style="  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/1.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover ">
-<nav class="navbar navbar-expand-md navbar-dark bg-transparent">
-    <div class="order-0">
-        <img src="/images/logo.png" height="82" width="116" src="">
-
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-1">
-                <a class="nav-link text-white" href="#">Temirtransservice@mail.ru</a>
-            </li>
-            <li class="nav-item mx-1">
-                <a class="nav-link text-white" href="#">г. Нур-Султан ул. Кунаева 10, 26этаж</a>
-            </li>
-            <li class="nav-item mx-1">
-                <a class="nav-link text-white" href="tel:+77172610626">+7-7172-610-626</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<body>
 
 
 @yield("content")

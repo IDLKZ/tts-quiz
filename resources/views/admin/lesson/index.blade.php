@@ -32,20 +32,20 @@
 
             <div class="page-content-wrapper">
                 <div class="container">
-                    <div class="row my-5">
+                    <div class="grid grid-cols-12 my-5 gap-5">
                         @foreach($lessons as $lesson)
-                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
+                            <div class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-4 my-3">
                                 <div class="card h-full shadow-lg rounded-lg">
                                     <div class="card-image min-h-[300px] background-no-repeat background-cover" style="background-image:url({{$lesson->getFile("image_url")}})"></div>
                                     <section class="py-2 px-3">
                                         <div class="header">
                                             <p class="text-md lg:text-lg xl:text-xl font-weight-bold text-black">
-                                                {{$lesson->order}}  {{$lesson->title}}
+                                                {{$lesson->order}}  {{\Illuminate\Support\Str::limit($lesson->title,30,'...')}}
                                             </p>
                                         </div>
                                         <div class="header-subtitle my-3">
                                             <p class="text-md lg:text-lg font-bold text-black">
-                                                {{$lesson->subtitle}}
+                                                {{\Illuminate\Support\Str::limit($lesson->subtitle,30,'...')}}
                                             </p>
                                         </div>
                                         <div class="header-subtitle my-3">

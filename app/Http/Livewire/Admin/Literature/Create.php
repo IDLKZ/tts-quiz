@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Literature;
 
 use App\Http\Requests\Event\EventEditRequest;
 use App\Http\Requests\Literature\DocumentCreateRequest;
+use App\Http\Requests\Literature\LiteratureCreateRequest;
 use App\Models\Event;
 use App\Models\LiteratureCategory;
 use Livewire\Component;
@@ -23,7 +24,7 @@ class Create extends Component
         $this->description = old("description");
     }
     protected function rules(){
-        return (new DocumentCreateRequest())->rules();
+        return (new LiteratureCreateRequest())->rules();
     }
 
     public function updated($propertyName)

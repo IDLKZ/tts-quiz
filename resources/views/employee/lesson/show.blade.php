@@ -24,10 +24,7 @@
                 <div class="row mt-5">
                     <div class="col-12 my-3 d-flex justify-content-center align-items-center">
                         @if($lesson->type == 'youtube')
-                        <div id="bgndVideo"
-                             data-property="{videoURL:'https://www.youtube.com/watch?v=BnPwYn1KJJo',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:1}"
-                             class="player" style="min-height: 500px; width: 100%">
-                        </div>
+                            <div id="my-video-display" class="w-full rounded-lg"></div>
                         @else
                             <div id="bgndVideo" class="player" style="min-height: 500px; width: 100%">
                                 <video width="100%" height="500px" controls>
@@ -53,20 +50,36 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 flex my-2 justify-content-between my-4">
+                        @if($lesson->prev_lesson)
+                            <a href="{{route("lesson-show-employee",$lesson->prev_lesson->alias)}}" class="btn btn-warning text-white">
+                                <i class="fas fa-arrow-alt-circle-left"></i> Предыдущий урок
+                            </a>
+                        @endif
+                        @if($lesson->next_lesson)
+                                <a href="{{route("lesson-show-employee",$lesson->next_lesson->alias)}}" class="btn btn-warning text-white">
+                                   Следуюший урок   <i class="fas fa-arrow-alt-circle-right"></i>
+                                </a>
+                        @endif
+                    </div>
+
                     @if($other_lessons->isNotEmpty())
+                        <div class="col-12 mt-5 mb-2 text-lg lg:text-xl xl:text-2xl font-weight-bold text-black">
+                            Другие Уроки по данной категории
+                        </div>
                         @foreach($other_lessons as $item)
-                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                            <div class="col-12 col-md-6 col-lg-4 my-2">
                                 <div class="card h-full rounded-lg">
                                     <div class="card-image min-h-[300px] background-no-repeat background-center background-cover" style="min-height:300px;background-image:url({{$item->getFile("image_url")}})"></div>
                                     <section class="py-2 px-3">
                                         <div class="header">
                                             <p class="text-md lg:text-lg xl:text-xl font-weight-bold text-black">
-                                                {{strlen($item->title) > 30 ? substr($item->title,0,29) .'...' : $item->title}}
+                                                {{$item->order}}.  {{\Illuminate\Support\Str::limit($item->title,30)}}
                                             </p>
                                         </div>
                                         <div class="header-subtitle my-3">
-                                            <p class="text-md lg:text-lg font-bold text-black">
-                                                {{strlen($item->subtitle) > 50 ? substr($item->subtitle,0,49) .'...' : $item->subtitle}}
+                                            <p class="text-md text-gray-500">
+                                                {{\Illuminate\Support\Str::limit($item->subtitle,30)}}
                                             </p>
                                         </div>
                                         <div class="flex justify-content-center align-items-center text-center py-3">
@@ -94,8 +107,17 @@
 @push("scripts")
 
     <script>
-        jQuery(function(){
-            jQuery("#playerID").YTPlayer();
+        $('#my-video-display').prettyEmbed({
+            videoID: "{{\Alaouy\Youtube\Youtube::parseVidFromURL($lesson->video_url)}}",
+            previewSize: 'hd',				// use either this option...
+            customPreviewImage: '',			// ...or this option
+            // Embed controls
+            showInfo: false,
+            showControls: true,
+            loop: false,
+            colorScheme: 'dark',
+            showRelated: false,
+            useFitVids: true
         });
     </script>
 

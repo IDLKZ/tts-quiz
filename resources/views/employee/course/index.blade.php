@@ -34,12 +34,12 @@
                                     <section class="py-2 px-3">
                                         <div class="header">
                                             <p class="text-md lg:text-lg xl:text-xl font-weight-bold text-black">
-                                                {{strlen($item->title) > 30 ? substr($item->title,0,29) .'...' : $item->title}}
+                                             {{\Illuminate\Support\Str::limit($item->title,30)}}
                                             </p>
                                         </div>
                                         <div class="header-subtitle my-3">
-                                            <p class="text-md lg:text-lg font-bold text-black">
-                                                {{strlen($item->subtitle) > 50 ? substr($item->subtitle,0,49) .'...' : $item->subtitle}}
+                                            <p class="text-md text-gray-500">
+                                                {{\Illuminate\Support\Str::limit($item->subtitle,30)}}
                                             </p>
                                         </div>
                                         <div class="flex justify-content-center align-items-center text-center py-3">

@@ -195,7 +195,7 @@ class MainController extends Controller
     public function showLesson($alias)
     {
         if ($lesson = Lesson::where(["alias" => $alias])->with(["prev_lesson","next_lesson","course"])->first()) {
-            $other_lessons = Lesson::where("order",">",$lesson->order)->with(["prev_lesson","next_lesson","course"])->take(3)->get();
+            $other_lessons = Lesson::where("order",">",$lesson->order)->orWhere("order","<",$lesson->order)->orderBy("order","asc")->with(["prev_lesson","next_lesson","course"])->take(3)->get();
             return view("employee.lesson.show", compact("lesson","other_lessons"));
         } else {
             abort(404);

@@ -105,10 +105,12 @@
                             <select wire:model="prev_id" class="form-control @error('prev_id') is-invalid @enderror" name="prev_id">
                                 <option value="{{null}}">Выберите урок</option>
                                 @if($lessons)
-                                    @foreach($lessons as $lesson)
-                                        <option value="{{$lesson->id}}">
-                                            # {{$lesson->order}} {{$lesson->title}}
-                                        </option>
+                                    @foreach($lessons as $next_lesson)
+                                        @if($next_id != $next_lesson->id && $next_lesson->id != $lesson->id)
+                                            <option value="{{$next_lesson->id}}">
+                                                # {{$next_lesson->order}} {{$next_lesson->title}}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 @endif
                             </select>
@@ -120,10 +122,12 @@
                             <select wire:model="next_id" class="form-control @error('next_id') is-invalid @enderror" name="next_id">
                                 <option value="{{null}}">Выберите урок</option>
                                 @if($lessons)
-                                    @foreach($lessons as $lesson)
-                                        <option value="{{$lesson->id}}">
-                                            # {{$lesson->order}} {{$lesson->title}}
-                                        </option>
+                                    @foreach($lessons as $prev_lesson)
+                                        @if($prev_id != $prev_lesson->id && $prev_lesson->id != $lesson->id)
+                                            <option value="{{$prev_lesson->id}}">
+                                                # {{$prev_lesson->order}} {{$prev_lesson->title}}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 @endif
                             </select>

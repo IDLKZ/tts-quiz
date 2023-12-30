@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Literature;
 
 use App\Http\Requests\Literature\DocumentCreateRequest;
 use App\Http\Requests\Literature\DocumentEditRequest;
+use App\Http\Requests\Literature\LiteratureEditRequest;
 use App\Models\LiteratureCategory;
 use Livewire\Component;
 
@@ -24,7 +25,7 @@ class Edit extends Component
         $this->description =$literature->description;
     }
     protected function rules(){
-        return (new DocumentEditRequest())->rules();
+        return (new LiteratureEditRequest())->rules();
     }
 
     public function updated($propertyName)

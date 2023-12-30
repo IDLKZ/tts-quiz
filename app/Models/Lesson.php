@@ -79,6 +79,6 @@ class Lesson extends Model
 
 	public function prev_lesson()
 	{
-		return $this->hasMany(Lesson::class, 'prev_id',"id");
+		return $this->belongsTo(Lesson::class, 'prev_id',"id");
 	}
 }

@@ -101,9 +101,11 @@
                                 <option value="{{null}}">Выберите урок</option>
                                 @if($lessons)
                                     @foreach($lessons as $lesson)
-                                        <option value="{{$lesson->id}}">
-                                            # {{$lesson->order}} {{$lesson->title}}
-                                        </option>
+                                        @if($next_id != $lesson->id)
+                                            <option value="{{$lesson->id}}">
+                                                # {{$lesson->order}} {{$lesson->title}}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 @endif
                             </select>
@@ -116,9 +118,11 @@
                                 <option value="{{null}}">Выберите урок</option>
                                 @if($lessons)
                                     @foreach($lessons as $lesson)
-                                        <option value="{{$lesson->id}}">
-                                            # {{$lesson->order}} {{$lesson->title}}
-                                        </option>
+                                        @if($prev_id != $lesson->id)
+                                            <option value="{{$lesson->id}}">
+                                                # {{$lesson->order}} {{$lesson->title}}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 @endif
                             </select>

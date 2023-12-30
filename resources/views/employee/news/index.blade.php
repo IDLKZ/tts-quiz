@@ -31,18 +31,18 @@
                             <div class="col-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                 <div class="card h-full shadow-lg rounded-lg">
                                     <div class="card-image min-h-[300px] background-no-repeat background-center background-cover" style="min-height:300px;background-image:url({{$item->img}})"></div>
-                                    <section class="py-2 px-3">
-                                        <div class="header">
-                                            <p class="text-md lg:text-lg xl:text-xl font-weight-bold text-black">
-                                                {{strlen($item->title) > 30 ? substr($item->title,0,29) .'...' : $item->title}}
-                                            </p>
-                                        </div>
-                                        <div class="header-subtitle my-3">
-                                            <p class="text-md lg:text-lg font-bold text-black">
-                                                {{strlen($item->subtitle) > 50 ? substr($item->subtitle,0,49) .'...' : $item->subtitle}}
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-content-between">
+                                    <section class="py-2 px-3 h-full relative">
+                                            <div class="header">
+                                                <p class="text-md lg:text-lg xl:text-xl font-weight-bold text-black">
+                                                    {{\Illuminate\Support\Str::limit($item->title,30)}}
+                                                </p>
+                                            </div>
+                                            <div class="header-subtitle mt-3 mb-5">
+                                                <p class="text-md text-gray-300">
+                                                    {{\Illuminate\Support\Str::limit($item->subtitle,30)}}
+                                                </p>
+                                            </div>
+                                        <div class="absolute bottom-[15px] right-[15px]">
                                             <a href="{{route("news-show",$item->id)}}" class="btn btn-warning text-white">
                                                 <i class="fas fa-eye"></i> Читать
                                             </a>

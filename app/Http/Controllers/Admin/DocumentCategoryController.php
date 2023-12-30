@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LiteratureCategory\LiteratureCategoryCreateRequest;
 use App\Http\Requests\LiteratureCategory\LiteratureCategoryEditRequest;
-use App\Models\documentCategory;
+use App\Models\DocumentCategory;
 use Illuminate\Http\Request;
 
 class DocumentCategoryController extends Controller
@@ -64,7 +64,7 @@ class DocumentCategoryController extends Controller
     public function edit($id)
     {
         try{
-            $category = documentCategory::find($id);
+            $category = DocumentCategory::find($id);
             if($category){
                 return view("admin.document-category.edit",compact("category"));
             }

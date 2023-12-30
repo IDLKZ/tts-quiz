@@ -34,9 +34,6 @@
 <body data-topbar="colored">
 @include("employee-navbar")
 
-
-
-
 <!-- Begin page -->
 <div id="layout-wrapper">
     <!-- ============================================================== -->
@@ -92,6 +89,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/jquery.mb.YTPlayer.min.js" integrity="sha512-rVFx7vXgVV8cmgG7RsZNQ68CNBZ7GL3xTYl6GAVgl3iQiSwtuDjTeE1GESgPSCwkEn/ijFJyslZ1uzbN3smwYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+
 @stack('scripts')
 @livewireScripts
 @if(isset($jsValidator))

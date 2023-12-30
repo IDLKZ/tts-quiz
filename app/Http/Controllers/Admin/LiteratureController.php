@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Literature\DocumentCreateRequest;
 use App\Http\Requests\Literature\DocumentEditRequest;
+use App\Http\Requests\Literature\LiteratureCreateRequest;
+use App\Http\Requests\Literature\LiteratureEditRequest;
 use App\Models\Literature;
 use App\Models\LiteratureCategory;
 use Illuminate\Http\Request;
@@ -38,7 +40,7 @@ class LiteratureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DocumentCreateRequest $request)
+    public function store(LiteratureCreateRequest $request)
     {
         try{
 
@@ -95,7 +97,7 @@ class LiteratureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DocumentEditRequest $request, $id)
+    public function update(LiteratureEditRequest $request, $id)
     {
         try{
             $literature = Literature::find($id);

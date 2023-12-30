@@ -9,6 +9,10 @@ class News extends Model
 {
     use HasFactory;
 
+    protected $casts=[
+      "is_main"=>"boolean"
+    ];
+
     protected $fillable = ["id","title","subtitle","description","img","is_main"];
 
 

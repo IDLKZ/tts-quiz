@@ -17,7 +17,7 @@
                 </div>
                 <div class="grid grid-cols-12 my-3 gap-5">
                     @if($news)
-                        <div class="col-span-12 lg:col-span-9">
+                        <div class="col-span-12 lg:col-span-8">
                             <section class="relative  h-[300px] md:h-[400px] lg:h-[600px] lg:mx-5">
                                 <div class="absolute rounded-xl z-10 h-[300px] md:h-[400px] lg:h-[600px] brightness-50 w-full bg-cover bg-center bg-no-repeat" style="background-image:url({{$news->img}})"></div>
                                 <div class="absolute z-20 bottom-0 w-full p-4">
@@ -72,10 +72,10 @@
                             @endif
 
                         </div>
-                        <div class="col-span-12 lg:col-span-3">
+                        <div class="col-span-12 lg:col-span-4">
                             @if($tasks->isNotEmpty())
                             <div class="flex align-items-center justify-content-center mb-3">
-                                <div class="w-full max-w-[350px] shadow-lg bg-white min-h-[300px] rounded-2xl relative p-4">
+                                <div class="w-full max-w-[400px] shadow-lg bg-white min-h-[350px] rounded-2xl relative p-4">
                                     <div class="header-card-title flex justify-content-between">
                                         <p class="text-md lg:text-lg text-rose-500 font-weight-bold">Важные задания</p>
                                         <a href="{{route("employee-tasks")}}">
@@ -112,7 +112,7 @@
                             @endif
                                 @if($users->isNotEmpty())
                                     <div class="flex align-items-center justify-content-center mb-3">
-                                        <div class="w-full max-w-[350px] shadow-lg bg-white min-h-[300px] rounded-2xl relative p-4">
+                                        <div class="w-full max-w-[400px] shadow-lg bg-white min-h-[300px] rounded-2xl relative p-4">
                                             <div class="header-card-title flex justify-content-between">
                                                 <span class="text-md lg:text-lg text-yellow-500 font-weight-bold">
                                                    Дни рождения <i class="fas fa-gift"></i>
@@ -178,7 +178,7 @@
                                 @endif
                                 @if($forums->isNotEmpty())
                                     <div class="flex align-items-center justify-content-center mb-3">
-                                        <div class="w-full max-w-[350px] shadow-lg bg-white min-h-[300px] rounded-2xl relative p-4">
+                                        <div class="w-full max-w-[400px] shadow-lg bg-white min-h-[300px] rounded-2xl relative p-4">
                                             <div class="header-card-title flex justify-content-between">
                                                 <p class="text-md lg:text-lg text-yellow-500 font-weight-bold">Форумы</p>
                                                 <a href="{{route("forum-list")}}">

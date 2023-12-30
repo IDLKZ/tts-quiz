@@ -32,21 +32,21 @@
             <!-- end page title end breadcrumb -->
 
             <div class="page-content-wrapper">
-                <div class="container">
-                    <div class="row my-5">
+                <div class="container mx-auto">
+                    <div class="grid grid-cols-12 my-5 gap-4">
                         @foreach($courses as $course)
-                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
+                            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4  my-2">
                                 <div class="card h-full shadow-lg rounded-lg">
                                     <div class="card-image min-h-[300px] background-no-repeat bg-cover bg-center" style="background-image:url({{$course->getFile("image_url")}})"></div>
                                     <section class="py-2 px-3">
                                         <div class="header">
                                             <p class="text-md lg:text-lg xl:text-xl font-weight-bold text-black">
-                                                {{$course->title}}
+                                                {{\Illuminate\Support\Str::limit($course->title,30,"...")}}
                                             </p>
                                         </div>
                                         <div class="header-subtitle my-3">
-                                            <p class="text-md lg:text-lg font-bold text-black">
-                                                {{$course->subtitle}}
+                                            <p class="text-md text-gray-300">
+                                                {{\Illuminate\Support\Str::limit($course->subtitle,50,"...")}}
                                             </p>
                                         </div>
                                         <div class="flex justify-content-between">
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div class="col-12 flex justify-content-center align-items-center">
+                        <div class="col-span-12 flex justify-content-center align-items-center">
                             {{$courses->links()}}
                         </div>
                     </div>
