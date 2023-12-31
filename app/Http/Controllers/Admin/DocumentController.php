@@ -46,7 +46,7 @@ class DocumentController extends Controller
             }
             if($request->hasFile("file_url")){
                 $document->uploadFile($request->file("file_url"),"file_url");
-                $document->edit(["file_type"=>$request->file("file_url")->getType()]);
+                $document->edit(["file_type"=>$request->file("file_url")->getMimeType()]);
             }
         }
         catch (\Exception $exception){
@@ -105,7 +105,7 @@ class DocumentController extends Controller
                 }
                 if($request->hasFile("file_url")){
                     $document->uploadFile($request->file("file_url"),"file_url");
-                    $document->edit(["file_type"=>$request->file("file_url")->getType()]);
+                    $document->edit(["file_type"=>$request->file("file_url")->getMimeType()]);
                 }
             }
         }

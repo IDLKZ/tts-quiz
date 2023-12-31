@@ -35,7 +35,7 @@
 @include("employee-navbar")
 
 <!-- Begin page -->
-<div id="layout-wrapper">
+<div id="layout-wrapper" class="min-vh-100">
     <!-- ============================================================== -->
     <div class="container mx-auto">
         @yield('content')

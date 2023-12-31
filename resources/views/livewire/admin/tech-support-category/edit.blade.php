@@ -11,7 +11,8 @@
         @endif
     </div>
     <div class="col-12 bg-white shadow-lg rounded-lg p-3">
-        <form id="js-form" action="{{route("literature-category.store")}}" method="post" enctype="multipart/form-data">
+        <form id="js-form" action="{{route("ticket-category.update",$category->id)}}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="form-group">
                 <label for="example-text-input" class=" col-form-label">Наименование категория *</label>
@@ -28,3 +29,4 @@
     </div>
 
 </div>
+

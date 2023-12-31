@@ -50,7 +50,7 @@ class LiteratureController extends Controller
             }
             if($request->hasFile("file_url")){
                 $literature->uploadFile($request->file("file_url"),"file_url");
-                $literature->edit(["file_type"=>$request->file("file_url")->getType()]);
+                $literature->edit(["file_type"=>$request->file("file_url")->getMimeType()]);
             }
         }
         catch (\Exception $exception){
@@ -109,7 +109,7 @@ class LiteratureController extends Controller
                 }
                 if($request->hasFile("file_url")){
                     $literature->uploadFile($request->file("file_url"),"file_url");
-                    $literature->edit(["file_type"=>$request->file("file_url")->getType()]);
+                    $literature->edit(["file_type"=>$request->file("file_url")->getMimeType()]);
                 }
             }
         }

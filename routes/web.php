@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\PdfController;
+use App\Http\Controllers\Employee\TechSupportTicket;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,6 +90,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("/document",\App\Http\Controllers\Admin\DocumentController::class);
     Route::resource("/document-category",\App\Http\Controllers\Admin\DocumentCategoryController::class);
     Route::resource("/task",\App\Http\Controllers\Admin\TaskController::class);
+    Route::resource("/ticket-category",\App\Http\Controllers\Admin\TechSupportCategoryTicket::class);
 
     Route::get("/all-result",[\App\Http\Controllers\Admin\MainController::class,"allResult"])->name("all-result");
 });
@@ -124,6 +126,13 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/forum-create",[MainController::class,"forumCreate"])->name("forumCreate");
     Route::post("/forum-employee-store",[MainController::class,"forumStore"])->name("forum-employee-store");
     Route::get("/employee-profile",[MainController::class,"employeeProfile"])->name("employee-profile");
+    Route::get("/literatures-lists",[MainController::class,"literatureLists"])->name("literatures-lists");
+    Route::get("/document-lists",[MainController::class,"documentLists"])->name("document-lists");
+    Route::get("/literatures-show/{id}",[MainController::class,"literatureShow"])->name("literaturesShow");
+    Route::get("/tech-support-tickets",[TechSupportTicket::class,"index"])->name("tech-support-ticket-list");
+    Route::get("/tech-support-tickets-create",[TechSupportTicket::class,"create"])->name("tech-support-ticket-create");
+    Route::post("/tech-support-tickets-store",[TechSupportTicket::class,"store"])->name("tech-support-ticket-store");
+    Route::get("/tech-support-tickets-show/{id}",[TechSupportTicket::class,"show"])->name("tech-support-ticket-show");
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);

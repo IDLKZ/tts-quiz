@@ -147,6 +147,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/reliese/laravel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/staudenmeir/eloquent-json-relations" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/alaouy/youtube" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/devdojo/chatter" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

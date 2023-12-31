@@ -2295,3 +2295,6 @@ video {
   }
 }
 
+.img-control img{
+    max-width: 250px!important;
+}

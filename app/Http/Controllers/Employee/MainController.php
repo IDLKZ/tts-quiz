@@ -15,6 +15,7 @@ use App\Models\Forum;
 use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Lesson;
+use App\Models\Literature;
 use App\Models\Motive;
 use App\Models\News;
 use App\Models\Result;
@@ -238,6 +239,26 @@ class MainController extends Controller
 
         }
         return redirect()->route("forum-list");
+    }
+    public function literatureLists(){
+        return view("employee.literature.index");
+    }
+
+    public function documentLists(){
+        return view("employee.document.index");
+    }
+
+    public function literatureShow($id){
+        try{
+            $literature = Literature::with("literature_category")->find($id);
+            if($literature){
+               return view("employee.literature.show",compact("literature"));
+            }
+        }
+        catch (\Exception $exception){
+
+        }
+        return abort(404);
     }
 
     public function employeeProfile(){
