@@ -141,6 +141,15 @@
       <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/vendor/kitloong/laravel-migrations-generator" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/phayes/geophp" />
+      <path value="$PROJECT_DIR$/vendor/matanyadaev/laravel-eloquent-spatial" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-package-tools" />
+      <path value="$PROJECT_DIR$/vendor/reliese/laravel" />
+      <path value="$PROJECT_DIR$/vendor/rappasoft/laravel-livewire-tables" />
+      <path value="$PROJECT_DIR$/vendor/pharaonic/livewire-select2" />
+      <path value="$PROJECT_DIR$/vendor/staudenmeir/eloquent-json-relations" />
+      <path value="$PROJECT_DIR$/vendor/devdojo/chatter" />
+      <path value="$PROJECT_DIR$/vendor/alaouy/youtube" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

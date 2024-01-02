@@ -36,8 +36,26 @@
                     </div>
                     <div class="col-12 my-3">
                         <div>
-                            <p class="text-lg font-bold lg:text-xl xl:text-2xl">{{$lesson->title}}</p>
-                            <p class="text-md lg:text-lg">{{$lesson->subtitle}}</p>
+                            <div class="flex align-items-center justify-content-between">
+                                <section>
+                                    <p class="text-lg font-bold lg:text-xl xl:text-2xl">{{$lesson->title}}</p>
+                                    <p class="text-md lg:text-lg">{{$lesson->subtitle}}</p>
+                                </section>
+                                <section>
+                                    @if($lesson->isPassed())
+                                        <a class="btn btn-success text-sm text-white mx-1">
+                                            Вы сдали тест
+                                        </a>
+                                    @else
+                                        @if($lesson->questions_count > 0)
+                                            <a href="{{route("pass-quiz-by-lesson",$lesson->id)}}" class="btn btn-warning text-sm text-white mx-1">
+                                                Сдать тест
+                                            </a>
+                                        @endif
+                                    @endif
+                                </section>
+                            </div>
+
                             <div class="mt-4" style="max-width: 320px;border-bottom: 1px solid grey">
                                 <p class="mt-2 mb-2 d-inline">
                                     {{$lesson->created_at->diffForHumans()}}
@@ -52,12 +70,12 @@
                     </div>
                     <div class="col-12 flex my-2 justify-content-between my-4">
                         @if($lesson->prev_lesson)
-                            <a href="{{route("lesson-show-employee",$lesson->prev_lesson->alias)}}" class="btn btn-warning text-white">
+                            <a href="{{route("lesson-show-employee",$lesson->prev_lesson->alias)}}" class="btn btn-warning text-sm text-white mx-1">
                                 <i class="fas fa-arrow-alt-circle-left"></i> Предыдущий урок
                             </a>
                         @endif
                         @if($lesson->next_lesson)
-                                <a href="{{route("lesson-show-employee",$lesson->next_lesson->alias)}}" class="btn btn-warning text-white">
+                                <a href="{{route("lesson-show-employee",$lesson->next_lesson->alias)}}" class="btn btn-warning text-sm text-white mx-1">
                                    Следуюший урок   <i class="fas fa-arrow-alt-circle-right"></i>
                                 </a>
                         @endif

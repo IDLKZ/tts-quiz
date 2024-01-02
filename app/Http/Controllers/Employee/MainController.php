@@ -24,6 +24,7 @@ use App\Models\User;
 use App\Models\UserMeaning;
 use App\Models\UserMotivation;
 use App\Models\UserMotive;
+use App\Models\UsersAttempt;
 use App\Models\UserScale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -195,7 +196,7 @@ class MainController extends Controller
 
     public function showLesson($alias)
     {
-        if ($lesson = Lesson::where(["alias" => $alias])->with(["prev_lesson","next_lesson","course"])->first()) {
+        if ($lesson = Lesson::where(["alias" => $alias])->withCount("questions")->with(["prev_lesson","next_lesson","course"])->first()) {
             $other_lessons = Lesson::where("order",">",$lesson->order)->orWhere("order","<",$lesson->order)->orderBy("order","asc")->with(["prev_lesson","next_lesson","course"])->take(3)->get();
             return view("employee.lesson.show", compact("lesson","other_lessons"));
         } else {
@@ -266,6 +267,7 @@ class MainController extends Controller
         $tasks = Task::with(["department","user"])->whereJsonContains("users",\auth()->id())->orderBy("created_at","desc")->take(4)->get();
         $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->take(4)->get();
         $events = Event::orderBy("created_at","desc")->take(4)->get();
-        return view("employee.home.my-profile",compact("tasks","forums","events","user"));
+        $attempts = UsersAttempt::where(["user_id" => \auth()->id()])->with(["user","lesson","passed_lessons"])->orderBy("created_at","desc")->paginate(10);
+        return view("employee.home.my-profile",compact("tasks","forums","events","user","attempts"));
     }
 }

@@ -2,7 +2,7 @@
     <link href=" https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-image@40.2.0/theme/image.min.css " rel="stylesheet">
 @endpush
 <div>
-    <section class="row min-h-[350px] max-h-[50vh] overflow-y-scroll ">
+    <section class="row min-h-[350px] ">
         <div class="col-12 my-3 p-3 border-1 bg-white p-5 rounded-lg shadow-lg">
             <div class="grid grid-cols-12">
                 <div class="col-span-12 lg:col-span-2">

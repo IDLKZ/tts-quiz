@@ -17,7 +17,7 @@
                         </p>
                     </div>
                     <div class="col-12 col-md-6 my-2">
-                        <div class="float-right d-none d-md-block">
+                        <div class="float-right d-block">
                             <div class="dropdown">
                                 <a href="{{route("tech-support-ticket-create")}}" class="btn btn-light btn-rounded dropdown-toggle">
                                     <i class="mdi mdi mdi-plus-thick  mr-1"></i> Создать тикет
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <!-- Page-Title -->
-
+                <livewire:employee.ticket.index/>
             <!-- end row -->
             <!-- end page title end breadcrumb -->
 

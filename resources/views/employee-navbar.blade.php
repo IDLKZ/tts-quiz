@@ -1,4 +1,4 @@
-<div class="container mx-auto xl:bg-transparent p-0">
+<div class="container mx-auto my-navbar-container p-0">
     <nav>
         <div class="w-full flex flex-wrap items-center justify-between mx-auto p-3">
             <a class="navbar-brand d-flex d-xl-none  justify-content-center align-items-center" href="/">
@@ -28,7 +28,7 @@
                         <button
                             id="dropdownWorkProcessLink"
                             data-dropdown-toggle="dropdownWorkProcess"
-                            class="flex items-center justify-content-center  text-md font-weight-bold justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto uppercase">
+                            class="flex items-center w-full justify-content-center  text-md font-weight-bold justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 uppercase">
                             Рабочие процессы
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -43,6 +43,9 @@
                                     <a class="{{ request()->is('forum-list') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("forum-list")}}">Форумы</a>
                                 </li>
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a class="{{ request()->routeIs('employee-idea.index') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-idea.index")}}">Банк идей</a>
+                                </li>
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                                     <a class="{{ request()->is('tech-support-ticket-list') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("tech-support-ticket-list")}}">Техподдержка</a>
                                 </li>
                             </ul>
@@ -52,8 +55,8 @@
                         <button
                             id="dropdownPsychoExamLink"
                             data-dropdown-toggle="dropdownPsychoExam"
-                            class="flex items-center justify-content-center  text-md font-weight-bold justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto uppercase">
-                            Психологическое тестирование
+                            class="flex items-center w-full justify-content-center  text-md font-weight-bold justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 uppercase">
+                            HR-Тестирование
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg></button>
@@ -76,7 +79,7 @@
                         <button
                             id="dropdownLitearatureLink"
                             data-dropdown-toggle="dropdownLitearature"
-                            class="flex items-center justify-content-center  text-md font-weight-bold justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto uppercase">
+                            class="flex items-center w-full justify-content-center  text-md font-weight-bold justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 uppercase">
                             БАЗА ЗНАНИЙ
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>

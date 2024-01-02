@@ -33,13 +33,15 @@ class PassedLesson extends Model
 
 	protected $casts = [
 		'attempt_id' => 'int',
-		'user_id' => 'int'
+		'user_id' => 'int',
+		'lesson_id' => 'int',
 	];
 
 	protected $fillable = [
 		'uuid',
 		'attempt_id',
-		'user_id'
+		'user_id',
+		'lesson_id',
 	];
 
 	public function users_attempt()
@@ -51,4 +53,8 @@ class PassedLesson extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 }

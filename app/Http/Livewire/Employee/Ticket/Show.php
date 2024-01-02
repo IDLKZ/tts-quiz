@@ -4,12 +4,15 @@ namespace App\Http\Livewire\Employee\Ticket;
 
 use App\Models\TicketMessage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Show extends Component
 {
+    use WithFileUploads;
     public $messages;
     public $ticket;
-    public $message = "";
+    public $messageText = "";
+    public $file;
 
     public function mount($ticket){
         $this->ticket = $ticket;
@@ -17,10 +20,15 @@ class Show extends Component
     }
 
     public function addMessage(){
-        if(strlen($this->message) > 0){
-            $message = TicketMessage::add(["user_id"=>auth()->id(),"ticket_id"=>$this->ticket->id,"message"=>$this->message]);
-            $this->message = "";
+        if(strlen($this->messageText) > 0 && !$this->ticket->is_resolved){
+            $message = TicketMessage::add(["user_id"=>auth()->id(),"ticket_id"=>$this->ticket->id,"message"=>$this->messageText]);
+            $this->messageText = "";
+            if ($this->file){
+                $message->uploadFile($this->file,"file_url");
+                $this->file = null;
+            }
             $this->messages->push($message);
+            $this->emit('emptyCKEditor');
         }
     }
 

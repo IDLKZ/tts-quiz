@@ -61,7 +61,7 @@ class UsersAttempt extends Model
 
 	public function passed_lessons()
 	{
-		return $this->hasMany(PassedLesson::class, 'attempt_id');
+		return $this->hasOne(PassedLesson::class, 'attempt_id');
 	}
 
 	public function passed_questions()

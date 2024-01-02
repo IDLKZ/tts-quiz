@@ -10,6 +10,7 @@ use App\Traits\Upload;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Reliese\Coders\Model\Relations\HasMany;
 
 /**
  * Class Lesson
@@ -81,4 +82,12 @@ class Lesson extends Model
 	{
 		return $this->belongsTo(Lesson::class, 'prev_id',"id");
 	}
+
+    public function questions(){
+        return $this->hasMany(Question::class, 'lesson_id',"id");
+    }
+
+    public function isPassed(){
+        return PassedLesson::where(["user_id" => auth()->id(),"lesson_id"=>$this->id])->exists();
+    }
 }

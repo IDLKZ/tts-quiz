@@ -45,7 +45,7 @@
             <div class="form-group">
                 <label for="example-text-input" class=" col-form-label">Файл курса (необязателен)</label>
                 <div>
-                    <input class="form-control  @error('file_url') is-invalid @enderror" name="file_url" type="file" id="example-text-input">
+                    <input class="form-control h-[55px] @error('file_url') is-invalid @enderror" name="file_url" type="file" id="example-text-input">
                 </div>
             </div>
             <div class="text-right">

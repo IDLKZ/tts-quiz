@@ -34,7 +34,66 @@
                             <span><i class="fas fa-envelope mr-2"></i>{{$user->email}}</span>
                         </div>
                     </div>
-                    <div class="col-span-12 md:col-span-6 lg:col-span-4 my-2 flex justify-content-center">
+                    <div class="col-span-12 md:col-span-6 lg:col-span-4 my-2">
+                        <div>
+                            <p class="text-md lg:text-lg xl:text-2xl">
+                                Ваши попытки сдачи
+                            </p>
+                        </div>
+                        <div class="relative table-responsive overflow-x-auto shadow-md sm:rounded-lg">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        № Попытки
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Урок
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Баллы
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Успешно
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Действия
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($attempts as $attempt)
+                                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            #{{$attempt->id}}
+                                        </th>
+                                        <td class="p-2">
+                                            <a href="{{route('lesson-show-employee',$attempt->lesson->alias)}}">
+                                                {{$attempt->lesson->title}}
+                                            </a>
+                                        </td>
+                                        <td class="p-2 text-center">
+                                            {{$attempt->points}}
+                                        </td>
+                                        <td class="p-2 text-center">
+                                            @if($attempt->passed_lessons)
+                                                <i class="fas fa-check-circle text-green-500"></i>
+
+                                            @else
+                                                <i class="fas fa-times-circle text-red-500"></i>
+                                            @endif
+                                        </td>
+                                        <td class="p-2 text-center">
+                                            <a href="{{route("exam-result",$attempt->id)}}" class="font-medium text-yellow-500 hover:underline">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                     <div class="col-span-12 md:col-span-6 lg:col-span-4 my-2">

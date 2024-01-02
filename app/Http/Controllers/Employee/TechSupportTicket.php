@@ -43,4 +43,11 @@ class TechSupportTicket extends Controller
         }
         return redirect()->route("tech-support-ticket-list");
     }
+    public function update($id){
+        $ticket = Ticket::where(["user_id" => auth()->id(),"id"=>$id])->first();
+        if($ticket){
+           $ticket->edit(["is_resolved"=>true]);
+        }
+        return redirect()->back();
+    }
 }

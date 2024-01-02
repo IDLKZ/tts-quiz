@@ -133,6 +133,11 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/tech-support-tickets-create",[TechSupportTicket::class,"create"])->name("tech-support-ticket-create");
     Route::post("/tech-support-tickets-store",[TechSupportTicket::class,"store"])->name("tech-support-ticket-store");
     Route::get("/tech-support-tickets-show/{id}",[TechSupportTicket::class,"show"])->name("tech-support-ticket-show");
+    Route::get("/pass-quiz-by-lesson/{id}",[\App\Http\Controllers\Employee\QuizController::class,"passQuiz"])->name("pass-quiz-by-lesson");
+    Route::post("/pass-exam",[\App\Http\Controllers\Employee\QuizController::class,"passExam"])->name("pass-exam");
+    Route::get("/exam-result/{attempt_id}",[\App\Http\Controllers\Employee\QuizController::class,"examResult"])->name("exam-result");
+    Route::post("/tech-support-tickets-edit/{id}",[TechSupportTicket::class,"update"])->name("tech-support-ticket-update");
+    Route::resource("/employee-idea",\App\Http\Controllers\Employee\IdeaController::class);
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);
