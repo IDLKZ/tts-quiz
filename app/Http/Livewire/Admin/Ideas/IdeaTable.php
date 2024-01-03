@@ -20,21 +20,33 @@ class IdeaTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Title", "title")
+            Column::make("Наименование", "title")
+                ->searchable(),
+            Column::make("Пользователь", "user.name")
+                ->searchable(),
+            Column::make('Статус', 'status')
+                ->format(function ($val) {
+                    switch ($val){
+                        case -1:
+                            '<p class="text-red-500">Отклонен</p>';
+                            break;
+                        case 0:
+                            '<p class="text-blue-500">Новая идея</p>';
+                            break;
+                        case 1:
+                            '<p class="text-blue-500">На рассмотрении</p>';
+                            break;
+                        case 2:
+                            '<p class="text-green-500">Утвержден</p>';
+                            break;
+                    }
+                })
+                ->html(),
+            Column::make("Мнение", "opinion")
                 ->sortable(),
-            Column::make("Image url", "image_url")
+            Column::make("Время Создания", "created_at")
                 ->sortable(),
-            Column::make("User id", "user.name")
-                ->sortable(),
-            Column::make("File url", "file_url")
-                ->sortable(),
-            Column::make("Status", "status")
-                ->sortable(),
-            Column::make("Opinion", "opinion")
-                ->sortable(),
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
+            Column::make("Дата обновления", "updated_at")
                 ->sortable(),
         ];
     }
