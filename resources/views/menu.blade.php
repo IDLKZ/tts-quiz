@@ -62,6 +62,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{route('admin-ideas.index')}}" class="{{request()->routeIs('task.index') ? 'waves-effect-active' : 'waves-effect'}}">
+                    <div class="d-inline-block icons-sm mr-1"><i class="fas fa-laugh-wink"></i></div>
+                    <span>Банк идей</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{route('event.index')}}" class="{{request()->routeIs('event.index') ? 'waves-effect-active' : 'waves-effect'}}">
                     <div class="d-inline-block icons-sm mr-1"><i class="fas fa-calendar"></i></div>
                     <span>Мероприятия</span>

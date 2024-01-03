@@ -37,7 +37,7 @@
                                 <!-- Simple card -->
                                 <div class="card">
                                     <div class="flex justify-content-center p-4">
-                                        <img class="card-img-top img-fluid max-w-[300px]" src="{{$news->img}}" alt="Card image cap">
+                                        <div class="card-image w-full min-h-[350px] background-no-repeat background-center background-cover" style="background-image:url({{$news->img}});background-size: cover;background-repeat: no-repeat"></div>
                                     </div>
 
                                     <div class="card-body">
@@ -137,14 +137,15 @@
             series: [invites,results],
             chart: {
                 width: "100%",
+                height:"350px",
                 type: 'pie',
             },
             labels: ["Приглашения","Результаты"],
             responsive: [{
-                breakpoint: 480,
+                breakpoint: 300,
                 options: {
                     chart: {
-                        width: 200
+                        width: 300
                     },
                     legend: {
                         position: 'bottom'
