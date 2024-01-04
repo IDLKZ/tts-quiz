@@ -139,6 +139,8 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::post("/pass-exam",[\App\Http\Controllers\Employee\QuizController::class,"passExam"])->name("pass-exam");
     Route::get("/exam-result/{attempt_id}",[\App\Http\Controllers\Employee\QuizController::class,"examResult"])->name("exam-result");
     Route::post("/tech-support-tickets-edit/{id}",[TechSupportTicket::class,"update"])->name("tech-support-ticket-update");
+    Route::get("/event-all",[MainController::class,"events"])->name("event-all");
+    Route::get("/event-info/{id}",[MainController::class,"eventShow"])->name("event-show");
     Route::resource("/employee-idea",\App\Http\Controllers\Employee\IdeaController::class);
 });
 Route::group(['middleware' => 'auth'], function () {
