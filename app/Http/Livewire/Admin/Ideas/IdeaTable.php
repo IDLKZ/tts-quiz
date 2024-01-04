@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Ideas;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Idea;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 class IdeaTable extends DataTableComponent
 {
@@ -12,29 +13,73 @@ class IdeaTable extends DataTableComponent
 
     public function configure(): void
     {
+        $this->setDefaultSort('ideas.created_at', 'desc');
         $this->setPrimaryKey('id');
+        $this->setPerPageAccepted([20,50,100]);
+        $this->setPerPage(20);
+        $this->setBulkActions([
+            'deleteSelected' => 'Удалить'
+        ]);
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function($row) {
+                return route('admin-ideas.edit', $row);
+            });
     }
+    public function deleteSelected(): void
+    {
+        $ideas = $this->getSelected();
+        foreach ($ideas as $key => $value) {
+            $idea = Idea::find($value);
+            $idea->delete();
+        }
+        $this->clearSelected();
+    }
+    public function filters(): array
+    {
+        return [
+            SelectFilter::make('Статус')
+                ->options([0=>"Новая Идея",1=>"На рассмотрении",2=>"Одобрено",-1=>"Отказано"])
+                ->filter(function ($builder, string $value){
+                    $builder->where(['status' => $value]);
+                }),
+        ];
+    }
+
+
 
     public function columns(): array
     {
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Title", "title")
+            Column::make("Наименование", "title")
                 ->sortable(),
-            Column::make("Image url", "image_url")
+            Column::make("Пользователь", "user.name")
                 ->sortable(),
-            Column::make("User id", "user.name")
+            Column::make('Статус',"status")
+                ->format(function($value) {
+                    switch ($value){
+                        case 2:
+                            return '<strong class="text-success">'.'Одобрено'.'</strong>';
+                            break;
+                        case 1:
+                            return '<strong class="text-info">'.'На рассмотрении'.'</strong>';
+                            break;
+                        case 0:
+                            return '<strong class="text-yellow-700">'.'Новая заявка'.'</strong>';
+                            break;
+                        case -1:
+                            return '<strong class=text-red-500>'.'Отклоненно'.'</strong>';
+                            break;
+                    }
+
+                })
+                ->html()->searchable(),
+            Column::make("Мнение руководства", "opinion")
                 ->sortable(),
-            Column::make("File url", "file_url")
+            Column::make("Создан", "created_at")
                 ->sortable(),
-            Column::make("Status", "status")
-                ->sortable(),
-            Column::make("Opinion", "opinion")
-                ->sortable(),
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
+            Column::make("Обновлен", "updated_at")
                 ->sortable(),
         ];
     }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Idea;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
-class IdeaController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        return view("admin.ideas.index");
+        return view("admin.ticket.index");
     }
 
     /**
@@ -47,7 +47,11 @@ class IdeaController extends Controller
      */
     public function show($id)
     {
-        //
+        $ticket = Ticket::where(["id"=>$id])->first();
+        if($ticket){
+            return view("admin.ticket.show",compact("ticket"));
+        }
+        return redirect()->route("ticket.index");
     }
 
     /**
@@ -58,23 +62,7 @@ class IdeaController extends Controller
      */
     public function edit($id)
     {
-        $idea = Idea::with("user")
-            ->withCount([
-                'idea_ratings AS up_vote' => function ($query) {
-                    $query->where("rating",">",0);
-                }
-            ])
-            ->withCount([
-                'idea_ratings AS down_vote' => function ($query) {
-                    $query->where("rating","<",0);
-                }
-            ])
-            ->withSum("idea_ratings","rating")
-            ->find($id);
-        if($idea){
-            return view("admin.ideas.edit",compact("idea"));
-        }
-        return  redirect()->back();
+        //
     }
 
     /**
@@ -86,14 +74,11 @@ class IdeaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,["status"=>"required|integer|min:-1|max:2"]);
-
-        $idea = Idea::find($id);
-        if($idea){
-            $idea->edit($request->only(["status","opinion"]));
+        $ticket = Ticket::where(["id"=>$id])->first();
+        if($ticket){
+            $ticket->edit(["is_resolved"=>true]);
         }
-        return  redirect()->back();
-
+        return redirect()->back();
     }
 
     /**
@@ -104,6 +89,10 @@ class IdeaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ticket = Ticket::where(["id"=>$id])->first();
+        if($ticket){
+            $ticket->delete();
+        }
+        return redirect()->route("ticket.index");
     }
 }
