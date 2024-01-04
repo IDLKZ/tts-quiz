@@ -62,9 +62,23 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('admin-ideas.index')}}" class="{{request()->routeIs('task.index') ? 'waves-effect-active' : 'waves-effect'}}">
+                <a href="{{route('admin-ideas.index')}}" class="{{request()->routeIs('admin-ideas.index') ? 'waves-effect-active' : 'waves-effect'}}">
                     <div class="d-inline-block icons-sm mr-1"><i class="fas fa-laugh-wink"></i></div>
                     <span>Банк идей</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('ticket-category.index')}}" class="{{request()->routeIs('ticket-category.index') ? 'waves-effect-active' : 'waves-effect'}}">
+                    <div class="d-inline-block icons-sm mr-1"><i class="fas fa-toolbox"></i></div>
+                    <span>Категория техподдержки</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('ticket.index')}}" class="{{request()->routeIs('ticket.index') ? 'waves-effect-active' : 'waves-effect'}}">
+                    <div class="flex align-items-center">
+                        <span><i class="fas fa-comment"></i> Техподдержка </span>
+                        <span class="w-4 h-4 bg-white rounded-full text-sm flex justify-content-center items-center ml-2 font-weight-bold text-yellow-500">{{$unresolvedTicketsCount}}</span>
+                    </div>
                 </a>
             </li>
             <li>

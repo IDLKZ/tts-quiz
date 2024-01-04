@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Invite;
+use App\Models\Ticket;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,9 @@ class AppServiceProvider extends ServiceProvider
                         $q->where("user_id", Auth::id());
                         $q->orWhere("user_id",null);
                     })->where("status", 0)->with(["department", "user", "type"])->whereNotIn("id", Auth::user()->results()->pluck("invites_id")->toArray())->get();
-           $view->with("invitesCount",$invites->count());
+                    $view->with("invitesCount",$invites->count());
+                    $unresolvedTicketsCount = Ticket::where(["is_resolved" => false])->count("id");
+                    $view->with("unresolvedTicketsCount",$unresolvedTicketsCount);
             }
         });
 

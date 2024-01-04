@@ -37,10 +37,13 @@
                         <div id="dropdownWorkProcess" class="z-[200] hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
-                                    <a class="{{ request()->is('employee-tasks') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-tasks")}}">Доска Kanban</a>
+                                    <a class="{{ request()->routeIs('employee-tasks') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-tasks")}}">Доска Kanban</a>
                                 </li>
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
-                                    <a class="{{ request()->is('forum-list') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("forum-list")}}">Форумы</a>
+                                    <a class="{{ request()->routeIs('forum-list') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("forum-list")}}">Форумы</a>
+                                </li>
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a class="{{ request()->routeIs('events-all') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("event-all")}}">Мероприятия</a>
                                 </li>
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                                     <a class="{{ request()->routeIs('employee-idea.index') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-idea.index")}}">Банк идей</a>

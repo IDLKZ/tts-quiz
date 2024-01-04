@@ -44,7 +44,7 @@ class MainController extends Controller
         $tasks = Task::with(["department","user"])->whereJsonContains("users",\auth()->id())->orderBy("created_at","desc")->take(4)->get();
         $users = User::whereMonth("birth_date","=",Carbon::now()->month)->orderBy("birth_date","asc")->take(4)->get();
         $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->take(4)->get();
-        $events = Event::orderBy("created_at","desc")->take(4)->get();
+        $events = Event::where("start_date",">=",Carbon::now()->startOfDay())->orderBy("created_at","desc")->take(4)->get();
         return view('employee.home.index',compact("news","tasks","users","forums","events"));
     }
 
@@ -269,5 +269,17 @@ class MainController extends Controller
         $events = Event::orderBy("created_at","desc")->take(4)->get();
         $attempts = UsersAttempt::where(["user_id" => \auth()->id()])->with(["user","lesson","passed_lessons"])->orderBy("created_at","desc")->paginate(10);
         return view("employee.home.my-profile",compact("tasks","forums","events","user","attempts"));
+    }
+
+    public function events(){
+        $events = Event::orderBy("created_at","desc")->paginate(20);
+        return view("employee.event.index",compact("events"));
+    }
+    public function eventShow($id){
+        $event = Event::find($id);
+        if(!$event){
+            abort(404);
+        }
+        return view("employee.event.show",compact("event"));
     }
 }
