@@ -83,6 +83,10 @@
                         </div>
                 @endif
             </div>
+            <div class="col-span-12 my-3 flex justify-content-center items-center">
+                {{$documents->links()}}
+            </div>
         </div>
+
     </div>
 </div>

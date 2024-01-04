@@ -20,6 +20,21 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="example-text-input" class=" col-form-label">Категория *</label>
+                <div>
+                    <select wire:model="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id">
+                        <option value="{{null}}">
+                            Выберите категорию
+                        </option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">
+                                {{$category->title}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="example-text-input" class=" col-form-label">Сообщение форума *</label>
                 <div wire:ignore>
                     <textarea wire:model="description" id="editor" name="description"></textarea>

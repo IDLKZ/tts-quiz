@@ -28,7 +28,7 @@ class AuthController extends Controller
                 return redirect("/admin");
             }
             else{
-                return redirect(route('employee-news'));
+                return redirect(route('employeeMainPage'));
             }
         }
         else{

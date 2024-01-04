@@ -70,6 +70,9 @@
                    </div>
                </div>
                @endforeach
+               <div class="col-span-12 my-3 flex justify-content-center items-center">
+                   {{$literatures->links()}}
+               </div>
            </div>
         </div>
     </div>

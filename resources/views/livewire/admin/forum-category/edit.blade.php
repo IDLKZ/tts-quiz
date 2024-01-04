@@ -11,33 +11,20 @@
         @endif
     </div>
     <div class="col-12 bg-white shadow-lg rounded-lg p-3">
-        <form id="js-form" action="{{route("forum-employee-store")}}" method="post" enctype="multipart/form-data">
+        <form id="js-form" action="{{route("forum-category.update",$category->id)}}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="form-group">
-                <label for="example-text-input" class=" col-form-label">Категория *</label>
+                <img class="my-3 max-w-[300px]" src="{{$category->getFile("image_url")}}"/>
+                <label for="example-text-input" class=" col-form-label">Изображение *</label>
                 <div>
-                    <select wire:model="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id">
-                        <option value="{{null}}">
-                            Выберите категорию
-                        </option>
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}">
-                                {{$category->title}}
-                            </option>
-                        @endforeach
-                    </select>
+                    <input class="form-control  @error('image_url') is-invalid @enderror" name="image_url" type="file" style="height: 50px">
                 </div>
             </div>
             <div class="form-group">
-                <label for="example-text-input" class=" col-form-label">Тема форума *</label>
+                <label for="example-text-input" class=" col-form-label">Наименование категория *</label>
                 <div>
                     <input  wire:model="title" class="form-control  @error('title') is-invalid @enderror" name="title" type="text" value="{{old("title")}}" >
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="example-text-input" class=" col-form-label">Сообщение форума *</label>
-                <div wire:ignore>
-                    <textarea wire:model="description" id="editor" name="description"></textarea>
                 </div>
             </div>
             <div class="text-right">

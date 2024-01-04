@@ -85,6 +85,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("/question",\App\Http\Controllers\Admin\QuestionController::class);
     Route::resource("/event",\App\Http\Controllers\Admin\EventController::class);
     Route::resource("/forum",\App\Http\Controllers\Admin\ForumController::class)->except("edit","update");
+    Route::resource("/forum-category",\App\Http\Controllers\Admin\ForumCategoryController::class);
     Route::resource("/literature-category",\App\Http\Controllers\Admin\LiteratureCategoryController::class);
     Route::resource("/literature",\App\Http\Controllers\Admin\LiteratureController::class);
     Route::resource("/document",\App\Http\Controllers\Admin\DocumentController::class);

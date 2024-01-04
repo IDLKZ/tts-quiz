@@ -4,154 +4,189 @@
 <div>
     <section class="row min-h-[350px] ">
         <div class="col-12 my-3 p-3 border-1 bg-white p-5 rounded-lg shadow-lg">
-            <div class="grid grid-cols-12">
-                <div class="col-span-12 lg:col-span-2">
-                    <div class="flex justify-content-center">
-                        <img src="{{$user->img}}" class="w-full max-w-[150px] rounded-full">
-                    </div>
-                    <p class="text-md lg:text-xl xl:text-2xl font-weight-bold text-center my-3">
-                        {{$forumRating ?? 0}}
-                    </p>
-                    <div class="flex justify-content-center">
-                        <a wire:click="rateForumUp" class="btn btn-success text-white mx-2">
-                            <i class="fas fa-thumbs-up"></i>
-                        </a>
-                        <a wire:click="rateForumDown" class="btn btn-danger text-white mx-2">
-                            <i class="fas fa-thumbs-down"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-span-12 lg:col-span-10 px-5">
-                    <div>
-                        <div class="text-md lg:text-xl xl:text-2xl">
-                            {{$forum->title}}
-                        </div>
-                        <div class="text-md my-5 border-2 p-3" style="word-break: break-all;">
-                            {!! $forum->description !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr/>
-        <div class="col-12 text-lg">
-            Комментарии
-        </div>
-        @if($comments)
-            @foreach($comments as $commentItem)
-                <div class="w-full bg-white p-5 rounded-lg shadow-md my-3">
-                    <div class="grid grid-cols-12">
-                        <div class="col-span-12 lg:col-span-2">
-                            <div class="flex justify-content-center">
-                                <img src="{{$commentItem->user->img}}" class="w-full max-w-[150px] rounded-full">
+            <div class="mb-3">
+                <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white rounded-lg antialiased">
+                    <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
+                        <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                            <header>
+                                <address class="flex items-center not-italic">
+                                    <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                                        <img class="mr-2 w-16 h-16 rounded-full" src="{{$forum->user->img}}" alt="{{$forum->user->name}}">
+                                        <div>
+                                            <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{$forum->user->name}}</a>
+                                            <p class="text-base text-gray-500 dark:text-gray-400">
+                                                {{$forum->user->position}}
+                                                @if($forum->department_id)
+                                                    {{$forum->department->title}})
+                                                @endif
+                                            </p>
+                                            <p class="text-base text-gray-500 dark:text-gray-400">
+                                                {{$forum->created_at->diffForHumans()}} ({{$forum->created_at->format('H:i d.m.Y')}})
+                                            </p>
+                                        </div>
+                                    </div>
+                                </address>
+                                <h1 class="mb-4 text-lg font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                                    {{$forum->title}}
+                                </h1>
+                                <small class="inline-block mb-4">
+                                    #{{$forum->category->title}}
+                                </small>
+                            </header>
+                            <div class="text-gray-700 text-md lg:text-sm">
+                                {!! $forum->description !!}
                             </div>
-                            <p class="text-md lg:text-xl xl:text-2xl font-weight-bold text-center my-3">
-                                {{$commentItem->user->name}}
-                            </p>
-                            <p class="text-md lg:text-xl xl:text-2xl font-weight-bold text-center my-3">
-                                {{$commentItem->forum_message_ratings_sum_rating ?? 0}}
-                            </p>
-                            <div class="flex justify-content-center">
-                                <a class="btn btn-success text-white mx-2" wire:click="rateMessageUp({{$commentItem->id}})">
-                                    <i class="fas fa-thumbs-up"></i>
-                                </a>
-                                <a class="btn btn-danger text-white mx-2" wire:click="rateMessageDown({{$commentItem->id}})">
-                                    <i class="fas fa-thumbs-down"></i>
-                                </a>
+                            <div class="flex items-center mt-4 space-x-4">
+                                <button type="button" class="flex items-center font-medium text-sm text-gray-500 hover:underline">
+                                    <svg class="mr-1.5 w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                        <path d="M18 0H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2v4a1 1 0 0 0 1.707.707L10.414 13H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5 4h2a1 1 0 1 1 0 2h-2a1 1 0 1 1 0-2ZM5 4h5a1 1 0 1 1 0 2H5a1 1 0 0 1 0-2Zm2 5H5a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Zm9 0h-6a1 1 0 0 1 0-2h6a1 1 0 1 1 0 2Z"></path>
+                                    </svg>
+                                    {{$forum->forum_messages_count}}
+                                </button>
+                                <button wire:click="rateForumUp({{$forum->id}})" type="button" class="flex items-center font-medium text-sm text-green-500 hover:underline">
+                                    <i class="fas fa-thumbs-up mr-1"></i>
+                                    {{$forum->up_vote}}
+                                </button>
+                                <button wire:click="rateForumDown({{$forum->id}})" type="button" class="flex items-center font-medium text-sm text-red-500 hover:underline">
+                                    <i class="fas fa-thumbs-down mr-1"></i>
+                                    {{$forum->down_vote}}
+                                </button>
                             </div>
-                            <div class="my-3 text-center">
-                                <a class="btn btn-info text-white mx-2" wire:click="setMessage({{$commentItem}})">
-                                    Ответить
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-span-12 lg:col-span-10 px-5">
-                            <div>
-                                <div class="text-md my-5 border-2 p-3" style="word-break: break-all;">
-                                    {!! $commentItem->message !!}
+                            <section class="my-3">
+                                <div class="form-group" wire:ignore>
+                                    <label for="example-text-input" class=" col-form-label">Оставить комментарий *</label>
+                                    <div>
+                                        <textarea wire:model="message" id="editor" name="message"></textarea>
+                                    </div>
                                 </div>
+                                @if($message)
+                                    <div class="text-right">
+                                        <button class="btn btn-success text-white" wire:click="createComment">
+                                            Создать
+                                        </button>
+                                    </div>
+                                @endif
+                            </section>
+                            <div class="text-lg">
+                                Комментарии
                             </div>
-                        </div>
+                            @if($comments)
+                                @foreach($comments as $commentItem)
+                                    <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
+                                        <footer class="flex justify-between items-center mb-2">
+                                            <div class="flex items-center">
+                                                <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white">
+                                                    <img class="mr-2 w-6 h-6 rounded-full" src="{{$commentItem->user->getFile('image_url')}}" alt="{{$commentItem->user->name}}">{{$commentItem->user->name}}</p>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">
+                                                    {{$commentItem->created_at->diffForHumans()}} ({{$commentItem->created_at->format("H:i d/m/Y")}})
+                                                </p>
+                                            </div>
+                                            @if($commentItem->user_id == $user->id || $user->role_id == 1)
+                                                <button wire:click="removeComment({{$commentItem->id}})" class="text-red-500">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            @endif
+                                        </footer>
+                                        <div class="text-sm">
+                                            {!! $commentItem->message !!}
+                                        </div>
+                                        <div class="flex items-center mt-4 space-x-4">
+                                            @if($respond != $commentItem->id)
+                                                <button wire:click="respondToComment({{$commentItem->id}})" type="button" class="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400">
+                                                    <svg class="mr-1.5 w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                                        <path d="M18 0H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2v4a1 1 0 0 0 1.707.707L10.414 13H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5 4h2a1 1 0 1 1 0 2h-2a1 1 0 1 1 0-2ZM5 4h5a1 1 0 1 1 0 2H5a1 1 0 0 1 0-2Zm2 5H5a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Zm9 0h-6a1 1 0 0 1 0-2h6a1 1 0 1 1 0 2Z"></path>
+                                                    </svg>
+                                                    Ответить
+                                                </button>
+                                            @endif
+                                            <div>
+                                                @if($commentItem->forum_message_ratings_sum_rating > 0)
+                                                <p class="text-green-500 text-sm">
+                                                    +{{$commentItem->forum_message_ratings_sum_rating}}
+                                                </p>
+                                                @else
+                                                    <p class="text-red-500 text-sm">
+                                                        {{$commentItem->forum_message_ratings_sum_rating}}
+                                                    </p>
+                                                @endif
+                                            </div>
+                                            <button wire:click="rateMessageUp({{$commentItem->id}})" type="button" class="flex items-center font-medium text-sm text-green-500 hover:underline">
+                                                <i class="fas fa-thumbs-up mr-1"></i>
+                                            </button>
+                                            <button wire:click="rateMessageDown({{$commentItem->id}})" type="button" class="flex items-center font-medium text-sm text-red-500 hover:underline">
+                                                <i class="fas fa-thumbs-down mr-1"></i>
+                                            </button>
+                                        </div>
+                                        <div class="my-2">
+                                            @if($respond == $commentItem->id)
+                                                <section class="my-3">
+                                                    <div class="form-group" wire:ignore>
+                                                        <label for="example-text-input" class=" col-form-label">Оставить комментарий *</label>
+                                                        <div>
+                                                            <input type="text" wire:model="subMessage" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Оставьте комментарий">
+                                                        </div>
+                                                    </div>
+                                                    @if($subMessage)
+                                                        <div class="text-right">
+                                                            <button class="btn btn-success text-white" wire:click="createSubComment">
+                                                                Отправить
+                                                            </button>
+                                                        </div>
+                                                    @endif
+                                                </section>
+                                            @endif
+                                        </div>
+                                        @if($commentItem->forum_messages)
+                                            @if(count($commentItem->forum_messages))
+                                                @foreach($commentItem->forum_messages as $subCommentItem)
+                                                    <article class="p-6 mb-6 ml-6 lg:ml-12 text-base bg-white rounded-lg dark:bg-gray-900">
+                                                        <footer class="flex justify-between items-center mb-2">
+                                                            <div class="flex items-center">
+                                                                <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white">
+                                                                    <img class="mr-2 w-6 h-6 rounded-full" src="{{$subCommentItem->user->getFile('image_url')}}" alt="{{$subCommentItem->user->name}}">{{$subCommentItem->user->name}}</p>
+                                                                <p class="text-sm text-gray-600 dark:text-gray-400">
+                                                                    {{$subCommentItem->created_at->diffForHumans()}} ({{$subCommentItem->created_at->format("H:i d/m/Y")}})
+                                                                </p>
+                                                            </div>
+                                                            @if($subCommentItem->user_id == $user->id || $user->role_id == 1)
+                                                                <button wire:click="removeComment({{$subCommentItem->id}})" class="text-red-500">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
+                                                            @endif
+                                                        </footer>
+                                                        <div class="text-sm">
+                                                            {!! $subCommentItem->message !!}
+                                                        </div>
+                                                        <div class="flex items-center mt-4 space-x-4">
+                                                            <div>
+                                                                @if($subCommentItem->forum_message_ratings_sum_rating > 0)
+                                                                    <p class="text-green-500 text-sm">
+                                                                        +{{$subCommentItem->forum_message_ratings_sum_rating}}
+                                                                    </p>
+                                                                @else
+                                                                    <p class="text-red-500 text-sm">
+                                                                        {{$subCommentItem->forum_message_ratings_sum_rating}}
+                                                                    </p>
+                                                                @endif
+                                                            </div>
+                                                            <button wire:click="rateMessageUp({{$subCommentItem->id}})" type="button" class="flex items-center font-medium text-sm text-green-500 hover:underline">
+                                                                <i class="fas fa-thumbs-up mr-1"></i>
+                                                            </button>
+                                                            <button wire:click="rateMessageDown({{$subCommentItem->id}})" type="button" class="flex items-center font-medium text-sm text-red-500 hover:underline">
+                                                                <i class="fas fa-thumbs-down mr-1"></i>
+                                                            </button>
+                                                        </div>
+                                                    </article>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    </article>
+                                @endforeach
+                            @endif
+                        </article>
                     </div>
-                    @if($commentItem->forum_messages)
-                       @if(count($commentItem->forum_messages))
-                           @foreach($commentItem->forum_messages as $subCommentItem)
-                               <div class="flex justify-content-end">
-                                   <section class="w-[90%] my-4">
-                                       <div class="grid grid-cols-12 border-l-2  border-gray-200 p-2">
-                                           <div class="col-span-12 lg:col-span-2">
-                                               <div class="flex justify-content-center">
-                                                   <img src="{{$subCommentItem->user->img}}" class="w-full max-w-[150px] rounded-full">
-                                               </div>
-                                               <p class="text-md lg:text-xl xl:text-2xl font-weight-bold text-center my-3">
-                                                   {{$subCommentItem->user->name}}
-                                               </p>
-                                               <p class="text-md lg:text-xl xl:text-2xl font-weight-bold text-center my-3">
-                                                   {{$subCommentItem->forum_message_ratings_sum_rating ?? 0}}
-                                               </p>
-                                               <div class="flex justify-content-center">
-                                                   <a class="btn btn-success text-white mx-2" wire:click="rateMessageUp({{$subCommentItem->id}})">
-                                                       <i class="fas fa-thumbs-up"></i>
-                                                   </a>
-                                                   <a class="btn btn-danger text-white mx-2" wire:click="rateMessageDown({{$subCommentItem->id}})">
-                                                       <i class="fas fa-thumbs-down"></i>
-                                                   </a>
-                                               </div>
-                                           </div>
-                                           <div class="col-span-12 lg:col-span-10 px-5">
-                                               <div>
-                                                   <div class="text-md my-5 border-2 p-3" style="word-break: break-all;">
-                                                       {!! $subCommentItem->message !!}
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </section>
-                               </div>
-
-                            @endforeach
-
-                       @endif
-                    @endif
-                </div>
-            @endforeach
-
-
-        @endif
-    </section>
-    <section class="min-h-[350px] max-h-[50vh] overflow-y-scroll row bg-white p-5 rounded-lg shadow-lg my-3 ">
-        <div class="col-12 my-3 p-3 border-1">
-            <div class="form-group">
-                @if($respond)
-                    <div class="text-md p-3 border-l-2 border-gray-200 flex">
-                        <div class="w-10/12">
-                            <p class="mb-4">{{$respond["user"]["name"]}}:</p>
-                            <small>
-                                {!!  (strlen($respond["message"]) > 50 ? substr($respond["message"], 0, 50) : $respond["message"])  !!}
-                            </small>
-                        </div>
-                        <div class="w-2/12">
-                            <button wire:click="resetMessage" type="submit" class="btn btn-danger bg-danger text-white">
-                                <i class="far fa-times-circle"></i>
-                            </button>
-                        </div>
-                    </div>
-                @endif
+                </main>
             </div>
-                <div class="form-group" wire:ignore>
-                    <label for="example-text-input" class=" col-form-label">Оставить комментарий *</label>
-                    <div>
-                        <textarea wire:model="message" id="editor" name="message"></textarea>
-                    </div>
-                </div>
-                @if($message)
-                <div class="text-right">
-                    <button class="btn btn-success text-white" wire:click="createComment">
-                        Создать
-                    </button>
-                </div>
-                @endif
-
         </div>
 
     </section>

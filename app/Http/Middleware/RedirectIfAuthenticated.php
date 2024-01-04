@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
                     return redirect("/admin");
                 }
                 else{
-                    return redirect("/employee");
+                    return redirect("/employee/home");
                 }
             }
         }

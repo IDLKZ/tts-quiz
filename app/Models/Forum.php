@@ -42,6 +42,7 @@ class Forum extends Model
 	protected $fillable = [
 		'title',
 		'description',
+		'category_id',
 		'user_id',
 		'companies',
 		'departments'
@@ -52,6 +53,10 @@ class Forum extends Model
 		return $this->belongsTo(User::class);
 	}
 
+    public function category()
+    {
+        return $this->belongsTo(CategoriesForum::class);
+    }
 	public function forum_messages()
 	{
 		return $this->hasMany(ForumMessage::class);

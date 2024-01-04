@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Forum;
+namespace App\Http\Requests\ForumCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ForumCreateRequest extends FormRequest
+class ForumCategoryCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,7 @@ class ForumCreateRequest extends FormRequest
     {
         return [
             "title"=>"required|max:255",
-            "description"=>"required|max:50000",
-            "category_id"=>"required|exists:categories_forum,id",
-            "departments"=>"sometimes|nullable|array",
-            "departments.*"=>"exists:departments,id",
+            "image_url"=>"required|image|max:100000"
         ];
     }
 }

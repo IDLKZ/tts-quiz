@@ -216,7 +216,20 @@ class MainController extends Controller
 
     public function forumDetail($id){
         try{
-            $forum = Forum::withSum("forum_ratings","rating")->find($id);
+            $forum = Forum::
+            withSum("forum_ratings","rating")
+                ->withCount([
+                    'forum_ratings AS up_vote' => function ($query) {
+                        $query->where("rating",">",0);
+                    }
+                ])
+                ->withCount([
+                    'forum_ratings AS down_vote' => function ($query) {
+                        $query->where("rating","<",0);
+                    }
+                ])
+                ->withCount("forum_messages")
+                ->find($id);
             if($forum){
                 return view("employee.forum.show",compact("forum"));
             }

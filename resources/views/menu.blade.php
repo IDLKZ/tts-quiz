@@ -88,6 +88,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{route('forum-category.index')}}" class="{{request()->routeIs('forum-category.index') ? 'waves-effect-active' : 'waves-effect'}}">
+                    <div class="d-inline-block icons-sm mr-1"><i class="fas fa-comment"></i></div>
+                    <span>Категория форумов</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{route('forum.index')}}" class="{{request()->routeIs('forum.index') ? 'waves-effect-active' : 'waves-effect'}}">
                     <div class="d-inline-block icons-sm mr-1"><i class="fas fa-comment"></i></div>
                     <span>Форум</span>
