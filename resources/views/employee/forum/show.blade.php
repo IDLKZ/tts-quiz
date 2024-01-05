@@ -23,7 +23,6 @@
             <div class="container">
                     <livewire:admin.forum.show :forum="$forum"/>
                 <!-- end row -->
-
             </div>
             <!-- End Page-content -->
         </div>

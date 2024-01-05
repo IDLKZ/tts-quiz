@@ -25,7 +25,7 @@ class TaskCreateRequest extends FormRequest
     {
         return [
             "task"=>"required|max:500",
-            "details"=>"required|max:500",
+            "details"=>"required|max:50000",
             "department_id"=>"required|exists:departments,id",
             "users"=>"required|array",
             "users.*"=>"required|exists:users,id",

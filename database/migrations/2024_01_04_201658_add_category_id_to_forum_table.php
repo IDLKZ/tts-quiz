@@ -14,7 +14,7 @@ class AddCategoryIdToForumTable extends Migration
     public function up()
     {
         Schema::table('forums', function (Blueprint $table) {
-            $table->foreignId("category_id")->after("user_id")->references("id")->on("categories_forum")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("category_id")->after("user_id")->references("id")->on("categories_forum")->cascadeOnUpdate()->cascadeOnDelete()->change();
         });
     }
 

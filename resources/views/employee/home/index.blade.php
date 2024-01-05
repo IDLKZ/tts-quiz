@@ -88,7 +88,7 @@
                                                 <div class="min-w-8 w-1/12">
                                                     <img class="w-6 h-6 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr" src="{{$task->user->img}}">
                                                 </div>
-                                                <div class="min-w-8 justify-content-between flex w-10/12">
+                                                <a href="{{route("employee-task-detail",$task->id)}}" class="min-w-8 justify-content-between flex w-10/12">
                                                     <div class="word-break pl-2">
                                                         <p class="text-md">
                                                             {{$task->user->name}}
@@ -100,7 +100,7 @@
                                                     <small class="text-xs ml-2 text-left">
                                                         {{$task->created_at->diffForHumans()}}
                                                     </small>
-                                                </div>
+                                                </a>
 
                                             </div>
                                         </div>
@@ -193,9 +193,9 @@
                                                         </div>
                                                         <div class="min-w-8 justify-content-between flex w-10/12">
                                                             <div class="word-break pl-2">
-                                                                <p class="text-md">
+                                                                <a href="{{route("forumDetail",$forum->id)}}" class="text-md">
                                                                     {{$forum->title}}
-                                                                </p>
+                                                                </a>
                                                                 <small class="text-xs my-2">
                                                                     {!! strlen($forum->description)>30 ? substr($forum->description,0,50) . "..." : $forum->description !!}
                                                                 </small>

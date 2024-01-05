@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Traits\Upload;
 use Carbon\Carbon;
+use Chatter\Core\Traits\CanDiscuss;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * @property integer $id
@@ -37,7 +39,7 @@ use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable
 {
     use Upload;
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, CanDiscuss,HasApiTokens;
     /**
      * The "type" of the auto-incrementing ID.
      *

@@ -11,6 +11,7 @@
         "php": "^7.3|^8.0",
         "alaouy/youtube": "^2.2",
         "asantibanez/livewire-select": "^2.0",
+        "chatter-laravel/core": "dev-master",
         "devdojo/chatter": "0.2.*",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",

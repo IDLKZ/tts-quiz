@@ -123,6 +123,10 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/course-list",[MainController::class,"courses"])->name("courseListEmployee");
     Route::get("/course-show-employee/{alias}",[MainController::class,"showCourse"])->name("course-show-employee");
     Route::get("/employee-tasks",[MainController::class,"tasks"])->name("employee-tasks");
+    Route::get("/employee-task-detail/{id}",[MainController::class,"taskDetail"])->name("employee-task-detail");
+    Route::delete("/employee-task-delete/{id}",[MainController::class,"taskDelete"])->name("employee-task-delete");
+    Route::get("/employee-task-create",[MainController::class,"taskCreate"])->name("employee-task-create");
+    Route::post("/employee-task-store",[MainController::class,"taskStore"])->name("employee-task-store");
     Route::get("/lesson-show/{alias}",[MainController::class,"showLesson"])->name("lesson-show-employee");
     Route::get("/forum-list",[MainController::class,"forumList"])->name("forum-list");
     Route::get("/forum-detail/{id}",[MainController::class,"forumDetail"])->name("forumDetail");

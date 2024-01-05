@@ -121,7 +121,7 @@ class Show extends Component
     }
 
     public function createSubComment(){
-        if ($this->respond && $this->subMessage && ForumMessage::where(["message_id" => $this->respond])->exists()) {
+        if ($this->respond && $this->subMessage && ForumMessage::where(["id" => $this->respond])->exists()) {
             ForumMessage::add(["message" => $this->subMessage, "forum_id" => $this->forum->id, "user_id" => $this->user->id, "message_id" => $this->respond]);
             $this->comments = ForumMessage::where(["forum_id" => $this->forum->id, "message_id" => null])
                 ->with(["forum_message_ratings", "forum_messages.forum_message_ratings", "forum_messages.user", "user"])

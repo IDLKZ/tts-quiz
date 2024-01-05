@@ -63,7 +63,13 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $task = Task::with(["department","user"])
+            ->where(["id"=>$id])
+            ->first();
+        if($task){
+            return view("admin.tasks.show", compact("task"));
+        }
+        abort(404);
     }
 
     /**

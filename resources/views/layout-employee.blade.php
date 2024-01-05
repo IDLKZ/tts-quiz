@@ -31,6 +31,10 @@
             background: #EDEBEB!important;
             font-family: 'Montserrat', sans-serif;
         }
+        .my-date{
+            border:1px solid #ced4da!important;
+            padding: 10px!important;
+        }
     </style>
 </head>
 

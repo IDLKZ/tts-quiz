@@ -15,21 +15,11 @@
                                 <li class="breadcrumb-item active">Список задач</li>
                             </ol>
                         </div>
-                        <div class="col-md-4">
-                            <div class="float-right d-none d-md-block">
-                                <div class="dropdown">
-                                    <a href="{{route("task.create")}}" class="btn btn-light btn-rounded dropdown-toggle">
-                                        <i class="mdi mdi mdi-plus-thick  mr-1"></i> Добавить
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <!-- end page title end breadcrumb -->
-            <livewire:admin.task.index/>
+            <livewire:admin.task.show :task="$task"/>
             <!-- end page-content-wrapper -->
         </div>
         <!-- End Page-content -->

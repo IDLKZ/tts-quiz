@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Employee;
 use App\Http\Requests\Forum\ForumCreateRequest;
+use App\Http\Requests\Task\TaskCreateRequest;
 use App\Models\BelbinQuiz;
 use App\Models\BelbinUser;
 use App\Models\Company;
@@ -208,6 +209,45 @@ class MainController extends Controller
         $tasks = Task::with(["department","user"])->whereJsonContains("users",\auth()->id())->get()->groupBy("status");
         return view("employee.task.index", compact("tasks"));
     }
+    public function taskDetail($id){
+        $task = Task::with(["department","user"])
+            ->where(["id"=>$id])
+            ->whereJsonContains("users",\auth()->id())->where(["id"=>$id])->orWhere(["user_id" => \auth()->user()->id])
+            ->first();
+        if($task){
+            return view("employee.task.show", compact("task"));
+        }
+        abort(404);
+    }
+    public function taskDelete($id){
+        $task = Task::where(["user_id" => \auth()->user()->id,"id"=>$id])
+            ->first();
+        if($task){
+            $task->delete();
+        }
+        return redirect()->back();
+    }
+
+    public function taskCreate(){
+        return view("employee.task.create");
+    }
+
+    public function taskStore(TaskCreateRequest $request){
+            try{
+                $input = $request->all();
+                $input["user_id"] = \auth()->id();
+                $input["start_date"] = \Carbon\Carbon::createFromFormat('d/m/Y H:i',$request["start_date"]);
+                if($input["end_date"]){
+                    $input["end_date"] = Carbon::createFromFormat('d/m/Y H:i',$request["end_date"]);
+                }
+                $input["users"] = array_map('intval', $input["users"]);
+                $task = Task::add($input);
+            }
+            catch (\Exception $exception){
+
+            }
+            return redirect()->route("employee-tasks");
+    }
 
     public function forumList(){
         $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->paginate(20);
@@ -228,6 +268,7 @@ class MainController extends Controller
                         $query->where("rating","<",0);
                     }
                 ])
+                ->with(["user.department","category"])
                 ->withCount("forum_messages")
                 ->find($id);
             if($forum){

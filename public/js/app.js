@@ -19351,7 +19351,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")["Buffer"];
-// Axios v1.6.2 Copyright (c) 2023 Matt Zabriskie and contributors
+// Axios v1.6.4 Copyright (c) 2024 Matt Zabriskie and contributors
 
 
 function bind(fn, thisArg) {
@@ -20705,6 +20705,9 @@ function arrayToObject(arr) {
 function formDataToJSON(formData) {
   function buildPath(path, value, target, index) {
     let name = path[index++];
+
+    if (name === '__proto__') return true;
+
     const isNumericKey = Number.isFinite(+name);
     const isLast = index >= path.length;
     name = !name && utils$1.isArray(target) ? target.length : name;
@@ -21374,7 +21377,7 @@ function isAbsoluteURL(url) {
  */
 function combineURLs(baseURL, relativeURL) {
   return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    ? baseURL.replace(/\/?\/$/, '') + '/' + relativeURL.replace(/^\/+/, '')
     : baseURL;
 }
 
@@ -22008,7 +22011,7 @@ function mergeConfig(config1, config2) {
   return config;
 }
 
-const VERSION = "1.6.2";
+const VERSION = "1.6.4";
 
 const validators$1 = {};
 

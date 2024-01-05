@@ -7,20 +7,20 @@
             <div class="mb-3">
                 <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white rounded-lg antialiased">
                     <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
-                        <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                        <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue">
                             <header>
                                 <address class="flex items-center not-italic">
-                                    <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                                    <div class="inline-flex items-center mr-3 text-sm text-gray-900">
                                         <img class="mr-2 w-16 h-16 rounded-full" src="{{$forum->user->img}}" alt="{{$forum->user->name}}">
                                         <div>
-                                            <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{$forum->user->name}}</a>
-                                            <p class="text-base text-gray-500 dark:text-gray-400">
+                                            <a href="#" rel="author" class="text-xl font-bold text-gray-900">{{$forum->user->name}}</a>
+                                            <p class="text-base text-gray-500 ">
                                                 {{$forum->user->position}}
                                                 @if($forum->department_id)
                                                     {{$forum->department->title}})
                                                 @endif
                                             </p>
-                                            <p class="text-base text-gray-500 dark:text-gray-400">
+                                            <p class="text-base text-gray-500">
                                                 {{$forum->created_at->diffForHumans()}} ({{$forum->created_at->format('H:i d.m.Y')}})
                                             </p>
                                         </div>
@@ -72,12 +72,12 @@
                             </div>
                             @if($comments)
                                 @foreach($comments as $commentItem)
-                                    <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
+                                    <article class="p-6 mb-6 text-base bg-white rounded-lg">
                                         <footer class="flex justify-between items-center mb-2">
                                             <div class="flex items-center">
-                                                <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white">
+                                                <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900">
                                                     <img class="mr-2 w-6 h-6 rounded-full" src="{{$commentItem->user->getFile('image_url')}}" alt="{{$commentItem->user->name}}">{{$commentItem->user->name}}</p>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">
+                                                <p class="text-sm text-gray-600">
                                                     {{$commentItem->created_at->diffForHumans()}} ({{$commentItem->created_at->format("H:i d/m/Y")}})
                                                 </p>
                                             </div>
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="flex items-center mt-4 space-x-4">
                                             @if($respond != $commentItem->id)
-                                                <button wire:click="respondToComment({{$commentItem->id}})" type="button" class="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400">
+                                                <button wire:click="respondToComment({{$commentItem->id}})" type="button" class="flex items-center font-medium text-sm text-gray-500 hover:underline">
                                                     <svg class="mr-1.5 w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                                         <path d="M18 0H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2v4a1 1 0 0 0 1.707.707L10.414 13H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5 4h2a1 1 0 1 1 0 2h-2a1 1 0 1 1 0-2ZM5 4h5a1 1 0 1 1 0 2H5a1 1 0 0 1 0-2Zm2 5H5a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Zm9 0h-6a1 1 0 0 1 0-2h6a1 1 0 1 1 0 2Z"></path>
                                                     </svg>
@@ -123,7 +123,7 @@
                                                     <div class="form-group" wire:ignore>
                                                         <label for="example-text-input" class=" col-form-label">Оставить комментарий *</label>
                                                         <div>
-                                                            <input type="text" wire:model="subMessage" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Оставьте комментарий">
+                                                            <input type="text" wire:model="subMessage" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Оставьте комментарий">
                                                         </div>
                                                     </div>
                                                     @if($subMessage)
@@ -139,12 +139,12 @@
                                         @if($commentItem->forum_messages)
                                             @if(count($commentItem->forum_messages))
                                                 @foreach($commentItem->forum_messages as $subCommentItem)
-                                                    <article class="p-6 mb-6 ml-6 lg:ml-12 text-base bg-white rounded-lg dark:bg-gray-900">
+                                                    <article class="p-6 mb-6 ml-6 lg:ml-12 text-base bg-white rounded-lg">
                                                         <footer class="flex justify-between items-center mb-2">
                                                             <div class="flex items-center">
-                                                                <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white">
+                                                                <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900">
                                                                     <img class="mr-2 w-6 h-6 rounded-full" src="{{$subCommentItem->user->getFile('image_url')}}" alt="{{$subCommentItem->user->name}}">{{$subCommentItem->user->name}}</p>
-                                                                <p class="text-sm text-gray-600 dark:text-gray-400">
+                                                                <p class="text-sm text-gray-600">
                                                                     {{$subCommentItem->created_at->diffForHumans()}} ({{$subCommentItem->created_at->format("H:i d/m/Y")}})
                                                                 </p>
                                                             </div>

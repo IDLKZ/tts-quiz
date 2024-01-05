@@ -73,11 +73,15 @@ class Task extends Model
 
     public function getUsers()
     {
-       return User::whereIn("id",$this->users)->get();
+       return User::whereIn("id",$this->users)->with("department")->get();
     }
 
 	public function tasks_comments()
 	{
 		return $this->hasMany(TasksComment::class);
 	}
+    public function tasks_reports()
+    {
+        return $this->hasMany(TasksComment::class);
+    }
 }
