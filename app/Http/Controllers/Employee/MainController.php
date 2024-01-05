@@ -27,6 +27,7 @@ use App\Models\UserMotivation;
 use App\Models\UserMotive;
 use App\Models\UsersAttempt;
 use App\Models\UserScale;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -212,7 +213,9 @@ class MainController extends Controller
     public function taskDetail($id){
         $task = Task::with(["department","user"])
             ->where(["id"=>$id])
-            ->whereJsonContains("users",\auth()->id())->where(["id"=>$id])->orWhere(["user_id" => \auth()->user()->id])
+            ->where(function (Builder $query) {
+                $query->whereJsonContains("users",\auth()->id())->orWhere(["user_id" => \auth()->user()->id]);
+            })
             ->first();
         if($task){
             return view("employee.task.show", compact("task"));
