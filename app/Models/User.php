@@ -39,7 +39,7 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use Upload;
-    use HasFactory, Notifiable, CanDiscuss,HasApiTokens;
+    use HasFactory, Notifiable;
     /**
      * The "type" of the auto-incrementing ID.
      *
