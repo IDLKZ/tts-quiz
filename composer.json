@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "alaouy/youtube": "^2.2",
+        "asantibanez/livewire-calendar": "^2.2",
         "asantibanez/livewire-select": "^2.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",

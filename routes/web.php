@@ -94,6 +94,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("/ticket-category",\App\Http\Controllers\Admin\TechSupportCategoryTicket::class);
     Route::resource("/ticket",\App\Http\Controllers\Admin\TicketController::class);
     Route::resource("/admin-ideas",\App\Http\Controllers\Admin\IdeaController::class);
+    Route::resource("/admin-schedule",\App\Http\Controllers\Admin\ScheduleController::class);
 
     Route::get("/all-result",[\App\Http\Controllers\Admin\MainController::class,"allResult"])->name("all-result");
 });

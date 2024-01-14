@@ -71,6 +71,7 @@
 <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @livewireScripts
+@livewireCalendarScripts
 <script src="{{ asset('vendor/pharaonic/pharaonic.select2.min.js') }}"></script>
 @stack('scripts')
 @if(isset($jsValidator))
