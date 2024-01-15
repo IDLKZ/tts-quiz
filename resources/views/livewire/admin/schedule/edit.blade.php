@@ -80,7 +80,18 @@
             </div>
         </form>
     </div>
+    <div class="col-12 bg-white shadow-lg rounded-lg p-3">
+        <form action="{{route("admin-schedule.destroy",$schedule->id)}}" method="post">
+            @method('DELETE')
 
+            @csrf
+            <div class="text-right">
+                <button class="btn btn-danger text-white">
+                    Удалить
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 @push("scripts")
     <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>

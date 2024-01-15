@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('css/slick-theme.css')}}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     @toastr_css
@@ -100,6 +101,7 @@
 <script src="{{ asset('vendor/pharaonic/pharaonic.select2.min.js') }}"></script>
 @stack('scripts')
 @livewireScripts
+@livewireCalendarScripts
 @if(isset($jsValidator))
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! $jsValidator->selector('#js-form') !!}

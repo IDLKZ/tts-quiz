@@ -10,7 +10,7 @@
                                     selected
                                 @endif
                                 value="{{$year}}">
-                               {{$year}} год
+                                {{$year}} год
                             </option>
                         @endforeach
                     </select>
@@ -27,7 +27,7 @@
                                     selected
                                 @endif
                                 value="{{$monthKey}}">
-                              {{$monthValue}}
+                                {{$monthValue}}
                             </option>
                         @endforeach
                     </select>
@@ -37,7 +37,7 @@
     </div>
     <div class="grid-cols-12 gap-4 my-2">
         <div class="col-span-12">
-            <livewire:admin.schedule-calendar
+            <livewire:employee.employee-schedule
                 :initial-year="$yearId"
                 :initial-month="$monthId"
                 week-starts-at="1"

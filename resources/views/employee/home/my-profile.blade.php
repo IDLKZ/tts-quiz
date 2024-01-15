@@ -19,7 +19,7 @@
             </div>
             <div class="container mb-5">
                 <div class="grid grid-cols-12 gap-4 p-3 border-2 rounded-xl border-gray-400 min-h-[50vh]">
-                    <div class="col-span-12 md:col-span-6 lg:col-span-4 my-2 flex justify-content-center">
+                    <div class="col-span-12 md:col-span-6 lg:col-span-3 my-2 flex justify-content-center">
                         <div>
                             <div class="flex justify-content-center align-items-center">
                                 <img src="{{$user->img}}" class="mt-3 img-circle profile-avatar"
@@ -34,67 +34,99 @@
                             <span><i class="fas fa-envelope mr-2"></i>{{$user->email}}</span>
                         </div>
                     </div>
-                    <div class="col-span-12 md:col-span-6 lg:col-span-4 my-2">
-                        <div>
-                            <p class="text-md lg:text-lg xl:text-2xl">
-                                Ваши попытки сдачи
-                            </p>
-                        </div>
-                        <div class="relative table-responsive overflow-x-auto shadow-md sm:rounded-lg">
-                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        № Попытки
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Урок
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Баллы
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Успешно
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Действия
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($attempts as $attempt)
-                                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            #{{$attempt->id}}
-                                        </th>
-                                        <td class="p-2">
-                                            <a href="{{route('lesson-show-employee',$attempt->lesson->alias)}}">
-                                                {{$attempt->lesson->title}}
+                    <div class="col-span-12 md:col-span-6 lg:col-span-5 my-2">
+                        @if($forums)
+                            <section class="my-3">
+                                <div class="mb-2">
+                                    <p class="text-md lg:text-lg xl:text-2xl">
+                                        Рабочий график
+                                    </p>
+                                </div>
+                                <div class="relative table-responsive overflow-x-auto sm:rounded-lg">
+                                    @foreach($schedules as $schedule)
+                                        <div class="my-2">
+                                            <a href="{{route("employee-schedule-show",$schedule->id)}}" class="block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                                                <p class="mb-2 text-md md:text-lg font-bold tracking-tight text-gray-900">{{\Illuminate\Support\Str::limit($schedule->title,50)}}</p>
+                                                <div class="flex my-2 align-items-center">
+                                                    <img class="mr-2 w-6 h-6 rounded-full" src="{{$schedule->user->img}}">
+                                                    <p class="text-sm font-bold text-gray-700 dark:text-gray-400 ml-2">
+                                                        {{$schedule->user->name}}
+                                                    </p>
+                                                </div>
+                                                <p class="text-md text-success">
+                                                    <i class="fas fa-calendar mr-2"></i>{{$schedule->start_at->format("d/m/Y H:i")}} -  {{$schedule->end_at->format("d/m/Y H:i")}}
+                                                </p>
+                                                <p class="text-sm font-normal text-gray-700 dark:text-gray-400">
+                                                    {!! \Illuminate\Support\Str::limit($schedule->description,50) !!}
+                                                </p>
                                             </a>
-                                        </td>
-                                        <td class="p-2 text-center">
-                                            {{$attempt->points}}
-                                        </td>
-                                        <td class="p-2 text-center">
-                                            @if($attempt->passed_lessons)
-                                                <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                    @endforeach
 
-                                            @else
-                                                <i class="fas fa-times-circle text-red-500"></i>
-                                            @endif
-                                        </td>
-                                        <td class="p-2 text-center">
-                                            <a href="{{route("exam-result",$attempt->id)}}" class="font-medium text-yellow-500 hover:underline">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                </div>
+                            </section>
+                        @endif
+                            <section class="my-3">
+                                <div class="mb-2">
+                                    <p class="text-md lg:text-lg xl:text-2xl">
+                                        Ваши попытки сдачи
+                                    </p>
+                                </div>
+                                <div class="relative table-responsive overflow-x-auto shadow-md sm:rounded-lg">
+                                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3">
+                                                № Попытки
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                Урок
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                Баллы
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                Успешно
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                Действия
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($attempts as $attempt)
+                                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    #{{$attempt->id}}
+                                                </th>
+                                                <td class="p-2">
+                                                    <a href="{{route('lesson-show-employee',$attempt->lesson->alias)}}">
+                                                        {{$attempt->lesson->title}}
+                                                    </a>
+                                                </td>
+                                                <td class="p-2 text-center">
+                                                    {{$attempt->points}}
+                                                </td>
+                                                <td class="p-2 text-center">
+                                                    @if($attempt->passed_lessons)
+                                                        <i class="fas fa-check-circle text-green-500"></i>
 
-                                </tbody>
-                            </table>
-                        </div>
+                                                    @else
+                                                        <i class="fas fa-times-circle text-red-500"></i>
+                                                    @endif
+                                                </td>
+                                                <td class="p-2 text-center">
+                                                    <a href="{{route("exam-result",$attempt->id)}}" class="font-medium text-yellow-500 hover:underline">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
                     </div>
                     <div class="col-span-12 md:col-span-6 lg:col-span-4 my-2">
                         <section class="flex justify-content-center">

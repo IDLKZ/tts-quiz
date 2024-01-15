@@ -20,6 +20,7 @@ use App\Models\Literature;
 use App\Models\Motive;
 use App\Models\News;
 use App\Models\Result;
+use App\Models\Schedule;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\UserMeaning;
@@ -325,7 +326,8 @@ class MainController extends Controller
         $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->take(4)->get();
         $events = Event::orderBy("created_at","desc")->take(4)->get();
         $attempts = UsersAttempt::where(["user_id" => \auth()->id()])->with(["user","lesson","passed_lessons"])->orderBy("created_at","desc")->paginate(10);
-        return view("employee.home.my-profile",compact("tasks","forums","events","user","attempts"));
+        $schedules = Schedule::where(["user_id" => \auth()->id()])->where("start_at","<=",Carbon::now()->startOfDay())->where("end_at",">=",Carbon::now()->startOfDay())->with(["user.department"])->get();
+        return view("employee.home.my-profile",compact("tasks","forums","events","user","attempts","schedules"));
     }
 
     public function events(){

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Schedule;
+namespace App\Http\Livewire\Employee\Schedule;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
@@ -36,16 +36,14 @@ class Index extends Component
 
     public function selectMonth(){
         Session::put("monthId",$this->monthId);
-        $this->redirect(route("admin-schedule.index"));
+        $this->redirect(route("employee-schedules"));
     }
     public function selectYear(){
         Session::put("yearId",$this->yearId);
-         $this->redirect(route("admin-schedule.index"));
+        $this->redirect(route("employee-schedules"));
     }
-
-
     public function render()
     {
-        return view('livewire.admin.schedule.index');
+        return view('livewire.employee.schedule.index');
     }
 }

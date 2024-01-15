@@ -2,6 +2,18 @@
 @push("styles")
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropme@latest/dist/cropme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
+    <style>
+        #birth_date{
+            margin-bottom: 10px;
+            border:1px solid #ced4da!important;
+            padding: 10px;
+        }
+        .gj-icon{
+            top:10px!important;
+            bottom:10px!important;
+            right: 5px!important;
+        }
+    </style>
 @endpush
 @section('content')
     <div>
@@ -46,6 +58,8 @@
                                             <input type="email" readonly name="email" class="form-control" value="{{Auth::user()->email}}">
                                             <label class="mt-3">Пароль</label>
                                             <input type="password" class="form-control" name="password" placeholder="Пароль">
+                                            <label class="mt-3">Дата рождения</label>
+                                            <input type="text" class="form-control mt-3" id="birth_date" name="birth_date" placeholder="Дата рождения" value="{{auth()->user()->birth_date != null ?auth()->user()->birth_date->format('d/m/Y') : null}}">
                                             <img class="rounded-circle header-profile-user" src="{{Auth::user()->img}}">
                                             <div class="col-md-4 text-center mt-5">
                                                 <div id="upload-demo"></div>
@@ -122,6 +136,9 @@
 
             });
         });
-
+        $('#birth_date').datepicker({
+            format: 'dd/mm/yyyy',
+        });
     </script>
 @endpush
+

@@ -40,6 +40,9 @@
                                     <a class="{{ request()->routeIs('employee-tasks') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-tasks")}}">Доска Kanban</a>
                                 </li>
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a class="{{ request()->routeIs('employee-schedules') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-schedules")}}">Рабочий календарь</a>
+                                </li>
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                                     <a class="{{ request()->routeIs('forum-list') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("forum-list")}}">Форумы</a>
                                 </li>
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">

@@ -148,6 +148,8 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::get("/event-all",[MainController::class,"events"])->name("event-all");
     Route::get("/event-info/{id}",[MainController::class,"eventShow"])->name("event-show");
     Route::resource("/employee-idea",\App\Http\Controllers\Employee\IdeaController::class);
+    Route::get("/employee-schedules",[\App\Http\Controllers\Employee\ScheduleController::class,"index"])->name("employee-schedules");
+    Route::get("/employee-schedule-show/{id}",[\App\Http\Controllers\Employee\ScheduleController::class,"show"])->name("employee-schedule-show");
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);
