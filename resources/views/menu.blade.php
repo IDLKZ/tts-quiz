@@ -14,6 +14,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{route('permission.index')}}" class="{{request()->routeIs('permission.index') ? 'waves-effect-active' : 'waves-effect'}}">
+                    <div class="d-inline-block icons-sm mr-1"><i class="fas fa-user-lock"></i></div>
+                    <span>Разрешения</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{route('admin-schedule.index')}}" class="{{request()->routeIs('news.index') ? 'waves-effect-active' : 'waves-effect'}}">
                     <div class="d-inline-block icons-sm mr-1"><i class="fas fa-calendar-alt"></i></div>
                     <span>Рабочий календарь</span>
