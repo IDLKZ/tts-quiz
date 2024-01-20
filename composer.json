@@ -24,6 +24,7 @@
         "proengsoft/laravel-jsvalidation": "^4.4",
         "rappasoft/laravel-livewire-tables": "^2.15",
         "staudenmeir/eloquent-json-relations": "^1.1",
+        "wireui/wireui": "^1.17",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

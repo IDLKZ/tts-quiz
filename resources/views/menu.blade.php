@@ -15,8 +15,14 @@
             </li>
             <li>
                 <a href="{{route('permission.index')}}" class="{{request()->routeIs('permission.index') ? 'waves-effect-active' : 'waves-effect'}}">
-                    <div class="d-inline-block icons-sm mr-1"><i class="fas fa-user-lock"></i></div>
+                    <div class="d-inline-block icons-sm mr-1"><i class="fas fa-unlock-alt"></i></div>
                     <span>Разрешения</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('user-has-permission.index')}}" class="{{request()->routeIs('user-has-permission.index') ? 'waves-effect-active' : 'waves-effect'}}">
+                    <div class="d-inline-block icons-sm mr-1"><i class="fas fa-user-lock"></i></div>
+                    <span>Разрешения для пользователей</span>
                 </a>
             </li>
             <li>

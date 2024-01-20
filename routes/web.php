@@ -96,6 +96,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("/admin-ideas",\App\Http\Controllers\Admin\IdeaController::class);
     Route::resource("/admin-schedule",\App\Http\Controllers\Admin\ScheduleController::class);
     Route::resource("/permission",\App\Http\Controllers\Admin\PermissionController::class);
+    Route::resource("/user-has-permission",\App\Http\Controllers\Admin\UserHasPermissionController::class);
 
     Route::get("/all-result",[\App\Http\Controllers\Admin\MainController::class,"allResult"])->name("all-result");
 });

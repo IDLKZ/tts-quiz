@@ -40,7 +40,6 @@ use Spatie\Permission\Traits\HasPermissions;
 class User extends Authenticatable
 {
     use Upload;
-    use HasPermissions;
     use HasFactory, Notifiable;
     /**
      * The "type" of the auto-incrementing ID.
@@ -166,5 +165,16 @@ class User extends Authenticatable
         }
         $model->update($input);
         return $model->save();
+    }
+
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'user_has_permissions', 'user_id', 'permission_id');
+    }
+
+    public function hasPermission($permissionName){
+        $permissionNames = $this->permissions()->pluck("name")->toArray();
+        return in_array($permissionName,$permissionNames);
     }
 }
