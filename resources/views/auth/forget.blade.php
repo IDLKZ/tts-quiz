@@ -7,7 +7,7 @@
                 <div class="col-span-12 lg:col-span-6 flex h-full min-h-[600px] position-relative align-items-center justify-content-center">
                     <div class="absolute brightness-[30%] z-10 w-full h-full bg-cover lg:rounded-bl-xl lg:rounded-tl-xl bg-center bg-no-repeat bg-[url('/images/bg-2.PNG')]"></div>
                     <img class="absolute max-w-[150px] z-20 left-[15px] top-[15px]" src="{{asset("images/logo.png")}}"/>
-                    <p class="text-lg md:text-xl lg:text-2xl z-30 text-white uppercase px-4 text-center font-weight-bold">
+                    <p class="text-lg md:text-xl lg:text-2xl z-30 text-white px-4 text-center font-weight-bold">
                         Восстановить доступ,
                         <br/>
                         к личной учетной записи на платформе <br/><span class="text-yellow-500">«ТемирТрансСервис»</span>

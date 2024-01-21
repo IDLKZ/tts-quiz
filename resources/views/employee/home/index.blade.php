@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row my-3">
                     <div class="col-12">
-                        <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-weight-bold text-black text-uppercase pl-8">
+                        <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-weight-bold text-black pl-8">
                             Портал «ТемирТрансСервис»
                         </p>
                     </div>
