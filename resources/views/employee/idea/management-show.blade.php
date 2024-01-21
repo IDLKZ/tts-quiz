@@ -1,7 +1,7 @@
 @push("styles")
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
-@extends("layout")
+@extends("layout-employee")
 @section("content")
     <div class="main-content">
 
@@ -14,7 +14,7 @@
                         <div class="col-md-8">
                             <h4 class="page-title mb-1">Список идей</h4>
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="/admin">Главная</a></li>
+                                <li class="breadcrumb-item"><a href="/">Главная</a></li>
                                 <li class="breadcrumb-item active">Список идей</li>
                             </ol>
                         </div>
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                             <div class="my-3">
-                                <form id="js-form" action="{{route("admin-ideas.update",$idea->id)}}" method="post" enctype="multipart/form-data">
+                                <form id="js-form" action="{{route("employee-idea-management.update",$idea->id)}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
                                     <div class="form-group">
@@ -105,7 +105,7 @@
                                             <select class="form-control"  name="status">
 
                                                 <option @if($idea->status == 0) selected @endif value="0">
-                                                   Новая идея
+                                                    Новая идея
                                                 </option>
                                                 <option @if($idea->status == -1) selected @endif value="-1">
                                                     Отказано

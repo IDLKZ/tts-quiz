@@ -83,14 +83,6 @@
                                         </svg>
                                         {{$forum->forum_messages_count}}
                                     </button>
-                                    <button type="button" class="flex items-center font-medium text-sm text-green-500 hover:underline">
-                                        <i class="fas fa-thumbs-up mr-1"></i>
-                                        {{$forum->up_vote}}
-                                    </button>
-                                    <button type="button" class="flex items-center font-medium text-sm text-red-500 hover:underline">
-                                        <i class="fas fa-thumbs-down mr-1"></i>
-                                        {{$forum->down_vote}}
-                                    </button>
                                 </div>
                                 <div class="flex justify-content-end mt-4 space-x-4">
                                     <a href="{{route("forumDetail",$forum->id)}}" class="btn btn-info rounded-full px-4 py-2 text-white font-medium">

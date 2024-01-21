@@ -10,7 +10,7 @@
                     <p class="text-lg md:text-xl lg:text-2xl z-30 text-white uppercase px-4 text-center font-weight-bold">
                         Добро пожаловать,
                         <br/>
-                        на платформу <br/><span class="text-yellow-500">Темир Транс Сервис!</span>
+                        на платформу <br/><span class="text-yellow-500">«ТемирТрансСервис»!</span>
                     </p>
                     <div class="text-sm lg:text-md text-left z-30 text-white uppercase px-4 font-weight-bold absolute bottom-[10px] w-full px-2">
                         <p class="my-2">
@@ -31,7 +31,7 @@
                         <div class="card-body p-4">
                             <div class="p-2 text-center">
                                 <p class="text-lg md:text-xl lg:text-2xl text-yellow-500 flex justify-content-center align-items-center">
-                                   <img src="{{asset('images/navbar-logo.png')}}" class="max-w-[20px] mr-2"/> Портал Темир Транс Сервис
+                                   <img src="{{asset('images/navbar-logo.png')}}" class="max-w-[20px] mr-2"/> Портал «ТемирТрансСервис»
                                 </p>
                                 <br/>
                                 <h5 class="mb-5 text-center">Вход в личный кабинет</h5>

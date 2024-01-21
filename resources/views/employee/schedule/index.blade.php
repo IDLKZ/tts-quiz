@@ -13,6 +13,15 @@
                             Рабочий календарь
                         </p>
                     </div>
+                    <div class="col-12 col-md-6 my-2">
+                        <div class="float-right d-block">
+                            <div class="dropdown">
+                                <a href="{{route("employee-schedule.create")}}" class="btn  bg-warning text-white btn-rounded dropdown-toggle">
+                                    <i class="mdi mdi mdi-plus-thick  mr-1"></i> Запланировать событие
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Page-Title -->

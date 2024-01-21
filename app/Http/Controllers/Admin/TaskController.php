@@ -42,6 +42,7 @@ class TaskController extends Controller
     {
         try{
             $input = $request->all();
+            $input["users"] = json_decode($request->get("users"),true);
             $input["start_date"] = Carbon::createFromFormat('d/m/Y H:i',$request["start_date"]);
             if($input["end_date"]){
                 $input["end_date"] = Carbon::createFromFormat('d/m/Y H:i',$request["end_date"]);
@@ -105,6 +106,7 @@ class TaskController extends Controller
             $task = Task::find($id);
             if($task){
                 $input = $request->all();
+                $input["users"] = json_decode($request->get("users"),true);
                 $input["start_date"] = Carbon::createFromFormat('d/m/Y H:i',$request["start_date"]);
                 if($input["end_date"]){
                     $input["end_date"] = Carbon::createFromFormat('d/m/Y H:i',$request["end_date"]);

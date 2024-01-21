@@ -41,6 +41,7 @@
                 :initial-year="$yearId"
                 :initial-month="$monthId"
                 week-starts-at="1"
+                :day-of-week-view="'livewire/day-of-week'"
                 :event-click-enabled="true"
             />
         </div>

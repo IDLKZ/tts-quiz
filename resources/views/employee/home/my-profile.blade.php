@@ -35,8 +35,9 @@
                         </div>
                     </div>
                     <div class="col-span-12 md:col-span-6 lg:col-span-5 my-2">
-                        @if($forums)
-                            <section class="my-3">
+                        @if($schedules)
+                            @if($schedules->isNotEmpty())
+                                <section class="my-3">
                                 <div class="mb-2">
                                     <p class="text-md lg:text-lg xl:text-2xl">
                                         Рабочий график
@@ -65,68 +66,42 @@
 
                                 </div>
                             </section>
+                            @endif
                         @endif
-                            <section class="my-3">
-                                <div class="mb-2">
-                                    <p class="text-md lg:text-lg xl:text-2xl">
-                                        Ваши попытки сдачи
-                                    </p>
-                                </div>
-                                <div class="relative table-responsive overflow-x-auto shadow-md sm:rounded-lg">
-                                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3">
-                                                № Попытки
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Урок
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Баллы
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Успешно
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Действия
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($attempts as $attempt)
-                                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    #{{$attempt->id}}
-                                                </th>
-                                                <td class="p-2">
-                                                    <a href="{{route('lesson-show-employee',$attempt->lesson->alias)}}">
+                        @if($attempts)
+                            @if($attempts->isNotEmpty())
+                                    <section class="my-3">
+                                        <div class="mb-2">
+                                            <p class="text-md lg:text-lg xl:text-2xl">
+                                                Ваши попытки сдачи
+                                            </p>
+                                        </div>
+                                        <div class="relative table-responsive overflow-x-auto shadow-md sm:rounded-lg">
+
+                                            @foreach($attempts as $attempt)
+
+                                                <a href="{{route("exam-result",$attempt->id)}}" class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                                                    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+                                                        @if($attempt->passed_lessons)
+                                                            <i class="fas fa-check-circle text-green-500"></i>
+
+                                                        @else
+                                                            <i class="fas fa-times-circle text-red-500"></i>
+                                                        @endif
                                                         {{$attempt->lesson->title}}
-                                                    </a>
-                                                </td>
-                                                <td class="p-2 text-center">
-                                                    {{$attempt->points}}
-                                                </td>
-                                                <td class="p-2 text-center">
-                                                    @if($attempt->passed_lessons)
-                                                        <i class="fas fa-check-circle text-green-500"></i>
+                                                    </h5>
+                                                    <p class="font-normal text-lg text-gray-700 dark:text-gray-400">
+                                                        Набрано:{{$attempt->points}} балла
+                                                    </p>
+                                                </a>
+                                            @endforeach
 
-                                                    @else
-                                                        <i class="fas fa-times-circle text-red-500"></i>
-                                                    @endif
-                                                </td>
-                                                <td class="p-2 text-center">
-                                                    <a href="{{route("exam-result",$attempt->id)}}" class="font-medium text-yellow-500 hover:underline">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        </div>
+                                    </section>
+                            @endif
+                        @endif
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </section>
                     </div>
                     <div class="col-span-12 md:col-span-6 lg:col-span-4 my-2">
                         <section class="flex justify-content-center">
@@ -145,8 +120,8 @@
                                                     <div class="min-w-8 w-1/12">
                                                         <img class="w-6 h-6 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr" src="{{$task->user->img}}">
                                                     </div>
-                                                    <div class="min-w-8 justify-content-between flex w-10/12">
-                                                        <div class="word-break pl-2">
+                                                    <a href="{{route("employee-task-detail",$task->id)}}" class="min-w-8 justify-content-between flex w-10/12">
+                                                        <div class="word-break pl-2 w-2/3">
                                                             <p class="text-md">
                                                                 {{$task->user->name}}
                                                             </p>
@@ -154,10 +129,10 @@
                                                                 {{$task->task}}
                                                             </small>
                                                         </div>
-                                                        <small class="text-xs ml-2 text-left">
+                                                        <small class="text-xs ml-2 text-left w-1/3">
                                                             {{$task->created_at->diffForHumans()}}
                                                         </small>
-                                                    </div>
+                                                    </a>
 
                                                 </div>
                                             </div>
@@ -185,15 +160,15 @@
                                                         <img class="w-6 h-6 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr" src="{{$forum->user->img}}">
                                                     </div>
                                                     <div class="min-w-8 justify-content-between flex w-10/12">
-                                                        <div class="word-break pl-2">
-                                                            <p class="text-md">
-                                                                {{$forum->title}}
-                                                            </p>
+                                                        <div class="word-break pl-2  w-3/4">
+                                                            <a href="{{route("forumDetail",$forum->id)}}" class="text-md">
+                                                                {{\Illuminate\Support\Str::limit($forum->title,30)}}
+                                                            </a><br/>
                                                             <small class="text-xs my-2">
-                                                                {!! strlen($forum->description)>30 ? substr($forum->description,0,50) . "..." : $forum->description !!}
+                                                                {!! \Illuminate\Support\Str::limit(strip_tags($forum->description),30) !!}
                                                             </small>
                                                         </div>
-                                                        <small class="text-xs ml-2 text-left min-w-[40px]">
+                                                        <small class="text-xs ml-2 text-left min-w-[40px]  w-1/4">
                                                             {{$forum->created_at->diffForHumans()}}
                                                         </small>
                                                     </div>

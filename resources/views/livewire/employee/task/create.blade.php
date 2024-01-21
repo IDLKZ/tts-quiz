@@ -27,32 +27,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <fieldset>
-                    @foreach($selectedUsers as $selectedUser)
-                        @if($selectedUser->id != $user->id)
-                            <div class="flex items-center mb-2">
-                                <input wire:model="users" id="{{$selectedUser->name}}{{$selectedUser->id}}" type="checkbox" value="{{$selectedUser->id}}" name="users[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
-                                <label for="{{$selectedUser->name}}{{$selectedUser->id}}" class="m-2 text-md font-medium text-gray-900 cursor-pointer">
-                                    <div class="flex align-items-center justify-content-center">
-                                        <div
-                                            class="flex items-center
-                                                    h-10 w-10
-                                                    justify-center
-                                                    rounded-full flex-shrink-0
-                                                    bg-center bg-no-repeat bg-cover mr-1"
-                                            style="background-image:url({{$selectedUser->img}})"
-                                        >
-                                        </div>
-                                        <p>
-                                            {{$selectedUser->name}}
-                                        </p>
-                                    </div>
-
-                                </label>
-                            </div>
-                        @endif
-                    @endforeach
-                </fieldset>
+                <x-select
+                    label="Выберите исполнителей"
+                    placeholder="Список сотрудников"
+                    multiselect
+                    :options="$selectedUsers"
+                    option-label="name"
+                    option-value="id"
+                    wire:model="users"
+                />
             </div>
 
             <div class="form-group">

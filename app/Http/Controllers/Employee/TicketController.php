@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ticket;
@@ -8,14 +8,13 @@ use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view("admin.ticket.index");
+        if(!auth()->user()->hasPermission("tech-support")){
+            abort(404);
+        }
+        return view("employee.tech-support.management");
     }
 
     /**
@@ -47,11 +46,14 @@ class TicketController extends Controller
      */
     public function show($id)
     {
+        if(!auth()->user()->hasPermission("tech-support")){
+            abort(404);
+        }
         $ticket = Ticket::where(["id"=>$id])->first();
         if($ticket){
-            return view("admin.ticket.show",compact("ticket"));
+            return view("employee.tech-support.show-management",compact("ticket"));
         }
-        return redirect()->route("ticket.index");
+        return redirect()->route("employee-ticket.index");
     }
 
     /**
@@ -74,6 +76,9 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!auth()->user()->hasPermission("tech-support")){
+            abort(404);
+        }
         $ticket = Ticket::where(["id"=>$id])->first();
         if($ticket){
             $ticket->edit(["is_resolved"=>true]);
@@ -89,14 +94,13 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
+        if(!auth()->user()->hasPermission("tech-support")){
+            abort(404);
+        }
         $ticket = Ticket::where(["id"=>$id])->first();
         if($ticket){
             $ticket->delete();
         }
-        return redirect()->route("ticket.index");
-    }
-
-    public function management(){
-        return view("admin.ticket.management");
+        return redirect()->route("employee-ticket.index");
     }
 }

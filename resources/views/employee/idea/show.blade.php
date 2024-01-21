@@ -43,26 +43,6 @@
                                             {{$idea->user->name}}
                                         </p>
                                     </div>
-                                    <div class="flex text-white">
-                                        <form action="{{route("employee-idea.update",$idea->id)}}" method="post">
-                                            @method('PUT')
-                                            @csrf
-                                            <input hidden name="rating_user" value="1">
-                                            <button type="submit" class="mr-1  text-green-500 font-bold text-lg">
-                                                <i class="fas fa-thumbs-up text-green-500 mr-1"></i>
-                                                {{$idea->up_vote}}
-                                            </button>
-                                        </form>
-                                        <form action="{{route("employee-idea.update",$idea->id)}}" method="post">
-                                            @method('PUT')
-                                            @csrf
-                                            <input hidden name="rating_user" value="-1">
-                                            <button type="submit" class="ml-1 text-red-500 font-bold text-lg">
-                                                <i class="fas fa-thumbs-down text-red-500 mr-1"></i>
-                                                {{$idea->down_vote}}
-                                            </button>
-                                        </form>
-                                    </div>
                                     <div class="font-bold text-gray-700 text-sm flex my-2">
                                         @if($idea->keywords)
                                             @foreach($idea->keywords as $keyword)

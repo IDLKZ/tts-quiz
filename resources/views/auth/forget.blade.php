@@ -10,7 +10,7 @@
                     <p class="text-lg md:text-xl lg:text-2xl z-30 text-white uppercase px-4 text-center font-weight-bold">
                         Восстановить доступ,
                         <br/>
-                        к личной учетной записи на платформе <br/><span class="text-yellow-500">Темир Транс Сервис</span>
+                        к личной учетной записи на платформе <br/><span class="text-yellow-500">«ТемирТрансСервис»</span>
                     </p>
                     <div class="text-sm lg:text-md text-left z-30 text-white uppercase px-4 font-weight-bold absolute bottom-[10px] w-full px-2">
                         <p class="my-2">
@@ -30,6 +30,10 @@
                     <div class="card w-full max-w-[500px]">
                         <div class="card-body p-4">
                             <div class="p-2">
+                                <p class="text-lg md:text-xl lg:text-2xl text-yellow-500 flex justify-content-center align-items-center">
+                                    <img src="{{asset('images/navbar-logo.png')}}" class="max-w-[20px] mr-2"/> Портал «ТемирТрансСервис»
+                                </p>
+                                <br/>
                                 <h5 class="mb-5 text-center">Восстановить пароль</h5>
                                 @if ($errors->any())
                                     <div class="alert alert-danger">

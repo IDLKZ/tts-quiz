@@ -11,7 +11,7 @@ class Create extends Component
 {
     public $task;
     public $details;
-    public $users;
+    public $users = [];
     public $selectedUsers;
     public $user_id;
     public $importance;

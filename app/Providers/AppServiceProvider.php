@@ -41,6 +41,12 @@ class AppServiceProvider extends ServiceProvider
         Blade::if("notCandidate",function (){
             return Auth::user()->candidate != 1 ? true : false;
         });
+        Blade::directive('hasPermission', function ($permission) {
+            return "<?php if(auth()->check() && auth()->user()->hasPermission($permission)): ?>";
+        });
+        Blade::directive('endhasPermission', function ($permission) {
+            return "<?php endif; ?>";
+        });
         \view()->composer("menu",function ($view){
             if(Auth::check()){
                 $invites = Invite::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->where("department_id",Auth::user()->department_id)->where(function ($q) {

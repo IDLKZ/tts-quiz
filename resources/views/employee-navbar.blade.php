@@ -51,9 +51,23 @@
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                                     <a class="{{ request()->routeIs('employee-idea.index') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-idea.index")}}">Банк идей</a>
                                 </li>
+                                @hasPermission('idea-management')
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a class="{{ request()->routeIs('employee-idea-management.index') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-idea-management.index")}}">
+                                        Управление банками идей
+                                    </a>
+                                </li>
+                                @endhasPermission
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                                     <a class="{{ request()->is('tech-support-ticket-list') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("tech-support-ticket-list")}}">Техподдержка</a>
                                 </li>
+                                @hasPermission('tech-support')
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a class="{{ request()->routeIs('employee-ticket.index') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-ticket.index")}}">
+                                        Управление техподдержкой
+                                    </a>
+                                </li>
+                                @endhasPermission
                             </ul>
                         </div>
                     </li>

@@ -43,14 +43,6 @@
                                     </svg>
                                     {{$forum->forum_messages_count}}
                                 </button>
-                                <button wire:click="rateForumUp({{$forum->id}})" type="button" class="flex items-center font-medium text-sm text-green-500 hover:underline">
-                                    <i class="fas fa-thumbs-up mr-1"></i>
-                                    {{$forum->up_vote}}
-                                </button>
-                                <button wire:click="rateForumDown({{$forum->id}})" type="button" class="flex items-center font-medium text-sm text-red-500 hover:underline">
-                                    <i class="fas fa-thumbs-down mr-1"></i>
-                                    {{$forum->down_vote}}
-                                </button>
                             </div>
                             <section class="my-3">
                                 <div class="form-group" wire:ignore>
@@ -110,12 +102,6 @@
                                                     </p>
                                                 @endif
                                             </div>
-                                            <button wire:click="rateMessageUp({{$commentItem->id}})" type="button" class="flex items-center font-medium text-sm text-green-500 hover:underline">
-                                                <i class="fas fa-thumbs-up mr-1"></i>
-                                            </button>
-                                            <button wire:click="rateMessageDown({{$commentItem->id}})" type="button" class="flex items-center font-medium text-sm text-red-500 hover:underline">
-                                                <i class="fas fa-thumbs-down mr-1"></i>
-                                            </button>
                                         </div>
                                         <div class="my-2">
                                             @if($respond == $commentItem->id)
@@ -169,12 +155,6 @@
                                                                     </p>
                                                                 @endif
                                                             </div>
-                                                            <button wire:click="rateMessageUp({{$subCommentItem->id}})" type="button" class="flex items-center font-medium text-sm text-green-500 hover:underline">
-                                                                <i class="fas fa-thumbs-up mr-1"></i>
-                                                            </button>
-                                                            <button wire:click="rateMessageDown({{$subCommentItem->id}})" type="button" class="flex items-center font-medium text-sm text-red-500 hover:underline">
-                                                                <i class="fas fa-thumbs-down mr-1"></i>
-                                                            </button>
                                                         </div>
                                                     </article>
                                                 @endforeach

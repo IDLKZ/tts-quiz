@@ -14,7 +14,7 @@ class Edit extends Component
     public $task;
     public $taskActive;
     public $details;
-    public $users;
+    public $users = [];
     public $selectedUsers;
     public $user_id;
     public $importance;
@@ -28,6 +28,7 @@ class Edit extends Component
         $this->taskActive = $taskActive;
         $this->departments = Department::with(["company"])->get();
         $this->task = $taskActive->task;
+        $this->users = $taskActive->users;
         $this->details = $taskActive->details;
         $this->user_id = $taskActive->user_id;
         $this->importance = $taskActive->importance;

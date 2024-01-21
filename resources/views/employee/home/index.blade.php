@@ -11,7 +11,7 @@
                 <div class="row my-3">
                     <div class="col-12">
                         <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-weight-bold text-black text-uppercase pl-8">
-                            Портал темир транс сервис
+                            Портал «ТемирТрансСервис»
                         </p>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                                 <section class="my-4 p-3">
                                     <div class="w-full">
                                         <p class="text-lg md:text-xl font-weight-bold text-black text-uppercase inline-block mb-4">
-                                            Ближайшие мероприятия
+                                            Мероприятия
                                         </p>
                                         @foreach($events as $event)
                                             <div class="max-w-sm w-full lg:max-w-full lg:flex my-3 rounded-2xl">
@@ -89,7 +89,7 @@
                                                     <img class="w-6 h-6 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr" src="{{$task->user->img}}">
                                                 </div>
                                                 <a href="{{route("employee-task-detail",$task->id)}}" class="min-w-8 justify-content-between flex w-10/12">
-                                                    <div class="word-break pl-2">
+                                                    <div class="word-break pl-2 w-2/3">
                                                         <p class="text-md">
                                                             {{$task->user->name}}
                                                         </p>
@@ -97,7 +97,7 @@
                                                             {{$task->task}}
                                                         </small>
                                                     </div>
-                                                    <small class="text-xs ml-2 text-left">
+                                                    <small class="text-xs ml-2 text-left w-1/3">
                                                         {{$task->created_at->diffForHumans()}}
                                                     </small>
                                                 </a>
@@ -125,7 +125,7 @@
                                                             <img class="w-6 h-6 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr" src="{{$user->img}}">
                                                         </div>
                                                         <div class="min-w-8 justify-content-between flex w-10/12">
-                                                            <div class="word-break pl-2">
+                                                            <div class="word-break pl-2 w-2/3">
                                                                 <p class="text-md">
                                                                     {{$user->name}}
                                                                 </p>
@@ -133,7 +133,7 @@
                                                                     Поздравляем!
                                                                 </small>
                                                             </div>
-                                                            <small class="text-xs ml-2 text-left min-w-[40px]">
+                                                            <small class="text-xs ml-2 text-left min-w-[40px] w-1/3">
                                                                 {{$user->birth_date->format('d M')}}
                                                             </small>
                                                         </div>
@@ -192,15 +192,15 @@
                                                             <img class="w-6 h-6 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr" src="{{$forum->user->img}}">
                                                         </div>
                                                         <div class="min-w-8 justify-content-between flex w-10/12">
-                                                            <div class="word-break pl-2">
+                                                            <div class="word-break pl-2  w-3/4">
                                                                 <a href="{{route("forumDetail",$forum->id)}}" class="text-md">
-                                                                    {{$forum->title}}
-                                                                </a>
+                                                                    {{\Illuminate\Support\Str::limit($forum->title,30)}}
+                                                                </a><br/>
                                                                 <small class="text-xs my-2">
-                                                                    {!! strlen($forum->description)>30 ? substr($forum->description,0,50) . "..." : $forum->description !!}
+                                                                    {!! \Illuminate\Support\Str::limit(strip_tags($forum->description),30) !!}
                                                                 </small>
                                                             </div>
-                                                            <small class="text-xs ml-2 text-left min-w-[40px]">
+                                                            <small class="text-xs ml-2 text-left min-w-[40px]  w-1/4">
                                                                 {{$forum->created_at->diffForHumans()}}
                                                             </small>
                                                         </div>

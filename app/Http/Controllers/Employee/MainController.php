@@ -47,7 +47,7 @@ class MainController extends Controller
         $tasks = Task::with(["department","user"])->whereJsonContains("users",\auth()->id())->orderBy("created_at","desc")->take(4)->get();
         $users = User::whereMonth("birth_date","=",Carbon::now()->month)->orderBy("birth_date","asc")->take(4)->get();
         $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->take(4)->get();
-        $events = Event::where("start_date",">=",Carbon::now()->startOfDay())->orderBy("created_at","desc")->take(4)->get();
+        $events = Event::orderBy("created_at","desc")->take(4)->get();
         return view('employee.home.index',compact("news","tasks","users","forums","events"));
     }
 
@@ -244,6 +244,7 @@ class MainController extends Controller
                 if($input["end_date"]){
                     $input["end_date"] = Carbon::createFromFormat('d/m/Y H:i',$request["end_date"]);
                 }
+                $input["users"] = json_decode($input["users"],true);
                 $input["users"] = array_map('intval', $input["users"]);
                 $task = Task::add($input);
             }

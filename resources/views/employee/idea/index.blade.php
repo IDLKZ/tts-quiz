@@ -70,20 +70,10 @@
                                                 @endforeach
                                             @endif
                                         </div>
-                                        <div class="flex text-white">
-                                            <p class="mr-1  text-green-500 font-bold text-lg">
-                                                <i class="fas fa-thumbs-up text-green-500 mr-1"></i>
-                                                {{$idea->up_vote}}
-                                            </p>
-                                            <p class="ml-1 text-red-500 font-bold text-lg">
-                                                <i class="fas fa-thumbs-down text-red-500 mr-1"></i>
-                                                {{$idea->down_vote}}
-                                            </p>
-                                        </div>
                                         <div class="my-3 text-white font-bold text-lg">
                                             @switch($idea->status)
                                                 @case(1)
-                                                    <p class="text-blue-200">На расммотрении</p>
+                                                    <p class="text-blue-200">На рассмотрении</p>
                                                 @break
                                                 @case(2)
                                                     <p class="text-green-200">Удтвержден</p>

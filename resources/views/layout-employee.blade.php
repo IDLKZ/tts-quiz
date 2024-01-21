@@ -23,6 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     @toastr_css
     @livewireStyles
+    @wireUiScripts
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @stack('styles')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +37,10 @@
         .my-date{
             border:1px solid #ced4da!important;
             padding: 10px!important;
+        }
+        .gj-datepicker-md [role="right-icon"]{
+            right: 10px!important;
+            top: 10px!important;
         }
     </style>
 </head>

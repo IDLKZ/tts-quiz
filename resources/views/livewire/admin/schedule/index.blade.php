@@ -40,6 +40,7 @@
             <livewire:admin.schedule-calendar
                 :initial-year="$yearId"
                 :initial-month="$monthId"
+                :day-of-week-view="'livewire/day-of-week'"
                 week-starts-at="1"
                 :event-click-enabled="true"
             />

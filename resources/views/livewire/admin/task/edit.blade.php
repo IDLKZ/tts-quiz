@@ -32,19 +32,15 @@
             <div class="form-group">
                 <label for="example-text-input" class=" col-form-label">Сотрудники *</label>
                 <div>
-                    <select multiple class="form-control py-5  @error('users') is-invalid @enderror" name="users[]">
-                        @if($selectedUsers)
-                            @foreach($selectedUsers as $user)
-                                <option value="{{$user->id}}"
-                                        @if (in_array($user->id,$taskActive->users))
-                                            selected="selected"
-                                    @endif
-                                >
-                                    {{$user->name}} ({{$user->email}})
-                                </option>
-                            @endforeach
-                        @endif
-                    </select>
+                    <x-select
+                        label="Выберите исполнителей"
+                        placeholder="Список сотрудников"
+                        multiselect
+                        :options="$selectedUsers"
+                        option-label="name"
+                        option-value="id"
+                        wire:model="users"
+                    />
                 </div>
             </div>
             @if($department_id)

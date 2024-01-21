@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Employee\TechSupportTicket;
+use App\Http\Controllers\Employee\TicketController as EmployeeTicketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,6 +98,7 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("/admin-schedule",\App\Http\Controllers\Admin\ScheduleController::class);
     Route::resource("/permission",\App\Http\Controllers\Admin\PermissionController::class);
     Route::resource("/user-has-permission",\App\Http\Controllers\Admin\UserHasPermissionController::class);
+    Route::get("/ticket-management",[\App\Http\Controllers\Admin\TicketController::class,"management"])->name("ticket-management");
 
     Route::get("/all-result",[\App\Http\Controllers\Admin\MainController::class,"allResult"])->name("all-result");
 });
@@ -152,6 +154,10 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::resource("/employee-idea",\App\Http\Controllers\Employee\IdeaController::class);
     Route::get("/employee-schedules",[\App\Http\Controllers\Employee\ScheduleController::class,"index"])->name("employee-schedules");
     Route::get("/employee-schedule-show/{id}",[\App\Http\Controllers\Employee\ScheduleController::class,"show"])->name("employee-schedule-show");
+    Route::resource("/employee-ticket",EmployeeTicketController::class);
+    Route::resource("/employee-schedule",\App\Http\Controllers\Employee\EmployeeScheduleController::class);
+    Route::resource("/employee-idea-management",\App\Http\Controllers\Employee\EmployeeIdeaController::class);
+
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-department', [HomeController::class, 'getDepartment']);

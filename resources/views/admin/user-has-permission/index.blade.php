@@ -28,10 +28,12 @@
                     </div>
                 </div>
             </div>
-            <!-- end page title end breadcrumb -->
-            <livewire:admin.user-has-permission-table/>
+            <div class="bg-white p-3">
+                <!-- end page title end breadcrumb -->
+                <livewire:admin.user-has-permission-table/>
+                <!-- end page-content-wrapper -->
+            </div>
 
-            <!-- end page-content-wrapper -->
         </div>
         <!-- End Page-content -->
 

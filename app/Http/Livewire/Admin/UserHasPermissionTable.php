@@ -18,10 +18,6 @@ class UserHasPermissionTable extends DataTableComponent
         $this->setBulkActions([
             'deleteSelected' => 'Удалить'
         ]);
-        $this->setPrimaryKey('id')
-            ->setTableRowUrl(function($row) {
-                return route('user-has-permission.edit', $row);
-            });
     }
 
     public function bulkActions(): array

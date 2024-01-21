@@ -16,15 +16,6 @@
                             Здесь вы можете увидеть список курсов.
                         </p>
                     </div>
-                    <div class="col-md-6">
-                        <div class="float-right d-none d-md-block">
-                            <div class="dropdown">
-                                <a href="{{route("course.create")}}" class="btn btn-light btn-rounded dropdown-toggle">
-                                    <i class="mdi mdi mdi-plus-thick  mr-1"></i> Добавить
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- Page-Title -->
