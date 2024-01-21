@@ -83,8 +83,6 @@ class IdeaTable extends DataTableComponent
 
                 })
                 ->html()->searchable(),
-            Column::make("Мнение руководства", "opinion")
-                ->sortable(),
             Column::make("Создан", "created_at")
                 ->sortable(),
             Column::make("Обновлен", "updated_at")
