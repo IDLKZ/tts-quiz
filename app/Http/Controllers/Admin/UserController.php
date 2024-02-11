@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', 2)->with("department")->paginate(15);
+        $users = User::whereIn('role_id', [2,3])->with("department")->paginate(15);
         $departments = Department::all();
         $jsValidator = JsValidator::make(
             [
