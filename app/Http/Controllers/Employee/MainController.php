@@ -51,7 +51,8 @@ class MainController extends Controller
         $users = User::whereMonth("birth_date","=",Carbon::now()->month)->orderBy("birth_date","asc")->take(4)->get();
         $forums = Forum::with(["user"])->withCount(["forum_ratings","forum_messages"])->orderBy("created_at","desc")->take(4)->get();
         $events = Event::orderBy("created_at","desc")->take(4)->get();
-        return view('employee.home.index',compact("news","tasks","users","forums","events"));
+        $questionnaires = Questionnaire::where("start_at","<",Carbon::now())->where("end_at",">",Carbon::now())->take(4)->get();
+        return view('employee.home.index',compact("news","tasks","users","forums","events","questionnaires"));
     }
 
     public function settings()

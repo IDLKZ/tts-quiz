@@ -36,6 +36,36 @@
                                 </div>
                             </section>
                             @endif
+                            @if($questionnaires->isNotEmpty())
+                                <section class="my-4 p-3">
+                                    <div class="w-full">
+                                        <p class="text-lg md:text-xl font-weight-bold text-black text-uppercase inline-block mb-4">
+                                            Опросники
+                                        </p>
+                                        @foreach($questionnaires as $questionnaire)
+                                            <div class="max-w-sm w-full lg:max-w-full lg:flex my-3 rounded-2xl">
+                                                <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center bg-white rounded-t py-2 lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/images/question.webp')">
+                                                </div>
+                                                <div class="border border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal w-full">
+                                                    <a href="{{route("employee-questionnaire-show",$questionnaire->id)}}" class="block mb-8">
+                                                        <p class="text-sm text-gray-600 flex items-center">
+                                                            {{$questionnaire->start_at->format("d/m/Y H:i")}}
+                                                            @if($questionnaire->end_at)
+                                                                - {{$questionnaire->end_at->format("d/m/Y H:i")}}
+                                                            @endif
+                                                        </p>
+                                                        <div class="text-gray-900 font-bold text-xl mb-2">{{$questionnaire->title}}</div>
+                                                        <p class="text-xs text-gray-700 text-base">
+                                                            {!! $questionnaire->description !!}
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                </section>
+                            @endif
                             @if($events->isNotEmpty())
                                 <section class="my-4 p-3">
                                     <div class="w-full">
@@ -44,7 +74,7 @@
                                         </p>
                                         @foreach($events as $event)
                                             <div class="max-w-sm w-full lg:max-w-full lg:flex my-3 rounded-2xl">
-                                                <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center bg-white rounded-t py-2 lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url({{$event->getFile("image_url")}})" title="Woman holding a mug">
+                                                <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center bg-white rounded-t py-2 lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url({{$event->getFile("image_url")}})">
                                                 </div>
                                                 <div class="border border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal w-full">
                                                     <a href="{{route("event-show",$event->id)}}" class="block mb-8">
