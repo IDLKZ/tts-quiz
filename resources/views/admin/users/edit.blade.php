@@ -42,6 +42,7 @@
                                             <select name="role_id" id="role" class="form-control">
                                                 <option value="1">Админ</option>
                                                 <option value="2" selected>Сотрудник</option>
+                                                <option value="3">HR</option>
                                             </select>
                                             <input type="text" class="form-control mt-3" name="name" placeholder="ФИО" value="{{$user->name}}">
                                             <select name="department_id" class="form-control mt-3">

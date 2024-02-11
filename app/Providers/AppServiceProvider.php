@@ -35,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('admin', function (){
             return Auth::user()->role_id == 1 ? true : false;
         });
+        Blade::if('hr', function (){
+            return Auth::user()->role_id == 3 ? true : false;
+        });
         Blade::if('employee', function (){
             return Auth::user()->role_id == 2 ? true : false;
         });

@@ -53,16 +53,16 @@ Route::get('/clear-cache', function() {
 
 
 //Start Admin
-Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
+Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin_hr']],function (){
     Route::get('/', [adminMainController::class, 'index'])->name('adminHome');
     Route::get('/settings', [adminMainController::class, 'settings'])->name('adminSettings');
     Route::post('/update-profile', [adminMainController::class, 'updateProfile'])->name('adminUpdateProfile');
-    Route::resource("company",CompanyController::class);
-    Route::resource("department",DepartmentController::class);
-    Route::resource("user",UserController::class);
+    Route::resource("company",CompanyController::class)->middleware("admin");
+    Route::resource("department",DepartmentController::class)->middleware("admin");
+    Route::resource("user",UserController::class)->middleware("admin");
     Route::resource("email",MailController::class);
-    Route::get("/user-excel",[UserController::class,"excel"])->name("user-excel");
-    Route::post("/upload-user",[UserController::class,"uploadExcel"])->name("upload-user");
+    Route::get("/user-excel",[UserController::class,"excel"])->name("user-excel")->middleware("admin");
+    Route::post("/upload-user",[UserController::class,"uploadExcel"])->name("upload-user")->middleware("admin");
     Route::resource("invite",InviteController::class);
     Route::resource("result",ResultController::class)->except([
         'create', 'store', 'update', 'edit'
@@ -97,6 +97,9 @@ Route::group(["prefix"=>"admin", 'middleware' => ['auth', 'admin']],function (){
     Route::resource("/admin-ideas",\App\Http\Controllers\Admin\IdeaController::class);
     Route::resource("/admin-schedule",\App\Http\Controllers\Admin\ScheduleController::class);
     Route::resource("/permission",\App\Http\Controllers\Admin\PermissionController::class);
+    Route::resource("/questionnaire",\App\Http\Controllers\Admin\QuestionnaireController::class);
+    Route::get("/questionnaire-questions-show/{id}",[\App\Http\Controllers\Admin\QuestionnaireController::class,"questions"])->name("questionnaire-questions-show");
+    Route::get("/questionnaire-questions-stat/{id}",[\App\Http\Controllers\Admin\QuestionnaireController::class,"stat"])->name("questionnaire-questions-stat");
     Route::resource("/user-has-permission",\App\Http\Controllers\Admin\UserHasPermissionController::class);
     Route::get("/ticket-management",[\App\Http\Controllers\Admin\TicketController::class,"management"])->name("ticket-management");
 
@@ -157,6 +160,10 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::resource("/employee-ticket",EmployeeTicketController::class);
     Route::resource("/employee-schedule",\App\Http\Controllers\Employee\EmployeeScheduleController::class);
     Route::resource("/employee-idea-management",\App\Http\Controllers\Employee\EmployeeIdeaController::class);
+    Route::get("/employee-questionnaires",[\App\Http\Controllers\Employee\MainController::class,"listQuestionnaires"])->name("list-questionnaires");
+    Route::get("/employee-questionnaire-show/{id}",[\App\Http\Controllers\Employee\MainController::class,"showQuestionnaire"])->name("employee-questionnaire-show");
+    Route::get("/employee-questionnaire-pass/{id}",[\App\Http\Controllers\Employee\MainController::class,"passQuestionnaire"])->name("employee-questionnaire-pass");
+    Route::post("/employee-questionnaire-check",[\App\Http\Controllers\Employee\MainController::class,"checkQuestionnaire"])->name("employee-questionnaire-check");
 
 });
 Route::group(['middleware' => 'auth'], function () {

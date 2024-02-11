@@ -10,10 +10,10 @@
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-md-12">
-                            <h4 class="page-title mb-1">Создать Задачу</h4>
+                            <h4 class="page-title mb-1">Создать Опросник</h4>
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="{{route("task.index")}}">Задача</a></li>
-                                <li class="breadcrumb-item active">Создать Задачу</li>
+                                <li class="breadcrumb-item"><a href="{{route("questionnaire.index")}}">Опросник</a></li>
+                                <li class="breadcrumb-item active">Создать Опросник</li>
                             </ol>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
 
             <div class="page-content-wrapper">
                 <div class="container">
-                    <livewire:admin.task.create/>
+                    <livewire:admin.questionnaire.create/>
                         <!-- end col -->
                     <!-- end row -->
                 </div>

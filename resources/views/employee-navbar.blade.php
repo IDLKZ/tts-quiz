@@ -49,6 +49,9 @@
                                     <a class="{{ request()->routeIs('events-all') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("event-all")}}">Мероприятия</a>
                                 </li>
                                 <li class=" d-lg-flex  justify-content-center align-items-center text-center">
+                                    <a class="{{ request()->routeIs('list-questionnaires') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("list-questionnaires")}}">Опросники</a>
+                                </li>
+                                <li class=" d-lg-flex  justify-content-center align-items-center text-center">
                                     <a class="{{ request()->routeIs('employee-idea.index') ? 'employee-nav-link-active ' : 'employee-nav-link' }} nav-link text-uppercase text-md font-weight-bold h-full xl:flex align-items-center justify-content-center " href="{{route("employee-idea.index")}}">Банк идей</a>
                                 </li>
                                 @hasPermission('idea-management')

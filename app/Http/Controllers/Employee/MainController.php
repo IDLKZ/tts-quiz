@@ -19,6 +19,9 @@ use App\Models\Lesson;
 use App\Models\Literature;
 use App\Models\Motive;
 use App\Models\News;
+use App\Models\Questionnaire;
+use App\Models\QuestionnaireQuestion;
+use App\Models\QuestionnaireResult;
 use App\Models\Result;
 use App\Models\Schedule;
 use App\Models\Task;
@@ -341,5 +344,52 @@ class MainController extends Controller
             abort(404);
         }
         return view("employee.event.show",compact("event"));
+    }
+    public function listQuestionnaires()
+    {
+        $questionnaires = Questionnaire::where("start_at","<",Carbon::now())->where("end_at",">",Carbon::now())->paginate(15);
+        return view("employee.questionnaire.index",compact("questionnaires"));
+    }
+    public function showQuestionnaire($id)
+    {
+        $questionnaire = Questionnaire::where("start_at","<",Carbon::now())->where("end_at",">",Carbon::now())->withCount("questionnaire_questions")->find($id);
+        $result = QuestionnaireResult::where(["user_id" => \auth()->id(),"questionnaire_id" => $id])->first();
+        if(!$questionnaire){
+            abort(404);
+        }
+        return view("employee.questionnaire.show",compact("questionnaire","result"));
+    }
+    public function passQuestionnaire($id)
+    {
+        $questionnaire = Questionnaire::where("start_at","<",Carbon::now())->where("end_at",">",Carbon::now())->withCount("questionnaire_questions")->find($id);
+        $questions = QuestionnaireQuestion::where(["questionnaire_id" => $questionnaire->id])->with("questionnaire_answers")->get();
+        $result = QuestionnaireResult::where(["user_id" => \auth()->id(),"questionnaire_id" => $id])->first();
+        if(!$questionnaire || $result || count($questions) == 0){
+            abort(404);
+        }
+        return view("employee.questionnaire.pass",compact("questionnaire","questions"));
+    }
+
+    public function checkQuestionnaire(Request $request)
+    {
+        $this->validate($request,["questionnaire_id"=>"exists:questionnaires,id","answer"=>"required|array"]);
+        $questionnaire_id = (int)$request->get("questionnaire_id");
+        $answer = $request->get("answer");
+        $raw = [];
+        foreach ($answer as $questionID => $answerID){
+            $answerID = (int)$answerID;
+            $data = [
+                'questionnaire_id'=>$questionnaire_id,
+                'question_id'=>$questionID,
+                'answer_id'=>$answerID,
+                'department_id'=>\auth()->user()->department_id,
+                'user_id'=>\auth()->id()
+            ];
+            array_push($raw,$data);
+        }
+        QuestionnaireResult::insert($raw);
+        toastSuccess("Спасибо за ваше мнение!");
+        return redirect()->route("employee-questionnaire-show",$questionnaire_id);
+
     }
 }

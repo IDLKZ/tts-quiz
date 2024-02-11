@@ -24,7 +24,7 @@ class AuthController extends Controller
         $this->validate($request,["email"=>"required|email|max:255","password"=>"required|min:4|max:255"]);
         $credentials = $request->only(["email","password"]);
         if(Auth::attempt($credentials,$request->boolean("remember_me"))){
-            if (Auth::user()->role_id == 1){
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 3){
                 return redirect("/admin");
             }
             else{
