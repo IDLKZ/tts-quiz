@@ -19,6 +19,7 @@ class Index extends Component
 
 
 
+
     public function mount(){
         $this->categories = DocumentCategory::all();
     }
@@ -31,7 +32,7 @@ class Index extends Component
             [
                 'documents' => Document::where(function ($query) {
                     if($this->category_ids){
-                        $query->where('title','like',"%{$this->search}%")->whereIn("id",$this->category_ids);
+                        $query->where('title','like',"%{$this->search}%")->whereIn("category_id",$this->category_ids);
                     }
                     else{
                         $query->where('title','like',"%{$this->search}%");

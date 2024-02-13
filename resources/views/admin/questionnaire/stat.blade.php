@@ -81,16 +81,18 @@
                                 </p>
                                 <hr>
                                 @foreach($question->questionnaire_answers as $answer)
+                                    @if(array_key_exists($question->id,$stats_questions))
                                     <div class="grid grid-cols-12 items-center my-2">
                                         <div class="col-span-8">
                                             @if(!array_key_exists($answer->id,$stats))
                                                 <div class="bg-blue-500 h-5 rounded-xl" style="width: 1px"></div>
                                             @else
                                                     <?php $points = $stats[$answer->id][0]->total_points ?>
+                                                    <?php $max_points = $stats_questions[$question->id][0]->total_answers ?>
                                                 <div
                                                     class="bg-blue-500 h-5 rounded-xl flex justify-center items-center text-white progress-bar-striped"
-                                                    style="width: {{round($points/$count * 100,2)}}%">
-                                                    {{round($points/$count * 100,2)}}%
+                                                    style="width: {{round($points/$max_points * 100,2)}}%">
+                                                    {{round($points/$max_points * 100,2)}}%
                                                 </div>
                                             @endif
 
@@ -100,13 +102,14 @@
                                                 0 (0%)
                                             @else
                                                     <?php $points = $stats[$answer->id][0]->total_points ?>
-                                                {{$points}} ({{round($points/$count * 100,2)}})
+                                                {{$points}} ({{round($points/$max_points * 100,2)}}%)
                                             @endif
                                         </div>
                                         <div class="col-span-2 text-right font-bold text-black my-2">
                                             {{$answer->answer}}
                                         </div>
                                     </div>
+                                    @endif
                                 @endforeach
                             </div>
                         @endforeach

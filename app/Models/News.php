@@ -29,7 +29,9 @@ class News extends Model
     public static function updateData($request,$model){
         $input = $request->all();
         $input["is_main"] = $request->boolean("is_main");
-        $input["img"] = File::saveFile($request,"/uploads/news/","img",$input["title"]);
+        if($request->file("img")){
+            $input["img"] = File::saveFile($request,"/uploads/news/","img",$input["title"]);
+        }
         return $model->update($input);
     }
 

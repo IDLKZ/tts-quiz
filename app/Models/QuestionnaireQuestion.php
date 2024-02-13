@@ -39,7 +39,9 @@ class QuestionnaireQuestion extends Model
 	protected $fillable = [
 		'questionnaire_id',
 		'question',
-		'context'
+		'context',
+        "order",
+        "max_answer"
 	];
 
 	public function questionnaire()

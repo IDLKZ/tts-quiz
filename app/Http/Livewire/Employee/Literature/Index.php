@@ -29,7 +29,7 @@ class Index extends Component
             [
                 'literatures' => Literature::where(function ($query) {
                     if($this->category_ids){
-                        $query->where('title','like',"%{$this->search}%")->whereIn("id",$this->category_ids);
+                        $query->where('title','like',"%{$this->search}%")->whereIn("category_id",$this->category_ids);
                     }
                     else{
                         $query->where('title','like',"%{$this->search}%");

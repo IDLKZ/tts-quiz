@@ -373,20 +373,31 @@ class MainController extends Controller
 
     public function checkQuestionnaire(Request $request)
     {
-        $this->validate($request,["questionnaire_id"=>"exists:questionnaires,id","answer"=>"required|array"]);
+        $this->validate($request,["questionnaire_id"=>"exists:questionnaires,id","answer"=>"required"]);
         $questionnaire_id = (int)$request->get("questionnaire_id");
         $answer = $request->get("answer");
         $raw = [];
-        foreach ($answer as $questionID => $answerID){
-            $answerID = (int)$answerID;
-            $data = [
-                'questionnaire_id'=>$questionnaire_id,
-                'question_id'=>$questionID,
-                'answer_id'=>$answerID,
-                'department_id'=>\auth()->user()->department_id,
-                'user_id'=>\auth()->id()
-            ];
-            array_push($raw,$data);
+        $given_answer = 0;
+        $questions_max_point = QuestionnaireQuestion::where(["questionnaire_id" => $questionnaire_id])->sum("max_answer");
+        foreach ($answer as $questionId => $answers){
+            $given_answer += count($answers);
+        }
+        if($given_answer != $questions_max_point){
+            toastError("Неверно выбрано количество ответов!");
+            return  redirect()->back();
+        }
+        foreach ($answer as $questionID => $answerArray){
+            foreach ($answerArray as $answerID){
+                $answerID = (int)$answerID;
+                $data = [
+                    'questionnaire_id'=>$questionnaire_id,
+                    'question_id'=>$questionID,
+                    'answer_id'=>$answerID,
+                    'department_id'=>\auth()->user()->department_id,
+                    'user_id'=>\auth()->id()
+                ];
+                array_push($raw,$data);
+            }
         }
         QuestionnaireResult::insert($raw);
         toastSuccess("Спасибо за ваше мнение!");

@@ -65,6 +65,18 @@
 
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="example-text-input" class=" col-form-label">Порядок*</label>
+                                <div>
+                                    <input  wire:model="order" class="form-control  @error('order') is-invalid @enderror" name="order" type="number" min="1" max="1000" value="{{old("order")}}" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-text-input" class=" col-form-label">Кол-во возможных ответов*</label>
+                                <div>
+                                    <input  wire:model="max_answer" class="form-control  @error('max_answer') is-invalid @enderror" name="max_answer" type="number" min="1" max="20" value="{{old("max_answer")}}" >
+                                </div>
+                            </div>
                             <div class="text-right">
                                 <button class="btn btn-success text-white" wire:click="saveQuestions()">
                                     Создать Вопрос
@@ -161,7 +173,18 @@
                                         <label for="example-text-input" class=" col-form-label">Детали</label>
                                         <div>
                                             <input  wire:model="context" class="form-control  @error('context') is-invalid @enderror" name="context" type="text" value="{{old("context")}}" >
-
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-text-input" class=" col-form-label">Порядок*</label>
+                                        <div>
+                                            <input  wire:model="order" class="form-control  @error('order') is-invalid @enderror" name="order" type="number" min="1" max="1000" value="{{old("order")}}" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-text-input" class=" col-form-label">Кол-во возможных ответов*</label>
+                                        <div>
+                                            <input  wire:model="max_answer" class="form-control  @error('max_answer') is-invalid @enderror" name="max_answer" type="number" min="1" max="20" value="{{old("max_answer")}}" >
                                         </div>
                                     </div>
                                     <div class="text-right">

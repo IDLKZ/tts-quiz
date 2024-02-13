@@ -17,6 +17,8 @@ class Questions extends Component
     public $answer;
     public $context;
     public $type;
+    public $max_answer;
+    public $order;
 
     public function mount(Questionnaire $questionnaire)
     {
@@ -26,15 +28,17 @@ class Questions extends Component
 
     public function getQuestions()
     {
-        $this->questions = QuestionnaireQuestion::withCount(["questionnaire_answers"])->where(["questionnaire_id" => $this->questionnaire->id])->get();
+        $this->questions = QuestionnaireQuestion::withCount(["questionnaire_answers"])->where(["questionnaire_id" => $this->questionnaire->id])->orderBy("order","ASC")->get();
     }
 
     public function saveQuestions()
     {
-        $this->validate(["question"=>"required|max:255","context"=>"sometimes|nullable|max:50000"]);
-        QuestionnaireQuestion::add(["question"=>$this->question,"questionnaire_id"=>$this->questionnaire->id,"context"=>$this->context]);
+        $this->validate(["question"=>"required|max:255","context"=>"sometimes|nullable|max:50000","order"=>"required|integer|min:1|max:1000","max_answer"=>"required|integer|min:1|max:20"]);
+        QuestionnaireQuestion::add(["question"=>$this->question,"questionnaire_id"=>$this->questionnaire->id,"context"=>$this->context,"order"=>$this->order,"max_answer"=>$this->max_answer]);
         $this->question = null;
         $this->context = null;
+        $this->max_answer = null;
+        $this->order = null;
         toastSuccess("Вопрос добавлен!");
         $this->getQuestions();
     }
@@ -45,6 +49,8 @@ class Questions extends Component
         $this->context = null;
         $this->activeQuestion = null;
         $this->type = null;
+        $this->max_answer = null;
+        $this->order = null;
     }
 
     public function deleteQuestion($id)
@@ -58,6 +64,8 @@ class Questions extends Component
             $this->question = null;
             $this->context = null;
             $this->type = null;
+            $this->max_answer = null;
+            $this->order = null;
         }
         $this->getQuestions();
     }
@@ -76,6 +84,8 @@ class Questions extends Component
         if($this->activeQuestion){
             $this->question = $this->activeQuestion->question;
             $this->context = $this->activeQuestion->context;
+            $this->max_answer = $this->activeQuestion->max_answer;
+            $this->order = $this->activeQuestion->order;
         }
         $this->getQuestions();
     }
@@ -115,11 +125,14 @@ class Questions extends Component
     public function changeQuestion()
     {
         if($this->activeQuestion){
-            $this->activeQuestion->edit(["question"=>$this->question,"questionnaire_id"=>$this->questionnaire->id,"context"=>$this->context]);
+            $this->validate(["question"=>"required|max:255","context"=>"sometimes|nullable|max:50000","order"=>"required|integer|min:1|max:1000","max_answer"=>"required|integer|min:1|max:20"]);
+            $this->activeQuestion->edit(["question"=>$this->question,"questionnaire_id"=>$this->questionnaire->id,"context"=>$this->context,"order"=>$this->order,"max_answer"=>$this->max_answer]);
             $this->question = null;
             $this->context = null;
             $this->type = null;
             $this->activeQuestion=null;
+            $this->max_answer = null;
+            $this->order = null;
         }
         $this->getQuestions();
     }

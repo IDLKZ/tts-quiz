@@ -160,6 +160,13 @@ class QuestionnaireController extends Controller
                     DB::raw('SUM(1) as total_points'))
                 ->groupBy('answer_id')
                 ->get()->groupBy("answer_id")->toArray();
+            $stats_questions = DB::table('questionnaire_results')
+                ->where(["questionnaire_id"=>$questionnaire->id])
+                ->select('question_id',
+                    DB::raw('COUNT(*) as total_answers'),
+                    DB::raw('SUM(1) as total_points'))
+                ->groupBy('question_id')
+                ->get()->groupBy("question_id")->toArray();
             $count = QuestionnaireResult::where(["questionnaire_id" => $id])->distinct("user_id")->count();
             $user_count = QuestionnaireResult::where(["questionnaire_id" => $id])->distinct("user_id")->count();
             $department_count = QuestionnaireResult::where(["questionnaire_id" => $id])->distinct("department_id")->count();
@@ -171,7 +178,7 @@ class QuestionnaireController extends Controller
                 ])
                 ->groupBy('date')
                 ->get();
-            return view("admin.questionnaire.stat",compact("questionnaire","stats","count","user_count","department_count","results"));
+            return view("admin.questionnaire.stat",compact("questionnaire","stats","count","user_count","department_count","results","stats_questions"));
         }
         toastWarning("К сожалению, опрос не найден");
         return redirect()->back();
