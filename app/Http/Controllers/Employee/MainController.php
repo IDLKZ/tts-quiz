@@ -363,7 +363,7 @@ class MainController extends Controller
     public function passQuestionnaire($id)
     {
         $questionnaire = Questionnaire::where("start_at","<",Carbon::now())->where("end_at",">",Carbon::now())->withCount("questionnaire_questions")->find($id);
-        $questions = QuestionnaireQuestion::where(["questionnaire_id" => $questionnaire->id])->with("questionnaire_answers")->get();
+        $questions = QuestionnaireQuestion::where(["questionnaire_id" => $questionnaire->id])->with("questionnaire_answers")->orderBy("order","ASC")->get();
         $result = QuestionnaireResult::where(["user_id" => \auth()->id(),"questionnaire_id" => $id])->first();
         if(!$questionnaire || $result || count($questions) == 0){
             abort(404);
