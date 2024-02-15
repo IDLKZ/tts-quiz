@@ -51,7 +51,7 @@
                         <div class="bg-white col-12 border-gray-200 border">
                             <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6 w-full">
                                 <dl class="grid max-w-screen-md gap-8 mx-auto text-gray-900 dark:text-white">
-                                    <p class="text-xl font-bold mb-3">
+                                    <p class="text-xl font-bold mb-3 text-indigo-400">
                                         Статистика по дням
                                     </p>
                                     @foreach($results as $resultItem)
@@ -65,11 +65,8 @@
                         </div>
                     </div>
                     <div class="row border border-gray-200 p-3 bg-white">
-                        <p class="text-xl font-bold mb-3">
+                        <p class="text-xl font-bold mb-3 text-indigo-400">
                             Статистика по ответам
-
-
-
                         </p>
                         @foreach($questionnaire->questionnaire_questions as $question)
                             <div class="col-12">
@@ -114,7 +111,38 @@
                             </div>
                         @endforeach
                     </div>
+                    @if(count($givenAnswers))
+                        <div class="row border border-gray-200 p-3 bg-white">
+                            <p class="text-xl font-bold mb-3 text-indigo-400">
+                                Свои ответы
+                            </p>
+                            @foreach($questionnaire->questionnaire_questions as $question)
+                                @if(array_key_exists($question->id,$givenAnswers))
+                                    <div class="col-12 my-2 border rounded-xl shadow-xl p-3">
+                                        <p class="text-xl font-bold mb-3">
+                                            {{$question->question}}
+                                        </p>
+                                        <p class="mb-2">
+                                            {!! $question->context !!}
+                                        </p>
+                                        <hr>
+                                        @foreach($givenAnswers[$question->id] as $givenAnswerItem)
+                                            <div class="p-2 border my-2">
+                                                <p>
+                                                   {{$givenAnswerItem["given_answer"]}}
+                                                </p>
+                                            </div>
+                                        @endforeach
 
+
+                                    </div>
+                                @endif
+
+                            @endforeach
+                        </div>
+                    @endif
+
+                    <livewire:admin.questionnaire-question.edit></livewire:admin.questionnaire-question.edit>
                     <!-- end col -->
 
                     <!-- end row -->

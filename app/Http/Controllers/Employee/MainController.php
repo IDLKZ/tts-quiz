@@ -13,6 +13,7 @@ use App\Models\Course;
 use App\Models\Department;
 use App\Models\Event;
 use App\Models\Forum;
+use App\Models\GivenAnswersToQuestionnaire;
 use App\Models\Invite;
 use App\Models\JobMotive;
 use App\Models\Lesson;
@@ -373,33 +374,38 @@ class MainController extends Controller
 
     public function checkQuestionnaire(Request $request)
     {
-        $this->validate($request,["questionnaire_id"=>"exists:questionnaires,id","answer"=>"required"]);
+        $this->validate($request,["questionnaire_id"=>"exists:questionnaires,id"]);
         $questionnaire_id = (int)$request->get("questionnaire_id");
         $answer = $request->get("answer");
-        $raw = [];
-        $given_answer = 0;
-        $questions_max_point = QuestionnaireQuestion::where(["questionnaire_id" => $questionnaire_id])->sum("max_answer");
-        foreach ($answer as $questionId => $answers){
-            $given_answer += count($answers);
+        $given_answers = $request->get("text_answers");
+        if($answer){
+            $raw = [];
+            foreach ($answer as $questionID => $answerArray){
+                foreach ($answerArray as $answerID){
+                    $answerID = (int)$answerID;
+                    $data = [
+                        'questionnaire_id'=>$questionnaire_id,
+                        'question_id'=>$questionID,
+                        'answer_id'=>$answerID,
+                        'department_id'=>\auth()->user()->department_id,
+                        'user_id'=>\auth()->id()
+                    ];
+                    array_push($raw,$data);
+                }
+            }
+            QuestionnaireResult::insert($raw);
         }
-        if($given_answer != $questions_max_point){
-            toastError("Неверно выбрано количество ответов!");
-            return  redirect()->back();
-        }
-        foreach ($answer as $questionID => $answerArray){
-            foreach ($answerArray as $answerID){
-                $answerID = (int)$answerID;
-                $data = [
+        if($given_answers){
+            foreach ($given_answers as $questionID => $given_answer_text){
+                GivenAnswersToQuestionnaire::add([
                     'questionnaire_id'=>$questionnaire_id,
                     'question_id'=>$questionID,
-                    'answer_id'=>$answerID,
+                    'given_answer'=>$given_answer_text,
                     'department_id'=>\auth()->user()->department_id,
                     'user_id'=>\auth()->id()
-                ];
-                array_push($raw,$data);
+                ]);
             }
         }
-        QuestionnaireResult::insert($raw);
         toastSuccess("Спасибо за ваше мнение!");
         return redirect()->route("employee-questionnaire-show",$questionnaire_id);
 

@@ -26,7 +26,7 @@
                         <i class="fas fa-question-circle text-yellow-400 mr-2"></i>
                     @endif
 
-                    {{$question->question}}
+                    {{$question->question}} (вы можете указать до {{$question->max_answer}} ответов)
                 </p>
                 <p class="mb-2">
                     {!! $question->context !!}
@@ -43,16 +43,23 @@
                             wire:change="checkAnswer()"
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 disabled:bg-gray-400  cursor-pointer"
                             name="answer[{{ $answer->question_id }}][]"
-                            id="{{$answer->answer}}{{$answer->id}}" type="checkbox" value="{{ $answer->id }}" wire:model="answers.{{ $answer->question_id }}.{{ $answer->id }}">
+                            id="{{$answer->answer}}{{$answer->id}}"
+                            type="{{$question->max_answer > 1 ? 'checkbox' : 'radio'}}" value="{{ $answer->id }}" wire:model="answers.{{ $answer->question_id }}.{{ $answer->id }}">
                         <label for="{{$answer->answer}}{{$answer->id}}" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">
                             {{$answer->answer}}
                         </label>
                     </div>
                 @endforeach
+                  <div class="form-group">
+                   <label for="my_answer">Мой ответ</label>
+                   <input wire:model="text_answers.{{$question->id}}" type="text" class="form-control" id="my_answer" name="text_answers[{{$question->id}}]" placeholder="Введите ваш ответ">
+                </div>
             </div>
         </div>
     @endforeach
-    @if($max_answer == $given_answer)
+    <?php $answered_count = (array_unique(array_merge(array_keys($answers), array_keys($text_answers))))?>
+
+    @if(count($answered_count) == count($must_given_answers))
         <div class="flex justify-content-end my-2">
             <button class="btn btn-success btn-lg">
                 Сдать

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuestionnaireCreateRequest;
 use App\Http\Requests\QuestionnaireEditRequest;
+use App\Models\GivenAnswersToQuestionnaire;
 use App\Models\Questionnaire;
 use App\Models\QuestionnaireResult;
 use Illuminate\Http\Request;
@@ -178,7 +179,8 @@ class QuestionnaireController extends Controller
                 ])
                 ->groupBy('date')
                 ->get();
-            return view("admin.questionnaire.stat",compact("questionnaire","stats","count","user_count","department_count","results","stats_questions"));
+            $givenAnswers = GivenAnswersToQuestionnaire::where(["questionnaire_id" => $questionnaire->id])->select("given_answer","question_id")->get()->groupBy("question_id")->toArray();
+            return view("admin.questionnaire.stat",compact("questionnaire","stats","count","user_count","department_count","results","stats_questions","givenAnswers"));
         }
         toastWarning("К сожалению, опрос не найден");
         return redirect()->back();
