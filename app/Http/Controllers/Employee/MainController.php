@@ -397,13 +397,15 @@ class MainController extends Controller
         }
         if($given_answers){
             foreach ($given_answers as $questionID => $given_answer_text){
-                GivenAnswersToQuestionnaire::add([
-                    'questionnaire_id'=>$questionnaire_id,
-                    'question_id'=>$questionID,
-                    'given_answer'=>$given_answer_text,
-                    'department_id'=>\auth()->user()->department_id,
-                    'user_id'=>\auth()->id()
-                ]);
+                if($given_answer_text){
+                    GivenAnswersToQuestionnaire::add([
+                        'questionnaire_id'=>$questionnaire_id,
+                        'question_id'=>$questionID,
+                        'given_answer'=>$given_answer_text,
+                        'department_id'=>\auth()->user()->department_id,
+                        'user_id'=>\auth()->id()
+                    ]);
+                }
             }
         }
         toastSuccess("Спасибо за ваше мнение!");
