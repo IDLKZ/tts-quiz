@@ -19,6 +19,25 @@
                     @if($news)
                         <div class="col-span-12 lg:col-span-8">
                             <section class="relative  h-[300px] md:h-[400px] lg:h-[600px] lg:mx-5">
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach(json_decode($news->img) as $key => $img)
+                                            <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+                                                <div class="rounded-xl z-10 h-[300px] md:h-[400px] lg:h-[600px] brightness-50 w-full bg-cover bg-center bg-no-repeat"
+                                                     style="background-image:url({{$img}})"></div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Пред</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">След</span>
+                                    </button>
+                                </div>
+
                                 <div class="absolute rounded-xl z-10 h-[300px] md:h-[400px] lg:h-[600px] brightness-50 w-full bg-cover bg-center bg-no-repeat" style="background-image:url({{$news->img}})"></div>
                                 <div class="absolute z-20 bottom-0 w-full p-4">
                                     <p class="text-white font-weight-bold text-md lg:text-lg xl:text-2xl">

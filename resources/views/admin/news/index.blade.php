@@ -61,7 +61,7 @@
                                                     <tbody>
                                                     @foreach($news as $item)
                                                         <tr>
-                                                            <td><img class="rounded-circle header-profile-user" src="{{$item->img}}"></td>
+                                                            <td><img class="rounded-circle header-profile-user" src="{{json_decode($item->img)[0]}}"></td>
                                                             <td>{{$item->title}}</td>
                                                             <td>{{$item->subtitle}}</td>
                                                             <td>{!! $item->description !!}</td>

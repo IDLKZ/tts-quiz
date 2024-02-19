@@ -75,12 +75,11 @@
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-md-2 col-form-label">Изображение новости</label>
                                             <div class="col-md-10">
-                                                <input type="file" name="img">
+                                                <input type="file" name="img[]" multiple>
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-info">Отправить</button>
-
+                                            <button type="submit" class="btn btn-info bg-info">Отправить</button>
                                         </div>
                                     </form>
 

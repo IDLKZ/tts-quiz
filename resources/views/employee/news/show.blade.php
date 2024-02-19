@@ -26,7 +26,29 @@
                     <div class="col-12">
                         <!-- Simple card -->
                         <div class="card bg-transparent">
-                            <img class="card-img-top img-fluid" src="{{$news->img}}" alt="Card image cap">
+                            @if(count(json_decode($news->img)) > 1)
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach(json_decode($news->img) as $key => $img)
+                                            <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+                                                <div class="rounded-xl z-10 h-[300px] md:h-[400px] lg:h-[600px] brightness-50 w-full bg-cover bg-center bg-no-repeat"
+                                                     style="background-image:url({{$img}})"></div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Пред</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">След</span>
+                                    </button>
+                                </div>
+                            @else
+                                <img class="card-img-top img-fluid" src="{{\GuzzleHttp\json_decode($news->img)[0]}}" alt="Card image cap">
+                            @endif
+
                             <div class="card-body">
                                 <p class="text-lg font-bold lg:text-xl xl:text-2xl text-black d-inline-block mb-4">{{$news->title}}</p><br/>
                                 <p class="text-lg card-subtitle font-size-16 mt-0 font-size-32 text-black d-inline-block mb-4">{{$news->subtitle}}</p><br/>

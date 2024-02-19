@@ -28,7 +28,7 @@ class NewsController extends Controller
     public function create()
     {
         $jsValidator = JsValidator::make(
-            ["img"=>"sometimes|image|max:4096","title"=>"required","subtitle"=>"required","description"=>"required"]
+            ["img" => "required", "title" => "required", "subtitle" => "required", "description" => "required"]
         );
         return view("admin.news.create",compact("jsValidator"));
     }
@@ -41,7 +41,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,["img"=>"sometimes|image|max:4096","title"=>"required","subtitle"=>"required","description"=>"required"]);
+        $this->validate($request,["img" => "required", "title" => "required", "subtitle" => "required", "description" => "required"]);
         if(News::saveData($request)){
             toastSuccess("Успешно создана новость","Выполнено");
         }

@@ -30,7 +30,7 @@
                         @foreach($news as $item)
                             <div class="col-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                 <div class="card h-full shadow-lg rounded-lg">
-                                    <div class="card-image min-h-[300px] background-no-repeat background-center background-cover" style="min-height:300px;background-image:url({{$item->img}})"></div>
+                                    <div class="card-image min-h-[300px] background-no-repeat background-center background-cover" style="min-height:300px;background-image:url({{\GuzzleHttp\json_decode($item->img)[0]}})"></div>
                                     <section class="py-2 px-3 h-full relative">
                                             <div class="header">
                                                 <p class="text-md lg:text-lg xl:text-xl font-weight-bold text-black">

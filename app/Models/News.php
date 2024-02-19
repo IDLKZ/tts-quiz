@@ -20,9 +20,13 @@ class News extends Model
 
 
     public static function saveData($request){
-        $input = $request->all();
+        $input = $request->except('img');
+        $imgUrl = [];
         $input["is_main"] = $request->boolean("is_main");
-        $input["img"] = File::saveFile($request,"/uploads/news/","img",$input["title"]);
+        foreach ($request['img'] as $item) {
+            $imgUrl[] .= File::saveJsonFile($item,"/uploads/news/",$input["title"]);
+        }
+        $input['img'] = json_encode($imgUrl);
         $model = new self();
         return $model->fill($input)->save();
     }
