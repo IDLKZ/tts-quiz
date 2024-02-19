@@ -72,18 +72,23 @@
                                             </div>
                                         </div>
                                         <div class="form-check mt-3">
-                                            <input type="checkbox" name="is_main" class="form-check-input" id="is_main" checked="{{$news->is_main === true ? true : false}}">
+                                            <input type="checkbox" name="is_main" class="form-check-input" id="is_main"  @if($news->is_main) checked @endif>
                                             <label class="form-check-label" for="is_main">На главной</label>
                                         </div>
                                         <div class="form-group row">
-                                            <img src="{{$news->img}}" width="75" height="75">
+                                            <div class="flex my-3">
+                                                @foreach(json_decode($news->img) as $img)
+                                                    <img class="mx-2" src="{{$img}}" width="100" height="100">
+                                                @endforeach
+                                            </div>
+
                                             <label for="example-text-input" class="col-md-2 col-form-label">Изображение новости</label>
                                             <div class="col-md-10">
-                                                <input type="file" name="img">
+                                                <input type="file" name="img[]" multiple>
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-info">Изменить</button>
+                                            <button type="submit" class="btn btn-info bg-info">Изменить</button>
 
                                         </div>
                                     </form>
