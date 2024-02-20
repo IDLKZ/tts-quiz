@@ -50,12 +50,15 @@
                     </div>
                     <div class="w-1/2">
                         <div class="text-right">
-                            <button class="btn header-item waves-effect d-inline text-center">
-                                <div class="flex justify-content-center">
-                                    <img class="rounded-circle header-profile-user" src="{{Auth::user()->img}}" alt="Header Avatar">
-                                </div>
-                                <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>
-                            </button>
+                            <a href="{{route('adminSettings')}}">
+                                <button class="btn header-item waves-effect d-inline text-center">
+                                    <div class="flex justify-content-center">
+                                        <img class="rounded-circle header-profile-user" src="{{Auth::user()->img}}">
+                                    </div>
+                                    <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>
+                                </button>
+                            </a>
+
                         </div>
                     </div>
                 </div>

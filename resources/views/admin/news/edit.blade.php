@@ -2,6 +2,9 @@
 
 
 @push("styles")
+    <style>
+
+    </style>
 @endpush
 
 @section("content")
@@ -75,10 +78,28 @@
                                             <input type="checkbox" name="is_main" class="form-check-input" id="is_main" checked="{{$news->is_main === true ? true : false}}">
                                             <label class="form-check-label" for="is_main">На главной</label>
                                         </div>
+                                        <input type="hidden" id="deletedGalleryId" name="deletedGalleryId">
+                                        @if($news->galleries)
+                                            <div class="form-group row">
+                                                @foreach($news->galleries as $gallery)
+                                                    <div class="relative flex justify-center items-center">
+                                                        <i id="xmark{{$gallery->id}}" class="fas fa-times text-red-500 absolute text-2xl z-20 hidden"></i>
+                                                        <img data-id="{{$gallery->id}}" src="{{$gallery->getFile("image_url")}}" class="image-gallery my-2 px-3 cursor-pointer relative" style="max-width: 200px;">
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                        <hr/>
+                                        <div class="form-group row my-2">
+                                            <label for="example-text-input" class="col-md-12 col-form-label">Галерея новости</label>
+                                            <div class="col-md-12">
+                                                <input type="file" multiple name="images[]">
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
-                                            <img src="{{$news->img}}" width="75" height="75">
-                                            <label for="example-text-input" class="col-md-2 col-form-label">Изображение новости</label>
-                                            <div class="col-md-10">
+                                            <img src="{{$news->img}}" class="my-2 px-3 block" style="max-width: 200px;">
+                                            <label for="example-text-input" class="col-md-12 col-form-label">Изображение новости</label>
+                                            <div class="col-md-12">
                                                 <input type="file" name="img">
                                             </div>
                                         </div>
@@ -114,11 +135,32 @@
 
     <script>
         $(document).ready(function (){
+            $("#deletedGalleryId").val(null);
             ClassicEditor
                 .create( document.querySelector( '#editor' ) )
                 .catch( error => {
                     console.error( error );
                 } );
+            let deletedFile = [];
+            $(".image-gallery").click(function () {
+                let galleryId = $(this).attr("data-id");
+                const index = deletedFile.indexOf(galleryId);
+                if (index > -1) {
+                    deletedFile.splice(index, 1);
+                    $(this).removeClass("brightness-50")
+                    $("#xmark"+galleryId).removeClass("block").toggleClass("hidden")
+                } else {
+                    deletedFile.push(galleryId);
+                    $(this).toggleClass("brightness-50")
+                    $("#xmark"+galleryId).removeClass("hidden").toggleClass("block")
+                }
+                if(deletedFile.length > 0){
+                    $("#deletedGalleryId").val(JSON.stringify(deletedFile));
+                }
+                else{
+                    $("#deletedGalleryId").val(null);
+                }
+            })
         })
 
     </script>

@@ -96,7 +96,7 @@
                                                 <th>Компания</th>
                                                 <th>Департамент</th>
                                                 <th>Должность</th>
-                                                <th>Кандидат</th>
+                                                <th>Роль</th>
                                                 <th>Фото</th>
                                                 <th>Действие</th>
                                             </tr>
@@ -106,10 +106,32 @@
                                                 <tr>
                                                     <th scope="row">{{$loop->iteration}}</th>
                                                     <td>{{$user->name}}</td>
-                                                    <td>{{$user->department->company->title}}</td>
-                                                    <td>{{$user->department->title}}</td>
+                                                    <td>
+                                                        @if($user->department)
+                                                            {{$user->department->company->title}}
+                                                        @else
+                                                            Отсутствует
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($user->department)
+                                                            {{$user->department->title}}
+                                                        @else
+                                                            Отсутствует
+                                                        @endif
+                                                    </td>
                                                     <td>{{$user->position}}</td>
-                                                    <td>{{$user->candidate == 1 ? "Кандидат" : "Не кандидат"}}</td>
+                                                    <td>
+                                                        @if($user->role_id == 1)
+                                                            Админ
+                                                        @endif
+                                                            @if($user->role_id == 2)
+                                                                Сотрудник
+                                                            @endif
+                                                            @if($user->role_id == 3)
+                                                                HR
+                                                            @endif
+                                                    </td>
                                                     <td><img class="rounded-circle header-profile-user" src="{{$user->img}}"></td>
                                                     <td>
                                                         <div class="btn-group" role="group">

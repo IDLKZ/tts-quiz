@@ -24,7 +24,14 @@ class News extends Model
         $input["is_main"] = $request->boolean("is_main");
         $input["img"] = File::saveFile($request,"/uploads/news/","img",$input["title"]);
         $model = new self();
-        return $model->fill($input)->save();
+        $model->fill($input)->save();
+        if($request->has("images")){
+            foreach ($request->file("images") as $image){
+                $newsGallery = NewsGallery::add(["news_id"=>$model->id]);
+                $newsGallery->uploadFile($image,"image_url");
+            }
+        }
+        return true;
     }
     public static function updateData($request,$model){
         $input = $request->all();
@@ -32,7 +39,24 @@ class News extends Model
         if($request->file("img")){
             $input["img"] = File::saveFile($request,"/uploads/news/","img",$input["title"]);
         }
-        return $model->update($input);
+        $model->update($input);
+        if($request->has("images")){
+            foreach ($request->file("images") as $image){
+                $newsGallery = NewsGallery::add(["news_id"=>$model->id]);
+                $newsGallery->uploadFile($image,"image_url");
+            }
+        }
+        if($request->get("deletedGalleryId")){
+            $deleted = json_decode($request->get("deletedGalleryId"),true);
+            $deleted = array_map('intval', $deleted);
+            NewsGallery::destroy($deleted);
+        }
+        return true;
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(NewsGallery::class,"news_id","id");
     }
 
 

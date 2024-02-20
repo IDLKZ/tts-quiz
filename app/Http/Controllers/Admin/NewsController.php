@@ -41,7 +41,14 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,["img"=>"sometimes|image|max:4096","title"=>"required","subtitle"=>"required","description"=>"required"]);
+        $this->validate($request,[
+            "img"=>"sometimes|image|max:4096",
+            "title"=>"required",
+            "subtitle"=>"required",
+            "description"=>"required",
+            "images"=>"sometimes|nullable|array",
+            "images.*"=>"image|file|max:4096"
+        ]);
         if(News::saveData($request)){
             toastSuccess("Успешно создана новость","Выполнено");
         }
@@ -80,6 +87,7 @@ class NewsController extends Controller
             $jsValidator = JsValidator::make(
                 ["img"=>"sometimes|image|max:4096","title"=>"required","subtitle"=>"required","description"=>"required"]
             );
+            $news->load("galleries");
             return view("admin.news.edit",compact("news","jsValidator"));
         }
         else{

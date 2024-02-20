@@ -78,6 +78,12 @@
                                                 <input type="file" name="img">
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-md-2 col-form-label">Галерея новости</label>
+                                            <div class="col-md-10">
+                                                <input type="file" multiple name="images[]">
+                                            </div>
+                                        </div>
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-info">Отправить</button>
 
