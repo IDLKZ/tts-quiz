@@ -32,6 +32,26 @@ class File extends Model
             return "/no-image.png";
         }
     }
+    public static function saveJsonFile($file,$directory,$name = null){
+        if($file){
+            if($name){
+                $filename = Str::slug($name) . Str::random(5);
+            }
+            else{
+                $filename = Str::random(12);
+            }
+           $filename = $filename.".".$file->extension();
+           if($file->storeAs($directory, $filename)){
+               return  $directory . $filename;
+           }
+           else{
+               return "/no-image.png";
+           }
+        }
+        else{
+            return "/no-image.png";
+        }
+    }
 
     public static function updateFile($request,$directory,$file,$oldname,$name = null){
         if($request->hasFile($file)){
